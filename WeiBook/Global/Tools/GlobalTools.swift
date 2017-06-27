@@ -64,7 +64,6 @@ let kEncodeUserCachesDirectory = NSSearchPathForDirectoriesInDomains(FileManager
 
 class SaveImageTools{
     
-    /*
     fileprivate init(){}
     
     static let sharedInstance = SaveImageTools()
@@ -104,7 +103,7 @@ class SaveImageTools{
     
     func saveImage(_ name:String, image:UIImage, path:String) -> Bool {
         if UserInfoModel.isLoggedIn() {
-            let saveFilePath = self.getCachesDirectoryUserInfoDocumetPathDocument(UserInfoModel.shareInstance().phone, document: path)
+            let saveFilePath = self.getCachesDirectoryUserInfoDocumetPathDocument(UserInfoModel.shareInstance().mobile, document: path)
             if saveFilePath == nil {
                 return false
             }
@@ -131,7 +130,7 @@ class SaveImageTools{
     
     func saveSmallImage(_ name:String, image:UIImage, path:String) -> Bool {
         if UserInfoModel.isLoggedIn() {
-            let saveFilePath = self.getCachesDirectoryUserInfoSmallDocumetPathDocument(UserInfoModel.shareInstance().phone, document: path)
+            let saveFilePath = self.getCachesDirectoryUserInfoSmallDocumetPathDocument(UserInfoModel.shareInstance().mobile, document: path)
             if saveFilePath == nil {
                 return false
             }
@@ -156,7 +155,7 @@ class SaveImageTools{
     
     func LoadImage(_ name:String, path:String, isSmall:Bool) -> UIImage? {
         if UserInfoModel.isLoggedIn() {
-            let saveFilePath = isSmall ? self.getCachesDirectoryUserInfoSmallDocumetPathDocument(UserInfoModel.shareInstance().phone, document: path) : self.getCachesDirectoryUserInfoDocumetPathDocument(UserInfoModel.shareInstance().phone, document: path)
+            let saveFilePath = isSmall ? self.getCachesDirectoryUserInfoSmallDocumetPathDocument(UserInfoModel.shareInstance().mobile, document: path) : self.getCachesDirectoryUserInfoDocumetPathDocument(UserInfoModel.shareInstance().mobile, document: path)
             if saveFilePath == nil {
                 return nil
             }
@@ -183,7 +182,7 @@ class SaveImageTools{
     
     func getCachesDirectory(_ name:String, path:String, isSmall:Bool) -> String {
         if UserInfoModel.isLoggedIn() {
-            let saveFilePath = isSmall ? self.getCachesDirectoryUserInfoSmallDocumetPathDocument(UserInfoModel.shareInstance().phone, document: path) : self.getCachesDirectoryUserInfoDocumetPathDocument(UserInfoModel.shareInstance().phone, document: path)
+            let saveFilePath = isSmall ? self.getCachesDirectoryUserInfoSmallDocumetPathDocument(UserInfoModel.shareInstance().mobile, document: path) : self.getCachesDirectoryUserInfoDocumetPathDocument(UserInfoModel.shareInstance().mobile, document: path)
             if saveFilePath == nil {
                 return ""
             }
@@ -198,5 +197,4 @@ class SaveImageTools{
             return saveName
         }
     }
-    */
 }

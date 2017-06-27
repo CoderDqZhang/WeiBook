@@ -18,19 +18,37 @@ class MainTableBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeViewController.tabBarItem.image = UIImage.init(named: "tabbar_home")
+        self.setNavigationControllerTitleAndImage(image: UIImage.init(named: "tabbar_home")!, title: "首页", selectImage: nil, controller: homeViewController)
+        let homeViewNavigationController = createNavigationController(controller: homeViewController)
+//        homePageViewNavigationController.navigationBar.isHidden = false
+//        homePageViewController.progressHeight = 0
+//        homePageViewController.progressWidth = 0
+//        homePageViewController.adjustStatusBarHeight = true
+//        homePageViewController.progressColor = UIColor.init(hexString: App_Theme_6B747B_Color)
+//        homePageViewNavigationController.hidesBottomBarWhenPushed = true
+
         
-        discoverViewController.tabBarItem.image = UIImage.init(named: "tabbar_discover")
+        self.setNavigationControllerTitleAndImage(image: UIImage.init(named: "tabbar_discover")!, title: "发现", selectImage: nil, controller: discoverViewController)
+        self.setNavigationControllerTitleAndImage(image: UIImage.init(named: "tabbar_subscribe")!, title: "订阅", selectImage: nil, controller: subscriberViewController)
+        self.setNavigationControllerTitleAndImage(image:  UIImage.init(named: "tabbar_profile")!, title: "我的", selectImage: nil, controller: profileViewController)
         
-        subscriberViewController.tabBarItem.image = UIImage.init(named: "tabbar_subscriber")
+        let controllers = [homeViewNavigationController,createNavigationController(controller: discoverViewController),createNavigationController(controller: subscriberViewController),createNavigationController(controller: profileViewController)]
         
-        profileViewController.tabBarItem.image = UIImage.init(named: "tabbar_profile")
-        
-        
-        self.viewControllers = [homeViewController,discoverViewController,subscriberViewController,profileViewController]
+        self.viewControllers = controllers
         // Do any additional setup after loading the view.
     }
+    
+    func setNavigationControllerTitleAndImage(image:UIImage, title:String, selectImage:UIImage?, controller:UIViewController?) {
+        controller?.tabBarItem.image = image
+        controller?.tabBarItem.title = title
+        controller?.navigationItem.title = title
+        controller?.tabBarItem.selectedImage = selectImage
+    }
 
+    func createNavigationController(controller:UIViewController?) -> UINavigationController {
+        return UINavigationController.init(rootViewController: controller!)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

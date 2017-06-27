@@ -17,8 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let mainTableBarController = MainTableBarViewController()
+        
+        AppleThemeTool.setUpToolBarColor()
+        AppleThemeTool.setUpKeyBoardManager()
+        
         self.window?.rootViewController = mainTableBarController
         self.window?.makeKeyAndVisible()
+        
         return true
     }
 

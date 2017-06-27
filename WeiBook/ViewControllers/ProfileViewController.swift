@@ -12,15 +12,20 @@ class ProfileViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setUpView()
         // Do any additional setup after loading the view.
+    }
+    
+    func setUpView(){
+        
+        self.bindViewModel(viewModel: ProfileViewModel.init(), controller: self)
+        self.setUpTableView(style: .grouped, cells: [ProfileHeaderTableViewCell.self,ProfileInfoTableViewCell.self,GloableImageLableDetailImageCell.self], controller: self)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

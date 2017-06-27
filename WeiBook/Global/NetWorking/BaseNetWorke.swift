@@ -38,8 +38,11 @@ class BaseNetWorke {
     func getUrlWithString(_ url:String, parameters:AnyObject?) -> Signal<Any, NSError> {
         return Signal.init({ (subscriber) -> Disposable? in
             self.httpRequest(.get, url: url, parameters: parameters, success: { (responseObject) in
-                subscriber.send(value: responseObject)
-                subscriber.sendCompleted()
+                if ((responseObject is NSDictionary) && (responseObject["code"]!) != nil){
+                    MainThreanShowErrorMessage(responseObject)
+                }else{
+                    subscriber.send(value: responseObject)
+                }
             }, failure: { (responseError) in
                 if responseError is NSDictionary {
                     MainThreanShowErrorMessage(responseError)
@@ -65,7 +68,11 @@ class BaseNetWorke {
     func postUrlWithString(_ url:String, parameters:AnyObject?) -> Signal<Any, NSError> {
         return Signal.init({ (subscriber) -> Disposable? in
             self.httpRequest(.post, url: url, parameters: parameters, success: { (responseObject) in
-                subscriber.send(value: responseObject)
+                if ((responseObject["code"]!) == nil){
+                    subscriber.send(value: responseObject)
+                }else{
+                    MainThreanShowErrorMessage(responseObject)
+                }
                 subscriber.sendCompleted()
                 }, failure: { (responseError) in
                     if responseError is NSDictionary {
@@ -90,8 +97,11 @@ class BaseNetWorke {
     func putUrlWithString(_ url:String, parameters:AnyObject?) -> Signal<Any, NSError> {
         return Signal.init({ (subscriber) -> Disposable? in
             self.httpRequest(.put, url: url, parameters: parameters, success: { (responseObject) in
-                subscriber.send(value: responseObject)
-                subscriber.sendCompleted()
+                if ((responseObject["code"]!) == nil){
+                    subscriber.send(value: responseObject)
+                }else{
+                    MainThreanShowErrorMessage(responseObject)
+                }
                 }, failure: { (responseError) in
                     if responseError is NSDictionary {
                         MainThreanShowErrorMessage(responseError)
@@ -114,8 +124,11 @@ class BaseNetWorke {
     func deleteUrlWithString(_ url:String, parameters:AnyObject?) -> Signal<Any, NSError> {
         return Signal.init({ (subscriber) -> Disposable? in
             self.httpRequest(.delete, url: url, parameters: parameters, success: { (responseObject) in
-                subscriber.send(value: responseObject)
-                subscriber.sendCompleted()
+                if ((responseObject["code"]!) == nil){
+                    subscriber.send(value: responseObject)
+                }else{
+                    MainThreanShowErrorMessage(responseObject)
+                }
                 }, failure: { (responseError) in
                     if responseError is NSDictionary {
                         MainThreanShowErrorMessage(responseError)
@@ -248,8 +261,15 @@ class BaseNetWorke {
                 methods = HTTPMethod.put
         }
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+
+        let signParameters:NSMutableDictionary = NSMutableDictionary.init(dictionary: parameters as! [AnyHashable : Any], copyItems: true)
         
-        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+        let date = NSDate()
+        let timestamp = Int(date.timeIntervalSince1970 * 1000)
+        
+        let sign = createSign(signParameters, timestamp: "\(timestamp)", token: UserInfoModel.shareInstance().tails.token)
+
+        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: URLEncoding.default, headers: ["header-token":UserInfoModel.shareInstance().tails.token,"header-timestamp":"\(timestamp)","header-sign":sign]).responseJSON { (response) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
             NetWorkingResponse.sharedInstance.showNetWorkingResPonse(response as AnyObject)
@@ -264,55 +284,29 @@ class BaseNetWorke {
             }
         }
     }
-    //这个请求方法有问题
-//    func expressDelivery(url:String, parameters:NSMutableDictionary) -> RACSignal{
-//        return RACSignal.createSignal({ (subscriber) -> RACDisposable! in
-//            let headers = [
-//                "content-type": "application/x-www-form-urlencoded",
-//                "cache-control": "no-cache",
-//                "postman-token": "25f805ac-ede1-fba6-42c7-088ff700bd7d"
-//            ]
-//            
-//            parameters.setObject("NWUxNzljYTY1ZDQwYmNlY2UzODUzZjI3ZTI1MDEyODQ%3d", forKey: "DataSign")
-//            
-////            parameters.setValue("NmFiZDc1NTFlODI4YmZjZjY1MWVlZDQyZGFmOGFlZjM%3d", forKey: "DataSign")
-//            
-//            parameters.setObject("%7b%22CallBack%22%3a%22%22%2c%22IsNotice%22%3a%220%22%2c%22LogisticCode%22%3a%223241232435122%22%2c%22MemberID%22%3a%22%22%2c%22OrderCode%22%3a%2212345678%22%2c%22Receiver%22%3a%7b%22Address%22%3a%22%e4%b8%bd%e6%b0%b4%e5%98%89%e5%9b%ad6%e5%8f%b7%e6%a5%bc%22%2c%22CityName%22%3a%22%e5%8c%97%e4%ba%ac%e5%b8%82%22%2c%22ExpAreaName%22%3a%22%e6%9c%9d%e9%98%b3%e5%8c%ba%22%2c%22Mobile%22%3a%2213225023002%22%2c%22Name%22%3a%22%e6%9d%8e%e5%9b%9b%22%2c%22ProvinceName%22%3a%22%e5%8c%97%e4%ba%ac%e5%b8%82%22%7d%2c%22Sender%22%3a%7b%22Address%22%3a%22%e5%9d%82%e9%9d%a2%e9%95%87%22%2c%22CityName%22%3a%22%e4%b8%89%e6%98%8e%e5%b8%82%22%2c%22ExpAreaName%22%3a%22%e5%b0%a4%e6%ba%aa%e5%8e%bf%22%2c%22Mobile%22%3a%2218363899723%22%2c%22Name%22%3a%22%e5%bc%a0%e5%be%b7%e5%85%a8%22%2c%22ProvinceName%22%3a%22%e7%a6%8f%e5%bb%ba%e7%9c%81%22%7d%2c%22ShipperCode%22%3a%22YTO%22%7d", forKey: "RequestData")
-//            
-//            let postData = NSMutableData.init(data: "RequestType=\((parameters )["RequestType"])".dataUsingEncoding(NSUTF8StringEncoding)!)
-//            postData.appendData("&DataType=\((parameters["DataType"])!)".dataUsingEncoding(NSUTF8StringEncoding)!)
-//            postData.appendData("&EBusinessID=\((parameters["EBusinessID"])!)".dataUsingEncoding(NSUTF8StringEncoding)!)
-//            postData.appendData("&DataSign=\((parameters["DataSign"])!)".dataUsingEncoding(NSUTF8StringEncoding)!)
-//            postData.appendData("&RequestData=\((parameters["RequestData"])!)".dataUsingEncoding(NSUTF8StringEncoding)!)
-//            
-//            
-//            let request = NSMutableURLRequest.init(URL: NSURL.init(string: url)!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 10.0)
-//            
-//            request.HTTPMethod = "POST"
-//            request.allHTTPHeaderFields = headers
-//            request.HTTPBody = postData
-//            
-//            let session = NSURLSession.sharedSession()
-//            let dataTask = session.dataTaskWithRequest(request as NSURLRequest) { (data, response, error) in
-//                if (error != nil) {
-//                    print(error)
-//                    subscriber.sendNext(["fail":"error"])
-//                } else {
-//                    let httpResponse = response as? NSHTTPURLResponse
-//                    if (httpResponse?.statusCode == 200) {
-//                        let str = String.init(data: data!, encoding: NSUTF8StringEncoding)
-//                        subscriber.sendNext(data)
-//                    }else{
-//                        subscriber.sendNext(["fail":"error"])
-//                    }
-//                    print(httpResponse)
-//                }
-//            }
-//            
-//            dataTask.resume()
-//            return nil
-//        })
-//    }
+    
+    func createSign(_ parameters:AnyObject?, timestamp:String, token:String) -> String{
+        let parametersDic = parameters as! NSMutableDictionary
+        parametersDic.setValue(token, forKey: "token")
+        parametersDic.setValue(timestamp, forKey: "timestamp")
+        let sortDic = parametersDic.sorted { (dic, dic1) -> Bool in
+            return (dic.key as! String) < (dic1.key as! String)
+        }
+        var signStr = ""
+        var first = true
+        for (key, value) in sortDic {
+            if first {
+                first = false
+            }else{
+                signStr.append("&")
+            }
+            signStr.append("\(key)=")
+            let val = (value as! String).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)?.replacingOccurrences(of: "'", with: "%27")
+            signStr.append("\(String(describing: val))")
+        }
+        let MD5 = signStr.md5().uppercased()
+        return MD5
+    }
     
     func jsonStringToDic(_ dictionary_temp:String) ->NSDictionary {
         let data = dictionary_temp.data(using: String.Encoding.utf8)! as NSData
