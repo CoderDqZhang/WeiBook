@@ -14,7 +14,7 @@ class RecommendViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bindViewModel(viewModel: RecommendViewModel(), controller: self)
-        self.setUpTableView(style: .grouped, cells: [RecommendTableViewCell.self], controller: self)
+        self.setUpTableView(style: .grouped, cells: [RecommendTableViewCell.self,GloableInfoTextCell.self,BooksInfoTableViewCell.self], controller: self)
         self.tableView.separatorStyle = .none
         self.logicViewModel()
         // Do any additional setup after loading the view.

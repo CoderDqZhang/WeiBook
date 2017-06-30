@@ -10,7 +10,7 @@ import UIKit
 
 class RecommendViewModel: BaseViewModel {
 
-    var sectionsNumber = [1,1,1,1,1]
+    var sectionsNumber = [1,2,2,2,2]
     var bannerModel:NSMutableArray = NSMutableArray()
 
     override init() {
@@ -35,6 +35,14 @@ class RecommendViewModel: BaseViewModel {
 //                self.pushTicketDetail(banner.show)
 //            }
         }
+    }
+    
+    func tableViewBooksInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BooksInfoTableViewCell) {
+        
+    }
+    
+    func tableViewGloableInfoTextCellSetData(_ indexPath:IndexPath, cell:GloableInfoTextCell) {
+        cell.setCellData(text: "猜你喜欢", detailButtonTitle: "更多")
     }
     
     //MARK: -NetWorking
@@ -71,15 +79,14 @@ extension RecommendViewModel : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
+            return SCREENWIDTH * 7 / 15
+        default:
             switch indexPath.row {
             case 0:
-                //图片比例15：7
-                return SCREENWIDTH * 7 / 15
+                return 40
             default:
-                return 80
+                return 300
             }
-        default:
-            return 44
         }
     }
 }
@@ -96,20 +103,21 @@ extension RecommendViewModel : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: RecommendTableViewCell.description() , for: indexPath)
+            self.tableViewRecommendTableViewCellSetData(indexPath,cell: cell as! RecommendTableViewCell)
+            return cell
+        default:
             switch indexPath.row {
             case 0:
-                let cell = tableView.dequeueReusableCell(withIdentifier: RecommendTableViewCell.description() , for: indexPath)
-                self.tableViewRecommendTableViewCellSetData(indexPath,cell: cell as! RecommendTableViewCell)
+                let cell = tableView.dequeueReusableCell(withIdentifier: GloableInfoTextCell.description() , for: indexPath)
+                self.tableViewGloableInfoTextCellSetData(indexPath,cell: cell as! GloableInfoTextCell)
                 return cell
             default:
-                let cell = tableView.dequeueReusableCell(withIdentifier: RecommendTableViewCell.description() , for: indexPath)
-//                self.tableViewRecommendTableViewCellSetData(indexPath,cell: cell as! RecommendTableViewCell)
+                let cell = tableView.dequeueReusableCell(withIdentifier: BooksInfoTableViewCell.description() , for: indexPath)
+                    self.tableViewBooksInfoTableViewCellSetData(indexPath,cell: cell as! BooksInfoTableViewCell)
                 return cell
             }
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: RecommendTableViewCell.description() , for: indexPath)
-//            self.tableViewRecommendTableViewCellSetData(indexPath,cell: cell as! RecommendTableViewCell)
-            return cell
+            
         }
     }
 }

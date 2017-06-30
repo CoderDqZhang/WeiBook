@@ -1,24 +1,30 @@
-
 //
-//  CatergoryViewController.swift
-//  WeiBook
+//  UserProtocolViewController.swift
+//  LiangPiao
 //
-//  Created by Zhang on 2017/6/27.
-//  Copyright © 2017年 Zhang. All rights reserved.
+//  Created by Zhang on 02/12/2016.
+//  Copyright © 2016 Zhang. All rights reserved.
 //
 
 import UIKit
+import WebKit
 
-class CatergoryViewController: BaseViewController {
+class UserProtocolViewController: UIViewController {
 
+    var webView:WKWebView!
+    var url:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bindViewModel(viewModel: CategoryViewModel(), controller: self)
-        self.setUpTableView(style: .grouped, cells: [CategoryTableViewCell.self], controller: self)
-        self.tableView.separatorStyle = .none
+        self.navigationItem.title =  "用户协议"
+        self.setNavigationItemBack()
+        self.view.backgroundColor = UIColor.white
+        webView = WKWebView(frame: CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: SCREENHEIGHT - 64))
+        webView.load(URLRequest.init(url: URL.init(string: url)!))
+        self.view.addSubview(webView)
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

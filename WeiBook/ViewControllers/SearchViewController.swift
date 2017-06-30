@@ -10,10 +10,33 @@ import UIKit
 
 class SearchViewController: BaseViewController {
 
+    var searchNavigationBar = GloableNavigationBarSearchView(frame: CGRect(x: 0,y: 0,width: SCREENWIDTH, height: 64),font:App_Theme_PinFan_L_12_Font)
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.isHidden = true
+        self.bindViewModel(viewModel: SearchViewModel(), controller: self)
+        self.setUpView()
         // Do any additional setup after loading the view.
+    }
+    
+    func setUpView(){
+        searchNavigationBar.updataFrame()
+        searchNavigationBar.searchField.becomeFirstResponder()
+        searchNavigationBar.QRCodeButton.reactive.controlEvents(.touchUpInside).observe { (action) in
+            self.searchNavigationBar.searchField.resignFirstResponder()
+            self.dismiss(animated: true, completion: { 
+                
+            })
+        }
+        searchNavigationBar.searchNavigationBarCancelClouse = { _ in
+            self.searchNavigationBar.searchField.resignFirstResponder()
+            self.dismiss(animated: true, completion: {
+                
+            })
+        }
+        self.view.addSubview(searchNavigationBar)
+        
     }
 
     override func didReceiveMemoryWarning() {

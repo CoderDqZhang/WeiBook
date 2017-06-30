@@ -36,7 +36,11 @@ extension ProfileViewModel : UITableViewDelegate {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
-                NavigationPushView(self.controller!, toConroller: ProfileInfoViewController())
+                if UserInfoModel.isLoggedIn() {
+                    NavigationPushView(self.controller!, toConroller: ProfileInfoViewController())
+                }else{
+                    NavigationPushView(self.controller!, toConroller: LoginViewController())
+                }
             }
         case 1:
             switch indexPath.row {

@@ -12,7 +12,9 @@ class SetingViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.bindViewModel(viewModel: SettingViewModel(), controller: self)
+        self.setUpTableView(style: .grouped, cells: [GloableLableDetailLabelImageCell.self], controller: self)
+        self.navigationItem.title = "设置"
         // Do any additional setup after loading the view.
     }
 

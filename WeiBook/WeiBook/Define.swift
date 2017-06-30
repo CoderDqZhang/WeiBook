@@ -113,6 +113,12 @@ func NavigationPushView(_ formviewController:UIViewController, toConroller:UIVie
     formviewController.navigationController?.pushViewController(toConroller, animated: true)
 }
 
+func NavigaiontPresentView(_ formViewController:UIViewController, toController:UIViewController) {
+    formViewController.present(toController, animated: true) { 
+        
+    }
+}
+
 func MainThreadAlertShow(_ msg:String,view:UIView){
     DispatchQueue.main.async(execute: {
         _ = Tools.shareInstance.showMessage(view, msg: msg, autoHidder: true)

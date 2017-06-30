@@ -267,9 +267,9 @@ class BaseNetWorke {
         let date = NSDate()
         let timestamp = Int(date.timeIntervalSince1970 * 1000)
         
-        let sign = createSign(signParameters, timestamp: "\(timestamp)", token: UserInfoModel.shareInstance().tails.token)
+        let sign = createSign(signParameters, timestamp: "\(timestamp)", token: !UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token)
 
-        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: URLEncoding.default, headers: ["header-token":UserInfoModel.shareInstance().tails.token,"header-timestamp":"\(timestamp)","header-sign":sign]).responseJSON { (response) in
+        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: URLEncoding.default, headers: ["header-token":!UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token,"header-timestamp":"\(timestamp)","header-sign":sign]).responseJSON { (response) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
             NetWorkingResponse.sharedInstance.showNetWorkingResPonse(response as AnyObject)

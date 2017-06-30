@@ -13,3 +13,7 @@ let BaseUrl = "http://api.topveda.cn"
 let LoginUrl = "/user/login"
 
 let HomeBanner = "/tabMain/banners"
+
+let AddAddress = ""
+
+let LoginCode = "/sms/sendSms"

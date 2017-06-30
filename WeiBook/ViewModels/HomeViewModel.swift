@@ -19,7 +19,7 @@ class HomeViewModel: BaseViewModel {
     }
     
     func pushSearchView(){
-        NavigationPushView(self.controller!, toConroller: SearchViewController())
+        NavigaiontPresentView(self.controller!, toController: SearchViewController())
     }
     
     // MARK: NetWorking

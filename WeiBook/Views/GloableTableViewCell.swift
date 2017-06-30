@@ -161,5 +161,78 @@ class GloableLableDetailLabelImageCell : UITableViewCell {
     }
 }
 
+class GloableInfoTextCell : UITableViewCell {
+    
+    var detailButton:UIButton!
+    var titleLable:UILabel!
+    var detailImage:UIImageView!
+    
+    var didMakeConstraints = false
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.setUpView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setUpView(){
+        titleLable = UILabel.init()
+        titleLable.textAlignment = .left
+        titleLable.font = App_Theme_PinFan_M_15_Font
+        self.contentView.addSubview(titleLable)
+        
+        detailButton = UIButton.init(type: .custom)
+        detailButton.titleLabel?.font = App_Theme_PinFan_L_11_Font
+        detailButton.titleLabel?.textColor = UIColor.init(hexString: App_Theme_8A96A2_Color)
+        self.contentView.addSubview(detailButton)
+        
+        detailImage = UIImageView.init()
+        detailImage.image = UIImage.init(named: "detail")
+        self.contentView.addSubview(detailImage)
+        
+        self.updateConstraints()
+    }
+    
+    func setCellData(text:String, detailButtonTitle:String?){
+        titleLable.text = text
+        detailButton.setTitle(detailButtonTitle, for: .normal)
+        
+        self.contentView.updateConstraintsIfNeeded()
+    }
+    
+    func updateDetailText(upStr:String){
+        detailButton.setTitle(upStr, for: .normal)
+    }
+    
+    override func updateConstraints() {
+        if !didMakeConstraints {
+            titleLable.snp.makeConstraints({ (make) in
+                make.left.equalTo(self.contentView.snp.left).offset(15)
+                make.width.equalTo(100)
+                make.centerY.equalTo(self.contentView.snp.centerY).offset(0)
+            })
+            
+            detailButton.snp.makeConstraints { (make) in
+                make.left.equalTo(self.titleLable.snp.right).offset(15)
+                make.centerY.equalTo(self.contentView.snp.centerY).offset(0)
+                make.height.equalTo(15)
+                make.right.equalTo(self.contentView.snp.right).offset(0)
+            }
+            
+            detailImage.snp.makeConstraints({ (make) in
+                make.right.equalTo(self.contentView.snp.right).offset(-15)
+                make.centerY.equalTo(self.contentView.snp.centerY).offset(0)
+                make.size.equalTo(CGSize.init(width: 12, height: 12))
+            })
+            
+            didMakeConstraints = true
+        }
+        super.updateConstraints()
+    }
+}
+
 
 
