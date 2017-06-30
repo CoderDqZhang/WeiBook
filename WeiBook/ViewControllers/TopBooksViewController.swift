@@ -12,7 +12,8 @@ class TopBooksViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.bindViewModel(viewModel: TopBooksViewModel.init(), controller: self)
+        self.setUpTableView(style: .plain, cells: [TopBooksTableViewCell.self], controller: self)
         // Do any additional setup after loading the view.
     }
 

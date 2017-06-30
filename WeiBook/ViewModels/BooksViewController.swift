@@ -10,10 +10,28 @@ import UIKit
 
 class BooksViewController: BaseViewController {
 
+    var collectView:UICollectionView!
+    var viewModle = BooksViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setUpView()
+        self.navigationItem.title = "我的书库"
         // Do any additional setup after loading the view.
+    }
+    
+    func setUpView(){
+        self.setUpCollectView()
+    }
+    
+    func setUpCollectView() {
+        let collectionViewLayout = UICollectionViewFlowLayout.init()
+        collectView = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: SCREENHEIGHT - 64), collectionViewLayout: collectionViewLayout)
+        collectView.register(MyBooksCollectionViewCell.self, forCellWithReuseIdentifier: MyBooksCollectionViewCell.description())
+        collectView.backgroundColor = UIColor.init(hexString: App_Theme_FFFFFF_Color)
+        collectView.delegate = viewModle
+        collectView.dataSource = viewModle
+        self.view.addSubview(collectView)
     }
 
     override func didReceiveMemoryWarning() {

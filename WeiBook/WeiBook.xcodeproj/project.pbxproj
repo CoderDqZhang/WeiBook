@@ -98,6 +98,10 @@
 		1F70181C1F04EBF800029158 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70181B1F04EBF800029158 /* SearchViewModel.swift */; };
 		1F78AA5E1F04FD1500F5F374 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78AA5D1F04FD1500F5F374 /* CategoryViewModel.swift */; };
 		1F78AA601F04FEDE00F5F374 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78AA5F1F04FEDE00F5F374 /* CategoryTableViewCell.swift */; };
+		1F78AA621F05F85100F5F374 /* TopBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78AA611F05F85100F5F374 /* TopBooksViewModel.swift */; };
+		1F78AA641F05F99600F5F374 /* TopBooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78AA631F05F99600F5F374 /* TopBooksTableViewCell.swift */; };
+		1F78AA661F06308900F5F374 /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78AA651F06308900F5F374 /* BooksViewModel.swift */; };
+		1F78AA681F0631DA00F5F374 /* MyBooksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78AA671F0631DA00F5F374 /* MyBooksCollectionViewCell.swift */; };
 		1F8374CD1EFA567000ED97DE /* AppThemeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8374CC1EFA567000ED97DE /* AppThemeTool.swift */; };
 		1F8374D31EFA596E00ED97DE /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8374D21EFA596E00ED97DE /* ProfileViewModel.swift */; };
 		1F8374D61EFA599C00ED97DE /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8374D51EFA599C00ED97DE /* BaseViewModel.swift */; };
@@ -263,6 +267,10 @@
 		1F70181B1F04EBF800029158 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		1F78AA5D1F04FD1500F5F374 /* CategoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		1F78AA5F1F04FEDE00F5F374 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		1F78AA611F05F85100F5F374 /* TopBooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBooksViewModel.swift; sourceTree = "<group>"; };
+		1F78AA631F05F99600F5F374 /* TopBooksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBooksTableViewCell.swift; sourceTree = "<group>"; };
+		1F78AA651F06308900F5F374 /* BooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
+		1F78AA671F0631DA00F5F374 /* MyBooksCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBooksCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F8374CC1EFA567000ED97DE /* AppThemeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppThemeTool.swift; sourceTree = "<group>"; };
 		1F8374D21EFA596E00ED97DE /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		1F8374D51EFA599C00ED97DE /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -623,6 +631,7 @@
 				1F70181B1F04EBF800029158 /* SearchViewModel.swift */,
 				1F78AA5D1F04FD1500F5F374 /* CategoryViewModel.swift */,
 				1F70180C1F025B7300029158 /* RecommendViewModel.swift */,
+				1F78AA611F05F85100F5F374 /* TopBooksViewModel.swift */,
 				1F7017FB1F01157200029158 /* QRCodeViewModel.swift */,
 			);
 			name = Home;
@@ -640,6 +649,7 @@
 			children = (
 				1F8374D21EFA596E00ED97DE /* ProfileViewModel.swift */,
 				1F8374F01EFD3D3D00ED97DE /* ProfileInfoViewModel.swift */,
+				1F78AA651F06308900F5F374 /* BooksViewModel.swift */,
 				1F7018171F049C6900029158 /* SettingViewModel.swift */,
 			);
 			name = Profile;
@@ -674,6 +684,7 @@
 				1F7018101F038BBD00029158 /* BooksInfoTableViewCell.swift */,
 				1F70180E1F025C3B00029158 /* RecommendTableViewCell.swift */,
 				1F78AA5F1F04FEDE00F5F374 /* CategoryTableViewCell.swift */,
+				1F78AA631F05F99600F5F374 /* TopBooksTableViewCell.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -684,6 +695,7 @@
 				1F8374DC1EFBAD5800ED97DE /* ProfileHeaderTableViewCell.swift */,
 				1F8374EA1EFBB77700ED97DE /* ProfileInfoTableViewCell.swift */,
 				1F8374EE1EFD3C9400ED97DE /* ProfileInfoHeaderTableViewCell.swift */,
+				1F78AA671F0631DA00F5F374 /* MyBooksCollectionViewCell.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -998,6 +1010,7 @@
 				1F7017FF1F023D6B00029158 /* HomeModel.swift in Sources */,
 				1F4AA5701EF7E02B0085BE3B /* UIWindow+Screenshot.m in Sources */,
 				1F1C5BB11EFD630000DC8DC0 /* FansViewController.swift in Sources */,
+				1F78AA621F05F85100F5F374 /* TopBooksViewModel.swift in Sources */,
 				1F4AA5EF1EF7EF190085BE3B /* JKDBModel.m in Sources */,
 				1F4AA6071EF7EF190085BE3B /* TYTabPagerController.m in Sources */,
 				1F4AA6061EF7EF190085BE3B /* TYTabButtonPagerController.m in Sources */,
@@ -1021,8 +1034,10 @@
 				1F4AA5931EF7E0450085BE3B /* ExpressDeliveryNet.m in Sources */,
 				1F4AA5EE1EF7EF190085BE3B /* JKDBHelper.m in Sources */,
 				1F4AA5F91EF7EF190085BE3B /* SDWaitingView.m in Sources */,
+				1F78AA681F0631DA00F5F374 /* MyBooksCollectionViewCell.swift in Sources */,
 				1F4AA5F21EF7EF190085BE3B /* TADotView.m in Sources */,
 				1F4AA5641EF7E02B0085BE3B /* NSString+StringSize.m in Sources */,
+				1F78AA661F06308900F5F374 /* BooksViewModel.swift in Sources */,
 				1F8374EB1EFBB77700ED97DE /* ProfileInfoTableViewCell.swift in Sources */,
 				1F8374F71EFD477400ED97DE /* MyGivePresentViewController.swift in Sources */,
 				1F4AA57B1EF7E0310085BE3B /* String+Size.swift in Sources */,
@@ -1061,6 +1076,7 @@
 				1F70181C1F04EBF800029158 /* SearchViewModel.swift in Sources */,
 				1F4AA60C1EF7EF190085BE3B /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				1F4AA5681EF7E02B0085BE3B /* UIImage+ImageEffects.m in Sources */,
+				1F78AA641F05F99600F5F374 /* TopBooksTableViewCell.swift in Sources */,
 				1F7018031F024C0B00029158 /* HomePageViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
