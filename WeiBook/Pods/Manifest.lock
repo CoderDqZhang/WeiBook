@@ -3,6 +3,7 @@ PODS:
   - AMapFoundation (1.4.0)
   - AMapLocation (2.4.0):
     - AMapFoundation (~> 1.4)
+  - Cosmos (10.0.0)
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - DZNEmptyDataSet (1.8.1)
@@ -31,6 +32,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - AMapLocation
+  - Cosmos (~> 10.0)
   - Crashlytics
   - DZNEmptyDataSet
   - Fabric
@@ -50,6 +52,7 @@ SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AMapFoundation: 458974f46a39df8407fd818ab83d2630d494c726
   AMapLocation: 47b62b5381a66e4d0c2931b70ffde72682427896
+  Cosmos: bb9310e73ad1ad472b183b848b959302c569cf09
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
@@ -67,6 +70,6 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 48f7d502c1566464d8e75b29d728b1cc16a857ef
+PODFILE CHECKSUM: 313ff8524ebdbc45f86ddb9d2a4e25bef8100339
 
 COCOAPODS: 1.1.1

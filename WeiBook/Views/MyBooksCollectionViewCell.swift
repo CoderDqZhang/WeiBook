@@ -96,7 +96,7 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
             bookPost.snp.makeConstraints({ (make) in
                 make.centerX.equalTo(self.contentView.snp.centerX).offset(0)
                 make.centerY.equalTo(self.contentView.snp.centerY).offset(-10)
-                make.size.equalTo(CGSize.init(width: 80, height: 100))
+                make.size.equalTo(BookLargerSize)
             })
             
             booksTitle.snp.makeConstraints({ (make) in

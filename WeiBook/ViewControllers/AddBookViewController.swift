@@ -11,12 +11,32 @@ import UIKit
 class AddBookViewController: BaseViewController {
 
     var isbn:String = ""
+    var bottomBtn:GloableBottomButtonView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpNavigaitonItem()
+        self.view.backgroundColor = UIColor.init(hexString: App_Theme_F8F9F9_Color)
         self.bindViewModel(viewModel: AddBookViewModel(), controller: self)
+        self.setUpTableView(style: .plain, cells: [BookBaseInfoTableViewCell.self,BookAdvanceTableViewCell.self,BookTagTableViewCell.self], controller: self)
         self.logicViewModel()
+        self.setUpView()
         // Do any additional setup after loading the view.
+    }
+
+    func setUpView(){
+        self.tableView.separatorStyle = .none
+        self.tableView.backgroundColor = UIColor.init(hexString: App_Theme_F8F9F9_Color)
+        tableView.snp.remakeConstraints { (make) in
+            make.top.equalTo(self.view.snp.top).offset(0)
+            make.left.equalTo(self.view.snp.left).offset(0)
+            make.right.equalTo(self.view.snp.right).offset(0)
+            make.bottom.equalTo(self.view.snp.bottom).offset(-49)
+        }
+        bottomBtn = GloableBottomButtonView.init(frame: nil, title: "加入书库", tag: 1, action: { (tag) in
+            
+        })
+        self.view.addSubview(bottomBtn)
     }
     
     func setUpNavigaitonItem(){
@@ -24,6 +44,8 @@ class AddBookViewController: BaseViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(color: UIColor.init(hexString: App_Theme_594CA8_Color, andAlpha: 1), size: CGSize(width: SCREENWIDTH, height: 64)), for: .default)
         self.navigationController?.navigationBar.isTranslucent  = false
     }
+    
+    
     
     func logicViewModel(){
         (self.viewModel as! AddBookViewModel).isbnStr = self.isbn

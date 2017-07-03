@@ -10,7 +10,7 @@ import UIKit
 
 class BaseViewModel: NSObject {
 
-    var controller:UIViewController?
+    var controller:BaseViewController?
     
     override init() {
         super.init()

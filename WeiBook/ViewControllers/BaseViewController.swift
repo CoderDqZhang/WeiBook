@@ -40,10 +40,15 @@ class BaseViewController: UIViewController{
         }
     }
     
-    func bindViewModel(viewModel:BaseViewModel?, controller: UIViewController?){
+    func bindViewModel(viewModel:BaseViewModel?, controller: BaseViewController?){
         
         self.viewModel = viewModel
         viewModel?.controller = controller
+    }
+    
+    func changeTableViewFrame(frame:CGRect) {
+        tableView.snp.remakeConstraints { (make) in
+        }
     }
     
     func getViewModel(){

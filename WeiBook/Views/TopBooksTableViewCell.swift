@@ -64,7 +64,7 @@ class TopBooksTableViewCell: UITableViewCell {
             bookPost.snp.makeConstraints({ (make) in
                 make.centerY.equalTo(self.contentView.snp.centerY).offset(0)
                 make.left.equalTo(self.contentView.snp.left).offset(15)
-                make.size.equalTo(CGSize.init(width: 80, height: 100))
+                make.size.equalTo(BookLargerSize)
             })
             
             bookTitle.snp.makeConstraints({ (make) in

@@ -17,6 +17,7 @@ target 'WeiBook' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'FMDB'
+  pod 'Cosmos', '~> 10.0'
   #    pod 'HanekeSwift'
   #    pod "Qiniu", "~> 7.1"
   pod 'JPush'
