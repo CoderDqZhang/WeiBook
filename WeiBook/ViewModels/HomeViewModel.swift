@@ -12,10 +12,14 @@ class HomeViewModel: BaseViewModel {
 
     override init() {
         super.init()
+        
     }
     
     func pushQRCodeView(){
-        NavigationPushView(self.controller!, toConroller: QRCodeViewController())
+        let controller = AddBookViewController()
+        controller.isbn = "9787111079279"
+        NavigationPushView(self.controller!, toConroller: controller)
+//        NavigationPushView(self.controller!, toConroller: QRCodeViewController())
     }
     
     func pushSearchView(){

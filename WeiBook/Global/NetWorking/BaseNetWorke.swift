@@ -262,14 +262,19 @@ class BaseNetWorke {
         }
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
-        let signParameters:NSMutableDictionary = NSMutableDictionary.init(dictionary: parameters as! [AnyHashable : Any], copyItems: true)
-        
-        let date = NSDate()
-        let timestamp = Int(date.timeIntervalSince1970 * 1000)
-        
-        let sign = createSign(signParameters, timestamp: "\(timestamp)", token: !UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token)
+        var headers:HTTPHeaders! = nil
+        if parameters != nil {
+            let signParameters:NSMutableDictionary = NSMutableDictionary.init(dictionary: parameters as! [AnyHashable : Any], copyItems: true)
+            
+            let date = NSDate()
+            let timestamp = Int(date.timeIntervalSince1970 * 1000)
+            
+            let sign = createSign(signParameters, timestamp: "\(timestamp)", token: !UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token)
+            
+            headers = ["header-token":!UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token,"header-timestamp":"\(timestamp)","header-sign":sign]
+        }
 
-        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: URLEncoding.default, headers: ["header-token":!UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token,"header-timestamp":"\(timestamp)","header-sign":sign]).responseJSON { (response) in
+        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
             NetWorkingResponse.sharedInstance.showNetWorkingResPonse(response as AnyObject)

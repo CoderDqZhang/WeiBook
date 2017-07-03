@@ -17,3 +17,21 @@ let HomeBanner = "/tabMain/banners"
 let AddAddress = ""
 
 let LoginCode = "/sms/sendSms"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//豆瓣
+let SBNCodeApi = "https://api.douban.com/v2/book/isbn/:"

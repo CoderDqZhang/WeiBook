@@ -122,6 +122,9 @@
 		1F8374FD1EFD482600ED97DE /* SetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8374FC1EFD482600ED97DE /* SetingViewController.swift */; };
 		1F8374FF1EFD48C100ED97DE /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8374FE1EFD48C100ED97DE /* AchievementViewController.swift */; };
 		1F8375011EFD50D100ED97DE /* TextField+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8375001EFD50D100ED97DE /* TextField+Extentions.swift */; };
+		1FB003CB1F09F75100A4EF13 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CA1F09F75100A4EF13 /* AddBookViewController.swift */; };
+		1FB003CD1F09F76C00A4EF13 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CC1F09F76C00A4EF13 /* AddBookViewModel.swift */; };
+		1FB003CF1F09F92400A4EF13 /* SBNBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CE1F09F92400A4EF13 /* SBNBookModel.swift */; };
 		1FEF83531EF1498E00C7D84B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF83521EF1498E00C7D84B /* AppDelegate.swift */; };
 		1FEF83551EF1498E00C7D84B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF83541EF1498E00C7D84B /* ViewController.swift */; };
 		1FEF83581EF1498E00C7D84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEF83561EF1498E00C7D84B /* Main.storyboard */; };
@@ -292,6 +295,9 @@
 		1F8374FC1EFD482600ED97DE /* SetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetingViewController.swift; path = ../ViewModels/SetingViewController.swift; sourceTree = "<group>"; };
 		1F8374FE1EFD48C100ED97DE /* AchievementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		1F8375001EFD50D100ED97DE /* TextField+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextField+Extentions.swift"; sourceTree = "<group>"; };
+		1FB003CA1F09F75100A4EF13 /* AddBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
+		1FB003CC1F09F76C00A4EF13 /* AddBookViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
+		1FB003CE1F09F92400A4EF13 /* SBNBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBNBookModel.swift; sourceTree = "<group>"; };
 		1FEF834F1EF1498E00C7D84B /* WeiBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FEF83521EF1498E00C7D84B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FEF83541EF1498E00C7D84B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -344,6 +350,7 @@
 				1F70180A1F025B0A00029158 /* OtherViewController.swift */,
 				1F7017F51F00E99700029158 /* SearchViewController.swift */,
 				1F7017F71F00EC0500029158 /* QRCodeViewController.swift */,
+				1FB003CA1F09F75100A4EF13 /* AddBookViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -610,6 +617,7 @@
 			isa = PBXGroup;
 			children = (
 				1F7017FE1F023D6B00029158 /* HomeModel.swift */,
+				1FB003CE1F09F92400A4EF13 /* SBNBookModel.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -633,6 +641,7 @@
 				1F70180C1F025B7300029158 /* RecommendViewModel.swift */,
 				1F78AA611F05F85100F5F374 /* TopBooksViewModel.swift */,
 				1F7017FB1F01157200029158 /* QRCodeViewModel.swift */,
+				1FB003CC1F09F76C00A4EF13 /* AddBookViewModel.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -988,6 +997,7 @@
 				1F70180B1F025B0A00029158 /* OtherViewController.swift in Sources */,
 				1F4AA5321EF7DB9C0085BE3B /* BaseViewController.swift in Sources */,
 				1F4AA5991EF7E1830085BE3B /* Config.swift in Sources */,
+				1FB003CB1F09F75100A4EF13 /* AddBookViewController.swift in Sources */,
 				1F4AA5F81EF7EF190085BE3B /* SDPhotoBrowser.m in Sources */,
 				1F7018051F025ACC00029158 /* RecommendViewController.swift in Sources */,
 				1F8374D31EFA596E00ED97DE /* ProfileViewModel.swift in Sources */,
@@ -1050,6 +1060,7 @@
 				1F8374FD1EFD482600ED97DE /* SetingViewController.swift in Sources */,
 				1F4AA60D1EF7EF190085BE3B /* ZHPickView.m in Sources */,
 				1F1C5BAF1EFD62F200DC8DC0 /* FlowersViewController.swift in Sources */,
+				1FB003CD1F09F76C00A4EF13 /* AddBookViewModel.swift in Sources */,
 				1F7017F41F00E93000029158 /* HomeViewModel.swift in Sources */,
 				1F4AA6051EF7EF190085BE3B /* TYPagerController.m in Sources */,
 				1F7018141F04945A00029158 /* LoginViewModel.swift in Sources */,
@@ -1074,6 +1085,7 @@
 				1F7018011F024B7800029158 /* HomePageViewController.swift in Sources */,
 				1F4AA5F31EF7EF190085BE3B /* TAPageControl.m in Sources */,
 				1F70181C1F04EBF800029158 /* SearchViewModel.swift in Sources */,
+				1FB003CF1F09F92400A4EF13 /* SBNBookModel.swift in Sources */,
 				1F4AA60C1EF7EF190085BE3B /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				1F4AA5681EF7E02B0085BE3B /* UIImage+ImageEffects.m in Sources */,
 				1F78AA641F05F99600F5F374 /* TopBooksTableViewCell.swift in Sources */,

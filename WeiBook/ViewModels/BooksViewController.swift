@@ -16,7 +16,7 @@ class BooksViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
-        self.navigationItem.title = "我的书库"
+        self.setNavigaitonItem()
         // Do any additional setup after loading the view.
     }
     
@@ -34,6 +34,15 @@ class BooksViewController: BaseViewController {
         self.view.addSubview(collectView)
     }
 
+    func setNavigaitonItem(){
+        self.navigationItem.title = "我的书库"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "筛选", style: .plain, target: self, action: #selector(BooksViewController.rightBarItemPress))
+    }
+    
+    func rightBarItemPress(){
+//        print(bcg84599348)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

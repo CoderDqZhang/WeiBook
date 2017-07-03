@@ -20,14 +20,18 @@ class QRCodeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.barTintColor = UIColor.init(hexString: App_Theme_6B747B_Color, andAlpha: 0)
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(color: UIColor.init(hexString: App_Theme_6B747B_Color, andAlpha: 0), size: CGSize(width: SCREENWIDTH, height: 64)), for: .default)
-        self.navigationController?.navigationBar.isTranslucent  = true
+        self.setUpNavigationItem()
         self.bindViewModel(viewModel: QRCodeViewModel(), controller: self)
         self.setUpView()
         // Do any additional setup after loading the view.
     }
 
+    func setUpNavigationItem(){
+        self.navigationController?.navigationBar.barTintColor = UIColor.init(hexString: App_Theme_6B747B_Color, andAlpha: 0)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(color: UIColor.init(hexString: App_Theme_6B747B_Color, andAlpha: 0), size: CGSize(width: SCREENWIDTH, height: 64)), for: .default)
+        self.navigationController?.navigationBar.isTranslucent  = true
+    }
+    
     func setUpView(){
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video as the media type parameter.
         let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -107,6 +111,35 @@ extension QRCodeViewController : AVCaptureMetadataOutputObjectsDelegate {
         print(captureOutput)
         print(metadataObjects)
         print(connection)
+        // 检查时候捕获到数据
+        if metadataObjects == nil || metadataObjects.count == 0 {
+            UIAlertController.shwoAlertControl(self, style: .alert, title: "没有读取到数据", message: nil, cancel: nil, doneTitle: "确定", cancelAction: { 
+                
+            }, doneAction: { 
+                
+            })
+            return
+        }
+        
+        // 获取数据
+        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+        
+        // 如果获取到的数据类型是QRCode
+        if metadataObj.type == AVMetadataObjectTypeQRCode {
+            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
+            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj as AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
+            qrCodeFrameView?.frame = barCodeObject.bounds;
+            
+            if metadataObj.stringValue != nil {
+                print(metadataObj.stringValue)
+            }
+        }
+        
+        if metadataObj.type == AVMetadataObjectTypeEAN13Code {
+            let controller = AddBookViewController()
+            controller.isbn = metadataObj.stringValue
+            NavigationPushView(self, toConroller: controller)
+        }
         captureSession?.stopRunning()
     }
 }
