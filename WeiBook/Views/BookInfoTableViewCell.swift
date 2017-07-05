@@ -74,13 +74,13 @@ class BookInfoTableViewCell: UITableViewCell {
             didMakeConstraints = true
             
             bookPost.snp.makeConstraints({ (make) in
-                make.top.equalTo(self.contentView.snp.top).offset(5)
+                make.top.equalTo(self.contentView.snp.top).offset(10)
                 make.left.equalTo(self.contentView.snp.left).offset(15)
                 make.size.equalTo(BookLargerMidSize)
             })
             
             bookTitle.snp.makeConstraints({ (make) in
-                make.top.equalTo(self.contentView.snp.top).offset(5)
+                make.top.equalTo(self.contentView.snp.top).offset(10)
                 make.left.equalTo(self.bookPost.snp.right).offset(10)
                 make.right.equalTo(self.contentView.snp.right).offset(-15)
             })
@@ -93,12 +93,12 @@ class BookInfoTableViewCell: UITableViewCell {
             })
             
             commentNumber.snp.makeConstraints({ (make) in
-                make.bottom.equalTo(self.contentView.snp.bottom).offset(-5)
+                make.bottom.equalTo(self.contentView.snp.bottom).offset(-10)
                 make.left.equalTo(self.bookPost.snp.right).offset(10)
             })
             
             collectNumber.snp.makeConstraints({ (make) in
-                make.bottom.equalTo(self.contentView.snp.bottom).offset(-5)
+                make.bottom.equalTo(self.contentView.snp.bottom).offset(-10)
                 make.left.equalTo(self.commentNumber.snp.right).offset(10)
             })
         }

@@ -18,6 +18,7 @@ target 'WeiBook' do
   pod 'Crashlytics'
   pod 'FMDB'
   pod 'Cosmos', '~> 10.0'
+  pod 'SKPhotoBrowser'
   #    pod 'HanekeSwift'
   #    pod "Qiniu", "~> 7.1"
   pod 'JPush'

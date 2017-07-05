@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppleThemeTool.setUpToolBarColor()
         AppleThemeTool.setUpKeyBoardManager()
+        AppleThemeTool.setUpSKPhotoBrowser()
         
         self.window?.rootViewController = mainTableBarController
         self.window?.makeKeyAndVisible()

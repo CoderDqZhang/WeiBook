@@ -62,9 +62,6 @@
 		1F4AA5F41EF7EF190085BE3B /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5AE1EF7EF190085BE3B /* SDCollectionViewCell.m */; };
 		1F4AA5F51EF7EF190085BE3B /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5B01EF7EF190085BE3B /* SDCycleScrollView.m */; };
 		1F4AA5F61EF7EF190085BE3B /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5B21EF7EF190085BE3B /* UIView+SDExtension.m */; };
-		1F4AA5F71EF7EF190085BE3B /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5B51EF7EF190085BE3B /* SDBrowserImageView.m */; };
-		1F4AA5F81EF7EF190085BE3B /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5B71EF7EF190085BE3B /* SDPhotoBrowser.m */; };
-		1F4AA5F91EF7EF190085BE3B /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5BA1EF7EF190085BE3B /* SDWaitingView.m */; };
 		1F4AA6051EF7EF190085BE3B /* TYPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5D91EF7EF190085BE3B /* TYPagerController.m */; };
 		1F4AA6061EF7EF190085BE3B /* TYTabButtonPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5DB1EF7EF190085BE3B /* TYTabButtonPagerController.m */; };
 		1F4AA6071EF7EF190085BE3B /* TYTabPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5DD1EF7EF190085BE3B /* TYTabPagerController.m */; };
@@ -234,13 +231,6 @@
 		1F4AA5B01EF7EF190085BE3B /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
 		1F4AA5B11EF7EF190085BE3B /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		1F4AA5B21EF7EF190085BE3B /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
-		1F4AA5B41EF7EF190085BE3B /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
-		1F4AA5B51EF7EF190085BE3B /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
-		1F4AA5B61EF7EF190085BE3B /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
-		1F4AA5B71EF7EF190085BE3B /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
-		1F4AA5B81EF7EF190085BE3B /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
-		1F4AA5B91EF7EF190085BE3B /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
-		1F4AA5BA1EF7EF190085BE3B /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
 		1F4AA5D81EF7EF190085BE3B /* TYPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerController.h; sourceTree = "<group>"; };
 		1F4AA5D91EF7EF190085BE3B /* TYPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerController.m; sourceTree = "<group>"; };
 		1F4AA5DA1EF7EF190085BE3B /* TYTabButtonPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabButtonPagerController.h; sourceTree = "<group>"; };
@@ -522,7 +512,6 @@
 				1F4AA59B1EF7EF190085BE3B /* CountDown */,
 				1F4AA59E1EF7EF190085BE3B /* DBModel */,
 				1F4AA5A31EF7EF190085BE3B /* SDCycleScrollView */,
-				1F4AA5B31EF7EF190085BE3B /* SDPhotoBrowser */,
 				1F4AA5D71EF7EF190085BE3B /* TYPagerController */,
 				1F4AA5E11EF7EF190085BE3B /* UITableView-FDTempleateLayoutCell */,
 				1F4AA5EA1EF7EF190085BE3B /* ZHPickView */,
@@ -577,20 +566,6 @@
 				1F4AA5AC1EF7EF190085BE3B /* TAPageControl.m */,
 			);
 			path = PageControl;
-			sourceTree = "<group>";
-		};
-		1F4AA5B31EF7EF190085BE3B /* SDPhotoBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				1F4AA5B41EF7EF190085BE3B /* SDBrowserImageView.h */,
-				1F4AA5B51EF7EF190085BE3B /* SDBrowserImageView.m */,
-				1F4AA5B61EF7EF190085BE3B /* SDPhotoBrowser.h */,
-				1F4AA5B71EF7EF190085BE3B /* SDPhotoBrowser.m */,
-				1F4AA5B81EF7EF190085BE3B /* SDPhotoBrowserConfig.h */,
-				1F4AA5B91EF7EF190085BE3B /* SDWaitingView.h */,
-				1F4AA5BA1EF7EF190085BE3B /* SDWaitingView.m */,
-			);
-			path = SDPhotoBrowser;
 			sourceTree = "<group>";
 		};
 		1F4AA5D71EF7EF190085BE3B /* TYPagerController */ = {
@@ -1062,7 +1037,6 @@
 				1F4AA5321EF7DB9C0085BE3B /* BaseViewController.swift in Sources */,
 				1F4AA5991EF7E1830085BE3B /* Config.swift in Sources */,
 				1FB003CB1F09F75100A4EF13 /* AddBookViewController.swift in Sources */,
-				1F4AA5F81EF7EF190085BE3B /* SDPhotoBrowser.m in Sources */,
 				1F7018051F025ACC00029158 /* RecommendViewController.swift in Sources */,
 				1F6A2E651F0B7CFD00C3A574 /* DiscoverNewViewController.swift in Sources */,
 				1F8374D31EFA596E00ED97DE /* ProfileViewModel.swift in Sources */,
@@ -1111,7 +1085,6 @@
 				1F70180F1F025C3B00029158 /* RecommendTableViewCell.swift in Sources */,
 				1F4AA5931EF7E0450085BE3B /* ExpressDeliveryNet.m in Sources */,
 				1F4AA5EE1EF7EF190085BE3B /* JKDBHelper.m in Sources */,
-				1F4AA5F91EF7EF190085BE3B /* SDWaitingView.m in Sources */,
 				1F78AA681F0631DA00F5F374 /* MyBooksCollectionViewCell.swift in Sources */,
 				1F6A2E631F0B73B200C3A574 /* NYSegmentTextRenderView.m in Sources */,
 				1F4AA5F21EF7EF190085BE3B /* TADotView.m in Sources */,
@@ -1126,7 +1099,6 @@
 				1F6A2E691F0B7FBA00C3A574 /* DiscoverViewModel.swift in Sources */,
 				1F3349E41F0A17DC0046B519 /* BookAdvanceTableViewCell.swift in Sources */,
 				1F7017FA1F00FEB300029158 /* ScanView.swift in Sources */,
-				1F4AA5F71EF7EF190085BE3B /* SDBrowserImageView.m in Sources */,
 				1F4AA5621EF7E02B0085BE3B /* NSFileManager+Paths.m in Sources */,
 				1F4AA5981EF7E1830085BE3B /* Define.swift in Sources */,
 				1F8374F11EFD3D3D00ED97DE /* ProfileInfoViewModel.swift in Sources */,

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import IQKeyboardManagerSwift
+import SKPhotoBrowser
 
 class AppleThemeTool {
     class func setUpToolBarColor() {
@@ -31,5 +32,20 @@ class AppleThemeTool {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = false
 
+    }
+    
+    class func setUpSKPhotoBrowser() {
+        SKPhotoBrowserOptions.displayToolbar = false                              // all tool bar will be hidden
+        SKPhotoBrowserOptions.displayCounterLabel = true                         // counter label will be hidden
+        SKPhotoBrowserOptions.displayCloseButton = false
+        //close button hidden
+        SKPhotoBrowserOptions.displayBackAndForwardButton = true                 // back / forward button will be hidden
+        SKPhotoBrowserOptions.displayAction = false                               // action button will be hidden
+        SKPhotoBrowserOptions.displayDeleteButton = false                          // delete button will be shown
+        SKPhotoBrowserOptions.displayHorizontalScrollIndicator = false            // horizontal scroll bar will be hidden
+        SKPhotoBrowserOptions.displayVerticalScrollIndicator = false              // vertical scroll bar will be hidden
+        SKPhotoBrowserOptions.displayStatusbar = false
+        // status bar will be hidden
+        SKPhotoBrowserOptions.backgroundColor = UIColor.init(hexString: App_Theme_384249_Color, andAlpha: 0.7)
     }
 }
