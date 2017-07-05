@@ -51,6 +51,9 @@ class HomeViewController: BaseViewController {
         homePageViewController.progressColor = UIColor.init(hexString: App_Theme_594CA8_Color)
         homePageViewController.hidesBottomBarWhenPushed = true
         homePageViewController.view.frame = CGRect.init(x: 0, y: 64, width: SCREENWIDTH, height: SCREENHEIGHT - 108)
+        homePageViewController.viewModel.pageViewModelClouse = { controller in
+            (self.viewModel as! HomeViewModel).pushViewController(controller: controller)
+        }
         self.view.addSubview(homePageViewController.view)
     }
 

@@ -17,6 +17,13 @@ class CategoryViewModel: BaseViewModel {
     
     func tableViewCategoryTableViewCellSetData(_ indexPath:IndexPath, cell:CategoryTableViewCell) {
         cell.cellSetData(titles: cellTitles[indexPath.section][indexPath.row], indexPath: indexPath)
+        cell.categoryTableViewCellClouse = { tag, indexPath in
+            let title = self.cellTitles[indexPath.section][indexPath.row][tag - 1]
+            let bookListController = BookListViewController()
+            bookListController.navigationItem.title = title
+            let controller = self.controller?.parent as! HomePageViewController
+            controller.viewModel.pushViewController(bookListController)
+        }
     }
 }
 

@@ -1,25 +1,25 @@
 //
-//  TopBooksViewModel.swift
+//  BookListViewModel.swift
 //  WeiBook
 //
-//  Created by Zhang on 2017/6/30.
+//  Created by Zhang on 2017/7/5.
 //  Copyright © 2017年 Zhang. All rights reserved.
 //
 
 import UIKit
 
-class TopBooksViewModel: BaseViewModel {
-    
+class BookListViewModel: BaseViewModel {
+
     override init() {
         
     }
-
+    
     func tableViewTopBooksTableViewCellSetData(_ indexPath:IndexPath, cell:TopBooksTableViewCell){
         
     }
 }
 
-extension TopBooksViewModel : UITableViewDelegate {
+extension BookListViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -39,7 +39,7 @@ extension TopBooksViewModel : UITableViewDelegate {
     }
 }
 
-extension TopBooksViewModel : UITableViewDataSource {
+extension BookListViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -53,7 +53,7 @@ extension TopBooksViewModel : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: TopBooksTableViewCell.description() , for: indexPath)
         self.tableViewTopBooksTableViewCellSetData(indexPath,cell: cell as! TopBooksTableViewCell)
         return cell
-
+        
     }
 }
 

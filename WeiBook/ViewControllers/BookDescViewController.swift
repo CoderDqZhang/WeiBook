@@ -1,25 +1,19 @@
 //
-//  DiscoverHotViewController.swift
+//  BookDescViewController.swift
 //  WeiBook
 //
-//  Created by Zhang on 2017/7/4.
+//  Created by Zhang on 2017/7/5.
 //  Copyright © 2017年 Zhang. All rights reserved.
 //
 
 import UIKit
 
-class DiscoverHotViewController: BaseViewController {
+class BookDescViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bindViewModel(viewModel: DiscoverHotViewModel(), controller: self)
-        self.setUpTableView(style: .grouped, cells: [BookBaseInfoTableViewCell.self, CommentToolsTableViewCell.self], controller: self)
-        self.setUpView()
+        self.navigationItem.title = "图示详情"
         // Do any additional setup after loading the view.
-    }
-    
-    func setUpView(){
-        
     }
 
     override func didReceiveMemoryWarning() {

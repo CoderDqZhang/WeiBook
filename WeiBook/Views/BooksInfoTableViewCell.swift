@@ -67,9 +67,11 @@ class BookInfo: UIView {
     }
 }
 
+typealias BooksInfoTableViewCellClouse = (_ tag:Int) ->Void
 
 class BooksInfoTableViewCell: UITableViewCell {
 
+    var booksInfoTableViewCellClouse:BooksInfoTableViewCellClouse!
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setUpView()
@@ -84,7 +86,19 @@ class BooksInfoTableViewCell: UITableViewCell {
             let frame = CGRect.init(x: CGFloat((CGFloat(i%3) * SCREENWIDTH / 3)), y: CGFloat(((i/3) * 145)), width: SCREENWIDTH / 3, height: 145)
             let book = BookInfo.init(frame: frame)
             book.tag = i
+            let sigleTap = UITapGestureRecognizer.init(target: self, action: #selector(BooksInfoTableViewCell.sigleTapGest(gest:)))
+            sigleTap.numberOfTapsRequired = 1
+            sigleTap.numberOfTouchesRequired = 1
+            book.isUserInteractionEnabled = true
+            book.addGestureRecognizer(sigleTap)
             self.contentView.addSubview(book)
+        }
+    }
+    
+    func sigleTapGest(gest:UITapGestureRecognizer) {
+        var view = gest.view
+        if booksInfoTableViewCellClouse != nil {
+            booksInfoTableViewCellClouse((view?.tag)!)
         }
     }
     

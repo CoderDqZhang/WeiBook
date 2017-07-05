@@ -49,7 +49,7 @@ class DiscoverViewController: BaseViewController {
         self.addChildViewController(discoverNew)
         
         discoverHot = DiscoverHotViewController()
-        self.discoverHot.view.frame = CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: SCREENHEIGHT - 49)
+        self.discoverHot.view.frame = CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: SCREENHEIGHT - 64 - 49)
         self.addChildViewController(discoverHot)
     }
     

@@ -26,6 +26,10 @@ class HomeViewModel: BaseViewModel {
         NavigaiontPresentView(self.controller!, toController: SearchViewController())
     }
     
+    func pushViewController(controller:UIViewController?){
+        NavigationPushView(self.controller!, toConroller: controller!)
+    }
+    
     // MARK: NetWorking
     
 }

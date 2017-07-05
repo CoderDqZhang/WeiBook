@@ -8,24 +8,25 @@
 
 import UIKit
 
+typealias PageViewModelClouse = (_ controller:UIViewController?) ->Void
+
 class HomePageViewModel: NSObject {
     
     var controller:HomePageViewController!
     var selectIdex:Int = 0
     var willAddViewController:Int = 0
+    var pageViewModelClouse:PageViewModelClouse!
     var pageControllers:NSMutableArray = NSMutableArray.init(array: [RecommendViewController(),CatergoryViewController(),TopBooksViewController(),OtherViewController()])
     var pageCOntrollersTitls = ["推荐","分类","榜单","其他"]
     override init() {
         super.init()
+        
     }
     
-    
-    func pushQRCodeView(){
-        NavigationPushView(self.controller, toConroller: QRCodeViewController())
-    }
-    
-    func pushSearchView(){
-        NavigationPushView(self.controller, toConroller: SearchViewController())
+    func pushViewController(_ controller:UIViewController?) {
+        if pageViewModelClouse != nil {
+            self.pageViewModelClouse(controller)
+        }
     }
     
     func numberOfControllersInPagerController() -> Int {

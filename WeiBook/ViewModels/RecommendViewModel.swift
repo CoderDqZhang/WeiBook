@@ -38,7 +38,10 @@ class RecommendViewModel: BaseViewModel {
     }
     
     func tableViewBooksInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BooksInfoTableViewCell) {
-        
+        cell.booksInfoTableViewCellClouse = { tag in
+            let pageController = self.controller?.parent
+            (pageController as! HomePageViewController).viewModel.pushViewController(BookDescViewController())
+        }
     }
     
     func tableViewGloableInfoTextCellSetData(_ indexPath:IndexPath, cell:GloableInfoTextCell) {
@@ -66,13 +69,15 @@ extension RecommendViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-            }
+    }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
         return 0.0001
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
         return 10
     }
     

@@ -57,7 +57,7 @@ extension ProfileViewModel : UITableViewDelegate {
             case 0:
                 NavigationPushView(self.controller!, toConroller: BooksViewController())
             default:
-                NavigationPushView(self.controller!, toConroller: BookListViewController())
+                NavigationPushView(self.controller!, toConroller: MyBookListViewController())
             }
         case 3:
             NavigationPushView(self.controller!, toConroller: AchievementViewController())
