@@ -25,6 +25,7 @@ let App_Theme_57DAD0_Color = "57DAD0"
 let App_Theme_FF7A5E_Color = "FF7A5E"
 let App_Theme_40C6B7_Color = "40C6B7"
 let App_Theme_A5E9E2_Color = "A5E9E2"
+let App_Theme_7169A5_Color = "7169A5"
 
 let App_Theme_PinFan_L_11_Font = IPHONE_VERSION > 9 ? UIFont.init(name:".SFUIText-Light", size: 11.0):UIFont.init(name: ".HelveticaNeueInterface-Light", size: 11)
 let App_Theme_PinFan_L_12_Font = IPHONE_VERSION > 9 ? UIFont.init(name:".SFUIText-Light", size: 12.0):UIFont.init(name: ".HelveticaNeueInterface-Light", size: 12)

@@ -77,6 +77,18 @@
 		1F4AA6361EF7F21C0085BE3B /* View+Extntion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA6351EF7F21C0085BE3B /* View+Extntion.swift */; };
 		1F4AA6581EF7F2600085BE3B /* libTalkingData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4AA6501EF7F2600085BE3B /* libTalkingData.a */; };
 		1F6A2E4F1F0A335300C3A574 /* BookTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E4E1F0A335300C3A574 /* BookTagTableViewCell.swift */; };
+		1F6A2E521F0B68EE00C3A574 /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E511F0B68EE00C3A574 /* UserInfoTableViewCell.swift */; };
+		1F6A2E541F0B690600C3A574 /* CommentInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E531F0B690600C3A574 /* CommentInfoTableViewCell.swift */; };
+		1F6A2E561F0B691800C3A574 /* BookInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E551F0B691800C3A574 /* BookInfoTableViewCell.swift */; };
+		1F6A2E601F0B73B200C3A574 /* NYSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E591F0B73B200C3A574 /* NYSegment.m */; };
+		1F6A2E611F0B73B200C3A574 /* NYSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E5B1F0B73B200C3A574 /* NYSegmentedControl.m */; };
+		1F6A2E621F0B73B200C3A574 /* NYSegmentIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E5D1F0B73B200C3A574 /* NYSegmentIndicator.m */; };
+		1F6A2E631F0B73B200C3A574 /* NYSegmentTextRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E5F1F0B73B200C3A574 /* NYSegmentTextRenderView.m */; };
+		1F6A2E651F0B7CFD00C3A574 /* DiscoverNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E641F0B7CFD00C3A574 /* DiscoverNewViewController.swift */; };
+		1F6A2E671F0B7D0D00C3A574 /* DiscoverHotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E661F0B7D0D00C3A574 /* DiscoverHotViewController.swift */; };
+		1F6A2E691F0B7FBA00C3A574 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E681F0B7FBA00C3A574 /* DiscoverViewModel.swift */; };
+		1F6A2E6B1F0B7FCE00C3A574 /* DiscoverNewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E6A1F0B7FCE00C3A574 /* DiscoverNewViewModel.swift */; };
+		1F6A2E6D1F0B7FDC00C3A574 /* DiscoverHotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E6C1F0B7FDC00C3A574 /* DiscoverHotViewModel.swift */; };
 		1F7017F01F00B9FE00029158 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F7017EF1F00B9FE00029158 /* city.plist */; };
 		1F7017F21F00E63B00029158 /* GloableNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7017F11F00E63B00029158 /* GloableNavigationBarView.swift */; };
 		1F7017F41F00E93000029158 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7017F31F00E93000029158 /* HomeViewModel.swift */; };
@@ -252,6 +264,22 @@
 		1F4AA6501EF7F2600085BE3B /* libTalkingData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingData.a; sourceTree = "<group>"; };
 		1F4AA6511EF7F2600085BE3B /* TalkingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkingData.h; sourceTree = "<group>"; };
 		1F6A2E4E1F0A335300C3A574 /* BookTagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTagTableViewCell.swift; sourceTree = "<group>"; };
+		1F6A2E511F0B68EE00C3A574 /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
+		1F6A2E531F0B690600C3A574 /* CommentInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentInfoTableViewCell.swift; path = ../ViewModels/CommentInfoTableViewCell.swift; sourceTree = "<group>"; };
+		1F6A2E551F0B691800C3A574 /* BookInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookInfoTableViewCell.swift; sourceTree = "<group>"; };
+		1F6A2E581F0B73B200C3A574 /* NYSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSegment.h; sourceTree = "<group>"; };
+		1F6A2E591F0B73B200C3A574 /* NYSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSegment.m; sourceTree = "<group>"; };
+		1F6A2E5A1F0B73B200C3A574 /* NYSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSegmentedControl.h; sourceTree = "<group>"; };
+		1F6A2E5B1F0B73B200C3A574 /* NYSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSegmentedControl.m; sourceTree = "<group>"; };
+		1F6A2E5C1F0B73B200C3A574 /* NYSegmentIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSegmentIndicator.h; sourceTree = "<group>"; };
+		1F6A2E5D1F0B73B200C3A574 /* NYSegmentIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSegmentIndicator.m; sourceTree = "<group>"; };
+		1F6A2E5E1F0B73B200C3A574 /* NYSegmentTextRenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSegmentTextRenderView.h; sourceTree = "<group>"; };
+		1F6A2E5F1F0B73B200C3A574 /* NYSegmentTextRenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSegmentTextRenderView.m; sourceTree = "<group>"; };
+		1F6A2E641F0B7CFD00C3A574 /* DiscoverNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverNewViewController.swift; sourceTree = "<group>"; };
+		1F6A2E661F0B7D0D00C3A574 /* DiscoverHotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverHotViewController.swift; sourceTree = "<group>"; };
+		1F6A2E681F0B7FBA00C3A574 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
+		1F6A2E6A1F0B7FCE00C3A574 /* DiscoverNewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverNewViewModel.swift; sourceTree = "<group>"; };
+		1F6A2E6C1F0B7FDC00C3A574 /* DiscoverHotViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverHotViewModel.swift; sourceTree = "<group>"; };
 		1F7017EF1F00B9FE00029158 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		1F7017F11F00E63B00029158 /* GloableNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GloableNavigationBarView.swift; sourceTree = "<group>"; };
 		1F7017F31F00E93000029158 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -365,6 +393,8 @@
 			isa = PBXGroup;
 			children = (
 				1F4AA5361EF7DBD60085BE3B /* DiscoverViewController.swift */,
+				1F6A2E641F0B7CFD00C3A574 /* DiscoverNewViewController.swift */,
+				1F6A2E661F0B7D0D00C3A574 /* DiscoverHotViewController.swift */,
 			);
 			name = Discover;
 			sourceTree = "<group>";
@@ -488,6 +518,7 @@
 		1F4AA59A1EF7EF190085BE3B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				1F6A2E571F0B73B200C3A574 /* NYSegmentedControl */,
 				1F4AA59B1EF7EF190085BE3B /* CountDown */,
 				1F4AA59E1EF7EF190085BE3B /* DBModel */,
 				1F4AA5A31EF7EF190085BE3B /* SDCycleScrollView */,
@@ -619,6 +650,31 @@
 			path = TalkingData;
 			sourceTree = "<group>";
 		};
+		1F6A2E501F0B68D500C3A574 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				1F6A2E511F0B68EE00C3A574 /* UserInfoTableViewCell.swift */,
+				1F6A2E531F0B690600C3A574 /* CommentInfoTableViewCell.swift */,
+				1F6A2E551F0B691800C3A574 /* BookInfoTableViewCell.swift */,
+			);
+			name = Discover;
+			sourceTree = "<group>";
+		};
+		1F6A2E571F0B73B200C3A574 /* NYSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				1F6A2E581F0B73B200C3A574 /* NYSegment.h */,
+				1F6A2E591F0B73B200C3A574 /* NYSegment.m */,
+				1F6A2E5A1F0B73B200C3A574 /* NYSegmentedControl.h */,
+				1F6A2E5B1F0B73B200C3A574 /* NYSegmentedControl.m */,
+				1F6A2E5C1F0B73B200C3A574 /* NYSegmentIndicator.h */,
+				1F6A2E5D1F0B73B200C3A574 /* NYSegmentIndicator.m */,
+				1F6A2E5E1F0B73B200C3A574 /* NYSegmentTextRenderView.h */,
+				1F6A2E5F1F0B73B200C3A574 /* NYSegmentTextRenderView.m */,
+			);
+			path = NYSegmentedControl;
+			sourceTree = "<group>";
+		};
 		1F7017FD1F023D5800029158 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -655,6 +711,9 @@
 		1F8374CF1EFA593800ED97DE /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				1F6A2E681F0B7FBA00C3A574 /* DiscoverViewModel.swift */,
+				1F6A2E6A1F0B7FCE00C3A574 /* DiscoverNewViewModel.swift */,
+				1F6A2E6C1F0B7FDC00C3A574 /* DiscoverHotViewModel.swift */,
 			);
 			name = Discover;
 			sourceTree = "<group>";
@@ -741,7 +800,6 @@
 		1FEF83461EF1498E00C7D84B = {
 			isa = PBXGroup;
 			children = (
-				1FFF4E8E1EF1623A001E991F /* Uti */,
 				1FFF4E8F1EF1623A001E991F /* Global */,
 				1FFF4E901EF1623A001E991F /* ViewControllers */,
 				1FFF4E911EF1623A001E991F /* ViewModels */,
@@ -779,13 +837,6 @@
 				1F4AA5951EF7E1180085BE3B /* WeiBook-Bridging-Header.h */,
 			);
 			path = WeiBook;
-			sourceTree = "<group>";
-		};
-		1FFF4E8E1EF1623A001E991F /* Uti */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Uti;
 			sourceTree = "<group>";
 		};
 		1FFF4E8F1EF1623A001E991F /* Global */ = {
@@ -831,6 +882,7 @@
 		1FFF4E921EF1623A001E991F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F6A2E501F0B68D500C3A574 /* Discover */,
 				1F8374DE1EFBAF4D00ED97DE /* GloableView */,
 				1F8374DB1EFBAD4000ED97DE /* Profile */,
 				1F8374DA1EFBAD3B00ED97DE /* Home */,
@@ -891,7 +943,7 @@
 				TargetAttributes = {
 					1FEF834E1EF1498E00C7D84B = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 77L324L35A;
+						DevelopmentTeam = CB3GSV3Y3F;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -997,6 +1049,8 @@
 				1F1C5BAD1EFD5E0400DC8DC0 /* RequestUrl.swift in Sources */,
 				1F8374F91EFD478100ED97DE /* BooksViewController.swift in Sources */,
 				1F4AA5F11EF7EF190085BE3B /* TAAnimatedDotView.m in Sources */,
+				1F6A2E561F0B691800C3A574 /* BookInfoTableViewCell.swift in Sources */,
+				1F6A2E6D1F0B7FDC00C3A574 /* DiscoverHotViewModel.swift in Sources */,
 				1FEF83551EF1498E00C7D84B /* ViewController.swift in Sources */,
 				1F8374CD1EFA567000ED97DE /* AppThemeTool.swift in Sources */,
 				1F4AA5671EF7E02B0085BE3B /* UIColor+Hex.m in Sources */,
@@ -1010,14 +1064,17 @@
 				1FB003CB1F09F75100A4EF13 /* AddBookViewController.swift in Sources */,
 				1F4AA5F81EF7EF190085BE3B /* SDPhotoBrowser.m in Sources */,
 				1F7018051F025ACC00029158 /* RecommendViewController.swift in Sources */,
+				1F6A2E651F0B7CFD00C3A574 /* DiscoverNewViewController.swift in Sources */,
 				1F8374D31EFA596E00ED97DE /* ProfileViewModel.swift in Sources */,
 				1F70181A1F04E7C500029158 /* AboutUsViewController.swift in Sources */,
 				1F78AA601F04FEDE00F5F374 /* CategoryTableViewCell.swift in Sources */,
 				1F4AA57C1EF7E0310085BE3B /* UIButton+Extentions.swift in Sources */,
+				1F6A2E541F0B690600C3A574 /* CommentInfoTableViewCell.swift in Sources */,
 				1F4AA5941EF7E0450085BE3B /* NetWorkingResponse.swift in Sources */,
 				1F4AA5391EF7DBE20085BE3B /* SubscriberViewController.swift in Sources */,
 				1F1C5BB31EFD632200DC8DC0 /* DynamicViewController.swift in Sources */,
 				1F8374E01EFBAF6F00ED97DE /* GloableTableViewCell.swift in Sources */,
+				1F6A2E611F0B73B200C3A574 /* NYSegmentedControl.m in Sources */,
 				1F4AA5ED1EF7EF190085BE3B /* CountDown.m in Sources */,
 				1F4AA5661EF7E02B0085BE3B /* NSString+Utils.m in Sources */,
 				1F4AA57F1EF7E0310085BE3B /* UIViewController+TalkingData.swift in Sources */,
@@ -1039,6 +1096,7 @@
 				1F8374E21EFBB01900ED97DE /* GloableView.swift in Sources */,
 				1F8374E61EFBB48600ED97DE /* UserInfoModel.m in Sources */,
 				1F8374F51EFD474B00ED97DE /* MyCommonViewController.swift in Sources */,
+				1F6A2E621F0B73B200C3A574 /* NYSegmentIndicator.m in Sources */,
 				1F4AA56E1EF7E02B0085BE3B /* UIViewController+hideExcessLine.m in Sources */,
 				1F7017F21F00E63B00029158 /* GloableNavigationBarView.swift in Sources */,
 				1F8374D61EFA599C00ED97DE /* BaseViewModel.swift in Sources */,
@@ -1055,6 +1113,7 @@
 				1F4AA5EE1EF7EF190085BE3B /* JKDBHelper.m in Sources */,
 				1F4AA5F91EF7EF190085BE3B /* SDWaitingView.m in Sources */,
 				1F78AA681F0631DA00F5F374 /* MyBooksCollectionViewCell.swift in Sources */,
+				1F6A2E631F0B73B200C3A574 /* NYSegmentTextRenderView.m in Sources */,
 				1F4AA5F21EF7EF190085BE3B /* TADotView.m in Sources */,
 				1F4AA5641EF7E02B0085BE3B /* NSString+StringSize.m in Sources */,
 				1F78AA661F06308900F5F374 /* BooksViewModel.swift in Sources */,
@@ -1063,6 +1122,8 @@
 				1F4AA57B1EF7E0310085BE3B /* String+Size.swift in Sources */,
 				1F4AA57D1EF7E0310085BE3B /* UIImage+Crop.swift in Sources */,
 				1F3349E21F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift in Sources */,
+				1F6A2E521F0B68EE00C3A574 /* UserInfoTableViewCell.swift in Sources */,
+				1F6A2E691F0B7FBA00C3A574 /* DiscoverViewModel.swift in Sources */,
 				1F3349E41F0A17DC0046B519 /* BookAdvanceTableViewCell.swift in Sources */,
 				1F7017FA1F00FEB300029158 /* ScanView.swift in Sources */,
 				1F4AA5F71EF7EF190085BE3B /* SDBrowserImageView.m in Sources */,
@@ -1083,6 +1144,7 @@
 				1F4AA5F51EF7EF190085BE3B /* SDCycleScrollView.m in Sources */,
 				1F4AA6081EF7EF190085BE3B /* TYTabTitleViewCell.m in Sources */,
 				1F4AA53B1EF7DBED0085BE3B /* ProfileViewController.swift in Sources */,
+				1F6A2E6B1F0B7FCE00C3A574 /* DiscoverNewViewModel.swift in Sources */,
 				1F4AA5691EF7E02B0085BE3B /* UIImage+PureColor.m in Sources */,
 				1FEF83531EF1498E00C7D84B /* AppDelegate.swift in Sources */,
 				1F7017F81F00EC0500029158 /* QRCodeViewController.swift in Sources */,
@@ -1099,9 +1161,11 @@
 				1F70181C1F04EBF800029158 /* SearchViewModel.swift in Sources */,
 				1FB003CF1F09F92400A4EF13 /* SBNBookModel.swift in Sources */,
 				1F4AA60C1EF7EF190085BE3B /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
+				1F6A2E601F0B73B200C3A574 /* NYSegment.m in Sources */,
 				1F4AA5681EF7E02B0085BE3B /* UIImage+ImageEffects.m in Sources */,
 				1F78AA641F05F99600F5F374 /* TopBooksTableViewCell.swift in Sources */,
 				1F7018031F024C0B00029158 /* HomePageViewModel.swift in Sources */,
+				1F6A2E671F0B7D0D00C3A574 /* DiscoverHotViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1225,7 +1289,7 @@
 			baseConfigurationReference = ACEE389AB2E585FA1B1A8733 /* Pods-WeiBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 77L324L35A;
+				DEVELOPMENT_TEAM = CB3GSV3Y3F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Global/Uti/QQ",
@@ -1249,7 +1313,7 @@
 			baseConfigurationReference = 2B966EC35C9E0546FB5B39CC /* Pods-WeiBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 77L324L35A;
+				DEVELOPMENT_TEAM = CB3GSV3Y3F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Global/Uti/QQ",

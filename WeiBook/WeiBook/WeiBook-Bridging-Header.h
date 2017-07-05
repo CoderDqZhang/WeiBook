@@ -34,6 +34,7 @@
 #import "NSDate+LSCore.h"
 #import "TalkingData.h"
 #import "UserInfoModel.h"
+#import "NYSegmentedControl.h"
 
 
 #endif /* WeiBook_Bridging_Header_h */
