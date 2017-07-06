@@ -113,9 +113,9 @@ extension QRCodeViewController : AVCaptureMetadataOutputObjectsDelegate {
         print(connection)
         // 检查时候捕获到数据
         if metadataObjects == nil || metadataObjects.count == 0 {
-            UIAlertController.shwoAlertControl(self, style: .alert, title: "没有读取到数据", message: nil, cancel: nil, doneTitle: "确定", cancelAction: { 
+            UIAlertController.shwoAlertControl(self, style: .alert, title: "没有读取到数据", message: nil, titles: nil, cancel: nil, doneTitle: "确定", cancelAction: {
                 
-            }, doneAction: { 
+            }, doneAction: { str in
                 
             })
             return

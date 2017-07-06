@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let log = SwiftyBeaver.self
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -21,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppleThemeTool.setUpToolBarColor()
         AppleThemeTool.setUpKeyBoardManager()
         AppleThemeTool.setUpSKPhotoBrowser()
+        self.logSwiftBeaver()
         
         self.window?.rootViewController = mainTableBarController
         self.window?.makeKeyAndVisible()
@@ -28,6 +31,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func logSwiftBeaver(){
+        // add log destinations. at least one is needed!
+        let console = ConsoleDestination()  // log to Xcode Console
+        let file = FileDestination()  // log to default swiftybeaver.log file
+        
+        // use custom format and set console output to short time, log level & message
+        console.format = "$DHH:mm:ss$d $L $M"
+        // or use this for JSON output: console.format = "$J"
+        
+        // add the destinations to SwiftyBeaver
+        log.addDestination(console)
+        log.addDestination(file)
+        
+        // Now let’s log!
+        log.verbose("not so important")  // prio 1, VERBOSE in silver
+        log.debug("something to debug")  // prio 2, DEBUG in green
+        log.info("a nice information")   // prio 3, INFO in blue
+        log.warning("oh no, that won’t be good")  // prio 4, WARNING in yellow
+        log.error("ouch, an error did occur!")  // prio 5, ERROR in red
+        
+        // log anything!
+        log.verbose(123)
+        log.info(-123.45678)
+        log.warning(Date())
+        log.error(["I", "like", "logs!"])
+        log.error(["name": "Mr Beaver", "address": "7 Beaver Lodge"])
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

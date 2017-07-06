@@ -84,20 +84,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyBeaver.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>005547D390F1C397BB1A55BE3760543F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>07D8B54E932F8E165E02CCABB2FF2103</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0F71FC248875B67F53494C44B17B40EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1E1BE9896BE51B0F26EF7CC38C9186B0</key>
+		<key>251BAD17812F7EBF6532EACF66F941C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>251BAD17812F7EBF6532EACF66F941C3</key>
+		<key>3407AFDFF2FEFADAB32C4BE2FD6DD67F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,32 +132,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>557D7FCB1A25C55331179543E4D320DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5AA17C95E926B760FD08E0B487DAEFA2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>68047C9A02E37180D50B624C15162FFB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6AB2C6971328BB29066AA351A114B95F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6D0C7427D8C713965F0FEBAC3E974DB3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7390964CB815D1E71B41F5EF04C4D76B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>82E7513AF749780A1A79C4BEAE146A91</key>
+		<key>87E94415A6E40C5321059A46D196D7BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,7 +152,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9196655A2A26024EBAAEB9DC66053334</key>
+		<key>CB457E8A1EDA3275195AE7F1E6D1CC82</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -163,6 +163,16 @@
 			<true/>
 		</dict>
 		<key>E14A62900910444707A5504D25EC98DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA717D377AF0B39D4FB1B74F64DE712F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF43E63C9F6532E88AB914F2AC5B27EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

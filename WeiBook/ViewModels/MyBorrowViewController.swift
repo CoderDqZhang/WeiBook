@@ -12,8 +12,28 @@ class MyBorrowViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.bindViewModel(viewModel: BorrowViewModel(), controller: self)
+        self.setUpTableView(style: .grouped, cells: [BorrowUserInfoTableViewCell.self, BookInfoTableViewCell.self], controller: self)
+        self.setNavigationItem()
+        self.setUpTableView()
         // Do any additional setup after loading the view.
+    }
+    
+    func setUpTableView(){
+        self.tableView.separatorStyle = .none
+    }
+    
+    func setNavigationItem(){
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "筛选", style: .plain, target: self, action: #selector(MyBorrowViewController.rigthBarItemPress))
+        self.navigationItem.title = "我的借阅"
+    }
+    
+    func rigthBarItemPress(){
+        UIAlertController.shwoAlertControl(self, style: .actionSheet, title: nil, message: nil, titles: ["借入","借出","已完成","提醒还书"], cancel: "取消", doneTitle: nil, cancelAction: {
+            
+        }) { str in
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 typealias CancelAction = () -> Void
-typealias DoneAction = () -> Void
+typealias DoneAction = (_ str:String) -> Void
 
 extension UIAlertController {
     
@@ -19,30 +19,38 @@ extension UIAlertController {
         self.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
     }
     
-    class func shwoAlertControl(_ controller:UIViewController,style:UIAlertControllerStyle,title:String?,message:String?, cancel:String?, doneTitle:String?, cancelAction: @escaping CancelAction, doneAction:@escaping DoneAction){
+    class func shwoAlertControl(_ controller:UIViewController,style:UIAlertControllerStyle,title:String?,message:String?,titles:[String]?, cancel:String?, doneTitle:String?, cancelAction: @escaping CancelAction, doneAction:@escaping DoneAction){
         var alertControl = UIAlertController()
         if title == nil {
-           alertControl = UIAlertController(title: nil, message: message, preferredStyle: style)
+            alertControl = UIAlertController(title: nil, message: message, preferredStyle: style)
         }else if message == nil{
             alertControl = UIAlertController(title: title, message: nil, preferredStyle: style)
-
+            
         }else{
-            alertControl = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertControl = UIAlertController(title: title, message: message, preferredStyle: style)
         }
-        
         if cancel != nil {
-            let leftAction = UIAlertAction(title: cancel, style: .default) { (action) in
+            let leftAction = UIAlertAction(title: cancel, style: .cancel) { (action) in
                 cancelAction()
             }
             alertControl.addAction(leftAction)
         }
         if doneTitle != nil {
             let rightAction = UIAlertAction(title: doneTitle, style: .default) { (action) in
-                doneAction()
+                doneAction(action.title!)
             }
             alertControl.addAction(rightAction)
         }
-        controller.present(alertControl, animated: true) { 
+        if style == .actionSheet {
+            for str in titles! {
+                let rightAction = UIAlertAction(title: str, style: .default) { (action) in
+                    doneAction(action.title!)
+                }
+                alertControl.addAction(rightAction)
+            }
+            
+        }
+        controller.present(alertControl, animated: true) {
             
         }
     }
