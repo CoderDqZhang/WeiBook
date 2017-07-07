@@ -96,7 +96,7 @@ class BooksInfoTableViewCell: UITableViewCell {
     }
     
     func sigleTapGest(gest:UITapGestureRecognizer) {
-        var view = gest.view
+        let view = gest.view
         if booksInfoTableViewCellClouse != nil {
             booksInfoTableViewCellClouse((view?.tag)!)
         }

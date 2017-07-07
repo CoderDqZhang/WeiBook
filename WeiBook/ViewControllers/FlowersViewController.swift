@@ -12,8 +12,14 @@ class FlowersViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.bindViewModel(viewModel: FllowerViewModel(), controller: self)
+        self.setUpTableView(style: .plain, cells: [FollowFanceTableViewCell.self], controller: self)
+        self.setNavigationItem()
         // Do any additional setup after loading the view.
+    }
+    
+    func setNavigationItem(){
+        self.navigationItem.title = "我的关注"
     }
 
     override func didReceiveMemoryWarning() {

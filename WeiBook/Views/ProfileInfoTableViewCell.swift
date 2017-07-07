@@ -9,11 +9,9 @@
 import UIKit
 import SnapKit
 
-typealias CustomInfoViewClouse = (_ tag:Int) -> Void
 class CustomInfoView: UIView {
     var titleLabel:UILabel!
     var subLabel:UILabel!
-    var customInfoViewClouse:CustomInfoViewClouse!
     
     init(title:String, subTitle:String, frame:CGRect) {
         super.init(frame: frame)
@@ -29,10 +27,6 @@ class CustomInfoView: UIView {
         subLabel.font = App_Theme_PinFan_M_13_Font
         subLabel.textColor = UIColor.init(hexString: App_Theme_DDE0E5_Color)
         self.addSubview(subLabel)
-        
-        if (self.customInfoViewClouse != nil) {
-            self.customInfoViewClouse(Int(self.tag))
-        }
         
         self.updateConstraints()
     }
@@ -77,11 +71,12 @@ class ProfileInfoTableViewCell: UITableViewCell {
             let frame = CGRect.init(x: CGFloat((SCREENWIDTH / 3) * CGFloat(index)), y: 0, width: SCREENWIDTH / 3, height: cellContentViewHeight)
             let customInfoView = CustomInfoView.init(title: titles[index], subTitle: subTitles[index], frame: frame)
             customInfoView.tag = index
-            customInfoView.customInfoViewClouse = { tag in
-                if self.profileInfoTableViewCellClouse != nil {
-                    self.profileInfoTableViewCellClouse(Int(tag))
-                }
-            }
+            
+            let sigleTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(ProfileInfoTableViewCell.singleTap(tap:)))
+            sigleTapGesture.numberOfTapsRequired = 1
+            sigleTapGesture.numberOfTouchesRequired = 1
+            customInfoView.addGestureRecognizer(sigleTapGesture)
+            
             if index != 2 {
                 let linLabel = GloabLineView.init(frame: CGRect.init(x: CGFloat((SCREENWIDTH / 3) * CGFloat(index + 1)), y: 12, width: 1, height: cellContentViewHeight - 24))
                 self.contentView.addSubview(linLabel)
@@ -102,6 +97,13 @@ class ProfileInfoTableViewCell: UITableViewCell {
             default:
                 customView.titleLabel.text = dynamic
             }
+        }
+    }
+    
+    func singleTap(tap:UITapGestureRecognizer){
+        let view = tap.view
+        if self.profileInfoTableViewCellClouse != nil {
+            self.profileInfoTableViewCellClouse(Int((view?.tag)!))
         }
     }
     

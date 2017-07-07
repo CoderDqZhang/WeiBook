@@ -18,6 +18,20 @@ class ProfileViewModel: BaseViewModel {
         
     }
     
+    //MARK: - TableViewCellSetData
+    func tableViewProfileInfoTableViewCellCellData(_ indexPath:IndexPath, cell:ProfileInfoTableViewCell){
+        cell.profileInfoTableViewCellClouse = { tag in
+            switch tag {
+            case 0:
+                NavigationPushView(self.controller!, toConroller: FansViewController())
+            case 1:
+                NavigationPushView(self.controller!, toConroller: FlowersViewController())
+            default:
+                break;
+            }
+        }
+    }
+    
     
     func tableViewGloableImageLableDetailImageCellSetData(_ indexPath:IndexPath, cell:GloableImageLableDetailImageCell){
         let image = cellImageDatas[indexPath.section - 1][indexPath.row]!
@@ -88,6 +102,7 @@ extension ProfileViewModel : UITableViewDelegate {
         }
     }
 }
+
 extension ProfileViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -109,6 +124,7 @@ extension ProfileViewModel : UITableViewDataSource {
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: ProfileInfoTableViewCell.description() , for: indexPath)
+                self.tableViewProfileInfoTableViewCellCellData(indexPath, cell: cell as! ProfileInfoTableViewCell)
                 return cell
             }
         default:

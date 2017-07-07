@@ -143,6 +143,9 @@
 		1F8804BF1F0E2A6900F15AF3 /* BorrowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8804BE1F0E2A6900F15AF3 /* BorrowViewModel.swift */; };
 		1F8804C11F0E356500F15AF3 /* MyGivePresentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8804C01F0E356500F15AF3 /* MyGivePresentViewModel.swift */; };
 		1F8804C31F0E35A200F15AF3 /* GiveUserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8804C21F0E35A200F15AF3 /* GiveUserInfoTableViewCell.swift */; };
+		1F8804C51F0F891300F15AF3 /* FollowFanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8804C41F0F891300F15AF3 /* FollowFanceTableViewCell.swift */; };
+		1F8804C91F0F8CE200F15AF3 /* FllowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8804C81F0F8CE200F15AF3 /* FllowerViewModel.swift */; };
+		1F8804CB1F0F8CF000F15AF3 /* FanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8804CA1F0F8CEF00F15AF3 /* FanceViewModel.swift */; };
 		1FB003CB1F09F75100A4EF13 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CA1F09F75100A4EF13 /* AddBookViewController.swift */; };
 		1FB003CD1F09F76C00A4EF13 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CC1F09F76C00A4EF13 /* AddBookViewModel.swift */; };
 		1FB003CF1F09F92400A4EF13 /* SBNBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CE1F09F92400A4EF13 /* SBNBookModel.swift */; };
@@ -337,6 +340,9 @@
 		1F8804BE1F0E2A6900F15AF3 /* BorrowViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorrowViewModel.swift; sourceTree = "<group>"; };
 		1F8804C01F0E356500F15AF3 /* MyGivePresentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGivePresentViewModel.swift; sourceTree = "<group>"; };
 		1F8804C21F0E35A200F15AF3 /* GiveUserInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveUserInfoTableViewCell.swift; sourceTree = "<group>"; };
+		1F8804C41F0F891300F15AF3 /* FollowFanceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowFanceTableViewCell.swift; sourceTree = "<group>"; };
+		1F8804C81F0F8CE200F15AF3 /* FllowerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FllowerViewModel.swift; sourceTree = "<group>"; };
+		1F8804CA1F0F8CEF00F15AF3 /* FanceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FanceViewModel.swift; sourceTree = "<group>"; };
 		1FB003CA1F09F75100A4EF13 /* AddBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		1FB003CC1F09F76C00A4EF13 /* AddBookViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		1FB003CE1F09F92400A4EF13 /* SBNBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBNBookModel.swift; sourceTree = "<group>"; };
@@ -725,6 +731,8 @@
 				1F7018171F049C6900029158 /* SettingViewModel.swift */,
 				1F8804BE1F0E2A6900F15AF3 /* BorrowViewModel.swift */,
 				1F8804C01F0E356500F15AF3 /* MyGivePresentViewModel.swift */,
+				1F8804C81F0F8CE200F15AF3 /* FllowerViewModel.swift */,
+				1F8804CA1F0F8CEF00F15AF3 /* FanceViewModel.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -775,6 +783,7 @@
 				1F78AA671F0631DA00F5F374 /* MyBooksCollectionViewCell.swift */,
 				1F6A2EFB1F0E280300C3A574 /* BorrowUserInfoTableViewCell.swift */,
 				1F8804C21F0E35A200F15AF3 /* GiveUserInfoTableViewCell.swift */,
+				1F8804C41F0F891300F15AF3 /* FollowFanceTableViewCell.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1050,6 +1059,7 @@
 				1F4AA5F01EF7EF190085BE3B /* TAAbstractDotView.m in Sources */,
 				1F1C5BAD1EFD5E0400DC8DC0 /* RequestUrl.swift in Sources */,
 				1F8374F91EFD478100ED97DE /* BooksViewController.swift in Sources */,
+				1F8804CB1F0F8CF000F15AF3 /* FanceViewModel.swift in Sources */,
 				1F4AA5F11EF7EF190085BE3B /* TAAnimatedDotView.m in Sources */,
 				1F6A2E561F0B691800C3A574 /* BookInfoTableViewCell.swift in Sources */,
 				1F6A2EDE1F0CD9FA00C3A574 /* BookListViewController.swift in Sources */,
@@ -1067,6 +1077,7 @@
 				1FB003CB1F09F75100A4EF13 /* AddBookViewController.swift in Sources */,
 				1F7018051F025ACC00029158 /* RecommendViewController.swift in Sources */,
 				1F6A2E651F0B7CFD00C3A574 /* DiscoverNewViewController.swift in Sources */,
+				1F8804C51F0F891300F15AF3 /* FollowFanceTableViewCell.swift in Sources */,
 				1F8374D31EFA596E00ED97DE /* ProfileViewModel.swift in Sources */,
 				1F6A2EE01F0CDAA200C3A574 /* BookListViewModel.swift in Sources */,
 				1F70181A1F04E7C500029158 /* AboutUsViewController.swift in Sources */,
@@ -1080,6 +1091,7 @@
 				1F6A2E611F0B73B200C3A574 /* NYSegmentedControl.m in Sources */,
 				1F4AA5ED1EF7EF190085BE3B /* CountDown.m in Sources */,
 				1F4AA5661EF7E02B0085BE3B /* NSString+Utils.m in Sources */,
+				1F8804C91F0F8CE200F15AF3 /* FllowerViewModel.swift in Sources */,
 				1F4AA57F1EF7E0310085BE3B /* UIViewController+TalkingData.swift in Sources */,
 				1F4AA60A1EF7EF190085BE3B /* UITableView+FDKeyedHeightCache.m in Sources */,
 				1F8375011EFD50D100ED97DE /* TextField+Extentions.swift in Sources */,

@@ -12,8 +12,14 @@ class FansViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.bindViewModel(viewModel: FanceViewModel(), controller: self)
+        self.setUpTableView(style: .plain, cells: [FollowFanceTableViewCell.self], controller: self)
+        self.setNavigationItem()
         // Do any additional setup after loading the view.
+    }
+    
+    func setNavigationItem(){
+        self.navigationItem.title = "我的粉丝"
     }
 
     override func didReceiveMemoryWarning() {

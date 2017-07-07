@@ -33,6 +33,12 @@ let BookLargerMidSize = CGSize.init(width: 51, height: 72)
 let BookLargerSmaSize = CGSize.init(width: 17, height: 24)
 
 
+enum FollowAndFancsType {
+    case Following
+    case Followed
+    case Follow
+}
+
 //搜索历史保存文件地址
 let SearchHistoryDataPath = "SearchHistory.data"
 
