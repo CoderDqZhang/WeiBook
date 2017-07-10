@@ -60,7 +60,7 @@ extension BooksViewModel : UICollectionViewDataSource {
 extension BooksViewModel : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize.init(width: (SCREENWIDTH - 10) / 3, height: 150)
+        return CGSize.init(width: (SwifterSwift.screenWidth - 10) / 3, height: 150)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

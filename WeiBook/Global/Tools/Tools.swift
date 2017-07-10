@@ -26,7 +26,7 @@ class HUDCustomView: UIView {
             frame.size.height = 60;
         }
         customView.frame = frame;
-        customView.frame = CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: SCREENHEIGHT)
+        customView.frame = CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth, height: SwifterSwift.screenHeight)
         customView.addSubview(HUDCustomView.setUpLabel(frame, text: message))
         return customView;
     }
@@ -86,7 +86,7 @@ class Tools: NSObject {
         hud.label.font = CustomViewFont;
         hud.minSize = HUDCustomView.getHudMinSize(msg)
         hud.label.text = msg;
-        hud.bezelView.layer.frame = CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: SCREENHEIGHT)
+        hud.bezelView.layer.frame = CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth, height: SwifterSwift.screenHeight)
         hud.hide(animated: true, afterDelay: 2.0)
         hud.removeFromSuperViewOnHide = true
         hud.margin = 10

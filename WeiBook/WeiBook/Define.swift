@@ -9,18 +9,15 @@
 import Foundation
 import UIKit
 
-let SCREENWIDTH = UIScreen.main.bounds.size.width
-let SCREENHEIGHT = UIScreen.main.bounds.size.height
-
 let IPHONE_VERSION = UIDevice.current.systemVersion.floatValue
 let IPHONE_VERSION_LAST9 = UIDevice.current.systemVersion.floatValue >= 9 ? 1:0
 let IPHONE_VERSION_LAST10 = UIDevice.current.systemVersion.floatValue >= 10 ? 1:0
 
 
-let IPHONE4 = SCREENHEIGHT == 480 ? true:false
-let IPHONE5 = SCREENHEIGHT == 568 ? true:false
-let IPHONE6 = SCREENWIDTH == 344 ? true:false
-let IPHONE6P = SCREENWIDTH == 344 ? true:false
+let IPHONE4 = SwifterSwift.screenHeight == 480 ? true:false
+let IPHONE5 = SwifterSwift.screenHeight == 568 ? true:false
+let IPHONE6 = SwifterSwift.screenWidth == 344 ? true:false
+let IPHONE6P = SwifterSwift.screenWidth == 344 ? true:false
 
 let AnimationTime = 0.3
 

@@ -40,13 +40,13 @@ class ScanView: UIView {
     
     func setUpView(cropRect:CGRect) {
         lightButton = UIButton.init(type: .custom)
-        lightButton.frame = CGRect.init(x: (SCREENWIDTH - 74)/2, y: SCREENHEIGHT - 64 - 74, width: 74, height: 74)
+        lightButton.frame = CGRect.init(x: (SwifterSwift.screenWidth - 74)/2, y: SwifterSwift.screenHeight - 64 - 74, width: 74, height: 74)
         lightButton.setImage(UIImage.init(named: "light"), for: .normal)
         self.addSubview(lightButton)
         
         label = UILabel.init()
         label.text = "将条码/二维码放入框内"
-        label.frame = CGRect.init(x: 0, y: cropRect.origin.y - 60, width: SCREENWIDTH, height: 20)
+        label.frame = CGRect.init(x: 0, y: cropRect.origin.y - 60, width: SwifterSwift.screenWidth, height: 20)
         label.textColor = UIColor.white
         label.font = App_Theme_PinFan_R_13_Font
         label.textAlignment = .center

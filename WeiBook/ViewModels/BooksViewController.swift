@@ -26,7 +26,7 @@ class BooksViewController: BaseViewController {
     
     func setUpCollectView() {
         let collectionViewLayout = UICollectionViewFlowLayout.init()
-        collectView = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: SCREENHEIGHT - 64), collectionViewLayout: collectionViewLayout)
+        collectView = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth, height: SwifterSwift.screenHeight - 64), collectionViewLayout: collectionViewLayout)
         collectView.register(MyBooksCollectionViewCell.self, forCellWithReuseIdentifier: MyBooksCollectionViewCell.description())
         collectView.backgroundColor = UIColor.init(hexString: App_Theme_FFFFFF_Color)
         collectView.delegate = viewModle

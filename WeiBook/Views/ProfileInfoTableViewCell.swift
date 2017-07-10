@@ -68,7 +68,7 @@ class ProfileInfoTableViewCell: UITableViewCell {
     
     func setUpView(){
         for index in 0...2{
-            let frame = CGRect.init(x: CGFloat((SCREENWIDTH / 3) * CGFloat(index)), y: 0, width: SCREENWIDTH / 3, height: cellContentViewHeight)
+            let frame = CGRect.init(x: CGFloat((SwifterSwift.screenWidth / 3) * CGFloat(index)), y: 0, width: SwifterSwift.screenWidth / 3, height: cellContentViewHeight)
             let customInfoView = CustomInfoView.init(title: titles[index], subTitle: subTitles[index], frame: frame)
             customInfoView.tag = index
             
@@ -78,7 +78,7 @@ class ProfileInfoTableViewCell: UITableViewCell {
             customInfoView.addGestureRecognizer(sigleTapGesture)
             
             if index != 2 {
-                let linLabel = GloabLineView.init(frame: CGRect.init(x: CGFloat((SCREENWIDTH / 3) * CGFloat(index + 1)), y: 12, width: 1, height: cellContentViewHeight - 24))
+                let linLabel = GloabLineView.init(frame: CGRect.init(x: CGFloat((SwifterSwift.screenWidth / 3) * CGFloat(index + 1)), y: 12, width: 1, height: cellContentViewHeight - 24))
                 self.contentView.addSubview(linLabel)
             }
             self.contentView.addSubview(customInfoView)

@@ -38,7 +38,7 @@ class BookAdvanceTableViewCell: UITableViewCell {
         descLabel.numberOfLines = 0
         descLabel.textColor = UIColor.init(hexString: App_Theme_556169_Color)
         
-        linLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: 0.5))
+        linLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth, height: 0.5))
         self.contentView.addSubview(linLabel)
         
         self.contentView.addSubview(descLabel)

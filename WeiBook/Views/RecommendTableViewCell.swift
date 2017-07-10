@@ -24,7 +24,7 @@ class RecommendTableViewCell: UITableViewCell {
     
     func setUpView() {
         if cycleScrollView == nil {
-            cycleScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: SCREENWIDTH, height: SCREENWIDTH * 7 / 15), delegate: self, placeholderImage: UIImage.init(named: "Banner_Default_Cover"))
+            cycleScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: SwifterSwift.screenWidth, height: SwifterSwift.screenWidth * 7 / 15), delegate: self, placeholderImage: UIImage.init(named: "Banner_Default_Cover"))
             cycleScrollView.pageDotImage = UIImage.init(named: "banner_normal")
             cycleScrollView.currentPageDotImage = UIImage.init(named: "banner_select")
             cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;

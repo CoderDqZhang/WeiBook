@@ -41,7 +41,7 @@ class AddBookViewController: BaseViewController {
     
     func setUpNavigaitonItem(){
         self.navigationController?.navigationBar.barTintColor = UIColor.init(hexString: App_Theme_594CA8_Color, andAlpha: 1)
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(color: UIColor.init(hexString: App_Theme_594CA8_Color, andAlpha: 1), size: CGSize(width: SCREENWIDTH, height: 64)), for: .default)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(color: UIColor.init(hexString: App_Theme_594CA8_Color, andAlpha: 1), size: CGSize(width: SwifterSwift.screenWidth, height: 64)), for: .default)
         self.navigationController?.navigationBar.isTranslucent  = false
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 let kCollectionLayoutEdging:CGFloat = 29
-let kCellSpacing:CGFloat = (SCREENWIDTH - 20) / 8
+let kCellSpacing:CGFloat = (SwifterSwift.screenWidth - 20) / 8
 
 class HomePageViewController: TYTabButtonPagerController {
 
@@ -49,7 +49,7 @@ class HomePageViewController: TYTabButtonPagerController {
     }
     
     func setUpView(){
-        let lineView = GloabLineView(frame: CGRect(x: 0, y: 40, width: SCREENWIDTH, height: 0.5))
+        let lineView = GloabLineView(frame: CGRect(x: 0, y: 40, width: SwifterSwift.screenWidth, height: 0.5))
         self.view.addSubview(lineView)
     }
     

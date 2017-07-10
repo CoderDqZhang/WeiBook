@@ -22,7 +22,7 @@ class AddBookViewModel: BaseViewModel {
         let labelHeight:CGFloat = LabelHeight
         for i in 0...snbBookModel.tags.count - 1 {
             let width = snbBookModel.tags[i].title.widthWithConstrainedHeight(snbBookModel.tags[i].title, font: App_Theme_PinFan_R_13_Font!, height: labelHeight) + 20
-            if originX + width > SCREENWIDTH - 20 {
+            if originX + width > SwifterSwift.screenWidth - 20 {
                 originY = originY + LabelHeight + 10
                 originX = OriginX
             }

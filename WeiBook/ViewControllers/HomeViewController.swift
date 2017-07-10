@@ -11,7 +11,7 @@ import FDFullscreenPopGesture
 
 class HomeViewController: BaseViewController {
 
-    var searchNavigationBar = GloableNavigationBarView(frame: CGRect(x: 0,y: 0,width: SCREENWIDTH, height: 64),font:App_Theme_PinFan_L_12_Font)
+    var searchNavigationBar = GloableNavigationBarView(frame: CGRect(x: 0,y: 0,width: SwifterSwift.screenWidth, height: 64),font:App_Theme_PinFan_L_12_Font)
     var homePageViewController:HomePageViewController!
     
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ class HomeViewController: BaseViewController {
         homePageViewController.progressWidth = 0
         homePageViewController.progressColor = UIColor.init(hexString: App_Theme_594CA8_Color)
         homePageViewController.hidesBottomBarWhenPushed = true
-        homePageViewController.view.frame = CGRect.init(x: 0, y: 64, width: SCREENWIDTH, height: SCREENHEIGHT - 108)
+        homePageViewController.view.frame = CGRect.init(x: 0, y: 64, width: SwifterSwift.screenWidth, height: SwifterSwift.screenHeight - 108)
         homePageViewController.viewModel.pageViewModelClouse = { controller in
             (self.viewModel as! HomeViewModel).pushViewController(controller: controller)
         }

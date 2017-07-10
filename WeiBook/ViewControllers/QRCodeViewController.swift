@@ -28,7 +28,7 @@ class QRCodeViewController: BaseViewController {
 
     func setUpNavigationItem(){
         self.navigationController?.navigationBar.barTintColor = UIColor.init(hexString: App_Theme_6B747B_Color, andAlpha: 0)
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(color: UIColor.init(hexString: App_Theme_6B747B_Color, andAlpha: 0), size: CGSize(width: SCREENWIDTH, height: 64)), for: .default)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(color: UIColor.init(hexString: App_Theme_6B747B_Color, andAlpha: 0), size: CGSize(width: SwifterSwift.screenWidth, height: 64)), for: .default)
         self.navigationController?.navigationBar.isTranslucent  = true
     }
     
@@ -57,7 +57,7 @@ class QRCodeViewController: BaseViewController {
                 AVMetadataObjectTypeCode128Code,
                 AVMetadataObjectTypeQRCode
             ]
-            captureMetadataOutput.rectOfInterest = CGRect.init(x: 0, y: 0, width: SCREENWIDTH , height: SCREENHEIGHT)
+            captureMetadataOutput.rectOfInterest = CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth , height: SwifterSwift.screenHeight)
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -72,7 +72,7 @@ class QRCodeViewController: BaseViewController {
             print(error)
             return
         }
-        let scanView = ScanView.init(frame: CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: SCREENHEIGHT), cropRect: CGRect.init(x: (SCREENWIDTH - ScannerWidht) / 2, y: (SCREENHEIGHT - ScannerWidht) / 2, width: ScannerWidht, height: ScannerWidht))
+        let scanView = ScanView.init(frame: CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth, height: SwifterSwift.screenHeight), cropRect: CGRect.init(x: (SwifterSwift.screenWidth - ScannerWidht) / 2, y: (SwifterSwift.screenHeight - ScannerWidht) / 2, width: ScannerWidht, height: ScannerWidht))
         scanView.lightButton.reactive.controlEvents(.touchUpInside).observe { (button) in
             self.openLight(open: !self.isLightOpened())
         }

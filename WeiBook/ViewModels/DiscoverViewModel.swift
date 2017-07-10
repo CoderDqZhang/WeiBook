@@ -10,4 +10,11 @@ import UIKit
 
 class DiscoverViewModel: BaseViewModel {
 
+    override init() {
+        
+    }
+    
+    func rigthBarItemPress(){
+        NavigaiontPresentView(self.controller!, toController: UINavigationController.init(rootViewController: DiscoverCreateViewController()))
+    }
 }

@@ -48,10 +48,10 @@ class LoginViewController: BaseViewController {
     func setUpView() {
         timeDownLabel = CountDown()
         
-        lineLabel = GloabLineView(frame: CGRect(x: 15,y: 0,width: SCREENWIDTH - 30, height: 0.5))
+        lineLabel = GloabLineView(frame: CGRect(x: 15,y: 0,width: SwifterSwift.screenWidth - 30, height: 0.5))
         self.view.addSubview(lineLabel)
         
-        lineLabel1 = GloabLineView(frame: CGRect(x: 15,y: 0,width: SCREENWIDTH - 30, height: 0.5))
+        lineLabel1 = GloabLineView(frame: CGRect(x: 15,y: 0,width: SwifterSwift.screenWidth - 30, height: 0.5))
         self.view.addSubview(lineLabel1)
         
         confimCodeField = self.createTextFiled(CGRect.zero)
@@ -100,7 +100,7 @@ class LoginViewController: BaseViewController {
         self.view.addSubview(senderCode)
         
         loginButton = UIButton(type: .custom)
-        loginButton.buttonSetThemColor(App_Theme_594CA8_Color, selectColor: App_Theme_40C6B7_Color, size:CGSize.init(width: SCREENWIDTH - 30, height: 49))
+        loginButton.buttonSetThemColor(App_Theme_594CA8_Color, selectColor: App_Theme_40C6B7_Color, size:CGSize.init(width: SwifterSwift.screenWidth - 30, height: 49))
         loginButton.setTitle("立即登录", for: UIControlState())
         loginButton.titleLabel?.font = App_Theme_PinFan_M_15_Font
         loginButton.isEnabled = true

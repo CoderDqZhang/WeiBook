@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E95B8C12B4082B260B5D581165DE5F51F332AE69",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E95B8C12B4082B260B5D581165DE5F51F332AE69" : 9223372036854775807,
+    "90E28F1700206AC65F645679CF284F1D757E3BDA" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "87A0536F-3545-4821-BBD9-B1A845533719",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E95B8C12B4082B260B5D581165DE5F51F332AE69" : "WeiBook\/",
+    "90E28F1700206AC65F645679CF284F1D757E3BDA" : "Clone\/DXPhotoPicker\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "WeiBook",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "WeiBook\/WeiBook.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:AwesomeDennis\/DXPhotoPicker.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "90E28F1700206AC65F645679CF284F1D757E3BDA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/Zhang_DIY\/WeiBook.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E95B8C12B4082B260B5D581165DE5F51F332AE69"
+    }
+  ]
+}

@@ -83,7 +83,7 @@ class BooksInfoTableViewCell: UITableViewCell {
     
     func setUpView(){
         for i in 0...5 {
-            let frame = CGRect.init(x: CGFloat((CGFloat(i%3) * SCREENWIDTH / 3)), y: CGFloat(((i/3) * 145)), width: SCREENWIDTH / 3, height: 145)
+            let frame = CGRect.init(x: CGFloat((CGFloat(i%3) * SwifterSwift.screenWidth / 3)), y: CGFloat(((i/3) * 145)), width: SwifterSwift.screenWidth / 3, height: 145)
             let book = BookInfo.init(frame: frame)
             book.tag = i
             let sigleTap = UITapGestureRecognizer.init(target: self, action: #selector(BooksInfoTableViewCell.sigleTapGest(gest:)))

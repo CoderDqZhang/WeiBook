@@ -22,7 +22,7 @@ class AppleThemeTool {
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName:App_Theme_PinFan_L_17_Font!,NSForegroundColorAttributeName:UIColor.init(hexString: App_Theme_FFFFFF_Color)]
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName:App_Theme_PinFan_L_15_Font!,NSForegroundColorAttributeName:UIColor.init(hexString: App_Theme_FFFFFF_Color)], for: UIControlState())
         SHARE_APPLICATION.setStatusBarStyle(.lightContent, animated: false)
-        UINavigationBar.appearance().setBackgroundImage(UIImage.init(color: UIColor.init(hexString: App_Theme_594CA8_Color), size: CGSize(width: SCREENWIDTH, height: 64)), for: .default)
+        UINavigationBar.appearance().setBackgroundImage(UIImage.init(color: UIColor.init(hexString: App_Theme_594CA8_Color), size: CGSize(width: SwifterSwift.screenWidth, height: 64)), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage.init()
         UINavigationBar.appearance().isTranslucent = false
         

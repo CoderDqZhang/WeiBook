@@ -19,7 +19,7 @@ class CategoryTableView : UIView {
         titleLabel = UIButton.init(type: .custom)
         titleLabel.titleLabel?.font = App_Theme_PinFan_R_15_Font
         titleLabel.setTitleColor(UIColor.init(hexString: App_Theme_384249_Color), for: .normal)
-        titleLabel.frame = CGRect.init(x: 0, y: 0, width: SCREENWIDTH/2, height: 44)
+        titleLabel.frame = CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth/2, height: 44)
         self.addSubview(titleLabel)
     }
     
@@ -50,7 +50,7 @@ class CategoryTableViewCell: UITableViewCell {
     }
     
     func setUpView(){
-        categoryLView = CategoryTableView.init(frame: CGRect.init(x: 0, y: 0, width: SCREENWIDTH / 2, height: 44))
+        categoryLView = CategoryTableView.init(frame: CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth / 2, height: 44))
         categoryLView.tag = 1
         categoryLView.titleLabel.reactive.controlEvents(.touchUpInside).observe { (action) in
             if self.categoryTableViewCellClouse != nil {
@@ -59,7 +59,7 @@ class CategoryTableViewCell: UITableViewCell {
         }
         self.contentView.addSubview(categoryLView)
         
-        categoryRView = CategoryTableView.init(frame: CGRect.init(x: SCREENWIDTH / 2, y: 0, width: SCREENWIDTH / 2, height: 44))
+        categoryRView = CategoryTableView.init(frame: CGRect.init(x: SwifterSwift.screenWidth / 2, y: 0, width: SwifterSwift.screenWidth / 2, height: 44))
         categoryRView.tag = 2
         categoryRView.titleLabel.reactive.controlEvents(.touchUpInside).observe { (action) in
             if self.categoryTableViewCellClouse != nil {
@@ -68,7 +68,7 @@ class CategoryTableViewCell: UITableViewCell {
         }
         self.contentView.addSubview(categoryRView)
         
-        linLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 43.5, width: SCREENWIDTH, height: 0.5))
+        linLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 43.5, width: SwifterSwift.screenWidth, height: 0.5))
         self.contentView.addSubview(linLabel)
         self.updateConstraintsIfNeeded()
         

@@ -51,7 +51,7 @@ class UserInfoTableViewCell: UITableViewCell {
         userConmmentNumber.textColor = UIColor.init(hexString: App_Theme_8A96A2_Color)
         self.contentView.addSubview(userConmmentNumber)
         
-        lineLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 59.5, width: SCREENWIDTH, height: 0.5))
+        lineLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 59.5, width: SwifterSwift.screenWidth, height: 0.5))
         self.contentView.addSubview(lineLabel)
         
         self.updateConstraints()

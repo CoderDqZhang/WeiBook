@@ -58,7 +58,7 @@ class GiveUserInfoTableViewCell: UITableViewCell {
         self.updataStatusButton(status: .GiveIn)
         self.contentView.addSubview(statusButton)
         
-        lineLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 59.5, width: SCREENWIDTH, height: 0.5))
+        lineLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 59.5, width: SwifterSwift.screenWidth, height: 0.5))
         self.contentView.addSubview(lineLabel)
         
         self.updateConstraints()

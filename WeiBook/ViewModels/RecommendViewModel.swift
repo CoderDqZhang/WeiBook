@@ -84,7 +84,7 @@ extension RecommendViewModel : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return SCREENWIDTH * 7 / 15
+            return SwifterSwift.screenWidth * 7 / 15
         default:
             switch indexPath.row {
             case 0:

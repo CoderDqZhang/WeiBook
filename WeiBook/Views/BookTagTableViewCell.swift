@@ -35,7 +35,7 @@ class BookTagTableViewCell: UITableViewCell {
         titleLable.textColor = UIColor.init(hexString: App_Theme_384249_Color)
         self.contentView.addSubview(titleLable)
         
-        linLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: 0.5))
+        linLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth, height: 0.5))
         self.contentView.addSubview(linLabel)
         
         self.updateConstraints()
@@ -47,7 +47,7 @@ class BookTagTableViewCell: UITableViewCell {
         let labelHeight:CGFloat = LabelHeight
         for i in 0...model.tags.count - 1 {
             let width = model.tags[i].title.widthWithConstrainedHeight(model.tags[i].title, font: App_Theme_PinFan_R_13_Font!, height: labelHeight) + 20
-            if originX + width > SCREENWIDTH - 20 {
+            if originX + width > SwifterSwift.screenWidth - 20 {
                 originY = originY + LabelHeight + 10
                 originX = OriginX
             }

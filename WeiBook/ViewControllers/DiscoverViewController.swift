@@ -15,6 +15,7 @@ class DiscoverViewController: BaseViewController {
     var discoverHot:DiscoverHotViewController!
     
     override func viewDidLoad() {
+        self.bindViewModel(viewModel: DiscoverViewModel(), controller: self)
         super.viewDidLoad()
         self.setUpView()
         self.setUpNavigaitonItem()
@@ -40,16 +41,19 @@ class DiscoverViewController: BaseViewController {
         segmentedControl.sizeToFit()
         // Add the control to your view
         self.navigationItem.titleView = self.segmentedControl;
+        
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "创建", style: .plain, target: self, action: #selector(DiscoverViewController.rightBarItemPress))
     }
     
     func setUpView(){
         discoverNew = DiscoverNewViewController()
-        self.discoverNew.view.frame = CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: SCREENHEIGHT - 49)
+        self.discoverNew.view.frame = CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth, height: SwifterSwift.screenHeight - 49)
         self.view.addSubview(self.discoverNew.view)
         self.addChildViewController(discoverNew)
         
         discoverHot = DiscoverHotViewController()
-        self.discoverHot.view.frame = CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: SCREENHEIGHT - 64 - 49)
+        self.discoverHot.view.frame = CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth, height: SwifterSwift.screenHeight - 64 - 49)
         self.addChildViewController(discoverHot)
     }
     
@@ -63,6 +67,10 @@ class DiscoverViewController: BaseViewController {
             self.view.addSubview(self.discoverHot.view)
             self.discoverNew.didMove(toParentViewController: self)
         }
+    }
+    
+    func rightBarItemPress(){
+        (self.viewModel as! DiscoverViewModel).rigthBarItemPress()
     }
 
     override func didReceiveMemoryWarning() {

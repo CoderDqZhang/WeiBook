@@ -32,7 +32,7 @@ class CommentInfoTableViewCell: UITableViewCell {
         photosImageView = UIView.init()
         self.contentView.addSubview(photosImageView)
         
-        lineLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 0, width: SCREENWIDTH, height: 0.5))
+        lineLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 0, width: SwifterSwift.screenWidth, height: 0.5))
         self.contentView.addSubview(lineLabel)
         
         self.updateConstraints()

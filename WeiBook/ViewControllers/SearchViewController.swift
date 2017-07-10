@@ -10,7 +10,7 @@ import UIKit
 
 class SearchViewController: BaseViewController {
 
-    var searchNavigationBar = GloableNavigationBarSearchView(frame: CGRect(x: 0,y: 0,width: SCREENWIDTH, height: 64),font:App_Theme_PinFan_L_12_Font)
+    var searchNavigationBar = GloableNavigationBarSearchView(frame: CGRect(x: 0,y: 0,width: SwifterSwift.screenWidth, height: 64),font:App_Theme_PinFan_L_12_Font)
 
     override func viewDidLoad() {
         super.viewDidLoad()

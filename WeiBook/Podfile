@@ -22,7 +22,9 @@ target 'WeiBook' do
 
     #上线注销
   pod 'SwiftyBeaver'
-
+  
+  #SwiftExtention
+  pod 'SwifterSwift'
   #    pod 'HanekeSwift'
   #    pod "Qiniu", "~> 7.1"
   pod 'JPush'

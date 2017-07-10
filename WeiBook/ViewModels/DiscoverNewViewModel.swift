@@ -33,9 +33,6 @@ class DiscoverNewViewModel: BaseViewModel {
             images.append(photo)
         }
         browser = SKPhotoBrowser.init(photos: images)
-        
-        
-        
     }
     
     //tableViewHeight
@@ -53,6 +50,7 @@ class DiscoverNewViewModel: BaseViewModel {
         cell.cellSetData(title: "这是一个测试文件", imgs: testUrl)
         cell.photoBrowserClouse = { tag, view in
             self.browser.initializePageIndex(tag)
+            SKPhotoBrowserOptions.displayDeleteButton = false 
             self.controller?.present(self.browser, animated: true, completion: {
                 
             })

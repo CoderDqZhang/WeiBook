@@ -22,7 +22,7 @@ class CommentToolsTableViewCell: UITableViewCell {
     
     func setUpView(){
         for i in 0...2 {
-            let frame = CGRect.init(x: CGFloat(i) * SCREENWIDTH / 3, y: 0, width: SCREENWIDTH / 3, height: 40)
+            let frame = CGRect.init(x: CGFloat(i) * SwifterSwift.screenWidth / 3, y: 0, width: SwifterSwift.screenWidth / 3, height: 40)
             let button = self.createButton(frame: frame, title: titles[i], image: UIImage.init(named: imgs[i])!, tag: i)
             self.contentView.addSubview(button)
         }

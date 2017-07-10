@@ -33,7 +33,7 @@ class GloableNavigationBarView: UIView {
         let leftImage = UIImageView(image: searchImage)
         leftImage.frame  = CGRect(x: 15, y: 15, width: (searchImage?.size.width)!, height: (searchImage?.size.height)!)
         
-        searchField = HomeBandSearchField(frame:CGRect(x: 20, y: 27,width: SCREENWIDTH - 84, height: 30))
+        searchField = HomeBandSearchField(frame:CGRect(x: 20, y: 27,width: SwifterSwift.screenWidth - 84, height: 30))
         searchField.tag = 200
         searchField.layer.cornerRadius = 4.0
         searchField.drawPlaceholder(in: CGRect(x: 20, y: 0, width: searchField.frame.size.width, height: searchField.frame.size.height))
@@ -56,7 +56,7 @@ class GloableNavigationBarView: UIView {
         self.addSubview(searchField)
         
         QRCodeButton = UIButton(type: .custom)
-        QRCodeButton.frame = CGRect(x: SCREENWIDTH - 64, y: 10,width: 64, height: 64)
+        QRCodeButton.frame = CGRect(x: SwifterSwift.screenWidth - 64, y: 10,width: 64, height: 64)
         QRCodeButton.setImage(UIImage.init(named: "qrcode"), for: .normal)
         QRCodeButton.reactive.controlEvents(.touchUpInside).observe { (action) in
             if self.searchNavigationBarQRCodeButtonClouse != nil{
@@ -77,13 +77,13 @@ class GloableNavigationBarSearchView: GloableNavigationBarView {
     func updataFrame(){
         searchField.delegate = self
         searchField.tag = 100
-        searchField.frame = CGRect.init(x: 54, y: 27, width: SCREENWIDTH - 120, height: 30)
+        searchField.frame = CGRect.init(x: 54, y: 27, width: SwifterSwift.screenWidth - 120, height: 30)
         QRCodeButton.setImage(UIImage.init(named: "Icon_Back_Normal"), for: .normal)
         QRCodeButton.frame = CGRect(x: 10, y: 20,width: 40, height: 40)
         
         var cancelButton:UIButton!
         cancelButton = UIButton(type: .custom)
-        cancelButton.frame = CGRect(x: SCREENWIDTH - 64, y: 27,width: 64, height: 30)
+        cancelButton.frame = CGRect(x: SwifterSwift.screenWidth - 64, y: 27,width: 64, height: 30)
         cancelButton.setTitle("取消", for: UIControlState())
         cancelButton.titleLabel?.font = App_Theme_PinFan_L_17_Font
         cancelButton.isHidden = false

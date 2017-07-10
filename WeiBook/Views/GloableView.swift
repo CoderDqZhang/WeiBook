@@ -106,7 +106,7 @@ class GloableBottomButtonView: UIView {
     var button:UIButton!
     init(frame:CGRect?, title:String, tag:NSInteger?, action:GloableBottomButtonViewClouse?) {
         if frame == nil {
-            super.init(frame: CGRect.init(x: 0, y: SCREENHEIGHT - 49 - 64, width: SCREENWIDTH, height: 49))
+            super.init(frame: CGRect.init(x: 0, y: SwifterSwift.screenHeight - 49 - 64, width: SwifterSwift.screenWidth, height: 49))
         }else{
             super.init(frame: frame!)
         }
@@ -127,7 +127,7 @@ class GloableBottomButtonView: UIView {
     func setUpButton(_ title:String) {
         button = UIButton(type: .custom)
         button.setTitle(title, for: UIControlState())
-        button.buttonSetThemColor(App_Theme_594CA8_Color, selectColor: App_Theme_40C6B7_Color, size: CGSize.init(width: SCREENWIDTH, height: 49))
+        button.buttonSetThemColor(App_Theme_594CA8_Color, selectColor: App_Theme_40C6B7_Color, size: CGSize.init(width: SwifterSwift.screenWidth, height: 49))
         button.titleLabel?.font = App_Theme_PinFan_R_15_Font
         button.setTitleColor(UIColor.init(hexString: App_Theme_FFFFFF_Color), for: UIControlState())
         button.titleLabel?.textAlignment = .center
