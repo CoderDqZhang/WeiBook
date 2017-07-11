@@ -77,6 +77,8 @@
 		1F6680C81F147F3C00B4A4E8 /* AddBookCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680C71F147F3C00B4A4E8 /* AddBookCommentViewModel.swift */; };
 		1F6680CA1F147F4D00B4A4E8 /* AddBookTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680C91F147F4D00B4A4E8 /* AddBookTagsViewModel.swift */; };
 		1F6680CC1F147F6B00B4A4E8 /* AddBookTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680CB1F147F6B00B4A4E8 /* AddBookTagsViewController.swift */; };
+		1F6680CE1F14C3CE00B4A4E8 /* BookQRCoderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680CD1F14C3CE00B4A4E8 /* BookQRCoderViewController.swift */; };
+		1F6680D01F14C44200B4A4E8 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680CF1F14C44200B4A4E8 /* BaseWebViewController.swift */; };
 		1F6A2E4F1F0A335300C3A574 /* BookTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E4E1F0A335300C3A574 /* BookTagTableViewCell.swift */; };
 		1F6A2E521F0B68EE00C3A574 /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E511F0B68EE00C3A574 /* UserInfoTableViewCell.swift */; };
 		1F6A2E541F0B690600C3A574 /* CommentInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E531F0B690600C3A574 /* CommentInfoTableViewCell.swift */; };
@@ -302,6 +304,8 @@
 		1F6680C71F147F3C00B4A4E8 /* AddBookCommentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookCommentViewModel.swift; sourceTree = "<group>"; };
 		1F6680C91F147F4D00B4A4E8 /* AddBookTagsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookTagsViewModel.swift; sourceTree = "<group>"; };
 		1F6680CB1F147F6B00B4A4E8 /* AddBookTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookTagsViewController.swift; sourceTree = "<group>"; };
+		1F6680CD1F14C3CE00B4A4E8 /* BookQRCoderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookQRCoderViewController.swift; sourceTree = "<group>"; };
+		1F6680CF1F14C44200B4A4E8 /* BaseWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		1F6A2E4E1F0A335300C3A574 /* BookTagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTagTableViewCell.swift; sourceTree = "<group>"; };
 		1F6A2E511F0B68EE00C3A574 /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
 		1F6A2E531F0B690600C3A574 /* CommentInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentInfoTableViewCell.swift; path = ../ViewModels/CommentInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -472,6 +476,7 @@
 				1F6680CB1F147F6B00B4A4E8 /* AddBookTagsViewController.swift */,
 				1F6A2EDD1F0CD9FA00C3A574 /* BookListViewController.swift */,
 				1F6A2EE11F0CE2B900C3A574 /* BookDescViewController.swift */,
+				1F6680CD1F14C3CE00B4A4E8 /* BookQRCoderViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -519,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4AA5311EF7DB9C0085BE3B /* BaseViewController.swift */,
+				1F6680CF1F14C44200B4A4E8 /* BaseWebViewController.swift */,
 			);
 			name = BaseView;
 			sourceTree = "<group>";
@@ -1259,6 +1265,7 @@
 				1F4AA5391EF7DBE20085BE3B /* SubscriberViewController.swift in Sources */,
 				1F1C5BB31EFD632200DC8DC0 /* DynamicViewController.swift in Sources */,
 				1F8374E01EFBAF6F00ED97DE /* GloableTableViewCell.swift in Sources */,
+				1F6680D01F14C44200B4A4E8 /* BaseWebViewController.swift in Sources */,
 				1F6A2E611F0B73B200C3A574 /* NYSegmentedControl.m in Sources */,
 				1F4AA5ED1EF7EF190085BE3B /* CountDown.m in Sources */,
 				1F4AA5661EF7E02B0085BE3B /* NSString+Utils.m in Sources */,
@@ -1335,6 +1342,7 @@
 				1FB370D31F137736003DC654 /* UIViewController+DXPhotoPicker.swift in Sources */,
 				1F1C5BAF1EFD62F200DC8DC0 /* FlowersViewController.swift in Sources */,
 				1FB003CD1F09F76C00A4EF13 /* AddBookViewModel.swift in Sources */,
+				1F6680CE1F14C3CE00B4A4E8 /* BookQRCoderViewController.swift in Sources */,
 				1F7017F41F00E93000029158 /* HomeViewModel.swift in Sources */,
 				1F4AA6051EF7EF190085BE3B /* TYPagerController.m in Sources */,
 				1F6A2EE21F0CE2B900C3A574 /* BookDescViewController.swift in Sources */,

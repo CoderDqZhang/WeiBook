@@ -20,6 +20,10 @@ let LoginCode = "/sms/sendSms"
 
 
 
+let QRCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data="
+
+
+
 
 
 
