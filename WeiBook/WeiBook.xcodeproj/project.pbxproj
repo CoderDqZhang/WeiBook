@@ -73,6 +73,10 @@
 		1F4AA60D1EF7EF190085BE3B /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5EC1EF7EF190085BE3B /* ZHPickView.m */; };
 		1F4AA6361EF7F21C0085BE3B /* View+Extntion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA6351EF7F21C0085BE3B /* View+Extntion.swift */; };
 		1F4AA6581EF7F2600085BE3B /* libTalkingData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4AA6501EF7F2600085BE3B /* libTalkingData.a */; };
+		1F6680C61F147ECD00B4A4E8 /* AddBookCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680C51F147ECD00B4A4E8 /* AddBookCommentViewController.swift */; };
+		1F6680C81F147F3C00B4A4E8 /* AddBookCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680C71F147F3C00B4A4E8 /* AddBookCommentViewModel.swift */; };
+		1F6680CA1F147F4D00B4A4E8 /* AddBookTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680C91F147F4D00B4A4E8 /* AddBookTagsViewModel.swift */; };
+		1F6680CC1F147F6B00B4A4E8 /* AddBookTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680CB1F147F6B00B4A4E8 /* AddBookTagsViewController.swift */; };
 		1F6A2E4F1F0A335300C3A574 /* BookTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E4E1F0A335300C3A574 /* BookTagTableViewCell.swift */; };
 		1F6A2E521F0B68EE00C3A574 /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E511F0B68EE00C3A574 /* UserInfoTableViewCell.swift */; };
 		1F6A2E541F0B690600C3A574 /* CommentInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2E531F0B690600C3A574 /* CommentInfoTableViewCell.swift */; };
@@ -294,6 +298,10 @@
 		1F4AA6351EF7F21C0085BE3B /* View+Extntion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extntion.swift"; sourceTree = "<group>"; };
 		1F4AA6501EF7F2600085BE3B /* libTalkingData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingData.a; sourceTree = "<group>"; };
 		1F4AA6511EF7F2600085BE3B /* TalkingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkingData.h; sourceTree = "<group>"; };
+		1F6680C51F147ECD00B4A4E8 /* AddBookCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookCommentViewController.swift; sourceTree = "<group>"; };
+		1F6680C71F147F3C00B4A4E8 /* AddBookCommentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookCommentViewModel.swift; sourceTree = "<group>"; };
+		1F6680C91F147F4D00B4A4E8 /* AddBookTagsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookTagsViewModel.swift; sourceTree = "<group>"; };
+		1F6680CB1F147F6B00B4A4E8 /* AddBookTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookTagsViewController.swift; sourceTree = "<group>"; };
 		1F6A2E4E1F0A335300C3A574 /* BookTagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTagTableViewCell.swift; sourceTree = "<group>"; };
 		1F6A2E511F0B68EE00C3A574 /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
 		1F6A2E531F0B690600C3A574 /* CommentInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentInfoTableViewCell.swift; path = ../ViewModels/CommentInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -460,6 +468,8 @@
 				1F7017F51F00E99700029158 /* SearchViewController.swift */,
 				1F7017F71F00EC0500029158 /* QRCodeViewController.swift */,
 				1FB003CA1F09F75100A4EF13 /* AddBookViewController.swift */,
+				1F6680C51F147ECD00B4A4E8 /* AddBookCommentViewController.swift */,
+				1F6680CB1F147F6B00B4A4E8 /* AddBookTagsViewController.swift */,
 				1F6A2EDD1F0CD9FA00C3A574 /* BookListViewController.swift */,
 				1F6A2EE11F0CE2B900C3A574 /* BookDescViewController.swift */,
 			);
@@ -773,6 +783,8 @@
 				1F78AA611F05F85100F5F374 /* TopBooksViewModel.swift */,
 				1F7017FB1F01157200029158 /* QRCodeViewModel.swift */,
 				1FB003CC1F09F76C00A4EF13 /* AddBookViewModel.swift */,
+				1F6680C71F147F3C00B4A4E8 /* AddBookCommentViewModel.swift */,
+				1F6680C91F147F4D00B4A4E8 /* AddBookTagsViewModel.swift */,
 				1F6A2EDF1F0CDAA200C3A574 /* BookListViewModel.swift */,
 				1F6A2EE31F0CE2E300C3A574 /* BookDescViewModel.swift */,
 			);
@@ -1222,6 +1234,7 @@
 				1F6A2E6D1F0B7FDC00C3A574 /* DiscoverHotViewModel.swift in Sources */,
 				1FEF83551EF1498E00C7D84B /* ViewController.swift in Sources */,
 				1F8374CD1EFA567000ED97DE /* AppThemeTool.swift in Sources */,
+				1F6680C81F147F3C00B4A4E8 /* AddBookCommentViewModel.swift in Sources */,
 				1F4AA5671EF7E02B0085BE3B /* UIColor+Hex.m in Sources */,
 				1F4AA5791EF7E0310085BE3B /* AlertControl+Tools.swift in Sources */,
 				1F70180D1F025B7300029158 /* RecommendViewModel.swift in Sources */,
@@ -1256,6 +1269,7 @@
 				1F4AA58A1EF7E0410085BE3B /* Tools.swift in Sources */,
 				1F8804C11F0E356500F15AF3 /* MyGivePresentViewModel.swift in Sources */,
 				1F4AA57E1EF7E0310085BE3B /* UIViewController+NavigationBar.swift in Sources */,
+				1F6680C61F147ECD00B4A4E8 /* AddBookCommentViewController.swift in Sources */,
 				1F4AA5F61EF7EF190085BE3B /* UIView+SDExtension.m in Sources */,
 				1F4AA5871EF7E0410085BE3B /* ErrorModel.swift in Sources */,
 				1FB370CF1F137736003DC654 /* DXUtil.swift in Sources */,
@@ -1315,6 +1329,7 @@
 				1F4AA5981EF7E1830085BE3B /* Define.swift in Sources */,
 				1F8374F11EFD3D3D00ED97DE /* ProfileInfoViewModel.swift in Sources */,
 				1FB370D01F137736003DC654 /* UICollectionView+Convenience.swift in Sources */,
+				1F6680CC1F147F6B00B4A4E8 /* AddBookTagsViewController.swift in Sources */,
 				1F8374FD1EFD482600ED97DE /* SetingViewController.swift in Sources */,
 				1F4AA60D1EF7EF190085BE3B /* ZHPickView.m in Sources */,
 				1FB370D31F137736003DC654 /* UIViewController+DXPhotoPicker.swift in Sources */,
@@ -1330,6 +1345,7 @@
 				1F8374ED1EFD240000ED97DE /* ProfileInfoViewController.swift in Sources */,
 				1F7018071F025ADB00029158 /* CatergoryViewController.swift in Sources */,
 				1F4AA5F51EF7EF190085BE3B /* SDCycleScrollView.m in Sources */,
+				1F6680CA1F147F4D00B4A4E8 /* AddBookTagsViewModel.swift in Sources */,
 				1F4AA6081EF7EF190085BE3B /* TYTabTitleViewCell.m in Sources */,
 				1F4AA53B1EF7DBED0085BE3B /* ProfileViewController.swift in Sources */,
 				1F6A2E6B1F0B7FCE00C3A574 /* DiscoverNewViewModel.swift in Sources */,

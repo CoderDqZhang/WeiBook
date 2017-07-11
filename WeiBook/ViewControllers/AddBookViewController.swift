@@ -34,7 +34,7 @@ class AddBookViewController: BaseViewController {
             make.bottom.equalTo(self.view.snp.bottom).offset(-49)
         }
         bottomBtn = GloableBottomButtonView.init(frame: nil, title: "加入书库", tag: 1, action: { (tag) in
-            
+            NavigationPushView(self, toConroller: AddBookCommentViewController())
         })
         self.view.addSubview(bottomBtn)
     }

@@ -32,6 +32,7 @@ class BaseViewController: UIViewController{
         controller?.view.addSubview(tableView)
         tableView.delegate = viewModel as? UITableViewDelegate
         tableView.dataSource = viewModel as? UITableViewDataSource
+        tableView.keyboardDismissMode = .onDrag
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo((controller?.view.snp.top)!).offset(0)
             make.left.equalTo((controller?.view.snp.left)!).offset(0)
