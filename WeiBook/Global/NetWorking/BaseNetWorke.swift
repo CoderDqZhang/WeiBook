@@ -38,7 +38,7 @@ class BaseNetWorke {
     func getUrlWithString(_ url:String, parameters:AnyObject?) -> Signal<Any, NSError> {
         return Signal.init({ (subscriber) -> Disposable? in
             self.httpRequest(.get, url: url, parameters: parameters, success: { (responseObject) in
-                if ((responseObject is NSDictionary) && (responseObject["code"]!) != nil){
+                if ((responseObject is NSDictionary) && (responseObject["message"]!) != nil){
                     MainThreanShowErrorMessage(responseObject)
                 }else{
                     subscriber.send(value: responseObject)
@@ -46,14 +46,6 @@ class BaseNetWorke {
             }, failure: { (responseError) in
                 if responseError is NSDictionary {
                     MainThreanShowErrorMessage(responseError)
-                }else{
-                    MainThreanShowNetWorkError(responseError)
-                    if url == "http://api.niceticket.cc/show/hot/"{
-                        subscriber.send(value: ["error":"似乎已断开与互联网的连接"])
-                    }else{
-                        subscriber.sendCompleted()
-//                        subscriber.send(error: responseError as! NSError)
-                    }
                 }
                 subscriber.sendCompleted()
             })
@@ -68,7 +60,7 @@ class BaseNetWorke {
     func postUrlWithString(_ url:String, parameters:AnyObject?) -> Signal<Any, NSError> {
         return Signal.init({ (subscriber) -> Disposable? in
             self.httpRequest(.post, url: url, parameters: parameters, success: { (responseObject) in
-                if ((responseObject["code"]!) == nil){
+                if ((responseObject is NSDictionary) && (responseObject["message"]!) == nil){
                     subscriber.send(value: responseObject)
                 }else{
                     MainThreanShowErrorMessage(responseObject)
@@ -97,7 +89,7 @@ class BaseNetWorke {
     func putUrlWithString(_ url:String, parameters:AnyObject?) -> Signal<Any, NSError> {
         return Signal.init({ (subscriber) -> Disposable? in
             self.httpRequest(.put, url: url, parameters: parameters, success: { (responseObject) in
-                if ((responseObject["code"]!) == nil){
+                if ((responseObject is NSDictionary) &&  (responseObject["message"]!) == nil){
                     subscriber.send(value: responseObject)
                 }else{
                     MainThreanShowErrorMessage(responseObject)
@@ -124,7 +116,7 @@ class BaseNetWorke {
     func deleteUrlWithString(_ url:String, parameters:AnyObject?) -> Signal<Any, NSError> {
         return Signal.init({ (subscriber) -> Disposable? in
             self.httpRequest(.delete, url: url, parameters: parameters, success: { (responseObject) in
-                if ((responseObject["code"]!) == nil){
+                if ((responseObject is NSDictionary) && (responseObject["message"]!) == nil){
                     subscriber.send(value: responseObject)
                 }else{
                     MainThreanShowErrorMessage(responseObject)

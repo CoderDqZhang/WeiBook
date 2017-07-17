@@ -22,8 +22,9 @@ class LoginViewModel: BaseViewModel {
     }
     
     func requestLoginCode(_ number:String, controller:LoginViewController){
-        let dic = ["phone":number]
-        BaseNetWorke.sharedInstance.postUrlWithString(LoginCode, parameters: dic as AnyObject).observe { (resultDic) in
+        let dic = ["mobile":number]
+        let url = "\(BaseUrl)\(LoginCode)"
+        BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: dic as AnyObject).observe { (resultDic) in
             if !resultDic.isCompleted {
                 let aMinutes:TimeInterval = 60
                 controller.startWithStartDate(NSDate() as Date, finishDate: NSDate.init(timeIntervalSinceNow: aMinutes) as Date)
@@ -32,21 +33,16 @@ class LoginViewModel: BaseViewModel {
     }
     
     func requestLogin(_ form:LoginForm,controller:LoginViewController) {
-        let dic = ["mobile_num":form.phone, "code":form.code]
-        BaseNetWorke.sharedInstance.postUrlWithString(LoginUrl, parameters: dic as AnyObject).observe { (resultDic) in
+        let dic = ["mobile":form.phone, "code":form.code]
+        let url = "\(BaseUrl)\(LoginUrl)"
+        BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: dic as AnyObject).observe { (resultDic) in
             if !resultDic.isCompleted {
-//                let model = UserInfoModel.mj_object(withKeyValues: resultDic.value)
-//                model?.phone = form.phone
-//                UserInfoModel.shareInstance().avatar = model?.avatar
-//                UserInfoModel.shareInstance().username = model?.username
-//                UserInfoModel.shareInstance().id = model?.id
-//                UserInfoModel.shareInstance().gender = (model?.gender)!
-//                UserInfoModel.shareInstance().phone = model?.phone
-//                UserInfoModel.shareInstance().role = model?.role
-//                model?.saveOrUpdate()
-//                self.savePhotoImage()
-//                Notification(LoginStatuesChange, value: nil)
-//                controller.navigationController?.popViewController(animated: true)
+                let userInfo = UserInfoModel.mj_object(withKeyValues: resultDic.value)
+                userInfo?.saveOrUpdate()
+                userInfo?.tails.saveOrUpdate()
+                userInfo?.tails.userInfo.saveOrUpdate()
+                Notification(LoginStatuesChange, value: nil)
+                controller.navigationController?.popViewController(animated: true)
                 
             }
         }

@@ -10,13 +10,16 @@ import UIKit
 
 let BaseUrl = "http://api.topveda.cn"
 
-let LoginUrl = "/user/login"
+let LoginUrl = "/user/loginApp"
+//登录mima
+let LoginPasswrodUrl = "/user/login"
+
 
 let HomeBanner = "/tabMain/banners"
 
 let AddAddress = ""
 
-let LoginCode = "/sms/sendSms"
+let LoginCode = "/user/sendLoginValidateCode"
 
 
 

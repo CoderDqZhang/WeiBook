@@ -49,12 +49,16 @@ class ProfileInfoViewModel: BaseViewModel {
     }
     
     func tableViewGloableLableDetailLabelImageCellSetData(_ indexPath:IndexPath, cell:GloableLableDetailLabelImageCell) {
-        cell.setCellData(text: textLabelTexts[indexPath.section - 1][indexPath.row], detailText: self.detailLabelTexts[indexPath.section - 1][indexPath.row] as? String)
+        if UserInfoModel.isLoggedIn() {
+            cell.setCellData(text: textLabelTexts[indexPath.section - 1][indexPath.row], detailText: self.detailLabelTexts[indexPath.section - 1][indexPath.row] as? String)
+        }
     }
     
     func tableViewGloableImageLableTextFieldImageCellSetData(_ indexPath:IndexPath, cell:GloableImageLableTextFieldImageCell) {
-        self.genderTextField()
-        cell.setCellData(text: textLabelTexts[indexPath.section - 1][indexPath.row], detailText: self.detailLabelTexts[indexPath.section - 1][indexPath.row] as? String, plachText: textPlachTexts[indexPath.section - 1][indexPath.row])
+        if UserInfoModel.isLoggedIn() {
+            self.genderTextField()
+            cell.setCellData(text: textLabelTexts[indexPath.section - 1][indexPath.row], detailText: self.detailLabelTexts[indexPath.section - 1][indexPath.row] as? String, plachText: textPlachTexts[indexPath.section - 1][indexPath.row])
+        }
         if indexPath.section == 1 && indexPath.row == 0 {
             cell.textField.reactive.continuousTextValues.observeValues({ (str) in
                 UserInfoModel.shareInstance().username = str
@@ -67,7 +71,9 @@ class ProfileInfoViewModel: BaseViewModel {
     }
     
     func tableViewProfileInfoHeaderTableViewCellSetData(_ indexPath:IndexPath, cell:ProfileInfoHeaderTableViewCell){
-        cell.cellSetData(model: UserInfoModel.shareInstance())
+        if UserInfoModel.isLoggedIn() {
+            cell.cellSetData(model: UserInfoModel.shareInstance())
+        }
     }
     
     func tableViewDidSelectRowAtIndexPath(_ indexPath:IndexPath) {
@@ -86,7 +92,7 @@ class ProfileInfoViewModel: BaseViewModel {
             userInfo = UserInfoModel.shareInstance()
             print(userInfo)
         }else{
-            let url = "\(BaseUrl)\(LoginUrl)"
+            let url = "\(BaseUrl)\(LoginPasswrodUrl)"
             let parameters = ["mobile":"18363899723","password":"123"]
             BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
                 if (!resultDic.isCompleted){

@@ -37,7 +37,7 @@ class ProfileInfoHeaderTableViewCell: UITableViewCell {
     }
     
     func cellSetData(model:UserInfoModel){
-        photoImageView.sd_setImage(with: URL.init(string: model.tails.userInfo.photo), placeholderImage: nil, options: SDWebImageOptions.retryFailed) { (image, error, cacheType, url) in
+        photoImageView.sd_setImage(with: URL.init(string: model.tails.userInfo.photo == nil ? "" : model.tails.userInfo.photo), placeholderImage: nil, options: SDWebImageOptions.retryFailed) { (image, error, cacheType, url) in
         }
     }
     

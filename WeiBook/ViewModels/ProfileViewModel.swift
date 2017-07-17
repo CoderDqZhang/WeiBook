@@ -15,7 +15,16 @@ class ProfileViewModel: BaseViewModel {
     var cellStrDatas = [["我的借阅","我的评价","我的赠送"],["我的书库","我的书单"],["我的成就"],["系统设置"]]
     
     override init() {
-        
+        super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewModel.reloadTaleView), name: NSNotification.Name(rawValue: LoginStatuesChange), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func reloadTaleView(){
+        self.controller?.tableView.reloadData()
     }
     
     //MARK: - TableViewCellSetData
@@ -50,6 +59,7 @@ extension ProfileViewModel : UITableViewDelegate {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
+//                NavigationPushView(self.controller!, toConroller: ProfileInfoViewController())
                 if UserInfoModel.isLoggedIn() {
                     NavigationPushView(self.controller!, toConroller: ProfileInfoViewController())
                 }else{

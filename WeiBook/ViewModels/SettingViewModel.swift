@@ -46,6 +46,12 @@ extension SettingViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 1 {
+            if UserInfoModel.shareInstance().deleteObject() {
+                Notification(LoginStatuesChange, value: nil)
+                self.controller?.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
