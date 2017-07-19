@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwifterSwift
 
 class CategoryTableView : UIView {
     var titleLabel:UIButton!

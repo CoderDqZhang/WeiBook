@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwifterSwift
 
 let kCollectionLayoutEdging:CGFloat = 29
 let kCellSpacing:CGFloat = (SwifterSwift.screenWidth - 20) / 8

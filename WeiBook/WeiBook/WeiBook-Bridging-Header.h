@@ -34,6 +34,7 @@
 #import "TalkingData.h"
 #import "UserInfoModel.h"
 #import "NYSegmentedControl.h"
-
+#import <Qiniu/QiniuSDK.h>
+#import "QiniuAuthPolicy.h"
 
 #endif /* WeiBook_Bridging_Header_h */

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwifterSwift
 
 typealias CyCleScrollerViewClouse = (_ index:Int) -> Void
 

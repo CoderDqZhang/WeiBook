@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import SKPhotoBrowser
+import Qiniu
 
 class AddBookCommentViewModel: BaseViewModel {
 
@@ -19,13 +20,18 @@ class AddBookCommentViewModel: BaseViewModel {
     var images:[UIImage] = []
     var selectedAssetsArray:[PHAsset] = []
     
+    let recoder_manager = RecordManager()//初始化
     var browser:SKPhotoBrowser!
     override init() {
         super.init()
         self.configSKPhotoBrowser()
+        
+       
     }
     
     func rightBarItemPress(){
+        self.uploadImages()
+        self.uploadRecode()
         NavigationPushView(self.controller!, toConroller: AddBookTagsViewController())
     }
     
@@ -61,6 +67,7 @@ class AddBookCommentViewModel: BaseViewModel {
         self.setUpPhotoBrowser()
         self.selectedAssetsArray = sendImages
         self.controller?.tableView.reloadData()
+        
     }
     
     
@@ -90,6 +97,36 @@ class AddBookCommentViewModel: BaseViewModel {
                 
             })
         }
+    }
+    
+    func tableViewRecordTableViewCellSetData(_ indexPath:IndexPath, cell:RecordTableViewCell) {
+        cell.startButton.reactive.controlEvents(.touchUpInside).observe { (button) in
+            self.recoder_manager.beginRecord()//开始录音
+            
+        }
+        cell.stopButton.reactive.controlEvents(.touchUpInside).observe { (button) in
+            self.recoder_manager.stopRecord()//结束录音
+        }
+        cell.playButton.reactive.controlEvents(.touchUpInside).observe { (button) in
+            self.recoder_manager.play()//播放录制的音频
+        }
+    }
+    
+    //MARK: Request--
+    func uploadImages(){
+        _ = BaseNetWorke.sharedInstance.uploadImages(images: self.selectedAssetsArray, fileName: "bookComment", success: { (resultDic) in
+            print(resultDic)
+        }) { (failureDic) in
+            
+        }
+    }
+    
+    func uploadRecode(){
+        _ = BaseNetWorke.sharedInstance.uploadRecode(recode: recoder_manager.file_path!, fileName: "bookReconder", success: { (resultDic) in
+            
+        }, failure: { (failureDic) in
+            
+        })
     }
 }
 
@@ -125,8 +162,10 @@ extension AddBookCommentViewModel : UITableViewDelegate {
             switch indexPath.row {
             case 0:
                 return 44
-            default:
+            case 1:
                 return self.tableViewHeight()
+            default:
+                return 60
             }
         }
     }
@@ -142,7 +181,7 @@ extension AddBookCommentViewModel : UITableViewDataSource {
         case 0:
             return 3
         default:
-            return self.customComment ? 2 : 1
+            return self.customComment ? 3 : 1
         }
     }
     
@@ -162,9 +201,13 @@ extension AddBookCommentViewModel : UITableViewDataSource {
                 self.tableViewGloableImageLableSwitchCellSetData(indexPath,cell: cell as! GloableImageLableSwitchCell)
                 
                 return cell
-            default:
+            case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: CreateDataTableViewCell.description() , for: indexPath)
                 self.tableViewCreateDataTableViewCellSetData(indexPath,cell: cell as! CreateDataTableViewCell)
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: RecordTableViewCell.description() , for: indexPath)
+                self.tableViewRecordTableViewCellSetData(indexPath,cell: cell as! RecordTableViewCell)
                 return cell
             }
             

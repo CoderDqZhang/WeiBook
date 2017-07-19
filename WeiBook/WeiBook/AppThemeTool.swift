@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import IQKeyboardManagerSwift
 import SKPhotoBrowser
+import SwifterSwift
 
 class AppleThemeTool {
     class func setUpToolBarColor() {

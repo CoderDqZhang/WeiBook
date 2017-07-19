@@ -153,10 +153,10 @@
 		1F8804C91F0F8CE200F15AF3 /* FllowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8804C81F0F8CE200F15AF3 /* FllowerViewModel.swift */; };
 		1F8804CB1F0F8CF000F15AF3 /* FanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8804CA1F0F8CEF00F15AF3 /* FanceViewModel.swift */; };
 		1F893BDA1F1F0013007E9F31 /* ServerBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F893BD91F1F0013007E9F31 /* ServerBookModel.swift */; };
+		1F893BDF1F1F1F83007E9F31 /* QiniuAuthPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F893BDE1F1F1F83007E9F31 /* QiniuAuthPolicy.m */; };
 		1FB003CB1F09F75100A4EF13 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CA1F09F75100A4EF13 /* AddBookViewController.swift */; };
 		1FB003CD1F09F76C00A4EF13 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CC1F09F76C00A4EF13 /* AddBookViewModel.swift */; };
 		1FB003CF1F09F92400A4EF13 /* SBNBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CE1F09F92400A4EF13 /* SBNBookModel.swift */; };
-		1FB370941F133047003DC654 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370931F133047003DC654 /* SwifterSwift.swift */; };
 		1FB370961F135018003DC654 /* DiscoverCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370951F135018003DC654 /* DiscoverCreateViewController.swift */; };
 		1FB370981F1351E0003DC654 /* DiscoverCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370971F1351E0003DC654 /* DiscoverCreateViewModel.swift */; };
 		1FB3709A1F136A0D003DC654 /* CreateDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370991F136A0D003DC654 /* CreateDataTableViewCell.swift */; };
@@ -185,6 +185,8 @@
 		1FB370D21F137736003DC654 /* UIView+DXFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370BC1F137736003DC654 /* UIView+DXFrame.swift */; };
 		1FB370D31F137736003DC654 /* UIViewController+DXPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370BD1F137736003DC654 /* UIViewController+DXPhotoPicker.swift */; };
 		1FB370D61F1390ED003DC654 /* UITextViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370D51F1390ED003DC654 /* UITextViewExtensions.swift */; };
+		1FDABFC31F1F455000C45E14 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDABFC21F1F455000C45E14 /* RecordManager.swift */; };
+		1FDABFC51F1F466700C45E14 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */; };
 		1FEF83531EF1498E00C7D84B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF83521EF1498E00C7D84B /* AppDelegate.swift */; };
 		1FEF83551EF1498E00C7D84B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF83541EF1498E00C7D84B /* ViewController.swift */; };
 		1FEF83581EF1498E00C7D84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEF83561EF1498E00C7D84B /* Main.storyboard */; };
@@ -386,10 +388,11 @@
 		1F8804C81F0F8CE200F15AF3 /* FllowerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FllowerViewModel.swift; sourceTree = "<group>"; };
 		1F8804CA1F0F8CEF00F15AF3 /* FanceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FanceViewModel.swift; sourceTree = "<group>"; };
 		1F893BD91F1F0013007E9F31 /* ServerBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerBookModel.swift; sourceTree = "<group>"; };
+		1F893BDD1F1F1F83007E9F31 /* QiniuAuthPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiniuAuthPolicy.h; sourceTree = "<group>"; };
+		1F893BDE1F1F1F83007E9F31 /* QiniuAuthPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiniuAuthPolicy.m; sourceTree = "<group>"; };
 		1FB003CA1F09F75100A4EF13 /* AddBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		1FB003CC1F09F76C00A4EF13 /* AddBookViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		1FB003CE1F09F92400A4EF13 /* SBNBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBNBookModel.swift; sourceTree = "<group>"; };
-		1FB370931F133047003DC654 /* SwifterSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
 		1FB370951F135018003DC654 /* DiscoverCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCreateViewController.swift; sourceTree = "<group>"; };
 		1FB370971F1351E0003DC654 /* DiscoverCreateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCreateViewModel.swift; sourceTree = "<group>"; };
 		1FB370991F136A0D003DC654 /* CreateDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDataTableViewCell.swift; sourceTree = "<group>"; };
@@ -419,6 +422,8 @@
 		1FB370BC1F137736003DC654 /* UIView+DXFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DXFrame.swift"; sourceTree = "<group>"; };
 		1FB370BD1F137736003DC654 /* UIViewController+DXPhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DXPhotoPicker.swift"; sourceTree = "<group>"; };
 		1FB370D51F1390ED003DC654 /* UITextViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewExtensions.swift; sourceTree = "<group>"; };
+		1FDABFC21F1F455000C45E14 /* RecordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
+		1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		1FEF834F1EF1498E00C7D84B /* WeiBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FEF83521EF1498E00C7D84B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FEF83541EF1498E00C7D84B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -577,7 +582,6 @@
 			isa = PBXGroup;
 			children = (
 				1FB370D51F1390ED003DC654 /* UITextViewExtensions.swift */,
-				1FB370931F133047003DC654 /* SwifterSwift.swift */,
 				1F4AA6351EF7F21C0085BE3B /* View+Extntion.swift */,
 				1F4AA5721EF7E0310085BE3B /* AlertControl+Tools.swift */,
 				1F4AA5731EF7E0310085BE3B /* NSTimer.swift */,
@@ -598,6 +602,9 @@
 				1F4AA5821EF7E0410085BE3B /* GlobalTools.swift */,
 				1F4AA5831EF7E0410085BE3B /* ShareTools.swift */,
 				1F4AA5841EF7E0410085BE3B /* Tools.swift */,
+				1FDABFC21F1F455000C45E14 /* RecordManager.swift */,
+				1F893BDD1F1F1F83007E9F31 /* QiniuAuthPolicy.h */,
+				1F893BDE1F1F1F83007E9F31 /* QiniuAuthPolicy.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -854,6 +861,7 @@
 			children = (
 				1F7018101F038BBD00029158 /* BooksInfoTableViewCell.swift */,
 				1F70180E1F025C3B00029158 /* RecommendTableViewCell.swift */,
+				1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */,
 				1F78AA5F1F04FEDE00F5F374 /* CategoryTableViewCell.swift */,
 				1F78AA631F05F99600F5F374 /* TopBooksTableViewCell.swift */,
 				1F3349E11F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift */,
@@ -1286,10 +1294,12 @@
 				1F7017FF1F023D6B00029158 /* HomeModel.swift in Sources */,
 				1F4AA5701EF7E02B0085BE3B /* UIWindow+Screenshot.m in Sources */,
 				1F1C5BB11EFD630000DC8DC0 /* FansViewController.swift in Sources */,
+				1FDABFC31F1F455000C45E14 /* RecordManager.swift in Sources */,
 				1FB370C91F137736003DC654 /* DXSendButton.swift in Sources */,
 				1F78AA621F05F85100F5F374 /* TopBooksViewModel.swift in Sources */,
 				1F4AA5EF1EF7EF190085BE3B /* JKDBModel.m in Sources */,
 				1F4AA6071EF7EF190085BE3B /* TYTabPagerController.m in Sources */,
+				1FDABFC51F1F466700C45E14 /* RecordTableViewCell.swift in Sources */,
 				1F4AA6061EF7EF190085BE3B /* TYTabButtonPagerController.m in Sources */,
 				1F4AA60B1EF7EF190085BE3B /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				1FB370C01F137736003DC654 /* DXPhotoBrowser.swift in Sources */,
@@ -1362,7 +1372,6 @@
 				1F4AA53B1EF7DBED0085BE3B /* ProfileViewController.swift in Sources */,
 				1F6A2E6B1F0B7FCE00C3A574 /* DiscoverNewViewModel.swift in Sources */,
 				1F4AA5691EF7E02B0085BE3B /* UIImage+PureColor.m in Sources */,
-				1FB370941F133047003DC654 /* SwifterSwift.swift in Sources */,
 				1F8804C31F0E35A200F15AF3 /* GiveUserInfoTableViewCell.swift in Sources */,
 				1FEF83531EF1498E00C7D84B /* AppDelegate.swift in Sources */,
 				1F7017F81F00EC0500029158 /* QRCodeViewController.swift in Sources */,
@@ -1375,6 +1384,7 @@
 				1F4AA5891EF7E0410085BE3B /* ShareTools.swift in Sources */,
 				1F8374D91EFB8FD000ED97DE /* LoginViewController.swift in Sources */,
 				1FB370BE1F137736003DC654 /* DXAlbumTableViewController.swift in Sources */,
+				1F893BDF1F1F1F83007E9F31 /* QiniuAuthPolicy.m in Sources */,
 				1F78AA5E1F04FD1500F5F374 /* CategoryViewModel.swift in Sources */,
 				1F7017FC1F01157200029158 /* QRCodeViewModel.swift in Sources */,
 				1F6A2EE41F0CE2E300C3A574 /* BookDescViewModel.swift in Sources */,

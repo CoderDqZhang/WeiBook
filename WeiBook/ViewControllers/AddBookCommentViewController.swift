@@ -14,7 +14,7 @@ class AddBookCommentViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bindViewModel(viewModel: AddBookCommentViewModel(), controller: self)
-        self.setUpTableView(style: .grouped, cells: [GloableImageLableDetailImageCell.self,GloableImageLableSwitchCell.self,CreateDataTableViewCell.self], controller: self)
+        self.setUpTableView(style: .grouped, cells: [GloableImageLableDetailImageCell.self,GloableImageLableSwitchCell.self,CreateDataTableViewCell.self,RecordTableViewCell.self], controller: self)
         self.setUpNavigaitonItem()
         // Do any additional setup after loading the view.
     }
@@ -47,7 +47,7 @@ class AddBookCommentViewController: BaseViewController {
         let album = UIAlertAction(title: "相册", style: .default) { (cancelAction) in
             let picker = DXPhotoPickerController()
             picker.photoPickerDelegate = self
-            picker.imageFlowVC.selectedAssetsArray = (self.viewModel as! DiscoverCreateViewModel).selectedAssetsArray
+            picker.imageFlowVC.selectedAssetsArray = (self.viewModel as! AddBookCommentViewModel).selectedAssetsArray
             self.present(picker, animated: true, completion: nil)
         }
         controller.addAction(cancel)

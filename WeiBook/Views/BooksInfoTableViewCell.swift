@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import SwifterSwift
 
 class BookInfo: UIView {
     var bookPost:UIImageView!

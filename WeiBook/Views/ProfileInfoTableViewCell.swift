@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SwifterSwift
 
 class CustomInfoView: UIView {
     var titleLabel:UILabel!

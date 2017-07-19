@@ -8,6 +8,7 @@
 
 import UIKit
 import FDFullscreenPopGesture
+import SwifterSwift
 
 class HomeViewController: BaseViewController {
 

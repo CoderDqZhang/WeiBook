@@ -11,6 +11,9 @@ import Alamofire
 import Result
 import ReactiveSwift
 import MBProgressHUD
+import Qiniu
+import Photos
+import SwifterSwift
 
 typealias SuccessClouse = (_ responseObject:AnyObject) -> Void
 typealias FailureClouse = (_ responseError:AnyObject) -> Void
@@ -23,6 +26,8 @@ enum HttpRequestType {
 }
 
 class BaseNetWorke {
+
+
     fileprivate init() {
     
     }
@@ -282,6 +287,48 @@ class BaseNetWorke {
         }
     }
     
+    //MARK: QiuniuUploadImages
+    func uploadImages(images:[PHAsset]?, fileName:String, success:@escaping SuccessClouse, failure:@escaping FailureClouse){
+        
+        let date = "\(fileName)/\(Date.init().year)/\(Date.init().month)/\(Date.init().day)/"
+        let token = QiniuAuthPolicy.token()
+        let upManager = QNUploadManager.init()
+        let keys = NSMutableArray.init()
+        for img in images! {
+            let fileName = "\(date)\(self.getTimeNow().md5()!).jpg"
+            print(fileName)
+            upManager?.put(img, key: fileName, token: token, complete: { (reponseInfo, key, resp) in
+                if (reponseInfo!).isOK {
+                    keys.add("http://cdn.topveda.cn/\(key!)" )
+                    if keys.count == images?.count {
+                        success(keys)
+                    }
+                }else{
+                    failure(reponseInfo!)
+                }
+            }, option: nil)
+        }
+    }
+    
+    //MARK: QiuniuUploadRecode
+    func uploadRecode(recode:String, fileName:String, success:@escaping SuccessClouse, failure:@escaping FailureClouse) {
+        
+        let date = "\(fileName)/\(Date.init().year)/\(Date.init().month)/\(Date.init().day)/"
+        let token = QiniuAuthPolicy.token()
+        let upManager = QNUploadManager.init()
+        let fileName = "\(date)\(self.getTimeNow().md5()!).mp3"
+        print(fileName)
+        upManager?.putFile(recode, key: fileName, token: token, complete: { (reponseInfo, key, resp) in
+            if (reponseInfo!).isOK {
+                print(key ?? "")
+                success("http://cdn.topveda.cn/\(key!)" as AnyObject)
+            }else{
+                failure(reponseInfo!)
+            }
+        }, option: nil)
+    }
+    
+    
     func createSign(_ parameters:AnyObject?, timestamp:String, token:String) -> String{
         let parametersDic = parameters as! NSMutableDictionary
         parametersDic.setValue(token, forKey: "token")
@@ -311,4 +358,12 @@ class BaseNetWorke {
         return dictionary_temp_temp as! NSDictionary
         
     }
+    
+    func getTimeNow() ->String {
+        let timeInterval:TimeInterval = Date.init().timeIntervalSince1970
+        let timeStamp = Int(timeInterval)
+        return "\(timeStamp)!"
+    }
+    
+    
 }

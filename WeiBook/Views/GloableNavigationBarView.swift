@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwifterSwift
 
 typealias SearchNavigationBarQRCodeButtonClouse = () -> Void
 typealias SearchTextFieldBecomFirstRespoder = () -> Void

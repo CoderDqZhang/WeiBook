@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwifterSwift
 
 let IPHONE_VERSION = UIDevice.current.systemVersion.floatValue
 let IPHONE_VERSION_LAST9 = UIDevice.current.systemVersion.floatValue >= 9 ? 1:0
@@ -18,6 +19,9 @@ let IPHONE4 = SwifterSwift.screenHeight == 480 ? true:false
 let IPHONE5 = SwifterSwift.screenHeight == 568 ? true:false
 let IPHONE6 = SwifterSwift.screenWidth == 344 ? true:false
 let IPHONE6P = SwifterSwift.screenWidth == 344 ? true:false
+
+let SCREENWIDTH = SwifterSwift.screenWidth
+let SCREENHEIGHT = SwifterSwift.screenHeight
 
 let AnimationTime = 0.3
 
@@ -46,6 +50,11 @@ let DidRegisterRemoteNotification = "DidRegisterRemoteNotification"
 let DidRegisterRemoteURLNotification = "DidRegisterRemoteURLNotification"
 let DidRegisterRemoteDiviceToken = "DidRegisterRemoteDiviceToken"
 
+
+let QiniuAccessKey = "xX-kcCyk_b1TmufkALFCKVXP53cPMVrF_TgErxx7"
+let QiniuSecretKey = "7xMrZ-kt2D-BJOmoPGulHF47I4yQyjBgAm2myFIw"
+let QiniuBucket = "topveda"
+let QiniuDomain = "http://cdn.topveda.cn"
 
 let WeiXinAppID = "wx6c6b940e660449a2"
 let QQAppID = "1105914312"

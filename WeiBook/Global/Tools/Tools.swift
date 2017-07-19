@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import SwifterSwift
 
 let HUDBackGroudColor = "556169"
 let CustomViewWidth:CGFloat = 190

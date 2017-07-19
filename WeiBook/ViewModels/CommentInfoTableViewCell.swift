@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwifterSwift
 
 let ImageSize = CGSize.init(width: 80, height: 80)
 typealias PhotoBrowserClouse = (_ tag:NSInteger, _ view:UIView) ->Void

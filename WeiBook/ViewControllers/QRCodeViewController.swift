@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import SwifterSwift
 
 let ScannerWidht:CGFloat = 280
 
