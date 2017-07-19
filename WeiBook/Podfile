@@ -19,7 +19,8 @@ target 'WeiBook' do
   pod 'FMDB'
   pod 'Cosmos', '~> 10.0'
   pod 'SKPhotoBrowser'
-
+  pod 'Qiniu', '~> 7.1'
+  
     #上线注销
   pod 'SwiftyBeaver'
   

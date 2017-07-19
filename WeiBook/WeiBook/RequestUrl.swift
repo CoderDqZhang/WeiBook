@@ -21,6 +21,8 @@ let AddAddress = ""
 
 let LoginCode = "/user/sendLoginValidateCode"
 
+let AttentUserInfo = "/attention/getAttentionMyInfo"
+
 
 
 let QRCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data="
