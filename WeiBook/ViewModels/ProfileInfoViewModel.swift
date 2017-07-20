@@ -10,6 +10,8 @@ import UIKit
 import MJExtension
 import ReactiveSwift
 
+typealias ReloadDataClouse = () ->Void
+
 class ProfileInfoViewModel: BaseViewModel {
 
     var navigationTitle = "个人信息"
@@ -19,31 +21,65 @@ class ProfileInfoViewModel: BaseViewModel {
     var detailLabelTexts:[NSMutableArray] = []
     var textPlachTexts = [["用户昵称","电话","位置","性别"],["微信号","公司","QQ"]]
     var userInfo:UserInfoModel!
+    var image:UIImage? = nil
     
+    var reloadDataClouse:ReloadDataClouse!
     override init() {
         super.init()
         self.requestUserInfo()
     }
     
     func saveUserInfo(){
-        
+        let url = "\(BaseUrl)\(ChangeUserInfo)"
+        let parameters = ["username":UserInfoModel.shareInstance().username,
+                          "mobile":UserInfoModel.shareInstance().mobile,
+                          "sex":UserInfoModel.shareInstance().tails.userInfo.sex,
+                          "address":UserInfoModel.shareInstance().tails.userInfo.address,
+                          "base64":UserInfoModel.shareInstance().tails.userInfo.photo,
+                          "qq":UserInfoModel.shareInstance().tails.userInfo.qq,
+                          "weixin":UserInfoModel.shareInstance().tails.userInfo.weixin,
+                          "company":UserInfoModel.shareInstance().tails.userInfo.company,
+                          "id":UserInfoModel.shareInstance().tails.userInfo.userId]
+        let profileViewModel = ((self.controller?.navigationController?.viewControllers[0] as! ProfileViewController).viewModel as! ProfileViewModel)
+        BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resulDic) in
+            if !resulDic.isCompleted {
+                _ = Tools.shareInstance.showMessage((self.controller?.view)!, msg: "保存成功", autoHidder: true)
+                UserInfoModel.shareInstance()?.saveOrUpdate()
+                UserInfoModel.shareInstance().tails.saveOrUpdate()
+                UserInfoModel.shareInstance().tails.userInfo.saveOrUpdate()
+                if self.reloadDataClouse != nil {
+                    self.reloadDataClouse()
+                }
+                self.controller?.navigationController?.popViewController({
+                    profileViewModel.reloadTaleView()
+                })
+            }
+        }
+    }
+    
+    func uploadImage(image:UIImage) {
+        BaseNetWorke.sharedInstance.uploadImage(image: image, fileName: "headerImage", success: { (resultDic) in
+            UserInfoModel.shareInstance().tails.userInfo.photo = resultDic as! String
+        }) { (failure) in
+            
+        }
     }
     
     func genderTextField(){
         let baseArray:NSMutableArray = []
         baseArray.add(UserInfoModel.shareInstance().username)
         baseArray.add(UserInfoModel.shareInstance().mobile)
-        if (UserInfoModel.shareInstance().tails.userInfo.city == nil || UserInfoModel.shareInstance().tails.userInfo.city as! NSNumber == 0) {
+        if (UserInfoModel.shareInstance().tails.userInfo.address == nil || UserInfoModel.shareInstance().tails.userInfo.address == "") {
             baseArray.add("未选择")
         }else{
-            baseArray.add(UserInfoModel.shareInstance().tails.userInfo.city)
+            baseArray.add(UserInfoModel.shareInstance().tails.userInfo.address)
         }
         baseArray.add(UserInfoModel.shareInstance().tails.userInfo.sex == "" ? "未选择" : UserInfoModel.shareInstance().tails.userInfo.sex ?? "男")
         
         let adArray:NSMutableArray = []
-        adArray.add("")
-        adArray.add("")
-        adArray.add("")
+        adArray.add(UserInfoModel.shareInstance().tails.userInfo.weixin)
+        adArray.add(UserInfoModel.shareInstance().tails.userInfo.company)
+        adArray.add(UserInfoModel.shareInstance().tails.userInfo.qq)
         detailLabelTexts.append(baseArray)
         detailLabelTexts.append(adArray)
     }
@@ -67,12 +103,25 @@ class ProfileInfoViewModel: BaseViewModel {
             cell.textField.reactive.continuousTextValues.observeValues({ (str) in
                 UserInfoModel.shareInstance().mobile = str
             })
+        }else if indexPath.section == 2 && indexPath.row == 0{
+            cell.textField.reactive.continuousTextValues.observeValues({ (str) in
+                UserInfoModel.shareInstance().tails.userInfo.weixin = str
+            })
+        }else if indexPath.section == 2 && indexPath.row == 1{
+            cell.textField.reactive.continuousTextValues.observeValues({ (str) in
+                UserInfoModel.shareInstance().tails.userInfo.company = str
+            })
+        }else if indexPath.section == 2 && indexPath.row == 2{
+            cell.textField.reactive.continuousTextValues.observeValues({ (str) in
+                UserInfoModel.shareInstance().tails.userInfo.qq = str
+            })
         }
     }
     
     func tableViewProfileInfoHeaderTableViewCellSetData(_ indexPath:IndexPath, cell:ProfileInfoHeaderTableViewCell){
         if UserInfoModel.isLoggedIn() {
             cell.cellSetData(model: UserInfoModel.shareInstance())
+            self.image = cell.imageView?.image
         }
     }
     

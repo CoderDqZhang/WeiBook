@@ -8,12 +8,12 @@
 
 import UIKit
 
+
 class ProfileViewModel: BaseViewModel {
 
     var sectionsNumber = [2,3,2,1,1]
     var cellImageDatas = [[UIImage.init(named: "Borrow"),UIImage.init(named: "ic_fun_appraise"),UIImage.init(named: "give")],[UIImage.init(named: "books"),UIImage.init(named: "book_list")],[UIImage.init(named: "achievement")],[UIImage.init(named: "seting")]]
     var cellStrDatas = [["我的借阅","我的评价","我的赠送"],["我的书库","我的书单"],["我的成就"],["系统设置"]]
-    
     override init() {
         super.init()
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewModel.reloadTaleView), name: NSNotification.Name(rawValue: LoginStatuesChange), object: nil)
@@ -25,6 +25,43 @@ class ProfileViewModel: BaseViewModel {
     
     func reloadTaleView(){
         self.controller?.tableView.reloadData()
+    }
+    
+    //MARK: TableViewDidSelect
+    func tableViewDidSelect(_ indexPath:IndexPath) {
+        switch indexPath.section {
+        case 0:
+            if indexPath.row == 0 {
+                if UserInfoModel.isLoggedIn() {
+                    let controller = ProfileInfoViewController()
+                    NavigationPushView(self.controller!, toConroller: controller)
+                    
+                }else{
+                    NavigationPushView(self.controller!, toConroller: LoginViewController())
+                }
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                NavigationPushView(self.controller!, toConroller: MyBorrowViewController())
+            case 1:
+                NavigationPushView(self.controller!, toConroller: MyCommonViewController())
+            default:
+                NavigationPushView(self.controller!, toConroller: MyGivePresentViewController())
+                
+            }
+        case 2:
+            switch indexPath.row {
+            case 0:
+                NavigationPushView(self.controller!, toConroller: BooksViewController())
+            default:
+                NavigationPushView(self.controller!, toConroller: MyBookListViewController())
+            }
+        case 3:
+            NavigationPushView(self.controller!, toConroller: AchievementViewController())
+        default:
+            NavigationPushView(self.controller!, toConroller: SetingViewController())
+        }
     }
     
     //MARK: - TableViewCellSetData
@@ -56,38 +93,7 @@ extension ProfileViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch indexPath.section {
-        case 0:
-            if indexPath.row == 0 {
-//                NavigationPushView(self.controller!, toConroller: ProfileInfoViewController())
-                if UserInfoModel.isLoggedIn() {
-                    NavigationPushView(self.controller!, toConroller: ProfileInfoViewController())
-                }else{
-                    NavigationPushView(self.controller!, toConroller: LoginViewController())
-                }
-            }
-        case 1:
-            switch indexPath.row {
-            case 0:
-                NavigationPushView(self.controller!, toConroller: MyBorrowViewController())
-            case 1:
-                NavigationPushView(self.controller!, toConroller: MyCommonViewController())
-            default:
-                NavigationPushView(self.controller!, toConroller: MyGivePresentViewController())
-
-            }
-        case 2:
-            switch indexPath.row {
-            case 0:
-                NavigationPushView(self.controller!, toConroller: BooksViewController())
-            default:
-                NavigationPushView(self.controller!, toConroller: MyBookListViewController())
-            }
-        case 3:
-            NavigationPushView(self.controller!, toConroller: AchievementViewController())
-        default:
-            NavigationPushView(self.controller!, toConroller: SetingViewController())
-        }
+        self.tableViewDidSelect(indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

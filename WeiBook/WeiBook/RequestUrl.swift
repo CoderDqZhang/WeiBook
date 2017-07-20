@@ -13,7 +13,7 @@ let BaseUrl = "http://api.topveda.cn"
 let LoginUrl = "/user/loginApp"
 //登录mima
 let LoginPasswrodUrl = "/user/login"
-
+let ChangeUserInfo = "/user/edit"
 
 let HomeBanner = "/tabMain/banners"
 

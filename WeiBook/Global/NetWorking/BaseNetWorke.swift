@@ -261,14 +261,14 @@ class BaseNetWorke {
 
         var headers:HTTPHeaders! = nil
         if parameters != nil {
-            let signParameters:NSMutableDictionary = NSMutableDictionary.init(dictionary: parameters as! [AnyHashable : Any], copyItems: true)
-            
-            let date = NSDate()
-            let timestamp = Int(date.timeIntervalSince1970 * 1000)
-            
-            let sign = createSign(signParameters, timestamp: "\(timestamp)", token: !UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token)
-            
-            headers = ["header-token":!UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token,"header-timestamp":"\(timestamp)","header-sign":sign]
+//            let signParameters:NSMutableDictionary = NSMutableDictionary.init(dictionary: parameters as! [AnyHashable : Any], copyItems: true)
+//            
+//            let date = NSDate()
+//            let timestamp = Int(date.timeIntervalSince1970 * 1000)
+//            
+//            let sign = createSign(signParameters, timestamp: "\(timestamp)", token: !UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token)
+//            
+//            headers = ["header-token":!UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token,"header-timestamp":"\(timestamp)","header-sign":sign]
         }
 
         Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
@@ -308,6 +308,24 @@ class BaseNetWorke {
                 }
             }, option: nil)
         }
+    }
+    
+    //MARK: QiuniuUploadImage
+    func uploadImage(image:UIImage, fileName:String, success:@escaping SuccessClouse, failure:@escaping FailureClouse){
+        
+        let date = "\(fileName)/\(Date.init().year)/\(Date.init().month)/\(Date.init().day)/"
+        let token = QiniuAuthPolicy.token()
+        let upManager = QNUploadManager.init()
+        let fileName = "\(date)\(self.getTimeNow().md5()!).jpg"
+        print(fileName)
+        upManager?.put(UIImageJPEGRepresentation(image, 0.75), key: fileName, token: token, complete: { (reponseInfo, key, resp) in
+            if (reponseInfo!).isOK {
+                print(key ?? "")
+                success("http://cdn.topveda.cn/\(key!)" as AnyObject)
+            }else{
+                failure(reponseInfo!)
+            }
+        }, option: nil)
     }
     
     //MARK: QiuniuUploadRecode

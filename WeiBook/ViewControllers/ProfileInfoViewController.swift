@@ -22,7 +22,7 @@ class ProfileInfoViewController: BaseViewController {
     
     func setUpView(){
         
-        self.bindViewModel(viewModel: ProfileInfoViewModel.init(), controller: self)
+        self.bindViewModel(viewModel: ProfileInfoViewModel(), controller: self)
         self.setUpTableView(style: .grouped, cells: [ProfileInfoHeaderTableViewCell.self,GloableImageLableTextFieldImageCell.self,GloableLableDetailLabelImageCell.self], controller: self)
     }
     
@@ -132,7 +132,7 @@ extension ProfileInfoViewController : ZHPickViewDelegate {
             if KWINDOWDS().viewWithTag(1) != nil {
                 sexPickerView.remove()
             }
-            UserInfoModel.shareInstance().tails.userInfo.city = resultString! as NSObject
+            UserInfoModel.shareInstance().tails.userInfo.address = resultString! as String
             (viewModel as! ProfileInfoViewModel).detailLabelTexts[0].replaceObject(at: 2, with: resultString)
             self.tableView.reloadRows(at: [IndexPath.init(row: 2, section: 1)], with: .automatic)
         }
@@ -151,6 +151,7 @@ extension ProfileInfoViewController : UIImagePickerControllerDelegate {
         _ = SaveImageTools.sharedInstance.saveImage("photoImage.png", image: image, path: "headerImage")
         let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! ProfileInfoHeaderTableViewCell
         cell.updateImage(image: image)
+        (viewModel as! ProfileInfoViewModel).uploadImage(image: image)
         picker.dismiss(animated: true, completion: nil)
     }
 }

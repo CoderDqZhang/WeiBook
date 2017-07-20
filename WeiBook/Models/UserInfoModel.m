@@ -11,9 +11,10 @@
 NSString *const kTailToken = @"token";
 NSString *const kTailUserInfo = @"userInfo";
 
-@interface Tail ()
+@interface UserInfoTail ()
 @end
-@implementation Tail
+
+@implementation UserInfoTail
 
 
 
@@ -86,7 +87,7 @@ NSString *const kTailUserInfo = @"userInfo";
  */
 - (instancetype)copyWithZone:(NSZone *)zone
 {
-    Tail *copy = [Tail new];
+    UserInfoTail *copy = [UserInfoTail new];
     
     copy.token = [self.token copy];
     copy.userInfo = [self.userInfo copy];
@@ -96,32 +97,32 @@ NSString *const kTailUserInfo = @"userInfo";
 @end
 
 
-NSString *const kUserInfoAttentionNum = @"attentionNum";
-NSString *const kUserInfoCity = @"city";
-NSString *const kUserInfoCreatedAt = @"createdAt";
-NSString *const kUserInfoFansNum = @"fansNum";
-NSString *const kUserInfoHobbyTag = @"hobbyTag";
-NSString *const kUserInfoIdField = @"id";
-NSString *const kUserInfoIdentify = @"identify";
-NSString *const kUserInfoIntroduction = @"introduction";
-NSString *const kUserInfoInvitationCode = @"invitationCode";
-NSString *const kUserInfoNickname = @"nickname";
-NSString *const kUserInfoPhoto = @"photo";
-NSString *const kUserInfoProfessionTag = @"professionTag";
-NSString *const kUserInfoQrCode = @"qrCode";
-NSString *const kUserInfoSex = @"sex";
-NSString *const kUserInfoSocialUtility = @"socialUtility";
-NSString *const kUserInfoStar = @"star";
-NSString *const kUserInfoTails = @"tails";
-NSString *const kUserInfoTitle = @"title";
-NSString *const kUserInfoUserId = @"userId";
+NSString *const kRootClassAddress = @"address";
+NSString *const kRootClassAttentionNum = @"attentionNum";
+NSString *const kRootClassCity = @"city";
+NSString *const kRootClassCompany = @"company";
+NSString *const kRootClassCreatedAt = @"createdAt";
+NSString *const kRootClassFansNum = @"fansNum";
+NSString *const kRootClassHobbyTag = @"hobbyTag";
+NSString *const kRootClassIdField = @"id";
+NSString *const kRootClassIdentify = @"identify";
+NSString *const kRootClassIntroduction = @"introduction";
+NSString *const kRootClassInvitationCode = @"invitationCode";
+NSString *const kRootClassNickname = @"nickname";
+NSString *const kRootClassPhoto = @"photo";
+NSString *const kRootClassProfessionTag = @"professionTag";
+NSString *const kRootClassQq = @"qq";
+NSString *const kRootClassQrCode = @"qrCode";
+NSString *const kRootClassSex = @"sex";
+NSString *const kRootClassSocialUtility = @"socialUtility";
+NSString *const kRootClassStar = @"star";
+NSString *const kRootClassTitle = @"title";
+NSString *const kRootClassUserId = @"userId";
+NSString *const kRootClassWeixin = @"weixin";
 
 @interface UserInfo ()
 @end
 @implementation UserInfo
-
-
-
 
 /**
  * Instantiate the instance using the passed dictionary values to set the properties values
@@ -130,61 +131,72 @@ NSString *const kUserInfoUserId = @"userId";
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
-    if(![dictionary[kUserInfoAttentionNum] isKindOfClass:[NSNull class]]){
-        self.attentionNum = dictionary[kUserInfoAttentionNum];
+    if(![dictionary[kRootClassAddress] isKindOfClass:[NSNull class]]){
+        self.address = dictionary[kRootClassAddress];
     }
-    if(![dictionary[kUserInfoCity] isKindOfClass:[NSNull class]]){
-        self.city = dictionary[kUserInfoCity];
+    if(![dictionary[kRootClassAttentionNum] isKindOfClass:[NSNull class]]){
+        self.attentionNum = dictionary[kRootClassAttentionNum];
     }
-    if(![dictionary[kUserInfoCreatedAt] isKindOfClass:[NSNull class]]){
-        self.createdAt = dictionary[kUserInfoCreatedAt];
+    if(![dictionary[kRootClassCity] isKindOfClass:[NSNull class]]){
+        self.city = dictionary[kRootClassCity];
     }
-    if(![dictionary[kUserInfoFansNum] isKindOfClass:[NSNull class]]){
-        self.fansNum = [dictionary[kUserInfoFansNum] integerValue];
+    if(![dictionary[kRootClassCompany] isKindOfClass:[NSNull class]]){
+        self.company = dictionary[kRootClassCompany];
     }
-    
-    if(![dictionary[kUserInfoHobbyTag] isKindOfClass:[NSNull class]]){
-        self.hobbyTag = dictionary[kUserInfoHobbyTag];
+    if(![dictionary[kRootClassCreatedAt] isKindOfClass:[NSNull class]]){
+        self.createdAt = dictionary[kRootClassCreatedAt];
     }
-    if(![dictionary[kUserInfoIdField] isKindOfClass:[NSNull class]]){
-        self.idField = dictionary[kUserInfoIdField];
-    }
-    if(![dictionary[kUserInfoIdentify] isKindOfClass:[NSNull class]]){
-        self.identify = dictionary[kUserInfoIdentify];
-    }
-    if(![dictionary[kUserInfoIntroduction] isKindOfClass:[NSNull class]]){
-        self.introduction = dictionary[kUserInfoIntroduction];
-    }
-    if(![dictionary[kUserInfoInvitationCode] isKindOfClass:[NSNull class]]){
-        self.invitationCode = dictionary[kUserInfoInvitationCode];
-    }
-    if(![dictionary[kUserInfoNickname] isKindOfClass:[NSNull class]]){
-        self.nickname = dictionary[kUserInfoNickname];
-    }
-    if(![dictionary[kUserInfoPhoto] isKindOfClass:[NSNull class]]){
-        self.photo = dictionary[kUserInfoPhoto];
-    }
-    if(![dictionary[kUserInfoProfessionTag] isKindOfClass:[NSNull class]]){
-        self.professionTag = dictionary[kUserInfoProfessionTag];
-    }
-    if(![dictionary[kUserInfoQrCode] isKindOfClass:[NSNull class]]){
-        self.qrCode = dictionary[kUserInfoQrCode];
-    }
-    if(![dictionary[kUserInfoSex] isKindOfClass:[NSNull class]]){
-        self.sex = dictionary[kUserInfoSex];
-    }
-    if(![dictionary[kUserInfoSocialUtility] isKindOfClass:[NSNull class]]){
-        self.socialUtility = dictionary[kUserInfoSocialUtility];
-    }
-    if(![dictionary[kUserInfoStar] isKindOfClass:[NSNull class]]){
-        self.star = dictionary[kUserInfoStar];
+    if(![dictionary[kRootClassFansNum] isKindOfClass:[NSNull class]]){
+        self.fansNum = [dictionary[kRootClassFansNum] integerValue];
     }
     
-    if(![dictionary[kUserInfoTitle] isKindOfClass:[NSNull class]]){
-        self.title = dictionary[kUserInfoTitle];
+    if(![dictionary[kRootClassHobbyTag] isKindOfClass:[NSNull class]]){
+        self.hobbyTag = dictionary[kRootClassHobbyTag];
     }
-    if(![dictionary[kUserInfoUserId] isKindOfClass:[NSNull class]]){
-        self.userId = dictionary[kUserInfoUserId];
+    if(![dictionary[kRootClassIdField] isKindOfClass:[NSNull class]]){
+        self.idField = dictionary[kRootClassIdField];
+    }
+    if(![dictionary[kRootClassIdentify] isKindOfClass:[NSNull class]]){
+        self.identify = dictionary[kRootClassIdentify];
+    }
+    if(![dictionary[kRootClassIntroduction] isKindOfClass:[NSNull class]]){
+        self.introduction = dictionary[kRootClassIntroduction];
+    }
+    if(![dictionary[kRootClassInvitationCode] isKindOfClass:[NSNull class]]){
+        self.invitationCode = dictionary[kRootClassInvitationCode];
+    }
+    if(![dictionary[kRootClassNickname] isKindOfClass:[NSNull class]]){
+        self.nickname = dictionary[kRootClassNickname];
+    }
+    if(![dictionary[kRootClassPhoto] isKindOfClass:[NSNull class]]){
+        self.photo = dictionary[kRootClassPhoto];
+    }
+    if(![dictionary[kRootClassProfessionTag] isKindOfClass:[NSNull class]]){
+        self.professionTag = dictionary[kRootClassProfessionTag];
+    }
+    if(![dictionary[kRootClassQq] isKindOfClass:[NSNull class]]){
+        self.qq = dictionary[kRootClassQq];
+    }
+    if(![dictionary[kRootClassQrCode] isKindOfClass:[NSNull class]]){
+        self.qrCode = dictionary[kRootClassQrCode];
+    }
+    if(![dictionary[kRootClassSex] isKindOfClass:[NSNull class]]){
+        self.sex = dictionary[kRootClassSex];
+    }
+    if(![dictionary[kRootClassSocialUtility] isKindOfClass:[NSNull class]]){
+        self.socialUtility = dictionary[kRootClassSocialUtility];
+    }
+    if(![dictionary[kRootClassStar] isKindOfClass:[NSNull class]]){
+        self.star = dictionary[kRootClassStar];
+    }
+    if(![dictionary[kRootClassTitle] isKindOfClass:[NSNull class]]){
+        self.title = dictionary[kRootClassTitle];
+    }
+    if(![dictionary[kRootClassUserId] isKindOfClass:[NSNull class]]){
+        self.userId = dictionary[kRootClassUserId];
+    }
+    if(![dictionary[kRootClassWeixin] isKindOfClass:[NSNull class]]){
+        self.weixin = dictionary[kRootClassWeixin];
     }
     return self;
 }
@@ -196,58 +208,69 @@ NSString *const kUserInfoUserId = @"userId";
 -(NSDictionary *)toDictionary
 {
     NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
+    if(self.address != nil){
+        dictionary[kRootClassAddress] = self.address;
+    }
     if(self.attentionNum != nil){
-        dictionary[kUserInfoAttentionNum] = self.attentionNum;
+        dictionary[kRootClassAttentionNum] = self.attentionNum;
     }
     if(self.city != nil){
-        dictionary[kUserInfoCity] = self.city;
+        dictionary[kRootClassCity] = self.city;
+    }
+    if(self.company != nil){
+        dictionary[kRootClassCompany] = self.company;
     }
     if(self.createdAt != nil){
-        dictionary[kUserInfoCreatedAt] = self.createdAt;
+        dictionary[kRootClassCreatedAt] = self.createdAt;
     }
-    dictionary[kUserInfoFansNum] = @(self.fansNum);
+    dictionary[kRootClassFansNum] = @(self.fansNum);
     if(self.hobbyTag != nil){
-        dictionary[kUserInfoHobbyTag] = self.hobbyTag;
+        dictionary[kRootClassHobbyTag] = self.hobbyTag;
     }
     if(self.idField != nil){
-        dictionary[kUserInfoIdField] = self.idField;
+        dictionary[kRootClassIdField] = self.idField;
     }
     if(self.identify != nil){
-        dictionary[kUserInfoIdentify] = self.identify;
+        dictionary[kRootClassIdentify] = self.identify;
     }
     if(self.introduction != nil){
-        dictionary[kUserInfoIntroduction] = self.introduction;
+        dictionary[kRootClassIntroduction] = self.introduction;
     }
     if(self.invitationCode != nil){
-        dictionary[kUserInfoInvitationCode] = self.invitationCode;
+        dictionary[kRootClassInvitationCode] = self.invitationCode;
     }
     if(self.nickname != nil){
-        dictionary[kUserInfoNickname] = self.nickname;
+        dictionary[kRootClassNickname] = self.nickname;
     }
     if(self.photo != nil){
-        dictionary[kUserInfoPhoto] = self.photo;
+        dictionary[kRootClassPhoto] = self.photo;
     }
     if(self.professionTag != nil){
-        dictionary[kUserInfoProfessionTag] = self.professionTag;
+        dictionary[kRootClassProfessionTag] = self.professionTag;
+    }
+    if(self.qq != nil){
+        dictionary[kRootClassQq] = self.qq;
     }
     if(self.qrCode != nil){
-        dictionary[kUserInfoQrCode] = self.qrCode;
+        dictionary[kRootClassQrCode] = self.qrCode;
     }
     if(self.sex != nil){
-        dictionary[kUserInfoSex] = self.sex;
+        dictionary[kRootClassSex] = self.sex;
     }
     if(self.socialUtility != nil){
-        dictionary[kUserInfoSocialUtility] = self.socialUtility;
+        dictionary[kRootClassSocialUtility] = self.socialUtility;
     }
     if(self.star != nil){
-        dictionary[kUserInfoStar] = self.star;
+        dictionary[kRootClassStar] = self.star;
     }
-    
     if(self.title != nil){
-        dictionary[kUserInfoTitle] = self.title;
+        dictionary[kRootClassTitle] = self.title;
     }
     if(self.userId != nil){
-        dictionary[kUserInfoUserId] = self.userId;
+        dictionary[kRootClassUserId] = self.userId;
+    }
+    if(self.weixin != nil){
+        dictionary[kRootClassWeixin] = self.weixin;
     }
     return dictionary;
     
@@ -261,57 +284,68 @@ NSString *const kUserInfoUserId = @"userId";
  */
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
+    if(self.address != nil){
+        [aCoder encodeObject:self.address forKey:kRootClassAddress];
+    }
     if(self.attentionNum != nil){
-        [aCoder encodeObject:self.attentionNum forKey:kUserInfoAttentionNum];
+        [aCoder encodeObject:self.attentionNum forKey:kRootClassAttentionNum];
     }
     if(self.city != nil){
-        [aCoder encodeObject:self.city forKey:kUserInfoCity];
+        [aCoder encodeObject:self.city forKey:kRootClassCity];
+    }
+    if(self.company != nil){
+        [aCoder encodeObject:self.company forKey:kRootClassCompany];
     }
     if(self.createdAt != nil){
-        [aCoder encodeObject:self.createdAt forKey:kUserInfoCreatedAt];
+        [aCoder encodeObject:self.createdAt forKey:kRootClassCreatedAt];
     }
-    [aCoder encodeObject:@(self.fansNum) forKey:kUserInfoFansNum];	if(self.hobbyTag != nil){
-        [aCoder encodeObject:self.hobbyTag forKey:kUserInfoHobbyTag];
+    [aCoder encodeObject:@(self.fansNum) forKey:kRootClassFansNum];	if(self.hobbyTag != nil){
+        [aCoder encodeObject:self.hobbyTag forKey:kRootClassHobbyTag];
     }
     if(self.idField != nil){
-        [aCoder encodeObject:self.idField forKey:kUserInfoIdField];
+        [aCoder encodeObject:self.idField forKey:kRootClassIdField];
     }
     if(self.identify != nil){
-        [aCoder encodeObject:self.identify forKey:kUserInfoIdentify];
+        [aCoder encodeObject:self.identify forKey:kRootClassIdentify];
     }
     if(self.introduction != nil){
-        [aCoder encodeObject:self.introduction forKey:kUserInfoIntroduction];
+        [aCoder encodeObject:self.introduction forKey:kRootClassIntroduction];
     }
     if(self.invitationCode != nil){
-        [aCoder encodeObject:self.invitationCode forKey:kUserInfoInvitationCode];
+        [aCoder encodeObject:self.invitationCode forKey:kRootClassInvitationCode];
     }
     if(self.nickname != nil){
-        [aCoder encodeObject:self.nickname forKey:kUserInfoNickname];
+        [aCoder encodeObject:self.nickname forKey:kRootClassNickname];
     }
     if(self.photo != nil){
-        [aCoder encodeObject:self.photo forKey:kUserInfoPhoto];
+        [aCoder encodeObject:self.photo forKey:kRootClassPhoto];
     }
     if(self.professionTag != nil){
-        [aCoder encodeObject:self.professionTag forKey:kUserInfoProfessionTag];
+        [aCoder encodeObject:self.professionTag forKey:kRootClassProfessionTag];
+    }
+    if(self.qq != nil){
+        [aCoder encodeObject:self.qq forKey:kRootClassQq];
     }
     if(self.qrCode != nil){
-        [aCoder encodeObject:self.qrCode forKey:kUserInfoQrCode];
+        [aCoder encodeObject:self.qrCode forKey:kRootClassQrCode];
     }
     if(self.sex != nil){
-        [aCoder encodeObject:self.sex forKey:kUserInfoSex];
+        [aCoder encodeObject:self.sex forKey:kRootClassSex];
     }
     if(self.socialUtility != nil){
-        [aCoder encodeObject:self.socialUtility forKey:kUserInfoSocialUtility];
+        [aCoder encodeObject:self.socialUtility forKey:kRootClassSocialUtility];
     }
     if(self.star != nil){
-        [aCoder encodeObject:self.star forKey:kUserInfoStar];
+        [aCoder encodeObject:self.star forKey:kRootClassStar];
     }
-    
     if(self.title != nil){
-        [aCoder encodeObject:self.title forKey:kUserInfoTitle];
+        [aCoder encodeObject:self.title forKey:kRootClassTitle];
     }
     if(self.userId != nil){
-        [aCoder encodeObject:self.userId forKey:kUserInfoUserId];
+        [aCoder encodeObject:self.userId forKey:kRootClassUserId];
+    }
+    if(self.weixin != nil){
+        [aCoder encodeObject:self.weixin forKey:kRootClassWeixin];
     }
     
 }
@@ -322,24 +356,28 @@ NSString *const kUserInfoUserId = @"userId";
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super init];
-    self.attentionNum = [aDecoder decodeObjectForKey:kUserInfoAttentionNum];
-    self.city = [aDecoder decodeObjectForKey:kUserInfoCity];
-    self.createdAt = [aDecoder decodeObjectForKey:kUserInfoCreatedAt];
-    self.fansNum = [[aDecoder decodeObjectForKey:kUserInfoFansNum] integerValue];
-    self.hobbyTag = [aDecoder decodeObjectForKey:kUserInfoHobbyTag];
-    self.idField = [aDecoder decodeObjectForKey:kUserInfoIdField];
-    self.identify = [aDecoder decodeObjectForKey:kUserInfoIdentify];
-    self.introduction = [aDecoder decodeObjectForKey:kUserInfoIntroduction];
-    self.invitationCode = [aDecoder decodeObjectForKey:kUserInfoInvitationCode];
-    self.nickname = [aDecoder decodeObjectForKey:kUserInfoNickname];
-    self.photo = [aDecoder decodeObjectForKey:kUserInfoPhoto];
-    self.professionTag = [aDecoder decodeObjectForKey:kUserInfoProfessionTag];
-    self.qrCode = [aDecoder decodeObjectForKey:kUserInfoQrCode];
-    self.sex = [aDecoder decodeObjectForKey:kUserInfoSex];
-    self.socialUtility = [aDecoder decodeObjectForKey:kUserInfoSocialUtility];
-    self.star = [aDecoder decodeObjectForKey:kUserInfoStar];
-    self.title = [aDecoder decodeObjectForKey:kUserInfoTitle];
-    self.userId = [aDecoder decodeObjectForKey:kUserInfoUserId];
+    self.address = [aDecoder decodeObjectForKey:kRootClassAddress];
+    self.attentionNum = [aDecoder decodeObjectForKey:kRootClassAttentionNum];
+    self.city = [aDecoder decodeObjectForKey:kRootClassCity];
+    self.company = [aDecoder decodeObjectForKey:kRootClassCompany];
+    self.createdAt = [aDecoder decodeObjectForKey:kRootClassCreatedAt];
+    self.fansNum = [[aDecoder decodeObjectForKey:kRootClassFansNum] integerValue];
+    self.hobbyTag = [aDecoder decodeObjectForKey:kRootClassHobbyTag];
+    self.idField = [aDecoder decodeObjectForKey:kRootClassIdField];
+    self.identify = [aDecoder decodeObjectForKey:kRootClassIdentify];
+    self.introduction = [aDecoder decodeObjectForKey:kRootClassIntroduction];
+    self.invitationCode = [aDecoder decodeObjectForKey:kRootClassInvitationCode];
+    self.nickname = [aDecoder decodeObjectForKey:kRootClassNickname];
+    self.photo = [aDecoder decodeObjectForKey:kRootClassPhoto];
+    self.professionTag = [aDecoder decodeObjectForKey:kRootClassProfessionTag];
+    self.qq = [aDecoder decodeObjectForKey:kRootClassQq];
+    self.qrCode = [aDecoder decodeObjectForKey:kRootClassQrCode];
+    self.sex = [aDecoder decodeObjectForKey:kRootClassSex];
+    self.socialUtility = [aDecoder decodeObjectForKey:kRootClassSocialUtility];
+    self.star = [aDecoder decodeObjectForKey:kRootClassStar];
+    self.title = [aDecoder decodeObjectForKey:kRootClassTitle];
+    self.userId = [aDecoder decodeObjectForKey:kRootClassUserId];
+    self.weixin = [aDecoder decodeObjectForKey:kRootClassWeixin];
     return self;
     
 }
@@ -351,8 +389,10 @@ NSString *const kUserInfoUserId = @"userId";
 {
     UserInfo *copy = [UserInfo new];
     
+    copy.address = [self.address copy];
     copy.attentionNum = [self.attentionNum copy];
     copy.city = [self.city copy];
+    copy.company = [self.company copy];
     copy.createdAt = [self.createdAt copy];
     copy.fansNum = self.fansNum;
     copy.hobbyTag = [self.hobbyTag copy];
@@ -363,12 +403,14 @@ NSString *const kUserInfoUserId = @"userId";
     copy.nickname = [self.nickname copy];
     copy.photo = [self.photo copy];
     copy.professionTag = [self.professionTag copy];
+    copy.qq = [self.qq copy];
     copy.qrCode = [self.qrCode copy];
     copy.sex = [self.sex copy];
     copy.socialUtility = [self.socialUtility copy];
     copy.star = [self.star copy];
     copy.title = [self.title copy];
     copy.userId = [self.userId copy];
+    copy.weixin = [self.weixin copy];
     
     return copy;
 }
@@ -400,7 +442,7 @@ static UserInfoModel *_instance = nil;
     dispatch_once(&onceToken, ^{
         if ([UserInfoModel findAll].count > 0) {
             _instance =  [UserInfoModel findLastObject];
-            _instance.tails = [Tail findLastObject];
+            _instance.tails = [UserInfoTail findLastObject];
             _instance.tails.userInfo = [UserInfo findLastObject];
         }else{
             _instance = [[UserInfoModel alloc] init];
@@ -438,7 +480,7 @@ static UserInfoModel *_instance = nil;
     }
     
     if(![dictionary[kUserInfoModelTails] isKindOfClass:[NSNull class]]){
-        self.tails = [[Tail alloc] initWithDictionary:dictionary[kUserInfoModelTails]];
+        self.tails = [[UserInfoTail alloc] initWithDictionary:dictionary[kUserInfoModelTails]];
     }
     
     if(![dictionary[kUserInfoModelUsername] isKindOfClass:[NSNull class]]){
