@@ -96,7 +96,7 @@ class Tools: NSObject {
     
     func showErrorMessage(_ errorDic:AnyObject) ->MBProgressHUD? {
         let errorModel = ErrorModel.init(fromDictionary: errorDic as! NSDictionary)
-        return self.showMessage(KWINDOWDS(), msg:errorModel.message , autoHidder: true)
+        return self.showMessage(KWINDOWDS(), msg:errorModel.message == nil ? "出现错误" : errorModel.message, autoHidder: true)
 
     }
     

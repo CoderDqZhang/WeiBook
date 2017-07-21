@@ -11,12 +11,19 @@ import UIKit
 class AddBookTagsViewController: BaseViewController {
 
     var bottomBtn:GloableBottomButtonView!
+    var addBookForm:AddBookFormModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bindViewModel(viewModel: AddBookTagsViewModel(), controller: self)
         self.setUpTableView(style: .plain, cells: [GloableImageLableDetailImageCell.self,GloableImageLableSwitchCell.self], controller: self)
         self.setUpView()
+        self.bindLogicViewModel()
         // Do any additional setup after loading the view.
+    }
+    
+    func bindLogicViewModel(){
+        (self.viewModel as! AddBookTagsViewModel).addBookForm = self.addBookForm
     }
     
     func setUpView(){

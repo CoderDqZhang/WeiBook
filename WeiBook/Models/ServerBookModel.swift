@@ -12,7 +12,7 @@ class ServerBookModel : NSObject, NSCoding{
     
     var author : String!
     var bookImg : String!
-    var bookTails : BookTail!
+    var bookTails : HomeBookTail!
     var bookUrl : AnyObject!
     var bookWeImg : AnyObject!
     var catalogDesc : String!
@@ -45,31 +45,31 @@ class ServerBookModel : NSObject, NSCoding{
         author = dictionary["author"] as? String
         bookImg = dictionary["bookImg"] as? String
         if let bookTailsData = dictionary["bookTails"] as? NSDictionary{
-            bookTails = BookTail(fromDictionary: bookTailsData)
+            bookTails = HomeBookTail(fromDictionary: bookTailsData)
         }
-        bookUrl = dictionary["bookUrl"] as? AnyObject
-        bookWeImg = dictionary["bookWeImg"] as? AnyObject
+        bookUrl = dictionary["bookUrl"] as AnyObject
+        bookWeImg = dictionary["bookWeImg"] as AnyObject
         catalogDesc = dictionary["catalogDesc"] as? String
-        categoryId = dictionary["categoryId"] as? AnyObject
+        categoryId = dictionary["categoryId"] as AnyObject
         contentDesc = dictionary["contentDesc"] as? String
         createdAt = dictionary["createdAt"] as? Int
-        deletedAt = dictionary["deletedAt"] as? AnyObject
+        deletedAt = dictionary["deletedAt"] as AnyObject
         descriptionField = dictionary["description"] as? String
         detailHref = dictionary["detailHref"] as? String
-        favoriteNum = dictionary["favoriteNum"] as? AnyObject
+        favoriteNum = dictionary["favoriteNum"] as AnyObject
         id = dictionary["id"] as? String
         isbn = dictionary["isbn"] as? String
-        likeNum = dictionary["likeNum"] as? AnyObject
+        likeNum = dictionary["likeNum"] as AnyObject
         oress = dictionary["oress"] as? String
         people = dictionary["people"] as? Int
         price = dictionary["price"] as? String
         publishDate = dictionary["publishDate"] as? String
-        rating = dictionary["rating"] as? AnyObject
-        state = dictionary["state"] as? AnyObject
-        subjectId = dictionary["subjectId"] as? AnyObject
+        rating = dictionary["rating"] as AnyObject
+        state = dictionary["state"] as AnyObject
+        subjectId = dictionary["subjectId"] as AnyObject
         title = dictionary["title"] as? String
         updatedAt = dictionary["updatedAt"] as? Int
-        userId = dictionary["userId"] as? AnyObject
+        userId = dictionary["userId"] as AnyObject
     }
     
     /**
@@ -167,30 +167,30 @@ class ServerBookModel : NSObject, NSCoding{
     {
         author = aDecoder.decodeObject(forKey: "author") as? String
         bookImg = aDecoder.decodeObject(forKey: "bookImg") as? String
-        bookTails = aDecoder.decodeObject(forKey: "tails") as? BookTail
-        bookUrl = aDecoder.decodeObject(forKey: "bookUrl") as? AnyObject
-        bookWeImg = aDecoder.decodeObject(forKey: "bookWeImg") as? AnyObject
+        bookTails = aDecoder.decodeObject(forKey: "tails") as? HomeBookTail
+        bookUrl = aDecoder.decodeObject(forKey: "bookUrl") as AnyObject
+        bookWeImg = aDecoder.decodeObject(forKey: "bookWeImg") as AnyObject
         catalogDesc = aDecoder.decodeObject(forKey: "catalogDesc") as? String
-        categoryId = aDecoder.decodeObject(forKey: "categoryId") as? AnyObject
+        categoryId = aDecoder.decodeObject(forKey: "categoryId") as AnyObject
         contentDesc = aDecoder.decodeObject(forKey: "contentDesc") as? String
         createdAt = aDecoder.decodeObject(forKey: "createdAt") as? Int
-        deletedAt = aDecoder.decodeObject(forKey: "deletedAt") as? AnyObject
+        deletedAt = aDecoder.decodeObject(forKey: "deletedAt") as AnyObject
         descriptionField = aDecoder.decodeObject(forKey: "description") as? String
         detailHref = aDecoder.decodeObject(forKey: "detailHref") as? String
-        favoriteNum = aDecoder.decodeObject(forKey: "favoriteNum") as? AnyObject
+        favoriteNum = aDecoder.decodeObject(forKey: "favoriteNum") as AnyObject
         id = aDecoder.decodeObject(forKey: "id") as? String
         isbn = aDecoder.decodeObject(forKey: "isbn") as? String
-        likeNum = aDecoder.decodeObject(forKey: "likeNum") as? AnyObject
+        likeNum = aDecoder.decodeObject(forKey: "likeNum") as AnyObject
         oress = aDecoder.decodeObject(forKey: "oress") as? String
         people = aDecoder.decodeObject(forKey: "people") as? Int
         price = aDecoder.decodeObject(forKey: "price") as? String
         publishDate = aDecoder.decodeObject(forKey: "publishDate") as? String
-        rating = aDecoder.decodeObject(forKey: "rating") as? AnyObject
-        state = aDecoder.decodeObject(forKey: "state") as? AnyObject
-        subjectId = aDecoder.decodeObject(forKey: "subjectId") as? AnyObject
+        rating = aDecoder.decodeObject(forKey: "rating") as AnyObject
+        state = aDecoder.decodeObject(forKey: "state") as AnyObject
+        subjectId = aDecoder.decodeObject(forKey: "subjectId") as AnyObject
         title = aDecoder.decodeObject(forKey: "title") as? String
         updatedAt = aDecoder.decodeObject(forKey: "updatedAt") as? Int
-        userId = aDecoder.decodeObject(forKey: "userId") as? AnyObject
+        userId = aDecoder.decodeObject(forKey: "userId") as AnyObject
         
     }
     
@@ -283,7 +283,7 @@ class ServerBookModel : NSObject, NSCoding{
     
 }
 
-class BookTail : NSObject, NSCoding{
+class HomeBookTail : NSObject, NSCoding{
     
     var authorDesc : String!
     var dangPrice : String!

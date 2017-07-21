@@ -68,7 +68,11 @@ class BaseNetWorke {
                 if ((responseObject is NSDictionary) && (responseObject["message"]!) == nil){
                     subscriber.send(value: responseObject)
                 }else{
-                    MainThreanShowErrorMessage(responseObject)
+                    if ((responseObject["code"]!) != nil && (Int(String(describing: (responseObject as! NSDictionary).object(forKey: "code")!))! >= 0)) {
+                        subscriber.send(value: responseObject["message"]! ?? "请求成功")
+                    }else{
+                        MainThreanShowErrorMessage(responseObject)
+                    }
                 }
                 subscriber.sendCompleted()
                 }, failure: { (responseError) in
@@ -259,7 +263,9 @@ class BaseNetWorke {
         }
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
-        var headers:HTTPHeaders! = nil
+//        var headers:HTTPHeaders! = type == .post ? ["Content-Type":"application/json"] : nil
+        let headers:HTTPHeaders! = nil
+
         if parameters != nil {
 //            let signParameters:NSMutableDictionary = NSMutableDictionary.init(dictionary: parameters as! [AnyHashable : Any], copyItems: true)
 //            
@@ -271,7 +277,7 @@ class BaseNetWorke {
 //            headers = ["header-token":!UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token,"header-timestamp":"\(timestamp)","header-sign":sign]
         }
 
-        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
+        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: methods == .post ? JSONEncoding.default : URLEncoding.default, headers: headers).responseJSON { (response) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
             NetWorkingResponse.sharedInstance.showNetWorkingResPonse(response as AnyObject)

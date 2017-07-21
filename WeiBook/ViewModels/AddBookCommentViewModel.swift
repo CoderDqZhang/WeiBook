@@ -14,6 +14,15 @@ import Qiniu
 class AddBookCommentViewModel: BaseViewModel {
 
     let sectionsNumber = [3,1]
+    var bookModel:ServerBookModel!
+    var addBookForm = AddBookFormModel.init()
+    
+    var commentContent:String = ""
+    var commentCustomContent:String = ""
+    var comments:[Comment] = []
+    var uploadImageDone = false
+    var uploadRecodeDone = true
+    
     let commentTitls = ["很好好的书","超级经典","tag"]
     var customComment = false
     
@@ -25,14 +34,24 @@ class AddBookCommentViewModel: BaseViewModel {
     override init() {
         super.init()
         self.configSKPhotoBrowser()
-        
-       
     }
     
     func rightBarItemPress(){
-        self.uploadImages()
-        self.uploadRecode()
-        NavigationPushView(self.controller!, toConroller: AddBookTagsViewController())
+        self.configForm()
+        if self.customComment {
+            self.uploadImages()
+            if self.uploadRecodeDone {
+                self.uploadRecode()
+            }
+        }else{
+            self.navigationPushAddTag()
+        }
+    }
+    
+    func configForm(){
+        addBookForm.bookId = self.bookModel.id
+        addBookForm.userId = UserInfoModel.shareInstance().tails.userInfo.userId
+        addBookForm.commentContent = self.customComment ? self.commentCustomContent : self.commentContent
     }
     
     //MARK: SKPhotoBrowser
@@ -70,6 +89,12 @@ class AddBookCommentViewModel: BaseViewModel {
         
     }
     
+    func navigationPushAddTag() {
+        let toController = AddBookTagsViewController()
+        toController.addBookForm = self.addBookForm
+        NavigationPushView(self.controller!, toConroller: toController)
+    }
+    
     
     //MARK: - SetCellData
     func tableViewGloableImageLableDetailImageCellSetData(_ indexPath:IndexPath, cell:GloableImageLableDetailImageCell) {
@@ -97,11 +122,15 @@ class AddBookCommentViewModel: BaseViewModel {
                 
             })
         }
+        cell.textView.reactive.textValues.observeValues { (str) in
+            self.commentCustomContent = str!
+        }
     }
     
     func tableViewRecordTableViewCellSetData(_ indexPath:IndexPath, cell:RecordTableViewCell) {
         cell.startButton.reactive.controlEvents(.touchUpInside).observe { (button) in
             self.recoder_manager.beginRecord()//开始录音
+            self.uploadRecodeDone = false
             
         }
         cell.stopButton.reactive.controlEvents(.touchUpInside).observe { (button) in
@@ -114,7 +143,15 @@ class AddBookCommentViewModel: BaseViewModel {
     
     //MARK: Request--
     func uploadImages(){
+        let hud = Tools.shareInstance.showLoading((self.controller?.view)!, msg: "上传图片中")
         _ = BaseNetWorke.sharedInstance.uploadImages(images: self.selectedAssetsArray, fileName: "bookComment", success: { (resultDic) in
+            for url in (resultDic as! NSMutableArray) {
+                let comment = Comment.init(url: url as! String, type: 1)
+                self.comments.append(comment)
+            }
+            self.addBookForm.comments = self.comments
+            Tools.shareInstance.hiddenLoading(hud: hud)
+            self.navigationPushAddTag()
             print(resultDic)
         }) { (failureDic) in
             
@@ -123,7 +160,8 @@ class AddBookCommentViewModel: BaseViewModel {
     
     func uploadRecode(){
         _ = BaseNetWorke.sharedInstance.uploadRecode(recode: recoder_manager.file_path!, fileName: "bookReconder", success: { (resultDic) in
-            
+            let comment = Comment.init(url: resultDic as! String, type: 2)
+            self.comments.append(comment)
         }, failure: { (failureDic) in
             
         })
@@ -142,6 +180,13 @@ extension AddBookCommentViewModel : UITableViewDelegate {
                 cell?.accessoryType = .none
             }else{
                 cell?.accessoryType = .checkmark
+            }
+            commentContent = ""
+            for i in 0...tableView.numberOfRows(inSection: indexPath.section) - 1 {
+                let cell = tableView.cellForRow(at: IndexPath.init(row: i, section: indexPath.section)) as! GloableImageLableDetailImageCell
+                if cell.accessoryType == .checkmark {
+                    commentContent = commentContent + (cell.textLabel?.text!)! + ","
+                }
             }
         }
     }

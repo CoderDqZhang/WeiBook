@@ -17,6 +17,7 @@ class BooksViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
+        self.bindLogicViewModel()
         self.setNavigaitonItem()
         // Do any additional setup after loading the view.
     }
@@ -33,6 +34,10 @@ class BooksViewController: BaseViewController {
         collectView.delegate = viewModle
         collectView.dataSource = viewModle
         self.view.addSubview(collectView)
+    }
+    
+    func bindLogicViewModel(){
+        self.viewModle.controller = self
     }
 
     func setNavigaitonItem(){

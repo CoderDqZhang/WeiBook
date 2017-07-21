@@ -58,13 +58,21 @@ class TopBooksTableViewCell: UITableViewCell {
         self.updateConstraints()
     }
     
+    func cellSetData(model:ServerBookModel){
+        bookPost.sd_setImage(with: URL.init(string: model.bookImg), placeholderImage: nil, options: SDWebImageOptions.retryFailed) { (image, error, cacheType, url) in
+            
+        }
+        bookTitle.text = model.title
+        bookDesc.text = model.descriptionField
+    }
+    
     override func updateConstraints() {
         if !didMakeConstraints {
             
             bookPost.snp.makeConstraints({ (make) in
                 make.centerY.equalTo(self.contentView.snp.centerY).offset(0)
                 make.left.equalTo(self.contentView.snp.left).offset(15)
-                make.size.equalTo(BookLargerSize)
+                make.size.equalTo(CGSize.init(width: 104, height: 144))
             })
             
             bookTitle.snp.makeConstraints({ (make) in
@@ -88,8 +96,6 @@ class TopBooksTableViewCell: UITableViewCell {
             })
             
             didMakeConstraints = true
-            
-            
         }
         super.updateConstraints()
     }

@@ -157,6 +157,7 @@
 		1FB003CB1F09F75100A4EF13 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CA1F09F75100A4EF13 /* AddBookViewController.swift */; };
 		1FB003CD1F09F76C00A4EF13 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CC1F09F76C00A4EF13 /* AddBookViewModel.swift */; };
 		1FB003CF1F09F92400A4EF13 /* SBNBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB003CE1F09F92400A4EF13 /* SBNBookModel.swift */; };
+		1FB094EC1F220657005F1033 /* MyBooksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB094EB1F220657005F1033 /* MyBooksModel.swift */; };
 		1FB370961F135018003DC654 /* DiscoverCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370951F135018003DC654 /* DiscoverCreateViewController.swift */; };
 		1FB370981F1351E0003DC654 /* DiscoverCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370971F1351E0003DC654 /* DiscoverCreateViewModel.swift */; };
 		1FB3709A1F136A0D003DC654 /* CreateDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370991F136A0D003DC654 /* CreateDataTableViewCell.swift */; };
@@ -185,6 +186,7 @@
 		1FB370D21F137736003DC654 /* UIView+DXFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370BC1F137736003DC654 /* UIView+DXFrame.swift */; };
 		1FB370D31F137736003DC654 /* UIViewController+DXPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370BD1F137736003DC654 /* UIViewController+DXPhotoPicker.swift */; };
 		1FB370D61F1390ED003DC654 /* UITextViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370D51F1390ED003DC654 /* UITextViewExtensions.swift */; };
+		1FD76C051F21AC3B00F334CF /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD76C041F21AC3B00F334CF /* FormModel.swift */; };
 		1FDABFC31F1F455000C45E14 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDABFC21F1F455000C45E14 /* RecordManager.swift */; };
 		1FDABFC51F1F466700C45E14 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */; };
 		1FEF83531EF1498E00C7D84B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF83521EF1498E00C7D84B /* AppDelegate.swift */; };
@@ -393,6 +395,7 @@
 		1FB003CA1F09F75100A4EF13 /* AddBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		1FB003CC1F09F76C00A4EF13 /* AddBookViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		1FB003CE1F09F92400A4EF13 /* SBNBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBNBookModel.swift; sourceTree = "<group>"; };
+		1FB094EB1F220657005F1033 /* MyBooksModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBooksModel.swift; sourceTree = "<group>"; };
 		1FB370951F135018003DC654 /* DiscoverCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCreateViewController.swift; sourceTree = "<group>"; };
 		1FB370971F1351E0003DC654 /* DiscoverCreateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCreateViewModel.swift; sourceTree = "<group>"; };
 		1FB370991F136A0D003DC654 /* CreateDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDataTableViewCell.swift; sourceTree = "<group>"; };
@@ -422,6 +425,7 @@
 		1FB370BC1F137736003DC654 /* UIView+DXFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DXFrame.swift"; sourceTree = "<group>"; };
 		1FB370BD1F137736003DC654 /* UIViewController+DXPhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DXPhotoPicker.swift"; sourceTree = "<group>"; };
 		1FB370D51F1390ED003DC654 /* UITextViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewExtensions.swift; sourceTree = "<group>"; };
+		1FD76C041F21AC3B00F334CF /* FormModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		1FDABFC21F1F455000C45E14 /* RecordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		1FEF834F1EF1498E00C7D84B /* WeiBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -899,6 +903,7 @@
 		1F8374E31EFBB45B00ED97DE /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1FB094EB1F220657005F1033 /* MyBooksModel.swift */,
 				1F8374E41EFBB48600ED97DE /* UserInfoModel.h */,
 				1F8374E51EFBB48600ED97DE /* UserInfoModel.m */,
 			);
@@ -981,6 +986,14 @@
 				1FB370BD1F137736003DC654 /* UIViewController+DXPhotoPicker.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		1FD76C031F21AC2300F334CF /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				1FD76C041F21AC3B00F334CF /* FormModel.swift */,
+			);
+			name = Form;
 			sourceTree = "<group>";
 		};
 		1FEF83461EF1498E00C7D84B = {
@@ -1079,6 +1092,7 @@
 		1FFF4E931EF1623A001E991F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1FD76C031F21AC2300F334CF /* Form */,
 				1F7017FD1F023D5800029158 /* Home */,
 				1F8374E31EFBB45B00ED97DE /* Profile */,
 			);
@@ -1282,6 +1296,7 @@
 				1F4AA5661EF7E02B0085BE3B /* NSString+Utils.m in Sources */,
 				1F8804C91F0F8CE200F15AF3 /* FllowerViewModel.swift in Sources */,
 				1F4AA57F1EF7E0310085BE3B /* UIViewController+TalkingData.swift in Sources */,
+				1FB094EC1F220657005F1033 /* MyBooksModel.swift in Sources */,
 				1F4AA60A1EF7EF190085BE3B /* UITableView+FDKeyedHeightCache.m in Sources */,
 				1F8375011EFD50D100ED97DE /* TextField+Extentions.swift in Sources */,
 				1F4AA58A1EF7E0410085BE3B /* Tools.swift in Sources */,
@@ -1391,6 +1406,7 @@
 				1F7018011F024B7800029158 /* HomePageViewController.swift in Sources */,
 				1F4AA5F31EF7EF190085BE3B /* TAPageControl.m in Sources */,
 				1F70181C1F04EBF800029158 /* SearchViewModel.swift in Sources */,
+				1FD76C051F21AC3B00F334CF /* FormModel.swift in Sources */,
 				1FB003CF1F09F92400A4EF13 /* SBNBookModel.swift in Sources */,
 				1F4AA60C1EF7EF190085BE3B /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				1F6A2E601F0B73B200C3A574 /* NYSegment.m in Sources */,

@@ -13,8 +13,20 @@ class AddBookViewModel: BaseViewModel {
 
     var isbnStr:String!
     var snbBookModel:SBNBookModel!
+    var serverBookModel:NSMutableArray!
+    
     var sectionsNumber = [3]
+    
     override init() {
+        super.init()
+    }
+    
+    
+    
+    func addBook(){
+        let controller = AddBookCommentViewController()
+        controller.bookModel = ServerBookModel.init(fromDictionary: (serverBookModel[0] as! NSDictionary))
+        NavigationPushView(self.controller!, toConroller: controller)
     }
     
     func tableViewTagCellHeight() ->CGFloat {
@@ -57,6 +69,14 @@ class AddBookViewModel: BaseViewModel {
             if (!resultDic.isCompleted){
                 self.snbBookModel = SBNBookModel.init(fromDictionary: resultDic.value as! NSDictionary)
                 self.controller?.tableView.reloadData()
+            }
+        }
+        let serverUrl = "\(BaseUrl)\(QRCodeServer)"
+        let parameters = ["searchKey":isbn]
+        BaseNetWorke.sharedInstance.getUrlWithString(serverUrl, parameters:parameters as AnyObject).observe { (resultDic) in
+            if (!resultDic.isCompleted){
+                self.serverBookModel = NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any])
+//                print(self.serverBookModel)
             }
         }
     }

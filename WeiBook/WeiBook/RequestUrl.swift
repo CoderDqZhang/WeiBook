@@ -16,6 +16,10 @@ let LoginPasswrodUrl = "/user/login"
 let ChangeUserInfo = "/user/edit"
 
 let HomeBanner = "/tabMain/banners"
+let AddBook = "/wishBook/add"
+let MyBookList = "/wishBook/list"
+let QRCodeServer = "/book/getBookByISBN"
+let SearchBook = "/common/search"
 
 let AddAddress = ""
 

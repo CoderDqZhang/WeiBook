@@ -11,14 +11,21 @@ import Photos
 
 class AddBookCommentViewController: BaseViewController {
 
+    var bookModel:ServerBookModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bindViewModel(viewModel: AddBookCommentViewModel(), controller: self)
         self.setUpTableView(style: .grouped, cells: [GloableImageLableDetailImageCell.self,GloableImageLableSwitchCell.self,CreateDataTableViewCell.self,RecordTableViewCell.self], controller: self)
         self.setUpNavigaitonItem()
+        self.bindLogicModel()
         // Do any additional setup after loading the view.
     }
 
+    func bindLogicModel(){
+        (self.viewModel as! AddBookCommentViewModel).bookModel = self.bookModel
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

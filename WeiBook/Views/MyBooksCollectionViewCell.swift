@@ -29,7 +29,6 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUpView()
-//        self.backgroundColor = UIColor.red
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,9 +37,6 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
     
     func setUpView(){
         bookPost = UIImageView.init()
-        bookPost.sd_setImage(with: URL.init(string: "https://img3.doubanio.com/lpic/s29436963.jpg"), placeholderImage: nil, options: SDWebImageOptions.retryFailed) { (image, error, cacheType, url) in
-            
-        }
         self.contentView.addSubview(bookPost)
         
         booksTitle = UILabel.init()
@@ -63,8 +59,12 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
         self.updateConstraints()
     }
     
-    func cellSetData(status:BookStatusType){
+    func cellSetData(status:BookStatusType, model:MyBooksModel){
         self.changeBookStatus(status: status)
+        bookPost.sd_setImage(with: URL.init(string: model.tails.bookInfo.bookImg), placeholderImage: nil, options: SDWebImageOptions.retryFailed) { (image, error, cacheType, url) in
+            
+        }
+        booksTitle.text = model.tails.bookInfo.title
     }
     
     func changeBookStatus(status:BookStatusType) {
@@ -95,7 +95,7 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
         if !didMakeConstraints {
             bookPost.snp.makeConstraints({ (make) in
                 make.centerX.equalTo(self.contentView.snp.centerX).offset(0)
-                make.centerY.equalTo(self.contentView.snp.centerY).offset(-10)
+                make.top.equalTo(self.contentView.snp.top).offset(10)
                 make.size.equalTo(BookLargerSize)
             })
             

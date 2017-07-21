@@ -17,13 +17,15 @@ class HomeViewModel: BaseViewModel {
     
     func pushQRCodeView(){
         let controller = AddBookViewController()
-        controller.isbn = "9787111079279"
-        NavigationPushView(self.controller!, toConroller: controller)
-//        NavigationPushView(self.controller!, toConroller: QRCodeViewController())
+//        controller.isbn = "9787111079279"
+//        NavigationPushView(self.controller!, toConroller: controller)
+        NavigationPushView(self.controller!, toConroller: QRCodeViewController())
     }
     
     func pushSearchView(){
-        NavigaiontPresentView(self.controller!, toController: SearchViewController())
+        let toController = SearchViewController()
+        toController.toController = self.controller as! HomeViewController
+        NavigaiontPresentView(self.controller!, toController: toController)
     }
     
     func pushViewController(controller:UIViewController?){

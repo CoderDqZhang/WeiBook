@@ -23,7 +23,9 @@ extension TopBooksViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        NavigationPushView(self.controller!, toConroller: BookDescViewController())
+        let bookDescViewController = BookDescViewController()
+        let controller = self.controller?.parent as! HomePageViewController
+        controller.viewModel.pushViewController(bookDescViewController)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

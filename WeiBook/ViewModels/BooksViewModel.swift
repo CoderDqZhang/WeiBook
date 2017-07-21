@@ -11,8 +11,10 @@ import SwifterSwift
 
 class BooksViewModel: BaseViewModel {
 
+    var myBooksModel = NSMutableArray()
     override init() {
-        
+        super.init()
+        self.requestMyBooks()
     }
     
     func collectViewMyBooksCollectionViewCellSetData(_ indexPath:IndexPath, cell:MyBooksCollectionViewCell) {
@@ -28,7 +30,19 @@ class BooksViewModel: BaseViewModel {
         }else{
             status = .None
         }
-        cell.cellSetData(status: status)
+        cell.cellSetData(status: status, model:MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row] as! NSDictionary))
+    }
+    
+    //MARK: -RequestNetWorking
+    func requestMyBooks(){
+        let url = "\(BaseUrl)\(MyBookList)"
+        let parameters = ["userId":UserInfoModel.shareInstance().tails.userInfo.userId]
+        BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resulDic) in
+            if !resulDic.isCompleted {
+                self.myBooksModel = NSMutableArray.mj_keyValuesArray(withObjectArray: resulDic.value as! [Any])
+                (self.controller as! BooksViewController).collectView.reloadData()
+            }
+        }
     }
 }
 
@@ -41,7 +55,7 @@ extension BooksViewModel : UICollectionViewDelegate {
 
 extension BooksViewModel : UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 17
+        return self.myBooksModel.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int
@@ -61,7 +75,7 @@ extension BooksViewModel : UICollectionViewDataSource {
 extension BooksViewModel : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize.init(width: (SwifterSwift.screenWidth - 10) / 3, height: 150)
+        return CGSize.init(width: (SwifterSwift.screenWidth - 10) / 3, height: BookLargerSize.height + 40)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

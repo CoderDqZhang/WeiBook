@@ -12,13 +12,32 @@ class AddBookTagsViewModel: BaseViewModel {
 
     let commentTitls = ["想读","是否可借","是否可赠"]
     var customComment = false
-    override init() {
-        
-    }
     
+    var addBookForm:AddBookFormModel!
+    
+    override init() {
+        super.init()
+    }
+//    {"state":"1",
+//    "userId":"4aeedfa860994ce9aee0febd89d5d005",
+//    "bookId":"365b0af28c1b11e69b740050568261f4",
+//    "commentContent":"Ceshi"
+//    "comments":[["imageUrl":"http://cdn.topveda.cn/bookComment/2017/7/21/bf1d0a3f9a30b825f775b3c78413f73a.jpg","type":"1"],["imageUrl":"http://cdn.topveda.cn/bookComment/2017/7/21/bf1d0a3f9a30b825f775b3c78413f73a.jpg","type":"1"]]
+//    }
     func addBookDone(){
-        _ = Tools.shareInstance.showMessage((self.controller?.view)!, msg: "加入书库成功", autoHidder: true)
-        self.controller?.navigationController?.popToRootViewController(animated: true)
+        let url = "\(BaseUrl)\(AddBook)"
+        let parameters = ["bookId":addBookForm.bookId,
+                          "userId":addBookForm.userId,
+                          "commentContent":addBookForm.commentContent,
+                          "comments":[["imageUrl":"http://cdn.topveda.cn/bookComment/2017/7/21/bf1d0a3f9a30b825f775b3c78413f73a.jpg","type":"1"],["imageUrl":"http://cdn.topveda.cn/bookComment/2017/7/21/bf1d0a3f9a30b825f775b3c78413f73a.jpg","type":"1"]],
+                          "state":"1"
+                          ] as [String : Any]
+        BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+            if !resultDic.isCompleted {
+                _ = Tools.shareInstance.showMessage((self.controller?.view)!, msg: "加入书库成功", autoHidder: true)
+                self.controller?.navigationController?.popToRootViewController(animated: true)
+            }
+        }
     }
     
     //MARK: - SetCellData
