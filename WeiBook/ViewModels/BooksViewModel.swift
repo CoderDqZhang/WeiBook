@@ -49,7 +49,7 @@ class BooksViewModel: BaseViewModel {
 extension BooksViewModel : UICollectionViewDelegate {
    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        NavigationPushView(self.controller!, toConroller: BookDescViewController())
     }
 }
 

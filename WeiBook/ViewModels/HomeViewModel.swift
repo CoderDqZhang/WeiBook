@@ -16,7 +16,7 @@ class HomeViewModel: BaseViewModel {
     }
     
     func pushQRCodeView(){
-        let controller = AddBookViewController()
+//        let controller = AddBookViewController()
 //        controller.isbn = "9787111079279"
 //        NavigationPushView(self.controller!, toConroller: controller)
         NavigationPushView(self.controller!, toConroller: QRCodeViewController())
