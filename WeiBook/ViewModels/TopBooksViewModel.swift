@@ -37,7 +37,7 @@ extension TopBooksViewModel : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 164
+        return SCREENWIDTH / 4 * 24 / 17 + 20
     }
 }
 

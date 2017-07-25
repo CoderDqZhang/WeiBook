@@ -45,8 +45,6 @@ class ProfileInfoViewModel: BaseViewModel {
             if !resulDic.isCompleted {
                 _ = Tools.shareInstance.showMessage((self.controller?.view)!, msg: "保存成功", autoHidder: true)
                 UserInfoModel.shareInstance()?.saveOrUpdate()
-                UserInfoModel.shareInstance().tails.saveOrUpdate()
-                UserInfoModel.shareInstance().tails.userInfo.saveOrUpdate()
                 if self.reloadDataClouse != nil {
                     self.reloadDataClouse()
                 }
@@ -137,7 +135,7 @@ class ProfileInfoViewModel: BaseViewModel {
     
     //MARK: NetWorking
     func requestUserInfo(){
-        if UserInfoModel.isExistInTable() {
+        if !UserInfoModel.isExistInTable() {
             userInfo = UserInfoModel.shareInstance()
             print(userInfo)
         }else{
@@ -145,10 +143,12 @@ class ProfileInfoViewModel: BaseViewModel {
             let parameters = ["mobile":"18363899723","password":"123"]
             BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
                 if (!resultDic.isCompleted){
-                    self.userInfo = UserInfoModel.mj_object(withKeyValues: resultDic.value)
-                    self.userInfo?.saveOrUpdate()
+                    self.userInfo = UserInfoModel.init(dictionary: resultDic.value as! [AnyHashable : Any])
                     self.userInfo.tails.saveOrUpdate()
                     self.userInfo.tails.userInfo.saveOrUpdate()
+                    self.userInfo?.saveOrUpdate()
+                    UserInfoModel.toUserInstance(self.userInfo)
+                    Notification(LoginStatuesChange, value: nil)
                 }
             }
         }

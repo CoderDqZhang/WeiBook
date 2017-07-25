@@ -32,13 +32,15 @@ class ProfileViewModel: BaseViewModel {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
-                if UserInfoModel.isLoggedIn() {
-                    let controller = ProfileInfoViewController()
-                    NavigationPushView(self.controller!, toConroller: controller)
-                    
-                }else{
-                    NavigationPushView(self.controller!, toConroller: LoginViewController())
-                }
+                let controller = ProfileInfoViewController()
+                NavigationPushView(self.controller!, toConroller: controller)
+//                if UserInfoModel.isLoggedIn() {
+//                    let controller = ProfileInfoViewController()
+//                    NavigationPushView(self.controller!, toConroller: controller)
+//                    
+//                }else{
+//                    NavigationPushView(self.controller!, toConroller: LoginViewController())
+//                }
             }
         case 1:
             switch indexPath.row {

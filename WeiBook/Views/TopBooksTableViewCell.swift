@@ -30,9 +30,7 @@ class TopBooksTableViewCell: UITableViewCell {
     
     func setUpView(){
         bookPost = UIImageView.init()
-        bookPost.sd_setImage(with: URL.init(string: "https://img3.doubanio.com/lpic/s29436963.jpg"), placeholderImage: nil, options: SDWebImageOptions.retryFailed) { (image, error, cacheType, url) in
-            
-        }
+        
         self.contentView.addSubview(bookPost)
         
         bookTitle = UILabel.init()
@@ -56,14 +54,21 @@ class TopBooksTableViewCell: UITableViewCell {
         self.contentView.addSubview(bookDynamicLabel)
         
         self.updateConstraints()
+        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: "https://img3.doubanio.com/lpic/s29436963.jpg", imageView: bookPost) { (image, error, url) in
+            self.bookPost.image = image
+        }
+        self.updateConstraintsIfNeeded()
     }
     
     func cellSetData(model:ServerBookModel){
-        bookPost.sd_setImage(with: URL.init(string: model.bookImg), placeholderImage: nil, options: SDWebImageOptions.retryFailed) { (image, error, cacheType, url) in
-            
+        
+        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.bookImg, imageView: bookPost) { (image, error, url) in
+            self.bookPost.image = image
         }
+        
         bookTitle.text = model.title
         bookDesc.text = model.descriptionField
+        self.updateConstraintsIfNeeded()
     }
     
     override func updateConstraints() {
@@ -72,7 +77,7 @@ class TopBooksTableViewCell: UITableViewCell {
             bookPost.snp.makeConstraints({ (make) in
                 make.centerY.equalTo(self.contentView.snp.centerY).offset(0)
                 make.left.equalTo(self.contentView.snp.left).offset(15)
-                make.size.equalTo(CGSize.init(width: 104, height: 144))
+                make.size.equalTo(imageSize(type: .BookListView))
             })
             
             bookTitle.snp.makeConstraints({ (make) in

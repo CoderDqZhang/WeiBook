@@ -61,10 +61,14 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
     
     func cellSetData(status:BookStatusType, model:MyBooksModel){
         self.changeBookStatus(status: status)
-        bookPost.sd_setImage(with: URL.init(string: model.tails.bookInfo.bookImg), placeholderImage: nil, options: SDWebImageOptions.retryFailed) { (image, error, cacheType, url) in
-            
+        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.tails.bookInfo.bookImg, imageView: bookPost) { (image, error,url) in
+            self.bookPost.image = image
         }
+//        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.tails.bookInfo.bookImg, imageSizeType: .CollectView, imageView: bookPost) { (image, error, cacheType, url) in
+//            
+//        }
         booksTitle.text = model.tails.bookInfo.title
+        self.updateConstraintsIfNeeded()
     }
     
     func changeBookStatus(status:BookStatusType) {
@@ -96,7 +100,7 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
             bookPost.snp.makeConstraints({ (make) in
                 make.centerX.equalTo(self.contentView.snp.centerX).offset(0)
                 make.top.equalTo(self.contentView.snp.top).offset(10)
-                make.size.equalTo(BookLargerSize)
+                make.size.equalTo(imageSize(type: .CollectView))
             })
             
             booksTitle.snp.makeConstraints({ (make) in

@@ -49,9 +49,12 @@ class ProfileHeaderTableViewCell: UITableViewCell {
     
     func cellSetData(model:UserInfoModel?, isLogin:Bool){
         if isLogin {
-            photoImageView.sd_setImage(with: URL.init(string: (model?.tails.userInfo.photo)!), placeholderImage: nil, options: SDWebImageOptions.retryFailed) { (image, error, cacheType, url) in
+//            ImageViewManager.shareInstance.sd_imageView(url: (model?.tails.userInfo.photo)!, imageView: photoImageView, completedBlock: { (image, error, cacheType, url) in
+//                
+//            })
+            photoImageView.sd_setImage(with: URL.init(string: (model?.tails.userInfo.photo)!), placeholderImage: nil, options: SDWebImageOptions.retryFailed, completed: { (image, error, cacheType, url) in
                 
-            }
+            })
             self.userName.text = model?.username
             self.signature.text = model?.tails.userInfo.introduction
         }else{

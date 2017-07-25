@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppleThemeTool.setUpToolBarColor()
         AppleThemeTool.setUpKeyBoardManager()
         AppleThemeTool.setUpSKPhotoBrowser()
+        IFyunManager.shareInstance.setIFyunInstance()
         self.logSwiftBeaver()
         
         self.window?.rootViewController = mainTableBarController

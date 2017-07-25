@@ -40,6 +40,12 @@ import UIKit
 //    }
 //}
 
+enum language {
+    case ND
+    case Chinese
+    case Other
+}
+
 extension String{
     
     //MARK:获得string内容高度
@@ -160,6 +166,18 @@ extension String{
         }
         let range = (self.characters.index(self.startIndex, offsetBy: start) ..< self.characters.index(self.startIndex, offsetBy: start + location))
         return self.substring(with: range)
+    }
+    
+    
+    
+    func languageDetectByFirstCharacter (str:String?) -> language {
+        for (_, value) in (str?.characters.enumerated())! {
+            
+            if ("\u{4E00}" <= value  && value <= "\u{9FA5}") {
+                return language.Chinese
+            }
+        }
+        return language.ND
     }
     
 //    var sha1: String! {

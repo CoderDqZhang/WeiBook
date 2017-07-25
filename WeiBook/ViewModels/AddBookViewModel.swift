@@ -8,6 +8,7 @@
 
 import UIKit
 import SwifterSwift
+import MBProgressHUD
 
 class AddBookViewModel: BaseViewModel {
 
@@ -16,17 +17,25 @@ class AddBookViewModel: BaseViewModel {
     var serverBookModel:NSMutableArray!
     
     var sectionsNumber = [3]
+    var iFluSpeechSynthesizer:IFlySpeechSynthesizer!
+    
+    var loadingView:MBProgressHUD!
     
     override init() {
         super.init()
+        self.xfYunManger()
     }
     
     
     
     func addBook(){
-        let controller = AddBookCommentViewController()
-        controller.bookModel = ServerBookModel.init(fromDictionary: (serverBookModel[0] as! NSDictionary))
-        NavigationPushView(self.controller!, toConroller: controller)
+        if UserInfoModel.isLoggedIn() {
+            let controller = AddBookCommentViewController()
+            controller.bookModel = ServerBookModel.init(fromDictionary: (serverBookModel[0] as! NSDictionary))
+            NavigationPushView(self.controller!, toConroller: controller)
+        }else{
+            NavigationPushView(self.controller!, toConroller: LoginViewController())
+        }
     }
     
     func tableViewTagCellHeight() ->CGFloat {
@@ -61,6 +70,35 @@ class AddBookViewModel: BaseViewModel {
         }
     }
     
+    //MARK: TableViewDidSelect
+    func tableViewDidSelect(_ indexPath:IndexPath) {
+        if indexPath.row == 1 {
+            var array:[String]!
+            let language = self.snbBookModel.summary.languageDetectByFirstCharacter(str: self.snbBookModel.summary)
+            switch language {
+            case .Chinese:
+                array = ["xiaoyan","vinn","vils","aisjying","aisduck"]
+            default:
+                array = ["aiscatherine","aistom","abha","gabriela","mariane"]
+            }
+            UIAlertController.shwoAlertControl(self.controller!, style: .actionSheet, title: nil, message: nil, titles: array, cancel: "取消", doneTitle: nil, cancelAction: { 
+                
+            }, doneAction: { (str) in
+                self.iFluSpeechSynthesizer?.setParameter(str, forKey: IFlySpeechConstant.voice_NAME())
+            })
+//            loadingView = Tools.shareInstance.showLoading((self.controller?.view)!, msg: "正在合成语音")
+            iFluSpeechSynthesizer.startSpeaking(self.snbBookModel.summary)
+        }
+    }
+    
+    //MARK: XFyunManager
+    func xfYunManger(){
+        iFluSpeechSynthesizer = IFlySpeechSynthesizer.sharedInstance()
+        iFluSpeechSynthesizer?.delegate = self
+        iFluSpeechSynthesizer?.setParameter(IFlySpeechConstant.type_CLOUD(), forKey: IFlySpeechConstant.text_ENCODING())
+        iFluSpeechSynthesizer?.setParameter("50", forKey: IFlySpeechConstant.voice_NAME())
+    }
+    
     //MARK: NetWorking
     func requestGetBook(isbn:String){
         let url = "\(SBNCodeApi)\(isbn)"
@@ -81,12 +119,13 @@ class AddBookViewModel: BaseViewModel {
         }
     }
 }
-//MARK: TableViewDelegate&DataSource
 
+//MARK: TableViewDelegate&DataSource
 extension AddBookViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.tableViewDidSelect(indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -139,6 +178,23 @@ extension AddBookViewModel : UITableViewDataSource {
             self.tableViewBookTagTableViewCellSetData(indexPath,cell: cell as! BookTagTableViewCell)
             return cell
         }
+    }
+}
+
+extension AddBookViewModel : IFlySpeechSynthesizerDelegate {
+    func onCompleted(_ error: IFlySpeechError!) {
+        Tools.shareInstance.hiddenLoading(hud: loadingView)
+    }
+    
+    func onSpeakBegin() {
+    }
+    
+    func onBufferProgress(_ progress: Int32, message msg: String!) {
+        
+    }
+    
+    func onSpeakProgress(_ progress: Int32, beginPos: Int32, endPos: Int32) {
+        
     }
 }
 

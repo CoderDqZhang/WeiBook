@@ -10,10 +10,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserTail : JKDBModel
-@end
-
-
 @interface UserInfo : JKDBModel
 
 @property (nonatomic, strong) NSString * address;
@@ -72,6 +68,8 @@
 -(NSDictionary *)toDictionary;
 
 + (instancetype)shareInstance;
+
++ (void)toUserInstance:(UserInfoModel *)userInfo;
 
 + (BOOL)logout;
 

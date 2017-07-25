@@ -34,11 +34,58 @@ let BookLargerMidSize = CGSize.init(width: 51, height: 72)
 let BookLargerSmaSize = CGSize.init(width: 17, height: 24)
 
 
+enum ImageSizeType {
+    case CollectView
+    case BookListView
+    case BookDescView
+    case Default
+}
+
+//func imageSize(type:ImageSizeType, imageUrlType:ImageExtType) ->CGSize {
+//    switch type {
+//    case .CollectView:
+//        switch imageUrlType {
+//        case .DouBanUrl:
+//            return CGSize.init(width: ((SCREENWIDTH - 40) / 3 - 40) * 17 / 24, height: (SCREENWIDTH - 40) / 3 - 40)
+//        case .DanDanUrl:
+//            return CGSize.init(width: (SCREENWIDTH - 40) / 3, height: (SCREENWIDTH - 40) / 3)
+//        default:
+//            //这里需要在加上亚马逊的图片宽高
+//            return CGSize.init(width: 102, height: 144)
+//        }
+//    case .BookListView:
+//        switch imageUrlType {
+//        case .DouBanUrl:
+//            return CGSize.init(width: SCREENWIDTH / 4, height: SCREENWIDTH / 4 * 24 / 17)
+//        case .DanDanUrl:
+//            return CGSize.init(width: SCREENWIDTH / 4 * 24 / 17, height: SCREENWIDTH / 4 * 24 / 17)
+//        default:
+//            //这里需要在加上亚马逊的图片宽高
+//            return CGSize.init(width: 102, height: 144)
+//        }
+//    default:
+//        return CGSize.init(width: 102, height: 144)
+//    }
+//}
+
+func imageSize(type:ImageSizeType) ->CGSize {
+    switch type {
+    case .CollectView:
+        return CGSize.init(width: SCREENWIDTH / 4, height: SCREENWIDTH / 4 * 24 / 17)
+    case .BookListView:
+        return CGSize.init(width: SCREENWIDTH / 4, height: SCREENWIDTH / 4 * 24 / 17)
+    default:
+        return CGSize.init(width: 102, height: 144)
+    }
+}
+
 enum FollowAndFancsType {
     case Following
     case Followed
     case Follow
 }
+
+let XFYunAPPKeyID = "595b0307"
 
 //搜索历史保存文件地址
 let SearchHistoryDataPath = "SearchHistory.data"

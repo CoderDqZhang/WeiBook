@@ -36,5 +36,7 @@
 #import "NYSegmentedControl.h"
 #import <Qiniu/QiniuSDK.h>
 #import "QiniuAuthPolicy.h"
+#import <iflyMSC/IFlyMSC.h>
+#import "iflyMSC/IFlyMSC.h"
 
 #endif /* WeiBook_Bridging_Header_h */

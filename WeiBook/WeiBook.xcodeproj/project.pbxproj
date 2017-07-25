@@ -194,6 +194,23 @@
 		1FEF83581EF1498E00C7D84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEF83561EF1498E00C7D84B /* Main.storyboard */; };
 		1FEF835A1EF1498E00C7D84B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FEF83591EF1498E00C7D84B /* Assets.xcassets */; };
 		1FEF835D1EF1498E00C7D84B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEF835B1EF1498E00C7D84B /* LaunchScreen.storyboard */; };
+		1FFA26E21F25C9540051E228 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26E11F25C9540051E228 /* iflyMSC.framework */; };
+		1FFA26E41F25C9980051E228 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26E31F25C9980051E228 /* libz.tbd */; };
+		1FFA26E61F25C9A10051E228 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26E51F25C9A10051E228 /* AVFoundation.framework */; };
+		1FFA26E81F25C9A80051E228 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26E71F25C9A80051E228 /* SystemConfiguration.framework */; };
+		1FFA26EA1F25C9B00051E228 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26E91F25C9B00051E228 /* Foundation.framework */; };
+		1FFA26EC1F25C9B70051E228 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26EB1F25C9B70051E228 /* CoreTelephony.framework */; };
+		1FFA26EE1F25C9C00051E228 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26ED1F25C9C00051E228 /* AudioToolbox.framework */; };
+		1FFA26F01F25C9C70051E228 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26EF1F25C9C70051E228 /* UIKit.framework */; };
+		1FFA26F21F25C9CE0051E228 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26F11F25C9CE0051E228 /* CoreLocation.framework */; };
+		1FFA26F41F25C9D50051E228 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26F31F25C9D50051E228 /* Contacts.framework */; };
+		1FFA26F61F25C9DC0051E228 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26F51F25C9DC0051E228 /* QuartzCore.framework */; };
+		1FFA26F81F25C9E90051E228 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26F71F25C9E90051E228 /* CoreGraphics.framework */; };
+		1FFA26FA1F25C9F00051E228 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26F91F25C9F00051E228 /* libc++.tbd */; };
+		1FFA26FC1F25C9F90051E228 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26FB1F25C9F90051E228 /* libicucore.tbd */; };
+		1FFA26FE1F25CAB00051E228 /* IFyunManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA26FD1F25CAB00051E228 /* IFyunManager.swift */; };
+		1FFA27001F25CF650051E228 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA26FF1F25CF640051E228 /* AddressBook.framework */; };
+		1FFA27411F2757C80051E228 /* ImageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA27401F2757C80051E228 /* ImageViewManager.swift */; };
 		B69541498F36DA24EE984876 /* Pods_WeiBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 377302C9F82CF76D5A772118 /* Pods_WeiBook.framework */; };
 /* End PBXBuildFile section */
 
@@ -435,6 +452,23 @@
 		1FEF83591EF1498E00C7D84B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FEF835C1EF1498E00C7D84B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FEF835E1EF1498E00C7D84B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FFA26E11F25C9540051E228 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		1FFA26E31F25C9980051E228 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		1FFA26E51F25C9A10051E228 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1FFA26E71F25C9A80051E228 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1FFA26E91F25C9B00051E228 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1FFA26EB1F25C9B70051E228 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		1FFA26ED1F25C9C00051E228 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		1FFA26EF1F25C9C70051E228 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1FFA26F11F25C9CE0051E228 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1FFA26F31F25C9D50051E228 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		1FFA26F51F25C9DC0051E228 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1FFA26F71F25C9E90051E228 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1FFA26F91F25C9F00051E228 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		1FFA26FB1F25C9F90051E228 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		1FFA26FD1F25CAB00051E228 /* IFyunManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IFyunManager.swift; sourceTree = "<group>"; };
+		1FFA26FF1F25CF640051E228 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		1FFA27401F2757C80051E228 /* ImageViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewManager.swift; sourceTree = "<group>"; };
 		2B966EC35C9E0546FB5B39CC /* Pods-WeiBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeiBook/Pods-WeiBook.release.xcconfig"; sourceTree = "<group>"; };
 		377302C9F82CF76D5A772118 /* Pods_WeiBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeiBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACEE389AB2E585FA1B1A8733 /* Pods-WeiBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeiBook/Pods-WeiBook.debug.xcconfig"; sourceTree = "<group>"; };
@@ -445,6 +479,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FFA27001F25CF650051E228 /* AddressBook.framework in Frameworks */,
+				1FFA26FC1F25C9F90051E228 /* libicucore.tbd in Frameworks */,
+				1FFA26FA1F25C9F00051E228 /* libc++.tbd in Frameworks */,
+				1FFA26F81F25C9E90051E228 /* CoreGraphics.framework in Frameworks */,
+				1FFA26F61F25C9DC0051E228 /* QuartzCore.framework in Frameworks */,
+				1FFA26F41F25C9D50051E228 /* Contacts.framework in Frameworks */,
+				1FFA26F21F25C9CE0051E228 /* CoreLocation.framework in Frameworks */,
+				1FFA26F01F25C9C70051E228 /* UIKit.framework in Frameworks */,
+				1FFA26EE1F25C9C00051E228 /* AudioToolbox.framework in Frameworks */,
+				1FFA26EC1F25C9B70051E228 /* CoreTelephony.framework in Frameworks */,
+				1FFA26EA1F25C9B00051E228 /* Foundation.framework in Frameworks */,
+				1FFA26E81F25C9A80051E228 /* SystemConfiguration.framework in Frameworks */,
+				1FFA26E61F25C9A10051E228 /* AVFoundation.framework in Frameworks */,
+				1FFA26E41F25C9980051E228 /* libz.tbd in Frameworks */,
+				1FFA26E21F25C9540051E228 /* iflyMSC.framework in Frameworks */,
 				1FB3709E1F13770A003DC654 /* Photos.framework in Frameworks */,
 				B69541498F36DA24EE984876 /* Pods_WeiBook.framework in Frameworks */,
 				1F4AA6581EF7F2600085BE3B /* libTalkingData.a in Frameworks */,
@@ -457,6 +506,20 @@
 		143E9173EE17043EE36E5358 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FFA26FF1F25CF640051E228 /* AddressBook.framework */,
+				1FFA26FB1F25C9F90051E228 /* libicucore.tbd */,
+				1FFA26F91F25C9F00051E228 /* libc++.tbd */,
+				1FFA26F71F25C9E90051E228 /* CoreGraphics.framework */,
+				1FFA26F51F25C9DC0051E228 /* QuartzCore.framework */,
+				1FFA26F31F25C9D50051E228 /* Contacts.framework */,
+				1FFA26F11F25C9CE0051E228 /* CoreLocation.framework */,
+				1FFA26EF1F25C9C70051E228 /* UIKit.framework */,
+				1FFA26ED1F25C9C00051E228 /* AudioToolbox.framework */,
+				1FFA26EB1F25C9B70051E228 /* CoreTelephony.framework */,
+				1FFA26E91F25C9B00051E228 /* Foundation.framework */,
+				1FFA26E71F25C9A80051E228 /* SystemConfiguration.framework */,
+				1FFA26E51F25C9A10051E228 /* AVFoundation.framework */,
+				1FFA26E31F25C9980051E228 /* libz.tbd */,
 				1FB3709D1F13770A003DC654 /* Photos.framework */,
 				377302C9F82CF76D5A772118 /* Pods_WeiBook.framework */,
 			);
@@ -607,8 +670,10 @@
 				1F4AA5831EF7E0410085BE3B /* ShareTools.swift */,
 				1F4AA5841EF7E0410085BE3B /* Tools.swift */,
 				1FDABFC21F1F455000C45E14 /* RecordManager.swift */,
+				1FFA27401F2757C80051E228 /* ImageViewManager.swift */,
 				1F893BDD1F1F1F83007E9F31 /* QiniuAuthPolicy.h */,
 				1F893BDE1F1F1F83007E9F31 /* QiniuAuthPolicy.m */,
+				1FFA26FD1F25CAB00051E228 /* IFyunManager.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -627,6 +692,7 @@
 		1F4AA59A1EF7EF190085BE3B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				1FFA26E01F25C9540051E228 /* lib */,
 				1FB3709F1F137736003DC654 /* DXPhotoPicker */,
 				1F6A2E571F0B73B200C3A574 /* NYSegmentedControl */,
 				1F4AA59B1EF7EF190085BE3B /* CountDown */,
@@ -1038,6 +1104,14 @@
 			path = WeiBook;
 			sourceTree = "<group>";
 		};
+		1FFA26E01F25C9540051E228 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				1FFA26E11F25C9540051E228 /* iflyMSC.framework */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		1FFF4E8F1EF1623A001E991F /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -1143,7 +1217,7 @@
 				TargetAttributes = {
 					1FEF834E1EF1498E00C7D84B = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = CB3GSV3Y3F;
+						DevelopmentTeam = 77L324L35A;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1263,6 +1337,7 @@
 				1FB370CB1F137736003DC654 /* DXUnAuthorizedTipsView.swift in Sources */,
 				1F6A2EDE1F0CD9FA00C3A574 /* BookListViewController.swift in Sources */,
 				1F6A2E6D1F0B7FDC00C3A574 /* DiscoverHotViewModel.swift in Sources */,
+				1FFA26FE1F25CAB00051E228 /* IFyunManager.swift in Sources */,
 				1FEF83551EF1498E00C7D84B /* ViewController.swift in Sources */,
 				1F8374CD1EFA567000ED97DE /* AppThemeTool.swift in Sources */,
 				1F6680C81F147F3C00B4A4E8 /* AddBookCommentViewModel.swift in Sources */,
@@ -1406,6 +1481,7 @@
 				1F7018011F024B7800029158 /* HomePageViewController.swift in Sources */,
 				1F4AA5F31EF7EF190085BE3B /* TAPageControl.m in Sources */,
 				1F70181C1F04EBF800029158 /* SearchViewModel.swift in Sources */,
+				1FFA27411F2757C80051E228 /* ImageViewManager.swift in Sources */,
 				1FD76C051F21AC3B00F334CF /* FormModel.swift in Sources */,
 				1FB003CF1F09F92400A4EF13 /* SBNBookModel.swift in Sources */,
 				1F4AA60C1EF7EF190085BE3B /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
@@ -1547,10 +1623,12 @@
 			baseConfigurationReference = ACEE389AB2E585FA1B1A8733 /* Pods-WeiBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CB3GSV3Y3F;
+				DEVELOPMENT_TEAM = 77L324L35A;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Global/Uti/QQ",
+					"$(PROJECT_DIR)/Global/Lib/lib",
 				);
 				INFOPLIST_FILE = WeiBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1571,10 +1649,12 @@
 			baseConfigurationReference = 2B966EC35C9E0546FB5B39CC /* Pods-WeiBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CB3GSV3Y3F;
+				DEVELOPMENT_TEAM = 77L324L35A;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Global/Uti/QQ",
+					"$(PROJECT_DIR)/Global/Lib/lib",
 				);
 				INFOPLIST_FILE = WeiBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

@@ -277,7 +277,7 @@ class BaseNetWorke {
 //            headers = ["header-token":!UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token,"header-timestamp":"\(timestamp)","header-sign":sign]
         }
 
-        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: methods == .post ? JSONEncoding.default : URLEncoding.default, headers: headers).responseJSON { (response) in
+        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: url == "\(BaseUrl)\(AddBook)" ? JSONEncoding.default : URLEncoding.default, headers: headers).responseJSON { (response) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
             NetWorkingResponse.sharedInstance.showNetWorkingResPonse(response as AnyObject)

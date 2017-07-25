@@ -16,9 +16,6 @@ NSString *const kTailUserInfo = @"userInfo";
 
 @implementation UserInfoTail
 
-
-
-
 /**
  * Instantiate the instance using the passed dictionary values to set the properties values
  */
@@ -429,6 +426,7 @@ NSString *const kUserInfoModelUsername = @"username";
 
 
 #define kEncodedObjectPath_User ([[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"UserInfo"])
+
 static UserInfoModel *_instance = nil;
 @interface UserInfoModel ()
 @end
@@ -487,6 +485,19 @@ static UserInfoModel *_instance = nil;
         self.username = dictionary[kUserInfoModelUsername];
     }
     return self;
+}
+
++ (void)toUserInstance:(UserInfoModel *)userInfo {
+    [UserInfoModel shareInstance].createdAt = userInfo.createdAt;
+    [UserInfoModel shareInstance].username = userInfo.username;
+    [UserInfoModel shareInstance].state = userInfo.state;
+    [UserInfoModel shareInstance].lastLoginAt = userInfo.lastLoginAt;
+    [UserInfoModel shareInstance].email = userInfo.email;
+    [UserInfoModel shareInstance].mobile = userInfo.mobile;
+    [UserInfoModel shareInstance].idField = userInfo.idField;
+    [UserInfoModel shareInstance].username = userInfo.username;
+    [UserInfoModel shareInstance].tails = userInfo.tails;
+    [UserInfoModel shareInstance].tails.userInfo = userInfo.tails.userInfo;
 }
 
 
@@ -593,16 +604,10 @@ static UserInfoModel *_instance = nil;
     }else{
         return NO;
     }
-    //    NSFileManager *fileManager = [NSFileManager defaultManager];
-    //    return [fileManager fileExistsAtPath:kEncodedObjectPath_User];
 }
 
 + (BOOL)logout
 {
-    
-    //    NSFileManager *fileManager = [NSFileManager defaultManager];
-    //    NSError *error;
-    //    BOOL result = [fileManager removeItemAtPath:kEncodedObjectPath_User error:&error];
     [UserInfoModel shareInstance].createdAt = 0;
     [UserInfoModel shareInstance].username = nil;
     [UserInfoModel shareInstance].state = 0;
@@ -611,6 +616,8 @@ static UserInfoModel *_instance = nil;
     [UserInfoModel shareInstance].tails = nil;
     [UserInfoModel shareInstance].mobile = nil;
     [UserInfoModel shareInstance].idField = nil;
+    [[UserInfoModel shareInstance].tails deleteObject];
+    [[UserInfoModel shareInstance].tails.userInfo deleteObject];
     return [[UserInfoModel shareInstance] deleteObject];;
 }
 

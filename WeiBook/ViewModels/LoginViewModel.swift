@@ -33,14 +33,15 @@ class LoginViewModel: BaseViewModel {
     }
     
     func requestLogin(_ form:LoginForm,controller:LoginViewController) {
-        let dic = ["mobile":form.phone, "code":form.code]
-        let url = "\(BaseUrl)\(LoginUrl)"
+        let dic = ["mobile":form.phone, "password":form.code]
+        let url = "\(BaseUrl)\(LoginPasswrodUrl)"
         BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: dic as AnyObject).observe { (resultDic) in
             if !resultDic.isCompleted {
-                let userInfo = UserInfoModel.mj_object(withKeyValues: resultDic.value)
-                userInfo?.saveOrUpdate()
+                let userInfo = UserInfoModel.init(dictionary: resultDic.value as! [AnyHashable : Any])
                 userInfo?.tails.saveOrUpdate()
                 userInfo?.tails.userInfo.saveOrUpdate()
+                userInfo?.saveOrUpdate()
+                UserInfoModel.toUserInstance(userInfo)
                 Notification(LoginStatuesChange, value: nil)
                 controller.navigationController?.popViewController(animated: true)
                 
