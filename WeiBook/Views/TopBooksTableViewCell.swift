@@ -68,6 +68,8 @@ class TopBooksTableViewCell: UITableViewCell {
         
         bookTitle.text = model.title
         bookDesc.text = model.descriptionField
+        let str = model.inputNum == nil ? 0 : model.inputNum
+        bookDynamicLabel.text = "藏书人数 \((str)!) 评论人数 \((model.people)!)"
         self.updateConstraintsIfNeeded()
     }
     

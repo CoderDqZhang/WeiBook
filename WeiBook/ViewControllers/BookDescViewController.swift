@@ -10,10 +10,14 @@ import UIKit
 
 class BookDescViewController: BaseViewController {
 
+    var enTimePickerView:ZHPickView!
+    var model:ServerBookModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.bindViewModel(viewModel: BookDescViewModel.init(), controller: self)
         self.setUpNavigaiotionItem()
+        self.bindBookDescLogic()
         // Do any additional setup after loading the view.
     }
     
@@ -26,10 +30,33 @@ class BookDescViewController: BaseViewController {
         UIAlertController.shwoAlertControl(self, style: .actionSheet, title: nil, message: nil, titles: ["借阅二维码","赠送二维码"], cancel: "取消", doneTitle: nil, cancelAction: { 
             
         }) { (str) in
-            let toController = BaseWebViewController()
-            toController.url = "\(QRCodeUrl)'dsfd':'fsdfs'"
-            NavigationPushView(self, toConroller: toController)
+            
+            UIAlertController.shwoAlertControl(self, style: .alert, title: "请选择还书时间", message: nil, titles: nil, cancel: "取消", doneTitle: "确定", cancelAction: { 
+                
+            }, doneAction: { (str) in
+                self.showSexPickerView()
+            })
         }
+    }
+    
+    func bindBookDescLogic(){
+        (self.viewModel as! BookDescViewModel).model = self.model
+        (self.viewModel as! BookDescViewModel).requstBookDesc()
+    }
+    
+    func showSexPickerView(){
+        if enTimePickerView == nil {
+            enTimePickerView = ZHPickView(pickviewWith: ["15天","1个月","2个月","3个月"], isHaveNavControler: false)
+            enTimePickerView.setPickViewColer(UIColor.white)
+            enTimePickerView.setPickViewColer(UIColor.white)
+            enTimePickerView.setTintColor(UIColor.white)
+            enTimePickerView.tag = 5
+            enTimePickerView.setToolbarTintColor(UIColor.white)
+            enTimePickerView.setTintFont(App_Theme_PinFan_R_13_Font, color: UIColor.init(hexString: App_Theme_384249_Color))
+            enTimePickerView.delegate = self
+        }
+        
+        enTimePickerView.show()
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,4 +75,26 @@ class BookDescViewController: BaseViewController {
     }
     */
 
+}
+
+extension BookDescViewController: ZHPickViewDelegate {
+    func toobarDonBtnHaveClick(_ pickView: ZHPickView!, resultString: String!) {
+        var date = Int(Date.init().unixTimestamp)
+        var resultData:Int
+        switch resultString {
+        case "15天":
+            resultData = 15 * 24 * 60 * 60
+            break;
+        case "1个月":
+            resultData = 20 * 24 * 60 * 60
+            break;
+        case "2个月":
+            resultData = 30 * 2 * 24 * 60 * 60
+            break;
+        default:
+            resultData = 30 * 3 * 24 * 60 * 60
+            break;
+        }
+        (self.viewModel as! BookDescViewModel).borrowButtonPress(time: Int64(date + resultData))
+    }
 }

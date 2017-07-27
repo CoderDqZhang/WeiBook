@@ -16,6 +16,8 @@ class MyBooksModel: NSObject, NSCoding{
     var state : Int!
     var tails : MyBookListTail!
     var userId : String!
+    var borrowState : Int!
+
     
     
     /**
@@ -24,6 +26,7 @@ class MyBooksModel: NSObject, NSCoding{
     init(fromDictionary dictionary: NSDictionary){
         bookId = dictionary["bookId"] as? String
         createdAt = dictionary["createdAt"] as? Int
+        borrowState = dictionary["borrowState"] as? Int
         id = dictionary["id"] as? String
         state = dictionary["state"] as? Int
         if let tailsData = dictionary["tails"] as? NSDictionary{
@@ -37,12 +40,15 @@ class MyBooksModel: NSObject, NSCoding{
      */
     func toDictionary() -> NSDictionary
     {
-        var dictionary = NSMutableDictionary()
+        let dictionary = NSMutableDictionary()
         if bookId != nil{
             dictionary["bookId"] = bookId
         }
         if createdAt != nil{
             dictionary["createdAt"] = createdAt
+        }
+        if borrowState != nil{
+            dictionary["borrowState"] = borrowState
         }
         if id != nil{
             dictionary["id"] = id
@@ -68,6 +74,7 @@ class MyBooksModel: NSObject, NSCoding{
         bookId = aDecoder.decodeObject(forKey: "bookId") as? String
         createdAt = aDecoder.decodeObject(forKey: "createdAt") as? Int
         id = aDecoder.decodeObject(forKey: "id") as? String
+        borrowState = aDecoder.decodeObject(forKey: "borrowState") as? Int
         state = aDecoder.decodeObject(forKey: "state") as? Int
         tails = aDecoder.decodeObject(forKey: "tails") as? MyBookListTail
         userId = aDecoder.decodeObject(forKey: "userId") as? String
@@ -87,6 +94,9 @@ class MyBooksModel: NSObject, NSCoding{
         }
         if id != nil{
             aCoder.encode(id, forKey: "id")
+        }
+        if borrowState != nil{
+            aCoder.encode(borrowState, forKey: "borrowState")
         }
         if state != nil{
             aCoder.encode(state, forKey: "state")
@@ -131,7 +141,7 @@ class MyBookListTail : NSObject, NSCoding{
      */
     func toDictionary() -> NSDictionary
     {
-        var dictionary = NSMutableDictionary()
+        let dictionary = NSMutableDictionary()
         if authorDesc != nil{
             dictionary["authorDesc"] = authorDesc
         }

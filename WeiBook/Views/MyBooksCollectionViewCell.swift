@@ -12,6 +12,8 @@ import SDWebImage
 enum BookStatusType {
     case Borrow //借出
     case Entertain //待还
+    case Borrowed //已借
+    case Done //待还
     case Give   //赠送
     case Receive //领受
     case None //领受
@@ -48,7 +50,6 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
         
         
         booksStatus = UILabel.init()
-        self.changeBookStatus(status: .None)
         booksStatus.layer.cornerRadius = 5.0
         booksStatus.layer.masksToBounds = true
         booksStatus.textAlignment = .center
@@ -59,36 +60,34 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
         self.updateConstraints()
     }
     
-    func cellSetData(status:BookStatusType, model:MyBooksModel){
-        self.changeBookStatus(status: status)
+    func cellSetData(model:MyBooksModel){
+        self.changeBookStatus(status: model.borrowState)
         ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.tails.bookInfo.bookImg, imageView: bookPost) { (image, error,url) in
             self.bookPost.image = image
         }
-//        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.tails.bookInfo.bookImg, imageSizeType: .CollectView, imageView: bookPost) { (image, error, cacheType, url) in
-//            
-//        }
+
         booksTitle.text = model.tails.bookInfo.title
         self.updateConstraintsIfNeeded()
     }
     
-    func changeBookStatus(status:BookStatusType) {
+    func changeBookStatus(status:Int) {
         switch status {
-        case .Borrow:
+        case 1:
+            booksStatus.isHidden = false
+            booksStatus.text = ""
+            booksStatus.backgroundColor = UIColor.init(hexString: App_Theme_594CA8_Color)
+            
+        case 2:
             booksStatus.isHidden = false
             booksStatus.text = "借出"
             booksStatus.backgroundColor = UIColor.init(hexString: App_Theme_594CA8_Color)
-            
-        case .Entertain:
+        case 3:
             booksStatus.isHidden = false
             booksStatus.text = "待还"
             booksStatus.backgroundColor = UIColor.init(hexString: App_Theme_594CA8_Color)
-        case .Give:
+        case 4:
             booksStatus.isHidden = false
-            booksStatus.text = "赠送"
-            booksStatus.backgroundColor = UIColor.init(hexString: App_Theme_594CA8_Color)
-        case .Receive:
-            booksStatus.isHidden = false
-            booksStatus.text = "领受"
+            booksStatus.text = "已还"
             booksStatus.backgroundColor = UIColor.init(hexString: App_Theme_594CA8_Color)
         default:
             booksStatus.isHidden = true

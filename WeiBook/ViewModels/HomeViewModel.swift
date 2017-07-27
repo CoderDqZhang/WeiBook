@@ -19,7 +19,11 @@ class HomeViewModel: BaseViewModel {
 //        let controller = AddBookViewController()
 //        controller.isbn = "9787111079279"
 //        NavigationPushView(self.controller!, toConroller: controller)
-        NavigationPushView(self.controller!, toConroller: QRCodeViewController())
+        if UserInfoModel.isLoggedIn() {
+            NavigationPushView(self.controller!, toConroller: QRCodeViewController())
+        }else{
+            NavigationPushView(self.controller!, toConroller: LoginViewController())
+        }
     }
     
     func pushSearchView(){

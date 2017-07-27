@@ -35,6 +35,7 @@ class ServerBookModel : NSObject, NSCoding{
     var subjectId : AnyObject!
     var title : String!
     var updatedAt : Int!
+    var inputNum : Int? = 0
     var userId : AnyObject!
     
     
@@ -69,6 +70,7 @@ class ServerBookModel : NSObject, NSCoding{
         subjectId = dictionary["subjectId"] as AnyObject
         title = dictionary["title"] as? String
         updatedAt = dictionary["updatedAt"] as? Int
+        inputNum = dictionary["inputNum"] as? Int
         userId = dictionary["userId"] as AnyObject
     }
     
@@ -153,6 +155,9 @@ class ServerBookModel : NSObject, NSCoding{
         if updatedAt != nil{
             dictionary["updatedAt"] = updatedAt
         }
+        if inputNum != nil{
+            dictionary["inputNum"] = inputNum
+        }
         if userId != nil{
             dictionary["userId"] = userId
         }
@@ -190,6 +195,7 @@ class ServerBookModel : NSObject, NSCoding{
         subjectId = aDecoder.decodeObject(forKey: "subjectId") as AnyObject
         title = aDecoder.decodeObject(forKey: "title") as? String
         updatedAt = aDecoder.decodeObject(forKey: "updatedAt") as? Int
+        inputNum = aDecoder.decodeObject(forKey: "inputNum") as? Int
         userId = aDecoder.decodeObject(forKey: "userId") as AnyObject
         
     }
@@ -274,6 +280,9 @@ class ServerBookModel : NSObject, NSCoding{
         }
         if updatedAt != nil{
             aCoder.encode(updatedAt, forKey: "updatedAt")
+        }
+        if inputNum != nil{
+            aCoder.encode(updatedAt, forKey: "inputNum")
         }
         if userId != nil{
             aCoder.encode(userId, forKey: "userId")

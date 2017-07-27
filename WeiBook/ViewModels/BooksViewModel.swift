@@ -17,20 +17,17 @@ class BooksViewModel: BaseViewModel {
         self.requestMyBooks()
     }
     
+    //MARK: CollectViewDidSelect
+    func collectDidSelect(_ indexPath:IndexPath) {
+        let bookDesc = BookDescViewController()
+        bookDesc.model = ServerBookModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary)
+        NavigationPushView(self.controller!, toConroller: bookDesc)
+
+    }
+    
+    //MARK: CollectViewCell
     func collectViewMyBooksCollectionViewCellSetData(_ indexPath:IndexPath, cell:MyBooksCollectionViewCell) {
-        var status:BookStatusType!
-        if indexPath.row % 3 == 0 {
-            status = .Borrow
-        }else if indexPath.row % 4 == 0 {
-            status = .Give
-        }else if indexPath.row % 5 == 3 {
-            status = .Entertain
-        }else if indexPath.row % 7 == 4 {
-            status = .Receive
-        }else{
-            status = .None
-        }
-        cell.cellSetData(status: status, model:MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row] as! NSDictionary))
+        cell.cellSetData(model:MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row] as! NSDictionary))
     }
     
     //MARK: -RequestNetWorking
@@ -49,7 +46,7 @@ class BooksViewModel: BaseViewModel {
 extension BooksViewModel : UICollectionViewDelegate {
    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        NavigationPushView(self.controller!, toConroller: BookDescViewController())
+        self.collectDidSelect(indexPath)
     }
 }
 

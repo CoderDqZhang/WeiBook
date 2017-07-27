@@ -133,6 +133,7 @@ extension QRCodeViewController : AVCaptureMetadataOutputObjectsDelegate {
             
             if metadataObj.stringValue != nil {
                 print(metadataObj.stringValue)
+                (self.viewModel as! QRCodeViewModel).borrowReqest(dic: metadataObj.stringValue.genderQRCoderStringValue(str: metadataObj.stringValue))
             }
         }
         

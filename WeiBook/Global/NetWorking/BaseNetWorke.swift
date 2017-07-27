@@ -277,7 +277,7 @@ class BaseNetWorke {
 //            headers = ["header-token":!UserInfoModel.isLoggedIn() ? "" : UserInfoModel.shareInstance().tails.token,"header-timestamp":"\(timestamp)","header-sign":sign]
         }
 
-        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: url == "\(BaseUrl)\(AddBook)" ? JSONEncoding.default : URLEncoding.default, headers: headers).responseJSON { (response) in
+        Alamofire.request(url, method: methods, parameters: parameters as? [String: Any], encoding: self.encoding(url: url), headers: headers).responseJSON { (response) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
             NetWorkingResponse.sharedInstance.showNetWorkingResPonse(response as AnyObject)
@@ -291,6 +291,13 @@ class BaseNetWorke {
                 }
             }
         }
+    }
+    
+    func encoding(url:String) -> ParameterEncoding{
+        if (url == "\(BaseUrl)\(AddBook)" || url == "\(BaseUrl)\(BookBorrow)") {
+            return JSONEncoding.default
+        }
+        return URLEncoding.default
     }
     
     //MARK: QiuniuUploadImages

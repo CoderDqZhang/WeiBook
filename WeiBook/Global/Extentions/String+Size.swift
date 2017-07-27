@@ -168,8 +168,6 @@ extension String{
         return self.substring(with: range)
     }
     
-    
-    
     func languageDetectByFirstCharacter (str:String?) -> language {
         for (_, value) in (str?.characters.enumerated())! {
             
@@ -178,6 +176,20 @@ extension String{
             }
         }
         return language.ND
+    }
+    
+    func genderQRCoderStringValue(str:String) ->NSDictionary{
+        let temStr = str.replacing("\'", with: "")
+        let strArray = temStr.components(separatedBy: ",")
+        let dic = NSMutableDictionary.init()
+        for str in strArray {
+            var strs = str.components(separatedBy: ":")
+            dic.setValue(strs[1], forKey: strs[0])
+        }
+        //        temStr = temStr.replacing("'", with: "")
+//        temStr = temStr.replacing("\\", with: "")
+//        return temStr.replacing("\\", with: "")
+        return dic
     }
     
 //    var sha1: String! {

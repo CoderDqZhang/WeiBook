@@ -17,6 +17,8 @@ let ChangeUserInfo = "/user/edit"
 
 let HomeBanner = "/tabMain/banners"
 let AddBook = "/wishBook/add"
+let BookDetail = "/book/detail"
+let BookBorrow = "/borrowBook/borrowAdd"
 let MyBookList = "/wishBook/list"
 let QRCodeServer = "/book/getBookByISBN"
 let SearchBook = "/common/search"
