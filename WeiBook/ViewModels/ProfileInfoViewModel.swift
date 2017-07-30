@@ -72,12 +72,12 @@ class ProfileInfoViewModel: BaseViewModel {
         }else{
             baseArray.add(UserInfoModel.shareInstance().tails.userInfo.address)
         }
-        baseArray.add(UserInfoModel.shareInstance().tails.userInfo.sex == "" ? "未选择" : UserInfoModel.shareInstance().tails.userInfo.sex ?? "男")
+        baseArray.add(UserInfoModel.shareInstance().tails.userInfo.sex == nil ? "未选择" : UserInfoModel.shareInstance().tails.userInfo.sex ?? "男")
         
         let adArray:NSMutableArray = []
-        adArray.add(UserInfoModel.shareInstance().tails.userInfo.weixin)
-        adArray.add(UserInfoModel.shareInstance().tails.userInfo.company)
-        adArray.add(UserInfoModel.shareInstance().tails.userInfo.qq)
+        adArray.add(UserInfoModel.shareInstance().tails.userInfo.weixin == nil ? "" : UserInfoModel.shareInstance().tails.userInfo.weixin ?? "")
+        adArray.add(UserInfoModel.shareInstance().tails.userInfo.company  == nil ? "" : UserInfoModel.shareInstance().tails.userInfo.company ?? "")
+        adArray.add(UserInfoModel.shareInstance().tails.userInfo.qq == nil ? "" : UserInfoModel.shareInstance().tails.userInfo.qq ?? "")
         detailLabelTexts.append(baseArray)
         detailLabelTexts.append(adArray)
     }
@@ -135,23 +135,23 @@ class ProfileInfoViewModel: BaseViewModel {
     
     //MARK: NetWorking
     func requestUserInfo(){
-        if !UserInfoModel.isExistInTable() {
-            userInfo = UserInfoModel.shareInstance()
-            print(userInfo)
-        }else{
-            let url = "\(BaseUrl)\(LoginPasswrodUrl)"
-            let parameters = ["mobile":"18363899723","password":"123"]
-            BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
-                if (!resultDic.isCompleted){
-                    self.userInfo = UserInfoModel.init(dictionary: resultDic.value as! [AnyHashable : Any])
-                    self.userInfo.tails.saveOrUpdate()
-                    self.userInfo.tails.userInfo.saveOrUpdate()
-                    self.userInfo?.saveOrUpdate()
-                    UserInfoModel.toUserInstance(self.userInfo)
-                    Notification(LoginStatuesChange, value: nil)
-                }
-            }
-        }
+//        if !UserInfoModel.isExistInTable() {
+//            userInfo = UserInfoModel.shareInstance()
+//            print(userInfo)
+//        }else{
+//            let url = "\(BaseUrl)\(LoginPasswrodUrl)"
+//            let parameters = ["mobile":"18363899723","password":"123"]
+//            BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+//                if (!resultDic.isCompleted){
+//                    self.userInfo = UserInfoModel.init(dictionary: resultDic.value as! [AnyHashable : Any])
+//                    self.userInfo.tails.saveOrUpdate()
+//                    self.userInfo.tails.userInfo.saveOrUpdate()
+//                    self.userInfo?.saveOrUpdate()
+//                    UserInfoModel.toUserInstance(self.userInfo)
+//                    Notification(LoginStatuesChange, value: nil)
+//                }
+//            }
+//        }
     }
     
 }

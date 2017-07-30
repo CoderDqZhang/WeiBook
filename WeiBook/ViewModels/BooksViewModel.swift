@@ -12,6 +12,7 @@ import SwifterSwift
 class BooksViewModel: BaseViewModel {
 
     var myBooksModel = NSMutableArray()
+    
     override init() {
         super.init()
         self.requestMyBooks()
@@ -20,7 +21,7 @@ class BooksViewModel: BaseViewModel {
     //MARK: CollectViewDidSelect
     func collectDidSelect(_ indexPath:IndexPath) {
         let bookDesc = BookDescViewController()
-        bookDesc.model = ServerBookModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary)
+        bookDesc.myBookModel = MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary)
         NavigationPushView(self.controller!, toConroller: bookDesc)
 
     }

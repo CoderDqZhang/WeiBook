@@ -111,7 +111,7 @@ class BookBaseInfoTableViewCell: UITableViewCell {
     }
     
     func cellSetData(model:SBNBookModel){
-        bookImage.sd_setImage(with: URL.init(string: model.images.large), placeholderImage: nil, options: .retryFailed) { (image, error, cacheType, url) in
+        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.images.large, imageView: bookImage) { (image, error, url) in
             
         }
         bookTitle.text = model.title
@@ -136,6 +136,26 @@ class BookBaseInfoTableViewCell: UITableViewCell {
         ratingView.text = model.rating.average
         ratingView.rating = Double(model.rating.average)!
         ratingNumber.text = "(\((model.rating.numRaters)!)人评价)"
+        self.updateConstraintsIfNeeded()
+    }
+    
+    func cellSetDataSnbModel(model:ServerBookModel) {
+        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.bookImg, imageView: bookImage) { (image, error, url) in
+            
+        }
+        
+        bookTitle.text = model.title
+        bookAutho.text = model.author
+        bookTitle.text = model.title
+        
+        bookPublisher.text = model.oress
+        if model.rating as? String != nil {
+            ratingView.text = model.rating as? String
+            ratingView.rating = Double((model.rating as? String)!)!
+        }else{
+            ratingView.text = "10.0"
+            ratingView.rating = 10.0
+        }
         self.updateConstraintsIfNeeded()
     }
     

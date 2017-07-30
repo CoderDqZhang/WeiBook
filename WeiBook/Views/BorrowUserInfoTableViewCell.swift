@@ -36,11 +36,7 @@ class BorrowUserInfoTableViewCell: UITableViewCell {
     }
     
     func setUpView(){
-        userPhoto = UIImageView.init()
-        userPhoto.sd_setImage(with: URL.init(string: "http://7xsatk.com1.z0.glb.clouddn.com/c0e4c08b1dd123bbe5ab61d116f55943.png?imageMogr/v2/format/png/thumbnail/750x750"), placeholderImage: nil, options: .retryFailed) { (image, error, cacheType, url) in
-            
-        }
-        
+        userPhoto = UIImageView.init()        
         self.contentView.addSubview(userPhoto)
         
         userName = UILabel.init()
@@ -65,7 +61,6 @@ class BorrowUserInfoTableViewCell: UITableViewCell {
         statusButton.layer.cornerRadius = 3.0
         statusButton.layer.borderWidth = 1.0
         statusButton.titleLabel?.font = App_Theme_PinFan_R_13_Font
-        self.updataStatusButton(status: .BorrowDone)
         self.contentView.addSubview(statusButton)
         
         lineLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 59.5, width: SwifterSwift.screenWidth, height: 0.5))
@@ -79,18 +74,18 @@ class BorrowUserInfoTableViewCell: UITableViewCell {
     }
     
     
-    func updataStatusButton(status:BorrowStatus){
+    func updataStatusButton(status:Int){
         switch status {
-        case .BorrowIn:
-            statusButton.setTitle("待还", for: .normal)
+        case 1:
+            statusButton.setTitle("", for: .normal)
             statusButton.setTitleColor(UIColor.init(hexString: App_Theme_EE5028_Color), for: .normal)
             statusButton.layer.borderColor = UIColor.init(hexString: App_Theme_EE5028_Color).cgColor
-        case .BorrowOut:
+        case 2:
             statusButton.setTitle("借出", for: .normal)
             statusButton.setTitleColor(UIColor.init(hexString: App_Theme_594CA8_Color), for: .normal)
             statusButton.layer.borderColor = UIColor.init(hexString: App_Theme_594CA8_Color).cgColor
-        case .BorrowTimeEnd:
-            statusButton.setTitle("提醒还书", for: .normal)
+        case 3:
+            statusButton.setTitle("待还", for: .normal)
             statusButton.setTitleColor(UIColor.init(hexString: App_Theme_EE5028_Color), for: .normal)
             statusButton.layer.borderColor = UIColor.init(hexString: App_Theme_EE5028_Color).cgColor
         default:
@@ -100,8 +95,18 @@ class BorrowUserInfoTableViewCell: UITableViewCell {
         }
     }
     
-    func cellSetData(bookStatus:BorrowStatus){
-        self.updataStatusButton(status: bookStatus)
+    func cellSetData(model:BorrowModel){
+        if model.useUserId == UserInfoModel.shareInstance().tails.userInfo.userId {
+            self.updataStatusButton(status: model.isReturn)
+        }else{
+            self.updataStatusButton(status: model.state)
+        }
+        ImageViewManager.shareInstance.sd_imageView(url: model.tails.userInfo.tails.userInfo.photo, imageView: userPhoto) { (image, error, cacheType, url) in
+            self.userPhoto.image = image
+        }
+        userName.text = model.tails.userInfo.username
+        startTime.text = "\(Date.init(unixTimestamp: Double(model.borrowStart / 1000)).dateString()) ~ "
+        endTime.text = Date.init(unixTimestamp: Double(model.borrowEnd / 1000)).dateString()
     }
     
     override func updateConstraints() {

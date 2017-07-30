@@ -294,7 +294,7 @@ class BaseNetWorke {
     }
     
     func encoding(url:String) -> ParameterEncoding{
-        if (url == "\(BaseUrl)\(AddBook)" || url == "\(BaseUrl)\(BookBorrow)") {
+        if (url == "\(BaseUrl)\(AddBook)" || url == "\(BaseUrl)\(BookBorrow)" || url == "\(BaseUrl)\(BookBorrowReturn)") {
             return JSONEncoding.default
         }
         return URLEncoding.default

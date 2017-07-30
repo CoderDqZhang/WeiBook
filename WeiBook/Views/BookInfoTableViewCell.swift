@@ -26,11 +26,6 @@ class BookInfoTableViewCell: UITableViewCell {
     func setUpView(){
         
         bookPost = UIImageView.init()
-        bookPost.sd_setImage(with: URL.init(string: "https://img1.doubanio.com/lpic/s29487688.jpg"), placeholderImage: nil, options: .retryFailed, progress: { (start, end, url) in
-            
-        }) { (image, error, cacheType, url) in
-            
-        }
         self.contentView.addSubview(self.bookPost)
         
         bookTitle = UILabel.init()
@@ -66,6 +61,17 @@ class BookInfoTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func cellSetData(model:BorrowModel){
+        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.tails.bookInfo.bookImg, imageView: bookPost) { (image, error, url) in
+            
+        }
+        bookTitle.text = model.tails.bookInfo.title
+        bookDesc.text = model.tails.bookInfo.descriptionField
+        commentNumber.text = "评论人数 \((model.tails.bookInfo.people)!)"
+        let inputNum = model.tails.bookInfo.inputNum == nil ? 0 : model.tails.bookInfo.inputNum
+        collectNumber.text = "收藏人数 \((inputNum)!)"
     }
     
     

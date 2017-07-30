@@ -35,6 +35,11 @@ class MyBorrowViewController: BaseViewController {
             
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        (self.viewModel as! BorrowViewModel).borrowList.removeAllObjects()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

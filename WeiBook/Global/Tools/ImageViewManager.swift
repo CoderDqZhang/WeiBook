@@ -58,8 +58,13 @@ class ImageViewManager: NSObject {
         SDWebImageManager.shared().imageDownloader?.downloadImage(with: URL.init(string: url), options: SDWebImageDownloaderOptions.highPriority, progress: { (start, end, url) in
             
         }, completed: { (image, imageDate, error, finish) in
-            let image = imageType == .DanDanUrl ? self.coreImage(image: (image)!) : image
-            completedBlock(image, error, URL.init(string: url)!)
+            if image != nil {
+                let image = imageType == .DanDanUrl ? self.coreImage(image: (image)!) : image
+                imageView.image = image
+                completedBlock(image, error, URL.init(string: url)!)
+            }else{
+                completedBlock(image, error, URL.init(string: url)!)
+            }
         })
         
     }

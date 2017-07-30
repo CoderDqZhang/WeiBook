@@ -74,6 +74,7 @@
 		1F4AA60D1EF7EF190085BE3B /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5EC1EF7EF190085BE3B /* ZHPickView.m */; };
 		1F4AA6361EF7F21C0085BE3B /* View+Extntion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA6351EF7F21C0085BE3B /* View+Extntion.swift */; };
 		1F4AA6581EF7F2600085BE3B /* libTalkingData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4AA6501EF7F2600085BE3B /* libTalkingData.a */; };
+		1F63C4601F2A495A0058A997 /* BorrowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63C45F1F2A495A0058A997 /* BorrowModel.swift */; };
 		1F6680C61F147ECD00B4A4E8 /* AddBookCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680C51F147ECD00B4A4E8 /* AddBookCommentViewController.swift */; };
 		1F6680C81F147F3C00B4A4E8 /* AddBookCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680C71F147F3C00B4A4E8 /* AddBookCommentViewModel.swift */; };
 		1F6680CA1F147F4D00B4A4E8 /* AddBookTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680C91F147F4D00B4A4E8 /* AddBookTagsViewModel.swift */; };
@@ -324,6 +325,7 @@
 		1F4AA6351EF7F21C0085BE3B /* View+Extntion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extntion.swift"; sourceTree = "<group>"; };
 		1F4AA6501EF7F2600085BE3B /* libTalkingData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingData.a; sourceTree = "<group>"; };
 		1F4AA6511EF7F2600085BE3B /* TalkingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkingData.h; sourceTree = "<group>"; };
+		1F63C45F1F2A495A0058A997 /* BorrowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorrowModel.swift; sourceTree = "<group>"; };
 		1F6680C51F147ECD00B4A4E8 /* AddBookCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookCommentViewController.swift; sourceTree = "<group>"; };
 		1F6680C71F147F3C00B4A4E8 /* AddBookCommentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookCommentViewModel.swift; sourceTree = "<group>"; };
 		1F6680C91F147F4D00B4A4E8 /* AddBookTagsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookTagsViewModel.swift; sourceTree = "<group>"; };
@@ -973,6 +975,7 @@
 			isa = PBXGroup;
 			children = (
 				1FB094EB1F220657005F1033 /* MyBooksModel.swift */,
+				1F63C45F1F2A495A0058A997 /* BorrowModel.swift */,
 				1F8374E41EFBB48600ED97DE /* UserInfoModel.h */,
 				1F8374E51EFBB48600ED97DE /* UserInfoModel.m */,
 			);
@@ -1369,6 +1372,7 @@
 				1F1C5BB31EFD632200DC8DC0 /* DynamicViewController.swift in Sources */,
 				1F8374E01EFBAF6F00ED97DE /* GloableTableViewCell.swift in Sources */,
 				1F6680D01F14C44200B4A4E8 /* BaseWebViewController.swift in Sources */,
+				1F63C4601F2A495A0058A997 /* BorrowModel.swift in Sources */,
 				1F6A2E611F0B73B200C3A574 /* NYSegmentedControl.m in Sources */,
 				1F4AA5ED1EF7EF190085BE3B /* CountDown.m in Sources */,
 				1F4AA5661EF7E02B0085BE3B /* NSString+Utils.m in Sources */,

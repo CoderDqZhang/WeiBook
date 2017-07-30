@@ -41,6 +41,7 @@ extension SearchViewModel : UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let bookDescViewController = BookDescViewController()
         let controller = (self.controller as! SearchViewController).toController!
+        bookDescViewController.model = ServerBookModel.init(fromDictionary: self.searchModels[indexPath.row] as! NSDictionary)
         (controller.viewModel as! HomeViewModel).pushViewController(controller: bookDescViewController)
         self.controller?.dismiss(animated: true, completion: {
         })

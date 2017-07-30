@@ -12,10 +12,13 @@ class BookDescViewController: BaseViewController {
 
     var enTimePickerView:ZHPickView!
     var model:ServerBookModel!
+    var myBookModel:MyBooksModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bindViewModel(viewModel: BookDescViewModel.init(), controller: self)
+        self.view.backgroundColor = UIColor.init(hexString: App_Theme_F8F9F9_Color)
+        self.setUpTableView(style: .plain, cells: [BookBaseInfoTableViewCell.self], controller: self)
         self.setUpNavigaiotionItem()
         self.bindBookDescLogic()
         // Do any additional setup after loading the view.
@@ -23,24 +26,44 @@ class BookDescViewController: BaseViewController {
     
     func setUpNavigaiotionItem() {
         self.navigationItem.title = "图示详情"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "生成二维码", style: .plain, target: self, action: #selector(BookDescViewController.rightBarItemPress))
+        if self.myBookModel != nil {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "生成二维码", style: .plain, target: self, action: #selector(BookDescViewController.rightBarItemPress))
+        }
     }
 
     func rightBarItemPress() {
-        UIAlertController.shwoAlertControl(self, style: .actionSheet, title: nil, message: nil, titles: ["借阅二维码","赠送二维码"], cancel: "取消", doneTitle: nil, cancelAction: { 
-            
-        }) { (str) in
-            
-            UIAlertController.shwoAlertControl(self, style: .alert, title: "请选择还书时间", message: nil, titles: nil, cancel: "取消", doneTitle: "确定", cancelAction: { 
-                
-            }, doneAction: { (str) in
-                self.showSexPickerView()
-            })
+        if (self.viewModel as! BookDescViewModel).bookDescModel != nil {
+            if self.myBookModel.borrowState == 1 {
+                UIAlertController.shwoAlertControl(self, style: .actionSheet, title: nil, message: nil, titles: ["借阅二维码","赠送二维码"], cancel: "取消", doneTitle: nil, cancelAction: {
+                    
+                }) { (str) in
+                    if str == "借阅二维码" {
+                        UIAlertController.shwoAlertControl(self, style: .alert, title: "请选择还书时间", message: nil, titles: nil, cancel: "取消", doneTitle: "确定", cancelAction: {
+                            
+                        }, doneAction: { (str) in
+                            self.showSexPickerView()
+                        })
+                    }else {
+                        (self.viewModel as! BookDescViewModel).giveButtonPress(time: Int64(Int(Date.init().unixTimestamp)))
+                    }
+                }
+            }else if self.myBookModel.borrowState == 3 {
+                UIAlertController.shwoAlertControl(self, style: .actionSheet, title: nil, message: nil, titles: ["还书二维码"], cancel: "取消", doneTitle: nil, cancelAction: {
+                    
+                }) { (str) in
+                    (self.viewModel as! BookDescViewModel).borrowedButtonPress()
+                }
+            }
         }
     }
     
     func bindBookDescLogic(){
-        (self.viewModel as! BookDescViewModel).model = self.model
+        if self.myBookModel != nil {
+            (self.viewModel as! BookDescViewModel).myBookModel = self.myBookModel
+            (self.viewModel as! BookDescViewModel).model = self.myBookModel.tails.bookInfo
+        }else{
+            (self.viewModel as! BookDescViewModel).model = self.model
+        }
         (self.viewModel as! BookDescViewModel).requstBookDesc()
     }
     
@@ -79,7 +102,7 @@ class BookDescViewController: BaseViewController {
 
 extension BookDescViewController: ZHPickViewDelegate {
     func toobarDonBtnHaveClick(_ pickView: ZHPickView!, resultString: String!) {
-        var date = Int(Date.init().unixTimestamp)
+        let date = Int(Date.init().unixTimestamp)
         var resultData:Int
         switch resultString {
         case "15天":

@@ -36,16 +36,18 @@ class AddBookFormModel: NSObject {
     }
 }
 
-class BorrowBook: NSObject {
+class QRFormBook: NSObject {
     var bookId:String!
     var userId:String!
     var userUserId:String!
     var borrowEnd:String!
+    var giveEnd:String!
     init(fromDictionary dictionary: NSDictionary){
         bookId = dictionary["bookId"] as? String
         userId = dictionary["userId"] as? String
         userUserId = dictionary["userUserId"] as? String
         borrowEnd = dictionary["borrowEnd"] as? String
+        giveEnd = dictionary["giveEnd"] as? String
     }
 }
 

@@ -74,7 +74,7 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
         switch status {
         case 1:
             booksStatus.isHidden = false
-            booksStatus.text = ""
+            booksStatus.text = "拥有"
             booksStatus.backgroundColor = UIColor.init(hexString: App_Theme_594CA8_Color)
             
         case 2:

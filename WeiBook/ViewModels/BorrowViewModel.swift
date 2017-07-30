@@ -1,3 +1,4 @@
+
 //
 //  BorrowViewModel.swift
 //  WeiBook
@@ -11,14 +12,41 @@ import UIKit
 class BorrowViewModel: BaseViewModel {
     
     let bookStatus:[BorrowStatus] = [BorrowStatus.BorrowIn,BorrowStatus.BorrowOut,BorrowStatus.BorrowOut,BorrowStatus.BorrowDone,BorrowStatus.BorrowTimeEnd]
+    var borrowList = NSMutableArray.init()
     override init() {
-        
+        super.init()
+        self.requestBorrow()
     }
     
     //MARK: - TableViewCellSetData
     func tableViewBorrowUserInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BorrowUserInfoTableViewCell) {
+        cell.cellSetData(model: BorrowModel.init(fromDictionary: self.borrowList[indexPath.section] as! NSDictionary))
+    }
+    
+    func tableViewBookInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BookInfoTableViewCell) {
+        cell.cellSetData(model: BorrowModel.init(fromDictionary: self.borrowList[indexPath.section] as! NSDictionary))
+    }
+    
+    //MARK: -RequestNet
+    func requestBorrow(){
+        self.borrowList.removeAllObjects()
+        let url = "\(BaseUrl)\(BookBorrowList)"
+        let parameters = ["userId":UserInfoModel.shareInstance().tails.userInfo.userId]
+        BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+            if !resultDic.isCompleted {
+                self.borrowList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                self.controller?.tableView.reloadData()
+            }
+        }
         
-        cell.cellSetData(bookStatus: bookStatus[indexPath.section])
+        let urlList = "\(BaseUrl)\(BookBorrowUserList)"
+        let parametersList = ["useUserId":UserInfoModel.shareInstance().tails.userInfo.userId]
+        BaseNetWorke.sharedInstance.getUrlWithString(urlList, parameters: parametersList as AnyObject).observe { (resultDic) in
+            if !resultDic.isCompleted {
+                self.borrowList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                self.controller?.tableView.reloadData()
+            }
+        }
     }
 
 }
@@ -50,7 +78,7 @@ extension BorrowViewModel : UITableViewDelegate {
 extension BorrowViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return self.borrowList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,6 +93,7 @@ extension BorrowViewModel : UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: BookInfoTableViewCell.description(), for:indexPath) as! BookInfoTableViewCell
+            self.tableViewBookInfoTableViewCellSetData(indexPath, cell: cell)
             return cell
         }
     }

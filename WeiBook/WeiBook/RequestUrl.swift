@@ -19,9 +19,15 @@ let HomeBanner = "/tabMain/banners"
 let AddBook = "/wishBook/add"
 let BookDetail = "/book/detail"
 let BookBorrow = "/borrowBook/borrowAdd"
+let BookBorrowUserList = "/borrowBook/uselist"
+let BookBorrowList = "/borrowBook/list"
 let MyBookList = "/wishBook/list"
+let BookGive = "/giveBook/giveAdd"
+
+
 let QRCodeServer = "/book/getBookByISBN"
 let SearchBook = "/common/search"
+let BookBorrowReturn = "/borrowBook/returnAdd"
 
 let AddAddress = ""
 
