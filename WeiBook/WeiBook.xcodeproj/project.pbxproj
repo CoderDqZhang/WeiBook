@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1AE2691F2F2E2B000122CB /* lame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1AE2681F2F2E2B000122CB /* lame.framework */; };
 		1F1C5BAD1EFD5E0400DC8DC0 /* RequestUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C5BAC1EFD5E0400DC8DC0 /* RequestUrl.swift */; };
 		1F1C5BAF1EFD62F200DC8DC0 /* FlowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C5BAE1EFD62F200DC8DC0 /* FlowersViewController.swift */; };
 		1F1C5BB11EFD630000DC8DC0 /* FansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C5BB01EFD630000DC8DC0 /* FansViewController.swift */; };
@@ -75,6 +76,8 @@
 		1F4AA6361EF7F21C0085BE3B /* View+Extntion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA6351EF7F21C0085BE3B /* View+Extntion.swift */; };
 		1F4AA6581EF7F2600085BE3B /* libTalkingData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4AA6501EF7F2600085BE3B /* libTalkingData.a */; };
 		1F63C4601F2A495A0058A997 /* BorrowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63C45F1F2A495A0058A997 /* BorrowModel.swift */; };
+		1F63C48D1F2F20DA0058A997 /* UIWindow+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63C48C1F2F20DA0058A997 /* UIWindow+Extentions.swift */; };
+		1F63C4901F2F2BAA0058A997 /* AudioWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F63C48F1F2F2BAA0058A997 /* AudioWrapper.m */; };
 		1F6680C61F147ECD00B4A4E8 /* AddBookCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680C51F147ECD00B4A4E8 /* AddBookCommentViewController.swift */; };
 		1F6680C81F147F3C00B4A4E8 /* AddBookCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680C71F147F3C00B4A4E8 /* AddBookCommentViewModel.swift */; };
 		1F6680CA1F147F4D00B4A4E8 /* AddBookTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6680C91F147F4D00B4A4E8 /* AddBookTagsViewModel.swift */; };
@@ -217,6 +220,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F1AE2681F2F2E2B000122CB /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = lame.framework; sourceTree = "<group>"; };
 		1F1C5BAC1EFD5E0400DC8DC0 /* RequestUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestUrl.swift; sourceTree = "<group>"; };
 		1F1C5BAE1EFD62F200DC8DC0 /* FlowersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowersViewController.swift; sourceTree = "<group>"; };
 		1F1C5BB01EFD630000DC8DC0 /* FansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FansViewController.swift; sourceTree = "<group>"; };
@@ -230,7 +234,6 @@
 		1F4AA5361EF7DBD60085BE3B /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		1F4AA5381EF7DBE20085BE3B /* SubscriberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriberViewController.swift; sourceTree = "<group>"; };
 		1F4AA53A1EF7DBED0085BE3B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		1F4AA53D1EF7E02B0085BE3B /* LiangPiao-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LiangPiao-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F4AA53E1EF7E02B0085BE3B /* NSDate+LSCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LSCore.h"; sourceTree = "<group>"; };
 		1F4AA53F1EF7E02B0085BE3B /* NSDate+LSCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LSCore.m"; sourceTree = "<group>"; };
 		1F4AA5401EF7E02B0085BE3B /* NSFileManager+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Cache.h"; sourceTree = "<group>"; };
@@ -326,6 +329,9 @@
 		1F4AA6501EF7F2600085BE3B /* libTalkingData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingData.a; sourceTree = "<group>"; };
 		1F4AA6511EF7F2600085BE3B /* TalkingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkingData.h; sourceTree = "<group>"; };
 		1F63C45F1F2A495A0058A997 /* BorrowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorrowModel.swift; sourceTree = "<group>"; };
+		1F63C48C1F2F20DA0058A997 /* UIWindow+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extentions.swift"; sourceTree = "<group>"; };
+		1F63C48E1F2F2BAA0058A997 /* AudioWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioWrapper.h; sourceTree = "<group>"; };
+		1F63C48F1F2F2BAA0058A997 /* AudioWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioWrapper.m; sourceTree = "<group>"; };
 		1F6680C51F147ECD00B4A4E8 /* AddBookCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookCommentViewController.swift; sourceTree = "<group>"; };
 		1F6680C71F147F3C00B4A4E8 /* AddBookCommentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookCommentViewModel.swift; sourceTree = "<group>"; };
 		1F6680C91F147F4D00B4A4E8 /* AddBookTagsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookTagsViewModel.swift; sourceTree = "<group>"; };
@@ -494,6 +500,7 @@
 				1FFA26EE1F25C9C00051E228 /* AudioToolbox.framework in Frameworks */,
 				1FFA26EC1F25C9B70051E228 /* CoreTelephony.framework in Frameworks */,
 				1FFA26EA1F25C9B00051E228 /* Foundation.framework in Frameworks */,
+				1F1AE2691F2F2E2B000122CB /* lame.framework in Frameworks */,
 				1FFA26E81F25C9A80051E228 /* SystemConfiguration.framework in Frameworks */,
 				1FFA26E61F25C9A10051E228 /* AVFoundation.framework in Frameworks */,
 				1FFA26E41F25C9980051E228 /* libz.tbd in Frameworks */,
@@ -528,6 +535,14 @@
 				377302C9F82CF76D5A772118 /* Pods_WeiBook.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F1AE2671F2F2E25000122CB /* lame */ = {
+			isa = PBXGroup;
+			children = (
+				1F1AE2681F2F2E2B000122CB /* lame.framework */,
+			);
+			path = lame;
 			sourceTree = "<group>";
 		};
 		1F4AA52A1EF7DA870085BE3B /* TabBarController */ = {
@@ -610,7 +625,6 @@
 		1F4AA53C1EF7E02B0085BE3B /* Catagory */ = {
 			isa = PBXGroup;
 			children = (
-				1F4AA53D1EF7E02B0085BE3B /* LiangPiao-Bridging-Header.h */,
 				1F4AA53E1EF7E02B0085BE3B /* NSDate+LSCore.h */,
 				1F4AA53F1EF7E02B0085BE3B /* NSDate+LSCore.m */,
 				1F4AA5401EF7E02B0085BE3B /* NSFileManager+Cache.h */,
@@ -662,6 +676,7 @@
 				1F4AA5771EF7E0310085BE3B /* UIViewController+NavigationBar.swift */,
 				1F4AA5781EF7E0310085BE3B /* UIViewController+TalkingData.swift */,
 				1F8375001EFD50D100ED97DE /* TextField+Extentions.swift */,
+				1F63C48C1F2F20DA0058A997 /* UIWindow+Extentions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -677,6 +692,8 @@
 				1FFA27401F2757C80051E228 /* ImageViewManager.swift */,
 				1F893BDD1F1F1F83007E9F31 /* QiniuAuthPolicy.h */,
 				1F893BDE1F1F1F83007E9F31 /* QiniuAuthPolicy.m */,
+				1F63C48E1F2F2BAA0058A997 /* AudioWrapper.h */,
+				1F63C48F1F2F2BAA0058A997 /* AudioWrapper.m */,
 				1FFA26FD1F25CAB00051E228 /* IFyunManager.swift */,
 			);
 			path = Tools;
@@ -696,6 +713,7 @@
 		1F4AA59A1EF7EF190085BE3B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				1F1AE2671F2F2E25000122CB /* lame */,
 				1FFA26E01F25C9540051E228 /* lib */,
 				1FB3709F1F137736003DC654 /* DXPhotoPicker */,
 				1F6A2E571F0B73B200C3A574 /* NYSegmentedControl */,
@@ -1223,7 +1241,7 @@
 				TargetAttributes = {
 					1FEF834E1EF1498E00C7D84B = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 77L324L35A;
+						DevelopmentTeam = 4R2693PW47;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1341,6 +1359,7 @@
 				1F6A2E561F0B691800C3A574 /* BookInfoTableViewCell.swift in Sources */,
 				1FB370981F1351E0003DC654 /* DiscoverCreateViewModel.swift in Sources */,
 				1FB370CB1F137736003DC654 /* DXUnAuthorizedTipsView.swift in Sources */,
+				1F63C4901F2F2BAA0058A997 /* AudioWrapper.m in Sources */,
 				1F6A2EDE1F0CD9FA00C3A574 /* BookListViewController.swift in Sources */,
 				1F6A2E6D1F0B7FDC00C3A574 /* DiscoverHotViewModel.swift in Sources */,
 				1FFA26FE1F25CAB00051E228 /* IFyunManager.swift in Sources */,
@@ -1490,6 +1509,7 @@
 				1F4AA5F31EF7EF190085BE3B /* TAPageControl.m in Sources */,
 				1F70181C1F04EBF800029158 /* SearchViewModel.swift in Sources */,
 				1FFA27411F2757C80051E228 /* ImageViewManager.swift in Sources */,
+				1F63C48D1F2F20DA0058A997 /* UIWindow+Extentions.swift in Sources */,
 				1FD76C051F21AC3B00F334CF /* FormModel.swift in Sources */,
 				1FB003CF1F09F92400A4EF13 /* SBNBookModel.swift in Sources */,
 				1F4AA60C1EF7EF190085BE3B /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
@@ -1631,12 +1651,13 @@
 			baseConfigurationReference = ACEE389AB2E585FA1B1A8733 /* Pods-WeiBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 77L324L35A;
+				DEVELOPMENT_TEAM = 4R2693PW47;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Global/Uti/QQ",
 					"$(PROJECT_DIR)/Global/Lib/lib",
+					"$(PROJECT_DIR)/Global/Lib/lame",
 				);
 				INFOPLIST_FILE = WeiBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1645,7 +1666,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Global/Uti/TalkingData",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.WeiBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.topveta.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeiBook/WeiBook-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1657,12 +1678,13 @@
 			baseConfigurationReference = 2B966EC35C9E0546FB5B39CC /* Pods-WeiBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 77L324L35A;
+				DEVELOPMENT_TEAM = 4R2693PW47;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Global/Uti/QQ",
 					"$(PROJECT_DIR)/Global/Lib/lib",
+					"$(PROJECT_DIR)/Global/Lib/lame",
 				);
 				INFOPLIST_FILE = WeiBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1671,7 +1693,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Global/Uti/TalkingData",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.WeiBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.topveta.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeiBook/WeiBook-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

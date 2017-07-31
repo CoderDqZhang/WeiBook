@@ -31,6 +31,7 @@ target 'WeiBook' do
   pod 'JPush'
   pod 'MJRefresh'
   pod 'MJExtension'
+  pod 'NJKWebViewProgress'
   pod 'AMapLocation' #定位SDK
   pod 'IQKeyboardManagerSwift', '4.0.9'
 

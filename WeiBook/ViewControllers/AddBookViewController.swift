@@ -38,6 +38,9 @@ class AddBookViewController: BaseViewController {
             (self.viewModel as! AddBookViewModel).addBook()
         })
         self.view.addSubview(bottomBtn)
+        
+        KWINDOWDS().addSubview(PlayVoiceView.shareInstance)
+        PlayVoiceView.shareInstance.isHidden = false
     }
     
     func setUpNavigaitonItem(){
@@ -46,7 +49,12 @@ class AddBookViewController: BaseViewController {
         self.navigationController?.navigationBar.isTranslucent  = false
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if !(self.viewModel as! AddBookViewModel).isSpeaking {
+            PlayVoiceView.shareInstance.isHidden = true
+        }
+    }
     
     func logicViewModel(){
         (self.viewModel as! AddBookViewModel).isbnStr = self.isbn

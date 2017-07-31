@@ -146,6 +146,44 @@ class GloableBottomButtonView: UIView {
     }
 }
 
+class PlayVoiceView: UIView {
+    
+    var button:UIButton!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setUpView(frame:frame)
+    }
+    
+    static let shareInstance = PlayVoiceView.init(frame: CGRect.init(x: SCREENWIDTH - 45, y: SCREENHEIGHT - 200, width: 45, height: 45))
+    
+    func setUpView(frame:CGRect){
+        button = UIButton.init(type: .custom)
+        button.tag = 1
+        button.setBackgroundImage(UIImage.init(named: "play.png"), for: .normal)
+        button.reactive.controlEvents(.touchUpInside).observe { (button) in
+            self.buttonPress(button: self.button)
+        }
+        button.backgroundColor = UIColor.red
+        button.frame = CGRect.init(x: 0, y: 0, width: 45, height: 45)
+        self.addSubview(button)
+    }
+    
+    func buttonPress(button:UIButton) {
+        if button.backgroundImage(for: .normal) == UIImage.init(named: "play.png") {
+            button.setBackgroundImage(UIImage.init(named: "pasue.png"), for: .normal)
+            button.tag = 2
+        }else{
+            button.setBackgroundImage(UIImage.init(named: "play.png"), for: .normal)
+            button.tag = 1
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 
 
 

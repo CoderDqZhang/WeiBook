@@ -38,5 +38,6 @@
 #import "QiniuAuthPolicy.h"
 #import <iflyMSC/IFlyMSC.h>
 #import "iflyMSC/IFlyMSC.h"
+#import "AudioWrapper.h"
 
 #endif /* WeiBook_Bridging_Header_h */

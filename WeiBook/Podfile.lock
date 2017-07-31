@@ -35,7 +35,12 @@ PODS:
   - MBProgressHUD (1.0.0)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
-  - Qiniu (7.1.5):
+  - NJKWebViewProgress (0.2.3):
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
+  - NJKWebViewProgress/Core (0.2.3)
+  - NJKWebViewProgress/ProgressView (0.2.3)
+  - Qiniu (7.1.6):
     - AFNetworking (~> 3)
     - HappyDNS (~> 0.3)
   - ReactiveCocoa (5.0.4):
@@ -48,13 +53,13 @@ PODS:
   - SDWebImage/Core (4.0.0)
   - SKPhotoBrowser (4.0.1)
   - SnapKit (3.2.0)
-  - SwifterSwift (3.0.0):
-    - SwifterSwift/Cocoa (= 3.0.0)
-    - SwifterSwift/Foundation (= 3.0.0)
-    - SwifterSwift/UIKit (= 3.0.0)
-  - SwifterSwift/Cocoa (3.0.0)
-  - SwifterSwift/Foundation (3.0.0)
-  - SwifterSwift/UIKit (3.0.0)
+  - SwifterSwift (3.1.0):
+    - SwifterSwift/Cocoa (= 3.1.0)
+    - SwifterSwift/Foundation (= 3.1.0)
+    - SwifterSwift/UIKit (= 3.1.0)
+  - SwifterSwift/Cocoa (3.1.0)
+  - SwifterSwift/Foundation (3.1.0)
+  - SwifterSwift/UIKit (3.1.0)
   - SwiftyBeaver (1.3.0)
 
 DEPENDENCIES:
@@ -71,6 +76,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJExtension
   - MJRefresh
+  - NJKWebViewProgress
   - Qiniu (~> 7.1)
   - ReactiveCocoa (~> 5.0.2)
   - ReactiveSwift (~> 1.1)
@@ -98,16 +104,17 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
+  Qiniu: 8af94ce9b1611ed5f4350883e41d4a62cabad491
   ReactiveCocoa: b31e754d15937811ede648fc83cd68f5de70a3d4
   ReactiveSwift: 3fea31f8fc49f112d2dc613282c5d395c4d167bb
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SKPhotoBrowser: 3a7c6fc02aa1620ab17253a47a49fafda46536e8
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  SwifterSwift: b35d1fee5352da68878f6321b245d3d99c1af32f
+  SwifterSwift: f84eb7308f7742724b3cbf84283ce00f7c06d7fc
   SwiftyBeaver: d4b551ba34b4206c52cc4684ae90444b8aaa5afd
 
-PODFILE CHECKSUM: 94292ed703133a6477e591ad50935aaf924e0c80
+PODFILE CHECKSUM: c0011bd606950df4cf95f921bcc5201bab36937d
 
 COCOAPODS: 1.1.1

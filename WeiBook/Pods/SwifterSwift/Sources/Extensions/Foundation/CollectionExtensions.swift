@@ -24,6 +24,10 @@ public extension Collection {
 	
 	/// SwifterSwift: Performs `each` closure for each element of collection in parallel.
 	///
+	///		array.forEachInParallel { item in
+	///			print(item)
+	///		}
+	///
 	/// - Parameter each: closure to run for each element.
 	public func forEachInParallel(_ each: (Self.Iterator.Element) -> ()) {
 		let indices = indicesArray()
@@ -36,12 +40,16 @@ public extension Collection {
 	
 }
 
-public extension Collection where Index == Indices.Iterator.Element {
+public extension Collection where Indices.Iterator.Element == Index {
 
 	/// SwifterSwift: Safe protects the array from out of bounds by use of optional.
 	///
+	///		let arr = [1, 2, 3, 4, 5]
+	///		arr[safe: 1] -> 2
+	///		arr[safe: 10] -> nil
+	///
 	/// - Parameter index: index of element to access element.
-	public subscript (safe index: Index) -> Generator.Element? {
+	public subscript (safe index: Index) -> Iterator.Element? {
 		return indices.contains(index) ? self[index] : nil
 	}
 	

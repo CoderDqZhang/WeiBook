@@ -20,13 +20,51 @@ class AddBookViewModel: BaseViewModel {
     var iFluSpeechSynthesizer:IFlySpeechSynthesizer!
     
     var loadingView:MBProgressHUD!
+    var isChooseSpeaker:Bool = false
+    var isSpeaking:Bool = false
     
     override init() {
         super.init()
         self.xfYunManger()
+        PlayVoiceView.shareInstance.button.reactive.controlEvents(.touchUpInside).observe { (button) in
+            if PlayVoiceView.shareInstance.button.tag == 2 {
+                if !self.isChooseSpeaker {
+                    self.speakVoice()
+                }
+                self.iFluSpeechSynthesizer.resumeSpeaking()
+                self.isSpeaking = true
+            }else{
+                if !(UIApplication.shared.currentViewController?.isKind(of: AddBookViewController.self))! {
+                    PlayVoiceView.shareInstance.isHidden = true
+                }
+                self.iFluSpeechSynthesizer.pauseSpeaking()
+                self.isSpeaking = false
+            }
+        }
     }
     
-    
+    func speakVoice(){
+        var array:[String]!
+        let language = self.snbBookModel.summary.languageDetectByFirstCharacter(str: self.snbBookModel.summary)
+        switch language {
+        case .Chinese:
+            array = ["xiaoyan","vinn","vils","aisjying","aisduck"]
+        default:
+            array = ["aiscatherine","aistom","abha","gabriela","mariane"]
+        }
+        UIAlertController.shwoAlertControl(self.controller!, style: .actionSheet, title: nil, message: nil, titles: array, cancel: "取消", doneTitle: nil, cancelAction: {
+            
+        }, doneAction: { (str) in
+            self.iFluSpeechSynthesizer?.setParameter(str, forKey: IFlySpeechConstant.voice_NAME())
+            self.iFluSpeechSynthesizer.setParameter(SaveVoiceTools.sharedInstance.saveVoicePCMPath(self.isbnStr), forKey: IFlySpeechConstant.tts_AUDIO_PATH())
+        })
+        
+        //            loadingView = Tools.shareInstance.showLoading((self.controller?.view)!, msg: "正在合成语音")
+        self.isChooseSpeaker = true
+        iFluSpeechSynthesizer.startSpeaking(self.snbBookModel.summary)
+        print("sdfs")
+//        self.iFluSpeechSynthesizer.s
+    }
     
     func addBook(){
         if UserInfoModel.isLoggedIn() {
@@ -72,23 +110,23 @@ class AddBookViewModel: BaseViewModel {
     
     //MARK: TableViewDidSelect
     func tableViewDidSelect(_ indexPath:IndexPath) {
-        if indexPath.row == 1 {
-            var array:[String]!
-            let language = self.snbBookModel.summary.languageDetectByFirstCharacter(str: self.snbBookModel.summary)
-            switch language {
-            case .Chinese:
-                array = ["xiaoyan","vinn","vils","aisjying","aisduck"]
-            default:
-                array = ["aiscatherine","aistom","abha","gabriela","mariane"]
-            }
-            UIAlertController.shwoAlertControl(self.controller!, style: .actionSheet, title: nil, message: nil, titles: array, cancel: "取消", doneTitle: nil, cancelAction: { 
-                
-            }, doneAction: { (str) in
-                self.iFluSpeechSynthesizer?.setParameter(str, forKey: IFlySpeechConstant.voice_NAME())
-            })
-//            loadingView = Tools.shareInstance.showLoading((self.controller?.view)!, msg: "正在合成语音")
-            iFluSpeechSynthesizer.startSpeaking(self.snbBookModel.summary)
-        }
+//        if indexPath.row == 1 {
+//            var array:[String]!
+//            let language = self.snbBookModel.summary.languageDetectByFirstCharacter(str: self.snbBookModel.summary)
+//            switch language {
+//            case .Chinese:
+//                array = ["xiaoyan","vinn","vils","aisjying","aisduck"]
+//            default:
+//                array = ["aiscatherine","aistom","abha","gabriela","mariane"]
+//            }
+//            UIAlertController.shwoAlertControl(self.controller!, style: .actionSheet, title: nil, message: nil, titles: array, cancel: "取消", doneTitle: nil, cancelAction: { 
+//                
+//            }, doneAction: { (str) in
+//                self.iFluSpeechSynthesizer?.setParameter(str, forKey: IFlySpeechConstant.voice_NAME())
+//            })
+////            loadingView = Tools.shareInstance.showLoading((self.controller?.view)!, msg: "正在合成语音")
+//            iFluSpeechSynthesizer.startSpeaking(self.snbBookModel.summary)
+//        }
     }
     
     //MARK: XFyunManager
@@ -183,17 +221,38 @@ extension AddBookViewModel : UITableViewDataSource {
 
 extension AddBookViewModel : IFlySpeechSynthesizerDelegate {
     func onCompleted(_ error: IFlySpeechError!) {
-        Tools.shareInstance.hiddenLoading(hud: loadingView)
+//        if loadingView != nil {
+//            Tools.shareInstance.hiddenLoading(hud: loadingView)
+//        }
+        DispatchQueue.global().async {
+            AudioWrapper.audioPCMtoMP3(SaveVoiceTools.sharedInstance.saveVoicePCMPath(self.isbnStr), SaveVoiceTools.sharedInstance.saveVoiceMP3Path(self.isbnStr))
+        }
     }
     
     func onSpeakBegin() {
+//         loadingView = Tools.shareInstance.showLoading((self.controller?.view)!, msg: "正在合成语音")
     }
     
     func onBufferProgress(_ progress: Int32, message msg: String!) {
-        
+        print("onBufferProgress ====\(progress)")
+        print("onBuffermessage ====\(msg)")
     }
     
     func onSpeakProgress(_ progress: Int32, beginPos: Int32, endPos: Int32) {
+        print("onSpeakProgress ====\(progress)" )
+        print("onSpeakbeginPos ====\(beginPos)")
+        print("onSpeakendPos ====\(endPos)")
+    }
+    
+    func onSpeakCancel() {
+        
+    }
+    
+    func onSpeakPaused() {
+        
+    }
+    
+    func onSpeakResumed() {
         
     }
 }

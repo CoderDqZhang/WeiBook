@@ -22,6 +22,7 @@ class HomeViewController: BaseViewController {
         self.setUpView()
         self.setLogicViewModel()
         self.addPagerController()
+        
         // Do any additional setup after loading the view.
     }
     

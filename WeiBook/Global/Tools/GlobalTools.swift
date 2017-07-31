@@ -59,8 +59,77 @@ public extension UIDevice {
     
 }
 
-let kEncodedObjectPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last! as NSString
+let kEncodedObjectPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).last! as String
 let kEncodeUserCachesDirectory = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first! as String
+
+class SaveVoiceTools {
+    fileprivate init(){}
+    
+    static let sharedInstance = SaveVoiceTools()
+    func saveVoicePCMPath(_ document:String) ->String? {
+        let manager = FileManager.default
+        if UserInfoModel.isLoggedIn() {
+            let path = (kEncodedObjectPath + "/\((UserInfoModel.shareInstance().mobile)!)") + "/Voice" + "/\(document).pcm"
+            print(path)
+            if !manager.fileExists(atPath: path) {
+                do {
+                    try manager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+                    return path
+                } catch {
+                    print("创建失败")
+                    return nil
+                }
+            }else{
+                return path
+            }
+        }else{
+            let path = (kEncodedObjectPath + "/PublicVoice") + "/\(document).pcm"
+            if !manager.fileExists(atPath: path) {
+                do {
+                    try manager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+                    return path
+                } catch {
+                    print("创建失败")
+                    return nil
+                }
+            }else{
+                return path
+            }
+        }
+    }
+    
+    func saveVoiceMP3Path(_ document:String) ->String? {
+        let manager = FileManager.default
+        if UserInfoModel.isLoggedIn() {
+            let path = (kEncodedObjectPath + "/\((UserInfoModel.shareInstance().mobile)!)") + "/Voice" + "/\(document).mp3"
+            print(path)
+            if !manager.fileExists(atPath: path) {
+                do {
+                    try manager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+                    return path
+                } catch {
+                    print("创建失败")
+                    return nil
+                }
+            }else{
+                return path
+            }
+        }else{
+            let path = (kEncodedObjectPath + "/PublicVoice") + "/\(document).mp3"
+            if !manager.fileExists(atPath: path) {
+                do {
+                    try manager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+                    return path
+                } catch {
+                    print("创建失败")
+                    return nil
+                }
+            }else{
+                return path
+            }
+        }
+    }
+}
 
 class SaveImageTools{
     
