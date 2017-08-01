@@ -23,6 +23,9 @@ let BookBorrowUserList = "/borrowBook/uselist"
 let BookBorrowList = "/borrowBook/list"
 let MyBookList = "/wishBook/list"
 let BookGive = "/giveBook/giveAdd"
+let BookGet = "/giveBook/acceptAdd"
+let MyBookGetList = "/giveBook/giveList"
+let MyBookGiveList = "/giveBook/acceptlist"
 
 
 let QRCodeServer = "/book/getBookByISBN"

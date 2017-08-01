@@ -63,14 +63,14 @@ class BookInfoTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func cellSetData(model:BorrowModel){
-        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.tails.bookInfo.bookImg, imageView: bookPost) { (image, error, url) in
+    func cellSetData(model:ServerBookModel){
+        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.bookImg, imageView: bookPost) { (image, error, url) in
             
         }
-        bookTitle.text = model.tails.bookInfo.title
-        bookDesc.text = model.tails.bookInfo.descriptionField
-        commentNumber.text = "评论人数 \((model.tails.bookInfo.people)!)"
-        let inputNum = model.tails.bookInfo.inputNum == nil ? 0 : model.tails.bookInfo.inputNum
+        bookTitle.text = model.title
+        bookDesc.text = model.descriptionField
+        commentNumber.text = "评论人数 \((model.people)!)"
+        let inputNum = model.inputNum == nil ? 0 : model.inputNum
         collectNumber.text = "收藏人数 \((inputNum)!)"
     }
     

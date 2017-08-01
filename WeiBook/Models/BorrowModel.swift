@@ -18,7 +18,7 @@ class BorrowModel : NSObject, NSCoding{
     var isReturn : Int!
     var returnTime : Int!
     var state : Int!
-    var tails : Borrowtail!
+    var tails : BorrowAndGivetail!
     var useUserId : String!
     var userId : String!
     
@@ -36,7 +36,7 @@ class BorrowModel : NSObject, NSCoding{
         returnTime = dictionary["returnTime"] as? Int
         state = dictionary["state"] as? Int
         if let tailsData = dictionary["tails"] as? NSDictionary{
-            tails = Borrowtail(fromDictionary: tailsData)
+            tails = BorrowAndGivetail(fromDictionary: tailsData)
         }
         useUserId = dictionary["useUserId"] as? String
         userId = dictionary["userId"] as? String
@@ -98,7 +98,7 @@ class BorrowModel : NSObject, NSCoding{
         isReturn = aDecoder.decodeObject(forKey: "isReturn") as? Int
         returnTime = aDecoder.decodeObject(forKey: "returnTime") as? Int
         state = aDecoder.decodeObject(forKey: "state") as? Int
-        tails = aDecoder.decodeObject(forKey: "tails") as? Borrowtail
+        tails = aDecoder.decodeObject(forKey: "tails") as? BorrowAndGivetail
         useUserId = aDecoder.decodeObject(forKey: "useUserId") as? String
         userId = aDecoder.decodeObject(forKey: "userId") as? String
         
@@ -148,7 +148,7 @@ class BorrowModel : NSObject, NSCoding{
     
 }
 
-class Borrowtail: NSObject, NSCoding{
+class BorrowAndGivetail: NSObject, NSCoding{
     
     var bookInfo : ServerBookModel!
     var userInfo : UserInfoSwiftModel!

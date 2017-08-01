@@ -56,7 +56,6 @@ class GiveUserInfoTableViewCell: UITableViewCell {
         statusButton.layer.cornerRadius = 3.0
         statusButton.layer.borderWidth = 1.0
         statusButton.titleLabel?.font = App_Theme_PinFan_R_13_Font
-        self.updataStatusButton(status: .GiveIn)
         self.contentView.addSubview(statusButton)
         
         lineLabel = GloabLineView.init(frame: CGRect.init(x: 0, y: 59.5, width: SwifterSwift.screenWidth, height: 0.5))
@@ -69,10 +68,22 @@ class GiveUserInfoTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func cellSetData(model:GiveBookModel){
+        if model.useUserId == UserInfoModel.shareInstance().tails.userInfo.userId {
+            self.updataStatusButton(status: model.isAccept)
+        }else{
+            self.updataStatusButton(status: 3)
+        }
+        ImageViewManager.shareInstance.sd_imageView(url: model.tails.userInfo.tails.userInfo.photo, imageView: userPhoto) { (image, error, cacheType, url) in
+            self.userPhoto.image = image
+        }
+        userName.text = model.tails.userInfo.username
+        startTime.text = Date.init(unixTimestamp: Double(model.giveEnd)).dateString()
+    }
     
-    func updataStatusButton(status:GiveBookStatus){
+    func updataStatusButton(status:Int){
         switch status {
-        case .GiveIn:
+        case 3:
             statusButton.setTitle("领受", for: .normal)
             statusButton.setTitleColor(UIColor.init(hexString: App_Theme_EE5028_Color), for: .normal)
             statusButton.layer.borderColor = UIColor.init(hexString: App_Theme_EE5028_Color).cgColor
@@ -81,10 +92,6 @@ class GiveUserInfoTableViewCell: UITableViewCell {
             statusButton.setTitleColor(UIColor.init(hexString: App_Theme_594CA8_Color), for: .normal)
             statusButton.layer.borderColor = UIColor.init(hexString: App_Theme_594CA8_Color).cgColor
         }
-    }
-    
-    func cellSetData(bookStatus:GiveBookStatus){
-        self.updataStatusButton(status: bookStatus)
     }
     
     override func updateConstraints() {

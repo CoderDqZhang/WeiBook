@@ -158,9 +158,9 @@ func UserDefaultsSetSynchronize(_ value:AnyObject,key:String) {
     UserDefaults.standard.synchronize()
 }
 
-func UserDefaultsGetSynchronize(_ key:String) -> AnyObject{
+func UserDefaultsGetSynchronize(_ key:String) -> AnyObject?{
     if UserDefaults.standard.object(forKey: key) == nil {
-        return "nil" as AnyObject
+        return nil
     }
     return UserDefaults.standard.object(forKey: key)! as AnyObject
 }

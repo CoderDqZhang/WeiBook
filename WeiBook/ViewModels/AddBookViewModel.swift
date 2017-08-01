@@ -22,6 +22,7 @@ class AddBookViewModel: BaseViewModel {
     var loadingView:MBProgressHUD!
     var isChooseSpeaker:Bool = false
     var isSpeaking:Bool = false
+    var speakText:String = ""
     
     override init() {
         super.init()
@@ -45,23 +46,41 @@ class AddBookViewModel: BaseViewModel {
     
     func speakVoice(){
         var array:[String]!
-        let language = self.snbBookModel.summary.languageDetectByFirstCharacter(str: self.snbBookModel.summary)
-        switch language {
-        case .Chinese:
-            array = ["xiaoyan","vinn","vils","aisjying","aisduck"]
-        default:
-            array = ["aiscatherine","aistom","abha","gabriela","mariane"]
+        if UserDefaultsGetSynchronize("\(self.isbnStr)_Index") != nil {
+            self.iFluSpeechSynthesizer?.setParameter(UserDefaultsGetSynchronize("\(self.isbnStr)_Name") as! String, forKey: IFlySpeechConstant.voice_NAME())
+            let progress = Double((UserDefaultsGetSynchronize(self.isbnStr) as! Int))
+            if progress == 100 {
+                iFluSpeechSynthesizer.startSpeaking(self.snbBookModel.summary)
+                UserDefaultsSetSynchronize(0 as AnyObject, key: "\(self.isbnStr)_Index")
+                self.speakText = self.snbBookModel.summary
+            }else{
+                let index =  Double(UserDefaultsGetSynchronize("\(self.isbnStr)_Index") as! Double)
+                let str = self.snbBookModel.summary.substringWithRange(Int(index), end: self.snbBookModel.summary.length)
+                self.speakText = str
+                iFluSpeechSynthesizer.startSpeaking(str)
+            }
+        }else{
+            let language = self.snbBookModel.summary.languageDetectByFirstCharacter(str: self.snbBookModel.summary)
+            switch language {
+            case .Chinese:
+                array = ["xiaoyan","vinn","vils","aisjying","aisduck"]
+            default:
+                array = ["aiscatherine","aistom","abha","gabriela","mariane"]
+            }
+            UIAlertController.shwoAlertControl(self.controller!, style: .actionSheet, title: nil, message: nil, titles: array, cancel: "取消", doneTitle: nil, cancelAction: {
+                
+            }, doneAction: { (str) in
+                self.iFluSpeechSynthesizer?.setParameter(str, forKey: IFlySpeechConstant.voice_NAME())
+                UserDefaultsSetSynchronize(str as AnyObject, key: "\(self.isbnStr)_Name")
+                self.iFluSpeechSynthesizer.setParameter(SaveVoiceTools.sharedInstance.saveVoicePCMPath(self.isbnStr), forKey: IFlySpeechConstant.asr_AUDIO_PATH())
+                self.speakText = self.snbBookModel.summary
+                self.iFluSpeechSynthesizer.startSpeaking(self.snbBookModel.summary)
+            })
         }
-        UIAlertController.shwoAlertControl(self.controller!, style: .actionSheet, title: nil, message: nil, titles: array, cancel: "取消", doneTitle: nil, cancelAction: {
-            
-        }, doneAction: { (str) in
-            self.iFluSpeechSynthesizer?.setParameter(str, forKey: IFlySpeechConstant.voice_NAME())
-            self.iFluSpeechSynthesizer.setParameter(SaveVoiceTools.sharedInstance.saveVoicePCMPath(self.isbnStr), forKey: IFlySpeechConstant.tts_AUDIO_PATH())
-        })
+        
         
         //            loadingView = Tools.shareInstance.showLoading((self.controller?.view)!, msg: "正在合成语音")
         self.isChooseSpeaker = true
-        iFluSpeechSynthesizer.startSpeaking(self.snbBookModel.summary)
         print("sdfs")
 //        self.iFluSpeechSynthesizer.s
     }
@@ -224,9 +243,10 @@ extension AddBookViewModel : IFlySpeechSynthesizerDelegate {
 //        if loadingView != nil {
 //            Tools.shareInstance.hiddenLoading(hud: loadingView)
 //        }
-        DispatchQueue.global().async {
-            AudioWrapper.audioPCMtoMP3(SaveVoiceTools.sharedInstance.saveVoicePCMPath(self.isbnStr), SaveVoiceTools.sharedInstance.saveVoiceMP3Path(self.isbnStr))
-        }
+//        DispatchQueue.global().async {
+//            AudioWrapper.audioPCMtoMP3(SaveVoiceTools.sharedInstance.saveVoicePCMPath(self.isbnStr), SaveVoiceTools.sharedInstance.saveVoiceMP3Path(self.isbnStr))
+//        }
+        self.isSpeaking = false
     }
     
     func onSpeakBegin() {
@@ -240,6 +260,14 @@ extension AddBookViewModel : IFlySpeechSynthesizerDelegate {
     
     func onSpeakProgress(_ progress: Int32, beginPos: Int32, endPos: Int32) {
         print("onSpeakProgress ====\(progress)" )
+        let index =  Double(self.speakText.length) * 0.01 * Double(progress)
+        if UserDefaultsGetSynchronize("\(self.isbnStr)_Index") != nil {
+            let oldIndex = UserDefaultsGetSynchronize("\(self.isbnStr)_Index")
+            UserDefaultsSetSynchronize((Double(index) + Double((oldIndex as AnyObject) as! NSNumber) as AnyObject), key: "\(self.isbnStr)_Index")
+        }else{
+            UserDefaultsSetSynchronize(index as AnyObject, key: "\(self.isbnStr)_Index")
+        }
+        UserDefaultsSetSynchronize(index as AnyObject, key: self.isbnStr)
         print("onSpeakbeginPos ====\(beginPos)")
         print("onSpeakendPos ====\(endPos)")
     }

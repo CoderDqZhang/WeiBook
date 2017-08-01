@@ -11,14 +11,46 @@ import UIKit
 class MyGivePresentViewModel: BaseViewModel {
 
     let bookStatus:[GiveBookStatus] = [GiveBookStatus.GiveIn,GiveBookStatus.GiveOut,GiveBookStatus.GiveOut,GiveBookStatus.GiveOut,GiveBookStatus.GiveIn]
+    var giveList = NSMutableArray.init()
+    
     override init() {
-        
+        super.init()
+        self.requestGiveBook()
     }
     
     //MARK: - TableViewCellSetData
     func tableViewGiveUserInfoTableViewCellSetData(_ indexPath:IndexPath, cell:GiveUserInfoTableViewCell) {
-        
-        cell.cellSetData(bookStatus: bookStatus[indexPath.section])
+        cell.cellSetData(model: GiveBookModel.init(fromDictionary: self.giveList[indexPath.section] as! NSDictionary))
+    }
+    
+    func tableViewBookInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BookInfoTableViewCell) {
+        cell.cellSetData(model: GiveBookModel.init(fromDictionary: self.giveList[indexPath.section] as! NSDictionary).tails.bookInfo)
+    }
+    
+    //MARK: -RequestNet
+    func requestGiveBook(){
+        self.giveList.removeAllObjects()
+        let url = "\(BaseUrl)\(MyBookGetList)"
+        if UserInfoModel.isLoggedIn() {
+            let parameters = ["userId":UserInfoModel.shareInstance().tails.userInfo.userId]
+            BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+                if !resultDic.isCompleted {
+                    self.giveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                    self.controller?.tableView.reloadData()
+                }
+            }
+            
+            let urlList = "\(BaseUrl)\(MyBookGiveList)"
+            let parametersList = ["useUserId":UserInfoModel.shareInstance().tails.userInfo.userId]
+            BaseNetWorke.sharedInstance.getUrlWithString(urlList, parameters: parametersList as AnyObject).observe { (resultDic) in
+                if !resultDic.isCompleted {
+                    self.giveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                    self.controller?.tableView.reloadData()
+                }
+            }
+        }else{
+            NavigationPushView(self.controller!, toConroller: LoginViewController())
+        }
     }
     
 }
@@ -50,7 +82,7 @@ extension MyGivePresentViewModel : UITableViewDelegate {
 extension MyGivePresentViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return self.giveList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,6 +97,7 @@ extension MyGivePresentViewModel : UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: BookInfoTableViewCell.description(), for:indexPath) as! BookInfoTableViewCell
+            self.tableViewBookInfoTableViewCellSetData(indexPath, cell: cell)
             return cell
         }
     }

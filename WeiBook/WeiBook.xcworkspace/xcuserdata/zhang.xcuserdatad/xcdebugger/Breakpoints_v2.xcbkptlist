@@ -4,6 +4,14 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SwiftErrorBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -16,95 +24,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ViewControllers/ProfileInfoViewController.swift"
-            timestampString = "522149592.446585"
+            filePath = "ViewModels/AddBookViewModel.swift"
+            timestampString = "523274524.720382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Models/UserInfoModel.m"
-            timestampString = "522655718.985148"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
-            landmarkName = "+shareInstance"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Models/UserInfoModel.m"
-            timestampString = "522655719.746329"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
-            landmarkName = "+shareInstance"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Models/UserInfoModel.m"
-            timestampString = "522655722.685563"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
-            landmarkName = "+shareInstance"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "requestGetBook(isbn:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "+[UserInfoModel shareInstance]"
+                  symbolName = "WeiBook.AddBookViewModel.requestGetBook (isbn : Swift.String) -&gt; ()"
                   moduleName = "WeiBook"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/Models/UserInfoModel.m"
-                  timestampString = "522659517.015964"
+                  urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/ViewModels/AddBookViewModel.swift"
+                  timestampString = "523278095.348565"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "440"
-                  endingLineNumber = "440"
-                  offsetFromSymbolStart = "34">
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "414">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__30+[UserInfoModel shareInstance]_block_invoke"
+                  symbolName = "WeiBook.AddBookViewModel.(requestGetBook (isbn : Swift.String) -&gt; ()).(closure #1)"
                   moduleName = "WeiBook"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/Models/UserInfoModel.m"
-                  timestampString = "522659517.018254"
+                  urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/ViewModels/AddBookViewModel.swift"
+                  timestampString = "523278095.350936"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "441"
-                  endingLineNumber = "441"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "19">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -112,93 +72,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Models/UserInfoModel.m"
-            timestampString = "522655725.078294"
+            filePath = "ViewModels/AddBookViewModel.swift"
+            timestampString = "523274688.037664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
-            landmarkName = "+shareInstance"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "requestGetBook(isbn:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Models/UserInfoModel.m"
-            timestampString = "522655826.83158"
+            filePath = "ViewModels/AddBookViewModel.swift"
+            timestampString = "523274695.488973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "443"
-            endingLineNumber = "443"
-            landmarkName = "+shareInstance"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "requestGetBook(isbn:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Models/UserInfoModel.m"
-            timestampString = "522672449.195108"
+            filePath = "ViewModels/QRCodeViewModel.swift"
+            timestampString = "523275468.644218"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
-            landmarkName = "+shareInstance"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "borrowReqest(dic:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Global/Tools/ImageViewManager.swift"
-            timestampString = "522912003.407104"
+            filePath = "ViewModels/QRCodeViewModel.swift"
+            timestampString = "523275928.789024"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "imageUrlType(url:)"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "borrowReqest(dic:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeiBook/Define.swift"
-            timestampString = "522685924.608745"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeiBook/Define.swift"
-            timestampString = "522685925.924472"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -208,28 +140,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViewModels/BorrowViewModel.swift"
-            timestampString = "522911428.568343"
+            timestampString = "523275994.811969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "numberOfSections(in:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/BaseWebViewController.swift"
-            timestampString = "522925171.157838"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "setUpView()"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "requestBorrow()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -239,29 +155,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Global/Tools/GlobalTools.swift"
-            timestampString = "523186471.041887"
+            filePath = "Views/GiveUserInfoTableViewCell.swift"
+            timestampString = "523278037.356576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "saveVoicePCMPath(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewControllers/AddBookViewController.swift"
-            timestampString = "523186578.997462"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "viewWillDisappear(_:)"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "cellSetData(model:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

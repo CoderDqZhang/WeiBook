@@ -24,29 +24,34 @@ class BorrowViewModel: BaseViewModel {
     }
     
     func tableViewBookInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BookInfoTableViewCell) {
-        cell.cellSetData(model: BorrowModel.init(fromDictionary: self.borrowList[indexPath.section] as! NSDictionary))
+        cell.cellSetData(model: BorrowModel.init(fromDictionary: self.borrowList[indexPath.section] as! NSDictionary).tails.bookInfo)
     }
     
     //MARK: -RequestNet
     func requestBorrow(){
         self.borrowList.removeAllObjects()
         let url = "\(BaseUrl)\(BookBorrowList)"
-        let parameters = ["userId":UserInfoModel.shareInstance().tails.userInfo.userId]
-        BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
-            if !resultDic.isCompleted {
-                self.borrowList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
-                self.controller?.tableView.reloadData()
+        if UserInfoModel.isLoggedIn() {
+            let parameters = ["userId":UserInfoModel.shareInstance().tails.userInfo.userId]
+            BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+                if !resultDic.isCompleted {
+                    self.borrowList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                    self.controller?.tableView.reloadData()
+                }
             }
+            
+            let urlList = "\(BaseUrl)\(BookBorrowUserList)"
+            let parametersList = ["useUserId":UserInfoModel.shareInstance().tails.userInfo.userId]
+            BaseNetWorke.sharedInstance.getUrlWithString(urlList, parameters: parametersList as AnyObject).observe { (resultDic) in
+                if !resultDic.isCompleted {
+                    self.borrowList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                    self.controller?.tableView.reloadData()
+                }
+            }
+        }else{
+            NavigationPushView(self.controller!, toConroller: LoginViewController())
         }
         
-        let urlList = "\(BaseUrl)\(BookBorrowUserList)"
-        let parametersList = ["useUserId":UserInfoModel.shareInstance().tails.userInfo.userId]
-        BaseNetWorke.sharedInstance.getUrlWithString(urlList, parameters: parametersList as AnyObject).observe { (resultDic) in
-            if !resultDic.isCompleted {
-                self.borrowList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
-                self.controller?.tableView.reloadData()
-            }
-        }
     }
 
 }

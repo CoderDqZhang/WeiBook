@@ -49,7 +49,7 @@ class AddBookTagsViewModel: BaseViewModel {
         cell.cellSetData(image: nil, lableStr: "添加位置", switchStatus: self.customComment)
         cell.gloableImageLableSwitchClouse = { isTrue in
             self.customComment = isTrue
-            self.controller?.tableView.reloadSections(IndexSet.init(integer: 1), with: .automatic)
+//            self.controller?.tableView.reloadSections(IndexSet.init(integer: 1), with: .automatic)
         }
     }
 }

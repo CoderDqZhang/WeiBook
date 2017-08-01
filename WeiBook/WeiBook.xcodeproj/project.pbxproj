@@ -194,6 +194,7 @@
 		1FD76C051F21AC3B00F334CF /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD76C041F21AC3B00F334CF /* FormModel.swift */; };
 		1FDABFC31F1F455000C45E14 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDABFC21F1F455000C45E14 /* RecordManager.swift */; };
 		1FDABFC51F1F466700C45E14 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */; };
+		1FE36B351F30914600E895C7 /* GiveBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE36B341F30914600E895C7 /* GiveBookModel.swift */; };
 		1FEF83531EF1498E00C7D84B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF83521EF1498E00C7D84B /* AppDelegate.swift */; };
 		1FEF83551EF1498E00C7D84B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF83541EF1498E00C7D84B /* ViewController.swift */; };
 		1FEF83581EF1498E00C7D84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEF83561EF1498E00C7D84B /* Main.storyboard */; };
@@ -455,6 +456,7 @@
 		1FD76C041F21AC3B00F334CF /* FormModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormModel.swift; sourceTree = "<group>"; };
 		1FDABFC21F1F455000C45E14 /* RecordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
+		1FE36B341F30914600E895C7 /* GiveBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveBookModel.swift; sourceTree = "<group>"; };
 		1FEF834F1EF1498E00C7D84B /* WeiBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FEF83521EF1498E00C7D84B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FEF83541EF1498E00C7D84B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -994,6 +996,7 @@
 			children = (
 				1FB094EB1F220657005F1033 /* MyBooksModel.swift */,
 				1F63C45F1F2A495A0058A997 /* BorrowModel.swift */,
+				1FE36B341F30914600E895C7 /* GiveBookModel.swift */,
 				1F8374E41EFBB48600ED97DE /* UserInfoModel.h */,
 				1F8374E51EFBB48600ED97DE /* UserInfoModel.m */,
 			);
@@ -1349,6 +1352,7 @@
 				1F7017F61F00E99700029158 /* SearchViewController.swift in Sources */,
 				1F8374FB1EFD478D00ED97DE /* MyBookListViewController.swift in Sources */,
 				1FB3709A1F136A0D003DC654 /* CreateDataTableViewCell.swift in Sources */,
+				1FE36B351F30914600E895C7 /* GiveBookModel.swift in Sources */,
 				1FB370961F135018003DC654 /* DiscoverCreateViewController.swift in Sources */,
 				1F4AA56F1EF7E02B0085BE3B /* UIViewController+TalKingData.m in Sources */,
 				1F4AA5F01EF7EF190085BE3B /* TAAbstractDotView.m in Sources */,

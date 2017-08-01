@@ -16,14 +16,14 @@ class HomeViewModel: BaseViewModel {
     }
     
     func pushQRCodeView(){
-        let controller = AddBookViewController()
-        controller.isbn = "9787111079279"
-        NavigationPushView(self.controller!, toConroller: controller)
-//        if UserInfoModel.isLoggedIn() {
-//            NavigationPushView(self.controller!, toConroller: QRCodeViewController())
-//        }else{
-//            NavigationPushView(self.controller!, toConroller: LoginViewController())
-//        }
+//        let controller = AddBookViewController()
+//        controller.isbn = "9787111079279"
+//        NavigationPushView(self.controller!, toConroller: controller)
+        if UserInfoModel.isLoggedIn() {
+            NavigationPushView(self.controller!, toConroller: QRCodeViewController())
+        }else{
+            NavigationPushView(self.controller!, toConroller: LoginViewController())
+        }
     }
     
     func pushSearchView(){

@@ -106,7 +106,7 @@ class BorrowUserInfoTableViewCell: UITableViewCell {
         }
         userName.text = model.tails.userInfo.username
         startTime.text = "\(Date.init(unixTimestamp: Double(model.borrowStart / 1000)).dateString()) ~ "
-        endTime.text = Date.init(unixTimestamp: Double(model.borrowEnd / 1000)).dateString()
+        endTime.text = Date.init(unixTimestamp: Double(model.borrowEnd)).dateString()
     }
     
     override func updateConstraints() {

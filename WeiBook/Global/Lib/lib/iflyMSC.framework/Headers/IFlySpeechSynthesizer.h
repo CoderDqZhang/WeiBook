@@ -88,7 +88,7 @@
  *
  *  @param text 合成的文本,最大的字节数为1k
  */
-- (void) startSpeaking:(NSString *)text;
+- (void)startSpeaking:(NSString *)text;
 
 /*!
  *  开始合成(不播放)<br>
