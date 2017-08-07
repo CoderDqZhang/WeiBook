@@ -51,4 +51,12 @@ class QRFormBook: NSObject {
     }
 }
 
+class CommentsForm: NSObject {
+    var commType:String!
+    var userId:String!
+    var commContent:String!
+    var objectId:String!
+    var comments:[Comment] = []
+}
+
 

@@ -45,6 +45,12 @@ class DiscoverNewViewModel: BaseViewModel {
         
     }
     
+    func tableViewDidSelect(_ indexPath:IndexPath) {
+        if indexPath.row == 2 {
+            NavigationPushView(self.controller!, toConroller: BookDescViewController())
+        }
+    }
+    
     func tableViewCommentInfoTableViewCellSetData(_ indexPath:IndexPath, cell:CommentInfoTableViewCell) {
         self.setUpPhotoBrowser()
         cell.cellSetData(title: "这是一个测试文件", imgs: testUrl)
@@ -69,9 +75,7 @@ extension DiscoverNewViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row == 2 {
-            NavigationPushView(self.controller!, toConroller: BookDescViewController())
-        }
+        self.tableViewDidSelect(indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

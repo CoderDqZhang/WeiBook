@@ -13,6 +13,7 @@ class BooksViewController: BaseViewController {
 
     var collectView:UICollectionView!
     var viewModle = BooksViewModel()
+    var createComment:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class BooksViewController: BaseViewController {
     }
     
     func bindLogicViewModel(){
+        self.viewModle.createComment = self.createComment
         self.viewModle.controller = self
     }
 

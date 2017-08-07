@@ -9,9 +9,13 @@
 import UIKit
 import SwifterSwift
 
+typealias BookSelectClouse = (_ model:MyBooksModel) ->Void
+
 class BooksViewModel: BaseViewModel {
 
     var myBooksModel = NSMutableArray()
+    var createComment:Bool!
+    var bookSelectClouse:BookSelectClouse!
     
     override init() {
         super.init()
@@ -20,10 +24,16 @@ class BooksViewModel: BaseViewModel {
     
     //MARK: CollectViewDidSelect
     func collectDidSelect(_ indexPath:IndexPath) {
-        let bookDesc = BookDescViewController()
-        bookDesc.myBookModel = MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary)
-        NavigationPushView(self.controller!, toConroller: bookDesc)
-
+        if !self.createComment {
+            let bookDesc = BookDescViewController()
+            bookDesc.myBookModel = MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary)
+            NavigationPushView(self.controller!, toConroller: bookDesc)
+        }else{
+            if self.bookSelectClouse != nil {
+                self.bookSelectClouse(MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary))
+                self.controller?.pop(animated: true)
+            }
+        }
     }
     
     //MARK: CollectViewCell

@@ -196,6 +196,7 @@
 		1FDABFC51F1F466700C45E14 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */; };
 		1FE36B351F30914600E895C7 /* GiveBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE36B341F30914600E895C7 /* GiveBookModel.swift */; };
 		1FED8C011F384CC90028200E /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED8C001F384CC90028200E /* CommentModel.swift */; };
+		1FED8C031F38B8B40028200E /* Default-568.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FED8C021F38B8B40028200E /* Default-568.png */; };
 		1FEF83531EF1498E00C7D84B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF83521EF1498E00C7D84B /* AppDelegate.swift */; };
 		1FEF83551EF1498E00C7D84B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF83541EF1498E00C7D84B /* ViewController.swift */; };
 		1FEF83581EF1498E00C7D84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEF83561EF1498E00C7D84B /* Main.storyboard */; };
@@ -459,6 +460,7 @@
 		1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		1FE36B341F30914600E895C7 /* GiveBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveBookModel.swift; sourceTree = "<group>"; };
 		1FED8C001F384CC90028200E /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		1FED8C021F38B8B40028200E /* Default-568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568.png"; sourceTree = "<group>"; };
 		1FEF834F1EF1498E00C7D84B /* WeiBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FEF83521EF1498E00C7D84B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FEF83541EF1498E00C7D84B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -1129,6 +1131,7 @@
 				1FEF835B1EF1498E00C7D84B /* LaunchScreen.storyboard */,
 				1F7017EF1F00B9FE00029158 /* city.plist */,
 				1FEF835E1EF1498E00C7D84B /* Info.plist */,
+				1FED8C021F38B8B40028200E /* Default-568.png */,
 				1F4AA5951EF7E1180085BE3B /* WeiBook-Bridging-Header.h */,
 			);
 			path = WeiBook;
@@ -1281,6 +1284,7 @@
 				1F7017F01F00B9FE00029158 /* city.plist in Resources */,
 				1FEF835A1EF1498E00C7D84B /* Assets.xcassets in Resources */,
 				1FB370CC1F137736003DC654 /* DXPhotoPicker.strings in Resources */,
+				1FED8C031F38B8B40028200E /* Default-568.png in Resources */,
 				1FEF83581EF1498E00C7D84B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1659,6 +1663,7 @@
 			baseConfigurationReference = ACEE389AB2E585FA1B1A8733 /* Pods-WeiBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 4R2693PW47;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1686,6 +1691,7 @@
 			baseConfigurationReference = 2B966EC35C9E0546FB5B39CC /* Pods-WeiBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 4R2693PW47;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

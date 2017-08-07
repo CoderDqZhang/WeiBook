@@ -16,10 +16,16 @@ class DiscoverCreateViewModel: BaseViewModel {
     var selectedAssetsArray:[PHAsset] = []
     
     var browser:SKPhotoBrowser!
-
+    var model:ServerBookModel!
+    var myBookId:String!
+    
+    var comments:[Comment] = []
+    var commentForm = CommentsForm.init()
+    
     override init() {
         super.init()
         self.configSKPhotoBrowser()
+        
     }
     
     //MARK: SKPhotoBrowser
@@ -57,12 +63,30 @@ class DiscoverCreateViewModel: BaseViewModel {
     }
     
     func rigthBarItemPress(){
+        if self.selectedAssetsArray.count > 0 {
+            self.uploadImages()
+        }else{
+            self.requestBookComment()
+        }
+    }
     
+    func tableViewDidSelect(_ indexPath:IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 1 {
+            let books = BooksViewController()
+            books.createComment = true
+            books.viewModle.bookSelectClouse = { model in
+                self.model = model.tails.bookInfo
+                self.commentForm.objectId = model.bookId
+                self.controller?.tableView.reloadData()
+            }
+            NavigationPushView(self.controller!, toConroller:  books)
+        }
     }
     
     func tableViewCreateDataTableViewCellSetData(_ indexPath:IndexPath, cell:CreateDataTableViewCell) {
         cell.cellSetData(images: self.selectedAssetsArray)
         cell.addImagesClouse = {
+            cell.textView.resignFirstResponder()
             (self.controller as! DiscoverCreateViewController).presentImagePickerView()
         }
         cell.imagesSelectClouse = { tag, view in
@@ -72,10 +96,59 @@ class DiscoverCreateViewModel: BaseViewModel {
                 
             })
         }
+        cell.textView.becomeFirstResponder()
+        cell.textView.reactive.continuousTextValues.observeValues { (str) in
+            self.commentForm.commContent = str
+        }
     }
     
     func tableViewBookInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BookInfoTableViewCell) {
-        
+        if self.model != nil {
+            cell.cellSetData(model: self.model)
+        }
+    }
+    
+    //MARK: RequestComment
+    func requestBookComment(){
+        self.commentForm.userId = UserInfoModel.shareInstance().tails.userInfo.userId
+        let url = "\(BaseUrl)\(CreateBookComment)"
+        let dics = NSMutableArray.init()
+        for comment in comments {
+            let dic = ["imageUrl":comment.imageUrl,
+                       "type":comment.type] as [String : Any]
+            dics.add(dic)
+        }
+        let parameters = [
+                          "commType":"2",
+                          "objectId":self.commentForm.objectId,
+                          "userId":self.commentForm.userId,
+                          "commContent":self.commentForm.commContent,
+                          "comments":dics,
+            ] as [String : Any]
+        BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+            if !resultDic.isCompleted {
+                _ = Tools.shareInstance.showMessage((self.controller?.view)!, msg: "发表动态成功", autoHidder: true)
+                self.controller?.dismiss(animated: true, completion: { 
+                    
+                })
+            }
+        }
+
+    }
+    
+    func uploadImages(){
+        let hud = Tools.shareInstance.showLoading((self.controller?.view)!, msg: "上传图片中")
+        _ = BaseNetWorke.sharedInstance.uploadImages(images: self.selectedAssetsArray, fileName: "bookComment", success: { (resultDic) in
+            for url in (resultDic as! NSMutableArray) {
+                let comment = Comment.init(url: url as! String, type: 1)
+                self.comments.append(comment)
+            }
+            self.commentForm.comments = self.comments
+            Tools.shareInstance.hiddenLoading(hud: hud)
+            self.requestBookComment()
+        }) { (failureDic) in
+            
+        }
     }
 }
 
@@ -84,10 +157,7 @@ extension DiscoverCreateViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 0 && indexPath.row == 1 {
-            NavigationPushView(self.controller!, toConroller:  BooksViewController())
-        }
-        
+        self.tableViewDidSelect(indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -134,9 +204,9 @@ extension DiscoverCreateViewModel : UITableViewDataSource {
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: CreateDataTableViewCell.description() , for: indexPath)
-                for v in cell.contentView.subviews {
-                    v.removeFromSuperview()
-                }
+//                for v in cell.contentView.subviews {
+//                    v.removeFromSuperview()
+//                }
                 self.tableViewCreateDataTableViewCellSetData(indexPath,cell: cell as! CreateDataTableViewCell)
                 return cell
             default:
