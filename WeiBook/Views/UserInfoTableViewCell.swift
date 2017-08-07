@@ -29,7 +29,6 @@ class UserInfoTableViewCell: UITableViewCell {
     func setUpView(){
         userPhoto = UIImageView.init()
         userPhoto.sd_setImage(with: URL.init(string: "http://7xsatk.com1.z0.glb.clouddn.com/c0e4c08b1dd123bbe5ab61d116f55943.png?imageMogr/v2/format/png/thumbnail/750x750"), placeholderImage: nil, options: .retryFailed) { (image, error, cacheType, url) in
-            
         }
         
         self.contentView.addSubview(userPhoto)
@@ -60,6 +59,13 @@ class UserInfoTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func cellSetData(model:UserInfoSwift){
+        ImageViewManager.shareInstance.sd_imageView(url: model.photo == nil ? "" : model.photo, imageView: userPhoto) { (image, error, cacheType, url) in
+            
+        }
+        userName.text = model.username
     }
     
     

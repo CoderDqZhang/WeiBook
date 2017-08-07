@@ -45,24 +45,26 @@ class CommentInfoTableViewCell: UITableViewCell {
     
     func cellSetData(title:String, imgs:[String]){
         titleLable.text = title
-        for i in 0...imgs.count - 1{
-            let image = UIImageView.init()
-            let frame = CGRect.init(x: CGFloat(i % 3 * 85), y: CGFloat(i / 3 * 85), width: ImageSize.width, height: ImageSize.height)
-            image.sd_setImage(with: URL.init(string: imgs[i]), placeholderImage: nil, options: .retryFailed, completed: { (image, error, cacheType, url) in
+        if imgs.count > 0 {
+            for i in 0...imgs.count - 1{
+                let image = UIImageView.init()
+                let frame = CGRect.init(x: CGFloat(i % 3 * 85), y: CGFloat(i / 3 * 85), width: ImageSize.width, height: ImageSize.height)
+                image.sd_setImage(with: URL.init(string: imgs[i]), placeholderImage: nil, options: .retryFailed, completed: { (image, error, cacheType, url) in
+                    
+                })
+                image.tag = i
                 
-            })
-            image.tag = i
-            
-            image.isUserInteractionEnabled = true
-            image.frame = frame
-            
-            
-            let sigleTap = UITapGestureRecognizer.init(target: self, action: #selector(CommentInfoTableViewCell.imageTap(gesture:)))
-            sigleTap.numberOfTapsRequired = 1
-            sigleTap.numberOfTouchesRequired = 1
-            image.addGestureRecognizer(sigleTap)
-            
-            photosImageView.addSubview(image)
+                image.isUserInteractionEnabled = true
+                image.frame = frame
+                
+                
+                let sigleTap = UITapGestureRecognizer.init(target: self, action: #selector(CommentInfoTableViewCell.imageTap(gesture:)))
+                sigleTap.numberOfTapsRequired = 1
+                sigleTap.numberOfTouchesRequired = 1
+                image.addGestureRecognizer(sigleTap)
+                
+                photosImageView.addSubview(image)
+            }
         }
         self.updateConstraintsIfNeeded()
     }

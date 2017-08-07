@@ -49,6 +49,10 @@ class BookAdvanceTableViewCell: UITableViewCell {
         descLabel.text = model.summary
     }
     
+    func cellSetSeverData(model:ServerBookModel){
+        descLabel.text = model.contentDesc
+    }
+    
     override func updateConstraints() {
         if !didMakeConstraints{
             titleLable.snp.makeConstraints({ (make) in

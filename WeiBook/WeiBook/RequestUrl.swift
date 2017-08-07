@@ -26,7 +26,7 @@ let BookGive = "/giveBook/giveAdd"
 let BookGet = "/giveBook/acceptAdd"
 let MyBookGetList = "/giveBook/giveList"
 let MyBookGiveList = "/giveBook/acceptlist"
-
+let MyBookCommentList = "/comment/list"
 
 let QRCodeServer = "/book/getBookByISBN"
 let SearchBook = "/common/search"

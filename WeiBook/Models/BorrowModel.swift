@@ -347,7 +347,7 @@ class UserInfoSwift : NSObject, NSCoding{
     var title : String!
     var userId : String!
     var weixin : AnyObject!
-    
+    var username: String!
     
     /**
      * Instantiate the instance using the passed dictionary values to set the properties values
@@ -378,6 +378,7 @@ class UserInfoSwift : NSObject, NSCoding{
         title = dictionary["title"] as? String
         userId = dictionary["userId"] as? String
         weixin = dictionary["weixin"] as AnyObject
+        username = dictionary["username"] as? String
     }
     
     /**
@@ -455,6 +456,9 @@ class UserInfoSwift : NSObject, NSCoding{
         if weixin != nil{
             dictionary["weixin"] = weixin
         }
+        if username != nil{
+            dictionary["username"] = username
+        }
         return dictionary
     }
     
@@ -487,6 +491,7 @@ class UserInfoSwift : NSObject, NSCoding{
         title = aDecoder.decodeObject(forKey: "title") as? String
         userId = aDecoder.decodeObject(forKey: "userId") as? String
         weixin = aDecoder.decodeObject(forKey: "weixin") as AnyObject
+        username = aDecoder.decodeObject(forKey: "username") as? String
         
     }
     
@@ -564,6 +569,9 @@ class UserInfoSwift : NSObject, NSCoding{
         }
         if weixin != nil{
             aCoder.encode(weixin, forKey: "weixin")
+        }
+        if username != nil{
+            aCoder.encode(username, forKey: "username")
         }
         
     }

@@ -85,7 +85,7 @@ extension DiscoverCreateViewModel : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 0 && indexPath.row == 1 {
-            NavigationPushView(self.controller!, toConroller:  MyBookListViewController())
+            NavigationPushView(self.controller!, toConroller:  BooksViewController())
         }
         
     }
