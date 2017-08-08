@@ -64,7 +64,15 @@ class BookDescViewModel: BaseViewModel {
     }
     
     func tableViewDidSelect(_ indexPath:IndexPath) {
-        
+        if indexPath.section != 0 {
+            if indexPath.row == 0 && !(self.controller as! BookDescViewController).otherBookDesc {
+                let model = CommentModel.init(fromDictionary: self.commentsModel[indexPath.section - 1] as! NSDictionary)
+                let booksVC = BooksViewController()
+                booksVC.otherUserModel = model.tails.user
+                booksVC.otherBooks = true
+                NavigationPushView(self.controller!, toConroller: booksVC)
+            }
+        }
     }
     
     func borrowButtonPress(time:Int64){

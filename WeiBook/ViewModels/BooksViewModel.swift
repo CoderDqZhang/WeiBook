@@ -19,7 +19,6 @@ class BooksViewModel: BaseViewModel {
     
     override init() {
         super.init()
-        self.requestMyBooks()
     }
     
     //MARK: CollectViewDidSelect
@@ -27,6 +26,7 @@ class BooksViewModel: BaseViewModel {
         if !self.createComment {
             let bookDesc = BookDescViewController()
             bookDesc.myBookModel = MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary)
+            bookDesc.otherBookDesc = (self.controller as! BooksViewController).otherBooks
             NavigationPushView(self.controller!, toConroller: bookDesc)
         }else{
             if self.bookSelectClouse != nil {
@@ -42,9 +42,9 @@ class BooksViewModel: BaseViewModel {
     }
     
     //MARK: -RequestNetWorking
-    func requestMyBooks(){
+    func requestMyBooks(uid:String){
         let url = "\(BaseUrl)\(MyBookList)"
-        let parameters = ["userId":UserInfoModel.shareInstance().tails.userInfo.userId]
+        let parameters = ["userId":uid]
         BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resulDic) in
             if !resulDic.isCompleted {
                 self.myBooksModel = NSMutableArray.mj_keyValuesArray(withObjectArray: resulDic.value as! [Any])

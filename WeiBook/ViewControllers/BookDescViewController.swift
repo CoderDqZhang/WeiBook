@@ -13,6 +13,7 @@ class BookDescViewController: BaseViewController {
     var enTimePickerView:ZHPickView!
     var model:ServerBookModel!
     var myBookModel:MyBooksModel!
+    var otherBookDesc:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,10 @@ class BookDescViewController: BaseViewController {
     
     func setUpNavigaiotionItem() {
         self.navigationItem.title = "图示详情"
-        if self.myBookModel != nil {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "生成二维码", style: .plain, target: self, action: #selector(BookDescViewController.rightBarItemPress))
+        if !otherBookDesc {
+            if self.myBookModel != nil {
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "生成二维码", style: .plain, target: self, action: #selector(BookDescViewController.rightBarItemPress))
+            }
         }
     }
 

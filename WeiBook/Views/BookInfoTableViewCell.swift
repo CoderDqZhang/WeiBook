@@ -74,6 +74,17 @@ class BookInfoTableViewCell: UITableViewCell {
         collectNumber.text = "收藏人数 \((inputNum)!)"
     }
     
+    func cellSetCollenctionData(model:CollectionModel) {
+        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.imageUrl, imageView: bookPost) { (image, error, url) in
+            
+        }
+        bookTitle.text = model.listName
+        bookDesc.text = model.descriptionField
+        commentNumber.text = "评论人数 \((model.commentNum)!)"
+        let inputNum = model.likeNum == nil ? 0 : model.likeNum
+        collectNumber.text = "收藏人数 \((inputNum)!)"
+    }
+    
     
     override func updateConstraints() {
         if !didMakeConstraints {

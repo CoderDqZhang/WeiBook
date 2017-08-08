@@ -61,8 +61,8 @@ class UserInfoTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func cellSetData(model:UserInfoSwift){
-        ImageViewManager.shareInstance.sd_imageView(url: model.photo == nil ? "" : model.photo, imageView: userPhoto) { (image, error, cacheType, url) in
+    func cellSetData(model:UserInfoSwiftModel){
+        ImageViewManager.shareInstance.sd_imageView(url: model.tails.userInfo.photo == nil ? "" : model.tails.userInfo.photo, imageView: userPhoto) { (image, error, cacheType, url) in
             
         }
         userName.text = model.username

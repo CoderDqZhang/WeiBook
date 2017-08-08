@@ -1,43 +1,54 @@
 //
-//  BookListViewModel.swift
+//  MyBookListViewModel.swift
 //  WeiBook
 //
-//  Created by Zhang on 2017/7/5.
-//  Copyright © 2017年 Zhang. All rights reserved.
+//  Created by Zhang on 08/08/2017.
+//  Copyright © 2017 Zhang. All rights reserved.
 //
 
 import UIKit
 
-class BookListViewModel: BaseViewModel {
+class MyBookListViewModel: BaseViewModel {
 
-    var bookListModels = NSMutableArray.init()
+    var bookListModels:BookListModel!
     override init() {
         super.init()
         self.requestBookList()
     }
     
     func tableViewBookInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BookInfoTableViewCell){
-        cell.cellSetCollenctionData(model: CollectionModel.init(fromDictionary: bookListModels[indexPath.row] as! NSDictionary))
+        if self.bookListModels != nil {
+            cell.cellSetCollenctionData(model: self.bookListModels.collections[indexPath.row])
+        }
     }
+    
+    
+    func tableViewDidSelct(_ indexPath:IndexPath) {
+        let toControllerVC = BookListDescViewController()
+        toControllerVC.collectionModel = self.bookListModels.collections[indexPath.row]
+        NavigationPushView(self.controller!, toConroller: toControllerVC)
+    }
+    
     
     //MARK: NetRequestBookList
     func requestBookList(){
         let url = "\(BaseUrl)\(BookListCreate)"
-        let parameters = ["userId":UserInfoModel.shareInstance().tails.userInfo.userId]
+        let parameters = ["userId":UserInfoModel.shareInstance().tails.userInfo.userId,
+                          "state":"2"]
         BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
             if (!resultDic.isCompleted){
-                self.bookListModels = NSMutableArray.mj_objectArray(withKeyValuesArray: resultDic.value)
+                self.bookListModels = BookListModel.init(fromDictionary: resultDic.value as! NSDictionary)
                 self.controller?.tableView.reloadData()
             }
         }
     }
 }
 
-extension BookListViewModel : UITableViewDelegate {
+extension MyBookListViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        NavigationPushView(self.controller!, toConroller: BookDescViewController())
+        self.tableViewDidSelct(indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -53,14 +64,14 @@ extension BookListViewModel : UITableViewDelegate {
     }
 }
 
-extension BookListViewModel : UITableViewDataSource {
+extension MyBookListViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bookListModels.count
+        return bookListModels == nil ? 0 : bookListModels.collections.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,4 +81,3 @@ extension BookListViewModel : UITableViewDataSource {
         
     }
 }
-

@@ -31,6 +31,9 @@ let CreateBookComment = "/comment/save"
 
 let BookCommentList = "/book/list"
 
+let BookListCreate = "/collection/myCreatelist"
+let BookListDesc = "/collection/detail"
+
 let QRCodeServer = "/book/getBookByISBN"
 let SearchBook = "/common/search"
 let BookBorrowReturn = "/borrowBook/returnAdd"

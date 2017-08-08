@@ -26,10 +26,16 @@ class AddBookTagsViewModel: BaseViewModel {
 //    }
     func addBookDone(){
         let url = "\(BaseUrl)\(AddBook)"
+        let dics = NSMutableArray.init()
+        for comment in addBookForm.comments {
+            let dic = ["imageUrl":comment.imageUrl,
+                       "type":comment.type] as [String : Any]
+            dics.add(dic)
+        }
         let parameters = ["bookId":addBookForm.bookId,
                           "userId":addBookForm.userId,
                           "commentContent":addBookForm.commentContent,
-                          "comments":[["imageUrl":"http://cdn.topveda.cn/bookComment/2017/7/21/bf1d0a3f9a30b825f775b3c78413f73a.jpg","type":"1"],["imageUrl":"http://cdn.topveda.cn/bookComment/2017/7/21/bf1d0a3f9a30b825f775b3c78413f73a.jpg","type":"1"]],
+                          "comments":dics,
                           "state":"1"
                           ] as [String : Any]
         BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in

@@ -1,30 +1,27 @@
 //
-//  BookListViewController.swift
+//  BookListDescViewController.swift
 //  WeiBook
 //
-//  Created by Zhang on 2017/7/5.
-//  Copyright © 2017年 Zhang. All rights reserved.
+//  Created by Zhang on 08/08/2017.
+//  Copyright © 2017 Zhang. All rights reserved.
 //
 
 import UIKit
 
-class BookListViewController: BaseViewController {
+class BookListDescViewController: BaseViewController {
 
+    var collectionModel:CollectionModel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bindViewModel(viewModel: BookListViewModel(), controller: self)
-        self.setUpTableView(style: .plain, cells: [BookInfoTableViewCell.self], controller: self)
-        self.setUpNavigationItem()
+        self.bindViewModel(viewModel: BookListDescViewModel(), controller: self)
+        self.setUpTableView(style: .plain, cells: [BookListDescInfoTableViewCell.self, BookInfoTableViewCell.self], controller: self)
+        self.bindLogicViewModel()
         // Do any additional setup after loading the view.
     }
     
-    func setUpNavigationItem(){
-        self.navigationItem.title = "我的书单"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "创建", style: .plain, target: self, action: #selector(BookListViewController.rightBarItemPress))
-    }
-    
-    func rightBarItemPress(){
-        
+    func bindLogicViewModel(){
+        (self.viewModel as! BookListDescViewModel).collectionModel = self.collectionModel
+        (self.viewModel as! BookListDescViewModel).requestBookListDesc()
     }
 
     override func didReceiveMemoryWarning() {

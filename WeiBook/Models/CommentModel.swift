@@ -133,7 +133,7 @@ class CommentModel : NSObject, NSCoding{
 class CommentTail : NSObject, NSCoding{
     
     var commentImages : [CommentImage]!
-    var user : UserInfoSwift!
+    var user : UserInfoSwiftModel!
     
     
     /**
@@ -148,7 +148,7 @@ class CommentTail : NSObject, NSCoding{
             }
         }
         if let userData = dictionary["user"] as? NSDictionary{
-            user = UserInfoSwift(fromDictionary: userData)
+            user = UserInfoSwiftModel(fromDictionary: userData)
         }
     }
     
@@ -178,7 +178,7 @@ class CommentTail : NSObject, NSCoding{
     @objc required init(coder aDecoder: NSCoder)
     {
         commentImages = aDecoder.decodeObject(forKey:"commentImages") as? [CommentImage]
-        user = aDecoder.decodeObject(forKey:"user") as? UserInfoSwift
+        user = aDecoder.decodeObject(forKey:"user") as? UserInfoSwiftModel
         
     }
     

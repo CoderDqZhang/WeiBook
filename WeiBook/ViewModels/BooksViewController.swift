@@ -14,12 +14,15 @@ class BooksViewController: BaseViewController {
     var collectView:UICollectionView!
     var viewModle = BooksViewModel()
     var createComment:Bool = false
+    var otherBooks:Bool = false
+    var otherUserModel:UserInfoSwiftModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
         self.bindLogicViewModel()
         self.setNavigaitonItem()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -40,10 +43,19 @@ class BooksViewController: BaseViewController {
     func bindLogicViewModel(){
         self.viewModle.createComment = self.createComment
         self.viewModle.controller = self
+        if self.otherBooks && otherUserModel != nil {
+            self.viewModle.requestMyBooks(uid: otherUserModel.tails.userInfo.userId)
+        }else{
+            self.viewModle.requestMyBooks(uid: UserInfoModel.shareInstance().tails.userInfo.userId)
+        }
     }
 
     func setNavigaitonItem(){
-        self.navigationItem.title = "我的书库"
+        if self.otherBooks && otherUserModel != nil {
+            self.navigationItem.title = "\((otherUserModel.username)!)的书库"
+        }else{
+            self.navigationItem.title = "我的书库"
+        }
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "筛选", style: .plain, target: self, action: #selector(BooksViewController.rightBarItemPress))
     }
     
