@@ -62,24 +62,13 @@ class QRCodeViewModel: BaseViewModel {
     func requestGiveBook(model: QRFormBook) {
         let getUrl = "\(BaseUrl)\(BookGet)"
         let parameters = ["bookId":model.bookId,
-                          "userId":model.userId,
-                          "useUserId":model.userUserId] as [String : Any]
+                          "userId":model.userUserId,
+                          "useUserId":model.userId] as [String : Any]
         BaseNetWorke.sharedInstance.postUrlWithString(getUrl, parameters: parameters as AnyObject).observe { (resultDic) in
             if (!resultDic.isCompleted){
                 print(resultDic)
                 _ = Tools.shareInstance.showMessage((self.controller?.view)!, msg: "领受成功", autoHidder: true)
                 self.controller?.popToRoot(animated: true)
-            }
-        }
-        
-        let giveUrl = "\(BaseUrl)\(BookGive)"
-        let parameter = ["bookId":model.bookId,
-                          "userId":model.userUserId,
-                          "useUserId":model.userId,
-                          "giveEnd":model.giveEnd] as [String : Any]
-        BaseNetWorke.sharedInstance.postUrlWithString(giveUrl, parameters: parameter as AnyObject).observe { (resultDic) in
-            if (!resultDic.isCompleted){
-                print(resultDic)
             }
         }
     }

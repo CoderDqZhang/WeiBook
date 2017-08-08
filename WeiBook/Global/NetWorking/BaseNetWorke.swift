@@ -68,7 +68,7 @@ class BaseNetWorke {
                 if ((responseObject is NSDictionary) && (responseObject["message"]!) == nil){
                     subscriber.send(value: responseObject)
                 }else{
-                    if ((responseObject["code"]!) != nil && (Int(String(describing: (responseObject as! NSDictionary).object(forKey: "code")!))! >= 0)) {
+                    if ((responseObject["code"]!) != nil && (Int(((responseObject as! NSDictionary).object(forKey: "code")! as! NSNumber)) > 0)) {
                         subscriber.send(value: responseObject["message"]! ?? "请求成功")
                     }else{
                         MainThreanShowErrorMessage(responseObject)

@@ -11,15 +11,14 @@ import UIKit
 class DiscoverHotViewModel: BaseViewModel {
 
     var snbBookModel:SBNBookModel!
+    var bookList = NSMutableArray.init()
     override init() {
         super.init()
-        self.requestGetBook(isbn: "9789609828413")
+        self.requestGetBook()
     }
     
     func tableViewBookBaseInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BookBaseInfoTableViewCell) {
-        if self.snbBookModel != nil {
-            cell.cellSetData(model: self.snbBookModel)
-        }
+        cell.cellSetDataSnbModel(model: ServerBookModel.init(fromDictionary: self.bookList.object(at: indexPath.section) as! NSDictionary))
     }
     
     func tableViewCommentToolsTableViewCellSetData(_ indexPath:IndexPath, cell:CommentToolsTableViewCell) {
@@ -27,12 +26,11 @@ class DiscoverHotViewModel: BaseViewModel {
     }
     
     //MARK: NetWorking
-    func requestGetBook(isbn:String){
-        let url = "\(SBNCodeApi)\(isbn)"
+    func requestGetBook(){
+        let url = "\(BaseUrl)\(BookCommentList)"
         BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: nil).observe { (resultDic) in
-            print(resultDic)
             if (!resultDic.isCompleted){
-                self.snbBookModel = SBNBookModel.init(fromDictionary: resultDic.value as! NSDictionary)
+                self.bookList = NSMutableArray.mj_objectArray(withKeyValuesArray: resultDic.value)
                 self.controller?.tableView.reloadData()
             }
         }
@@ -67,7 +65,7 @@ extension DiscoverHotViewModel : UITableViewDelegate {
 extension DiscoverHotViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return self.bookList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
