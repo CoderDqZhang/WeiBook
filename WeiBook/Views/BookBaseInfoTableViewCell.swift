@@ -151,7 +151,8 @@ class BookBaseInfoTableViewCell: UITableViewCell {
         bookPublisher.text = model.oress
         if model.rating as? String != nil {
             ratingView.text = model.rating as? String
-            ratingView.rating = Double((model.rating as? String)!)!
+            let str = (model.rating as? String)?.replacingOccurrences(of: " ", with: "")
+            ratingView.rating = Double(str!)!
         }else{
             ratingView.text = "10.0"
             ratingView.rating = 10.0

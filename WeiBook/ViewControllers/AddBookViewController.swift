@@ -38,9 +38,6 @@ class AddBookViewController: BaseViewController {
             (self.viewModel as! AddBookViewModel).addBook()
         })
         self.view.addSubview(bottomBtn)
-        
-        KWINDOWDS().addSubview(PlayVoiceView.shareInstance)
-        PlayVoiceView.shareInstance.isHidden = false
     }
     
     func setUpNavigaitonItem(){

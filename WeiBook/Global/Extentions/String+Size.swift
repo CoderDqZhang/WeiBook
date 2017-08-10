@@ -51,6 +51,11 @@ extension String{
     //MARK:获得string内容高度
      var length: Int { return self.characters.count }
     
+    func substringStr(index:Int) -> String{
+        let index1 = self.index(self.endIndex, offsetBy: -index)
+        return self.substring(to: index1)
+    }
+    
     func heightWithConstrainedWidth(_ textStr:String,font:UIFont,width:CGFloat) -> CGFloat {
         let normalText: NSString = textStr as NSString
         let size = CGSize(width: width,height: 1000)

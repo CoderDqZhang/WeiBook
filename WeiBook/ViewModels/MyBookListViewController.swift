@@ -24,7 +24,7 @@ class MyBookListViewController: BaseViewController {
     }
     
     func rightBarItemPress(){
-        
+        NavigationPushView(self, toConroller:CreateBookListViewController())
     }
 
     override func didReceiveMemoryWarning() {

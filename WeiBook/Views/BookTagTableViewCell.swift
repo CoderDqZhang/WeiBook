@@ -46,19 +46,21 @@ class BookTagTableViewCell: UITableViewCell {
         var originX:CGFloat = OriginX
         var originY:CGFloat = OriginY
         let labelHeight:CGFloat = LabelHeight
-        for i in 0...model.tags.count - 1 {
-            let width = model.tags[i].title.widthWithConstrainedHeight(model.tags[i].title, font: App_Theme_PinFan_R_13_Font!, height: labelHeight) + 20
-            if originX + width > SwifterSwift.screenWidth - 20 {
-                originY = originY + LabelHeight + 10
-                originX = OriginX
+        if model.tags.count > 0 {
+            for i in 0...model.tags.count - 1 {
+                let width = model.tags[i].title.widthWithConstrainedHeight(model.tags[i].title, font: App_Theme_PinFan_R_13_Font!, height: labelHeight) + 20
+                if originX + width > SwifterSwift.screenWidth - 20 {
+                    originY = originY + LabelHeight + 10
+                    originX = OriginX
+                }
+                let frame = CGRect.init(x: originX, y: originY, width: width, height: labelHeight)
+                let label = self.createLabel(frame: frame, title: model.tags[i].title)
+                originX = originX + width + 10
+                
+                label.tag = i
+                
+                self.contentView.addSubview(label)
             }
-            let frame = CGRect.init(x: originX, y: originY, width: width, height: labelHeight)
-            let label = self.createLabel(frame: frame, title: model.tags[i].title)
-            originX = originX + width + 10
-            
-            label.tag = i
-            
-            self.contentView.addSubview(label)
         }
     }
     

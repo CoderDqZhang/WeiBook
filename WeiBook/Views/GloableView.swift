@@ -149,6 +149,7 @@ class GloableBottomButtonView: UIView {
 class PlayVoiceView: UIView {
     
     var button:UIButton!
+    var isbn:String!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -164,7 +165,6 @@ class PlayVoiceView: UIView {
         button.reactive.controlEvents(.touchUpInside).observe { (button) in
             self.buttonPress(button: self.button)
         }
-        button.backgroundColor = UIColor.red
         button.frame = CGRect.init(x: 0, y: 0, width: 45, height: 45)
         self.addSubview(button)
     }

@@ -29,11 +29,12 @@ class AddBookViewModel: BaseViewModel {
         self.xfYunManger()
         PlayVoiceView.shareInstance.button.reactive.controlEvents(.touchUpInside).observe { (button) in
             if PlayVoiceView.shareInstance.button.tag == 2 {
-                if !self.isChooseSpeaker {
+                if !self.isChooseSpeaker || PlayVoiceView.shareInstance.isbn != self.isbnStr {
                     self.speakVoice()
+                }else{
+                    self.iFluSpeechSynthesizer.resumeSpeaking()
+                    self.isSpeaking = true
                 }
-                self.iFluSpeechSynthesizer.resumeSpeaking()
-                self.isSpeaking = true
             }else{
                 if !(UIApplication.shared.currentViewController?.isKind(of: AddBookViewController.self))! {
                     PlayVoiceView.shareInstance.isHidden = true
@@ -55,7 +56,12 @@ class AddBookViewModel: BaseViewModel {
                 self.speakText = self.snbBookModel.summary
             }else{
                 let index =  Double(UserDefaultsGetSynchronize("\(self.isbnStr)_Index") as! Double)
-                let str = self.snbBookModel.summary.substringWithRange(Int(index), end: self.snbBookModel.summary.length)
+                var str = self.snbBookModel.summary.substringWithRange(Int(index), end: self.snbBookModel.summary.length)
+                if Int(index) > self.snbBookModel.summary.length {
+                    str = self.snbBookModel.summary
+                    UserDefaultsSetSynchronize(0 as AnyObject, key: self.isbnStr)
+                    UserDefaultsSetSynchronize(0 as AnyObject, key: "\(self.isbnStr)_Index")
+                }
                 self.speakText = str
                 iFluSpeechSynthesizer.startSpeaking(str)
             }
@@ -77,7 +83,7 @@ class AddBookViewModel: BaseViewModel {
                 self.iFluSpeechSynthesizer.startSpeaking(self.snbBookModel.summary)
             })
         }
-        
+        PlayVoiceView.shareInstance.isbn = self.isbnStr
         
         //            loadingView = Tools.shareInstance.showLoading((self.controller?.view)!, msg: "正在合成语音")
         self.isChooseSpeaker = true
@@ -99,11 +105,13 @@ class AddBookViewModel: BaseViewModel {
         var originX:CGFloat = OriginX
         var originY:CGFloat = OriginY
         let labelHeight:CGFloat = LabelHeight
-        for i in 0...snbBookModel.tags.count - 1 {
-            let width = snbBookModel.tags[i].title.widthWithConstrainedHeight(snbBookModel.tags[i].title, font: App_Theme_PinFan_R_13_Font!, height: labelHeight) + 20
-            if originX + width > SwifterSwift.screenWidth - 20 {
-                originY = originY + LabelHeight + 10
-                originX = OriginX
+        if snbBookModel.tags.count > 0 {
+            for i in 0...snbBookModel.tags.count - 1 {
+                let width = snbBookModel.tags[i].title.widthWithConstrainedHeight(snbBookModel.tags[i].title, font: App_Theme_PinFan_R_13_Font!, height: labelHeight) + 20
+                if originX + width > SwifterSwift.screenWidth - 20 {
+                    originY = originY + LabelHeight + 10
+                    originX = OriginX
+                }
             }
         }
         return originY
@@ -148,6 +156,13 @@ class AddBookViewModel: BaseViewModel {
 //        }
     }
     
+    func genderPlayView(){
+        if self.snbBookModel.summary != nil {
+            KWINDOWDS().addSubview(PlayVoiceView.shareInstance)
+            PlayVoiceView.shareInstance.isHidden = false
+        }
+    }
+    
     //MARK: XFyunManager
     func xfYunManger(){
         iFluSpeechSynthesizer = IFlySpeechSynthesizer.sharedInstance()
@@ -163,6 +178,7 @@ class AddBookViewModel: BaseViewModel {
             print(resultDic)
             if (!resultDic.isCompleted){
                 self.snbBookModel = SBNBookModel.init(fromDictionary: resultDic.value as! NSDictionary)
+                self.genderPlayView()
                 self.controller?.tableView.reloadData()
             }
         }
@@ -171,7 +187,6 @@ class AddBookViewModel: BaseViewModel {
         BaseNetWorke.sharedInstance.getUrlWithString(serverUrl, parameters:parameters as AnyObject).observe { (resultDic) in
             if (!resultDic.isCompleted){
                 self.serverBookModel = NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any])
-//                print(self.serverBookModel)
             }
         }
     }
@@ -215,7 +230,17 @@ extension AddBookViewModel : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionsNumber[section]
+        if self.snbBookModel != nil {
+            var row = 0
+            if self.snbBookModel.summary != "" {
+                row = row + 1
+            }
+            if self.snbBookModel.tags.count > 0 {
+                row = row + 1
+            }
+            return row + 1
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

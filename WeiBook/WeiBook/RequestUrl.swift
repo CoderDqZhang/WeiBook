@@ -24,12 +24,17 @@ let BookBorrowList = "/borrowBook/list"
 let MyBookList = "/wishBook/list"
 let BookGive = "/giveBook/giveAdd"
 let BookGet = "/giveBook/acceptAdd"
+let HomeBookCategory = "/dictionary/category"
 let MyBookGetList = "/giveBook/giveList"
 let MyBookGiveList = "/giveBook/acceptlist"
 let MyBookCommentList = "/comment/list"
 let CreateBookComment = "/comment/save"
 
+let CreateBookList = "/collection/createList"
+let BookListCategory = "/collection/dictionaryList"
+
 let BookCommentList = "/book/list"
+let BookNormal = "/tabMain/index"
 
 let BookListCreate = "/collection/myCreatelist"
 let BookListDesc = "/collection/detail"

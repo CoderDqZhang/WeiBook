@@ -40,8 +40,8 @@ class RecommendViewModel: BaseViewModel {
     
     func tableViewBooksInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BooksInfoTableViewCell) {
         cell.booksInfoTableViewCellClouse = { tag in
-            let pageController = self.controller?.parent
-            (pageController as! HomePageViewController).viewModel.pushViewController(BookDescViewController())
+//            let pageController = self.controller?.parent
+//            (pageController as! HomePageViewController).viewModel.pushViewController(BookDescViewController())
         }
     }
     

@@ -57,6 +57,21 @@ class CommentsForm: NSObject {
     var commContent:String!
     var objectId:String!
     var comments:[Comment] = []
+    override init() {
+        super.init()
+    }
+}
+
+class BookListForm: NSObject {
+    var listName:String!
+    var userId:String!
+    var descriptionStr:String!
+    var categoryId:String!
+    var addBooks:String!
+    var bookRecs:String!
+    override init() {
+        super.init()
+    }
 }
 
 

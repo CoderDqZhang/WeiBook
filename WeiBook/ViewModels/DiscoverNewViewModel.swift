@@ -67,6 +67,12 @@ class DiscoverNewViewModel: BaseViewModel {
         
     }
     
+    //MARK: NetWorkRequest
+    func requestNewComment(){
+        let url = "\(BaseUrl)\(BookNormal)"
+//        BaseNetWorke.sharedInstance.get
+    }
+    
     
 }
 

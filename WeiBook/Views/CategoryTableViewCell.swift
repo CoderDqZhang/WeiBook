@@ -78,7 +78,9 @@ class CategoryTableViewCell: UITableViewCell {
     func cellSetData(titles:[String], indexPath:IndexPath){
         self.indexPath = indexPath
         categoryLView.titleLabel.setTitle(titles[0], for: .normal)
-        categoryRView.titleLabel.setTitle(titles[1], for: .normal)
+        if titles.count > 1 {
+            categoryRView.titleLabel.setTitle(titles[1], for: .normal)
+        }
     }
     
     override func updateConstraints() {

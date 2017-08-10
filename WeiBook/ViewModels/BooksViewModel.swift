@@ -16,6 +16,7 @@ class BooksViewModel: BaseViewModel {
     var myBooksModel = NSMutableArray()
     var createComment:Bool!
     var bookSelectClouse:BookSelectClouse!
+    var createBookList:Bool!
     
     override init() {
         super.init()
@@ -23,16 +24,28 @@ class BooksViewModel: BaseViewModel {
     
     //MARK: CollectViewDidSelect
     func collectDidSelect(_ indexPath:IndexPath) {
-        if !self.createComment {
+        
+        if self.createBookList{
+            if self.bookSelectClouse != nil {
+                self.bookSelectClouse(MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary))
+                self.controller?.pop(animated: true)
+                
+            }
+        }
+        
+        if self.createComment {
+            if self.bookSelectClouse != nil {
+                self.bookSelectClouse(MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary))
+                self.controller?.pop(animated: true)
+                return
+            }
+        }
+        if !self.createComment && !self.createBookList {
             let bookDesc = BookDescViewController()
             bookDesc.myBookModel = MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary)
             bookDesc.otherBookDesc = (self.controller as! BooksViewController).otherBooks
             NavigationPushView(self.controller!, toConroller: bookDesc)
-        }else{
-            if self.bookSelectClouse != nil {
-                self.bookSelectClouse(MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary))
-                self.controller?.pop(animated: true)
-            }
+            return
         }
     }
     

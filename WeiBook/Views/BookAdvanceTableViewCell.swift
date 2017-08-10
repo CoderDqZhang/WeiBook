@@ -47,10 +47,12 @@ class BookAdvanceTableViewCell: UITableViewCell {
     
     func cellSetData(model:SBNBookModel){
         descLabel.text = model.summary
+        self.contentView.updateConstraintsIfNeeded()
     }
     
     func cellSetSeverData(model:ServerBookModel){
         descLabel.text = model.contentDesc
+        self.contentView.updateConstraintsIfNeeded()
     }
     
     override func updateConstraints() {

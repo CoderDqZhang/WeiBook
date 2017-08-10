@@ -126,7 +126,11 @@ extension QRCodeViewController : AVCaptureMetadataOutputObjectsDelegate {
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         // 如果获取到的数据类型是QRCode
-        if metadataObj.type == AVMetadataObjectTypeQRCode {
+        if metadataObj.type == AVMetadataObjectTypeEAN13Code {
+            let controller = AddBookViewController()
+            controller.isbn = metadataObj.stringValue
+            NavigationPushView(self, toConroller: controller)
+        }else if metadataObj.type == AVMetadataObjectTypeQRCode {
             // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj as AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
             qrCodeFrameView?.frame = barCodeObject.bounds;
@@ -137,11 +141,7 @@ extension QRCodeViewController : AVCaptureMetadataOutputObjectsDelegate {
             }
         }
         
-        if metadataObj.type == AVMetadataObjectTypeEAN13Code {
-            let controller = AddBookViewController()
-            controller.isbn = metadataObj.stringValue
-            NavigationPushView(self, toConroller: controller)
-        }
+        
         captureSession?.stopRunning()
     }
 }

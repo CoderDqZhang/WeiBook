@@ -69,7 +69,7 @@ class GiveUserInfoTableViewCell: UITableViewCell {
     }
     
     func cellSetData(model:GiveBookModel){
-        if model.useUserId == UserInfoModel.shareInstance().tails.userInfo.userId {
+        if model.useUserId != UserInfoModel.shareInstance().tails.userInfo.userId {
             self.updataStatusButton(status: model.isAccept)
         }else{
             self.updataStatusButton(status: 3)
@@ -78,7 +78,7 @@ class GiveUserInfoTableViewCell: UITableViewCell {
             self.userPhoto.image = image
         }
         userName.text = model.tails.userInfo.username
-        startTime.text = Date.init(unixTimestamp: Double(model.giveEnd)).dateString()
+        startTime.text = Date.init(unixTimestamp: Double(model.giveEnd) / 1000).dateString()
     }
     
     func updataStatusButton(status:Int){
