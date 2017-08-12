@@ -30,6 +30,8 @@ let MyBookGiveList = "/giveBook/acceptlist"
 let MyBookCommentList = "/comment/list"
 let CreateBookComment = "/comment/save"
 
+let HomeRecommnetList = "/recommendBook/list"
+
 let CreateBookList = "/collection/createList"
 let BookListCategory = "/collection/dictionaryList"
 
