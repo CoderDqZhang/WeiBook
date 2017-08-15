@@ -11,49 +11,68 @@ import SKPhotoBrowser
 
 class DiscoverNewViewModel: BaseViewModel {
 
-    let testUrl = ["http://ww2.sinaimg.cn/thumbnail/904c2a35jw1emu3ec7kf8j20c10epjsn.jpg",
-                   "http://ww2.sinaimg.cn/thumbnail/98719e4agw1e5j49zmf21j20c80c8mxi.jpg",
-                   "http://ww2.sinaimg.cn/thumbnail/67307b53jw1epqq3bmwr6j20c80axmy5.jpg",
-                   "http://ww2.sinaimg.cn/thumbnail/9ecab84ejw1emgd5nd6eaj20c80c8q4a.jpg",
-                   "http://ww2.sinaimg.cn/thumbnail/642beb18gw1ep3629gfm0g206o050b2a.gif",
-                   "http://ww1.sinaimg.cn/thumbnail/9be2329dgw1etlyb1yu49j20c82p6qc1.jpg",
-                   "http://ww2.sinaimg.cn/thumbnail/642beb18gw1ep3629gfm0g206o050b2a.gif",
-                   "http://ww1.sinaimg.cn/thumbnail/9be2329dgw1etlyb1yu49j20c82p6qc1.jpg"]
+//    let testUrl = ["http://ww2.sinaimg.cn/thumbnail/904c2a35jw1emu3ec7kf8j20c10epjsn.jpg",
+//                   "http://ww2.sinaimg.cn/thumbnail/98719e4agw1e5j49zmf21j20c80c8mxi.jpg",
+//                   "http://ww2.sinaimg.cn/thumbnail/67307b53jw1epqq3bmwr6j20c80axmy5.jpg",
+//                   "http://ww2.sinaimg.cn/thumbnail/9ecab84ejw1emgd5nd6eaj20c80c8q4a.jpg",
+//                   "http://ww2.sinaimg.cn/thumbnail/642beb18gw1ep3629gfm0g206o050b2a.gif",
+//                   "http://ww1.sinaimg.cn/thumbnail/9be2329dgw1etlyb1yu49j20c82p6qc1.jpg",
+//                   "http://ww2.sinaimg.cn/thumbnail/642beb18gw1ep3629gfm0g206o050b2a.gif",
+//                   "http://ww1.sinaimg.cn/thumbnail/9be2329dgw1etlyb1yu49j20c82p6qc1.jpg"]
     var browser:SKPhotoBrowser!
-    
+    var models = NSMutableArray.init()
     override init() {
-        
+        super.init()
+        self.requestNewComment()
     }
     
     //MARK: SKPhotoBrowser
-    func setUpPhotoBrowser(){
+    func setUpPhotoBrowser(imgs:[String]){
         var images = [SKPhoto]()
-        for i in 0...testUrl.count - 1 {
-            let photo = SKPhoto.photoWithImageURL(testUrl[i])// add some UIImage
+        for i in 0...imgs.count - 1 {
+            let photo = SKPhoto.photoWithImageURL(imgs.item(at: i)!)// add some UIImage
             images.append(photo)
         }
         browser = SKPhotoBrowser.init(photos: images)
     }
     
     //tableViewHeight
-    func tableViewHeight() ->CGFloat{
-        return CGFloat((CGFloat(testUrl.count / 3) + (testUrl.count % 3 == 0 ? 0 : 1)) * (ImageSize.height + 5)) + 50
+    func tableViewHeight(_ indexPath:IndexPath) ->CGFloat{
+        let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
+        return CGFloat((CGFloat(model.tails.commentImages.count / 3) + (model.tails.commentImages.count % 3 == 0 ? 0 : 1)) * (ImageSize.height + 5)) + 50
     }
     
     //MARK: TableViewCellSetData
     func tableViewUserInfoTableViewCellSetData(_ indexPath:IndexPath, cell:UserInfoTableViewCell) {
-        
+        let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
+        cell.cellSetData(model: model.tails.userInfo)
     }
     
     func tableViewDidSelect(_ indexPath:IndexPath) {
-        if indexPath.row == 2 {
-            NavigationPushView(self.controller!, toConroller: BookDescViewController())
+        if indexPath.row == 0 {
+            let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
+            let booksVC = BooksViewController()
+            booksVC.otherUserModel = model.tails.userInfo
+            booksVC.otherBooks = true
+            NavigationPushView(self.controller!, toConroller: booksVC)
+        }else if indexPath.row == 2 {
+            let bookDesc = BookDescViewController()
+            let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
+            bookDesc.model = model.tails.bookInfo
+            NavigationPushView(self.controller!, toConroller: bookDesc)
         }
     }
     
     func tableViewCommentInfoTableViewCellSetData(_ indexPath:IndexPath, cell:CommentInfoTableViewCell) {
-        self.setUpPhotoBrowser()
-        cell.cellSetData(title: "这是一个测试文件", imgs: testUrl)
+        let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
+        var images:[String] = []
+        if model.tails.commentImages.count > 0 {
+            for comment in model.tails.commentImages {
+                images.append(comment.imageUrl)
+            }
+            self.setUpPhotoBrowser(imgs:images)
+        }
+        cell.cellSetData(title: model.commContent, imgs: images)
         cell.photoBrowserClouse = { tag, view in
             self.browser.initializePageIndex(tag)
             SKPhotoBrowserOptions.displayDeleteButton = false 
@@ -64,13 +83,20 @@ class DiscoverNewViewModel: BaseViewModel {
     }
     
     func tableViewBookInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BookInfoTableViewCell) {
-        
+        let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
+        cell.cellSetData(model: model.tails.bookInfo)
     }
     
     //MARK: NetWorkRequest
     func requestNewComment(){
-        let url = "\(BaseUrl)\(BookNormal)"
-//        BaseNetWorke.sharedInstance.get
+        let url = "\(BaseUrl)\(DisCoverNew)"
+        BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: nil).observe { (resultDic) in
+            if !resultDic.isCompleted {
+                self.models = NSMutableArray.mj_objectArray(withKeyValuesArray: resultDic.value)
+                self.controller?.tableView.reloadData()
+            }
+        }
+        
     }
     
     
@@ -97,7 +123,7 @@ extension DiscoverNewViewModel : UITableViewDelegate {
         case 0:
             return 60
         case 1:
-            return self.tableViewHeight()
+            return self.tableViewHeight(indexPath)
         default:
             return 92
         }
@@ -106,7 +132,7 @@ extension DiscoverNewViewModel : UITableViewDelegate {
 extension DiscoverNewViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return self.models.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

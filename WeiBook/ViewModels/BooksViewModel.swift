@@ -22,6 +22,14 @@ class BooksViewModel: BaseViewModel {
         super.init()
     }
     
+    func rightBarItemPress(){
+        
+    }
+    
+    func rightBarItemFilter(){
+        
+    }
+    
     //MARK: CollectViewDidSelect
     func collectDidSelect(_ indexPath:IndexPath) {
         
@@ -65,6 +73,7 @@ class BooksViewModel: BaseViewModel {
             }
         }
     }
+    
 }
 
 extension BooksViewModel : UICollectionViewDelegate {

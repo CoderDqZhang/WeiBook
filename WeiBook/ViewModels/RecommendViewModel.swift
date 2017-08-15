@@ -13,10 +13,14 @@ class RecommendViewModel: BaseViewModel {
 
     var sectionsNumber = [1,2,2,2,2]
     var bannerModel:NSMutableArray = NSMutableArray()
-
+    var newBook = NSMutableArray.init()
+    var hotBook = NSMutableArray.init()
+    
     override init() {
         super.init()
         self.requestBanner()
+        self.requestRecommendBook(type: "1")
+        self.requestRecommendBook(type: "2")
     }
     
     //MARK: -TableViewCellData
@@ -39,14 +43,32 @@ class RecommendViewModel: BaseViewModel {
     }
     
     func tableViewBooksInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BooksInfoTableViewCell) {
+        if indexPath.section == 1 {
+            cell.cellSetData(model: self.newBook)
+        }else{
+            cell.cellSetData(model: self.hotBook)
+        }
         cell.booksInfoTableViewCellClouse = { tag in
-//            let pageController = self.controller?.parent
-//            (pageController as! HomePageViewController).viewModel.pushViewController(BookDescViewController())
+            let model:ServerBookModel!
+            if indexPath.section == 1 {
+                model = HomeRecommentModel.init(fromDictionary: self.newBook[tag] as! NSDictionary).tails.bookInfo
+            }else{
+                model = HomeRecommentModel.init(fromDictionary: self.hotBook[tag] as! NSDictionary).tails.bookInfo
+            }
+            let bookDesc = BookDescViewController()
+            bookDesc.model = model
+            let pageController = self.controller?.parent
+            (pageController as! HomePageViewController).viewModel.pushViewController(bookDesc)
         }
     }
     
     func tableViewGloableInfoTextCellSetData(_ indexPath:IndexPath, cell:GloableInfoTextCell) {
-        cell.setCellData(text: "猜你喜欢", detailButtonTitle: "更多")
+        switch indexPath.section {
+        case 1:
+            cell.setCellData(text: "猜你喜欢", detailButtonTitle: "更多")
+        default:
+            cell.setCellData(text: "精品推荐", detailButtonTitle: "更多")
+        }
     }
     
     //MARK: -NetWorking
@@ -59,6 +81,22 @@ class RecommendViewModel: BaseViewModel {
                     let models = NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any])
                 for model in models! {
                     self.bannerModel.add(BannerModel.init(fromDictionary: model as! NSDictionary))
+                }
+                (self.controller as! RecommendViewController).tableView.reloadData()
+            }
+        }
+    }
+    
+    func requestRecommendBook(type:String){
+         let url = "\(BaseUrl)\(HomeRecommnetList)"
+         let parameters = ["type":type]
+        BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+            print(resultDic)
+            if (!resultDic.isCompleted){
+                if type == "1" {
+                    self.newBook = NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any])
+                }else{
+                     self.hotBook = NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any])
                 }
                 (self.controller as! RecommendViewController).tableView.reloadData()
             }
@@ -91,19 +129,31 @@ extension RecommendViewModel : UITableViewDelegate {
             case 0:
                 return 40
             default:
-                return 300
+                if indexPath.section == 1 {
+                    return CGFloat(((self.newBook.count / 3) + (self.newBook.count % 3 == 0 ? 0 : 1)) * 150)
+                }else{
+                    return CGFloat(((self.hotBook.count / 3) + (self.hotBook.count % 3 == 0 ? 0 : 1)) * 150)
+                }
             }
         }
     }
 }
+
 extension RecommendViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionsNumber[section]
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return self.newBook.count / 3 + self.newBook.count % 3 == 0 ? 0 : 1 + 1
+        default:
+            return self.hotBook.count / 3 + self.hotBook.count % 3 == 0 ? 0 : 1 + 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

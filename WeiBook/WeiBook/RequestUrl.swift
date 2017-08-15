@@ -8,7 +8,7 @@
 
 import UIKit
 
-let BaseUrl = "http://api.topveda.cn"
+let BaseUrl = "http://tp.tunnel.zhaopeng.me:8081/"
 
 let LoginUrl = "/user/loginApp"
 //登录mima
@@ -31,12 +31,18 @@ let MyBookCommentList = "/comment/list"
 let CreateBookComment = "/comment/save"
 
 let HomeRecommnetList = "/recommendBook/list"
+let BookListHot = "/book/billboardList"
+
+let DisCoverNew = "/comment/newsList"
+let CollectBookOrList = "/subscribe/update"
+let MyCollectBookList = "/subscribe/mySubscribeList"
 
 let CreateBookList = "/collection/createList"
 let BookListCategory = "/collection/dictionaryList"
 
 let BookCommentList = "/book/list"
 let BookNormal = "/tabMain/index"
+
 
 let BookListCreate = "/collection/myCreatelist"
 let BookListDesc = "/collection/detail"

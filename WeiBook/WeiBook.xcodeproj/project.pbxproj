@@ -14,6 +14,7 @@
 		1F1C5BB31EFD632200DC8DC0 /* DynamicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C5BB21EFD632200DC8DC0 /* DynamicViewController.swift */; };
 		1F3349E21F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3349E11F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift */; };
 		1F3349E41F0A17DC0046B519 /* BookAdvanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3349E31F0A17DC0046B519 /* BookAdvanceTableViewCell.swift */; };
+		1F44C14B1F42FE13008BCD80 /* SubscriberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C14A1F42FE13008BCD80 /* SubscriberViewModel.swift */; };
 		1F4A49591F29892700EF8719 /* BookDescModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4A49581F29892700EF8719 /* BookDescModel.swift */; };
 		1F4AA52C1EF7DAB10085BE3B /* MainTableBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA52B1EF7DAB10085BE3B /* MainTableBarViewController.swift */; };
 		1F4AA5321EF7DB9C0085BE3B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5311EF7DB9C0085BE3B /* BaseViewController.swift */; };
@@ -125,6 +126,7 @@
 		1F7018181F049C6900029158 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7018171F049C6900029158 /* SettingViewModel.swift */; };
 		1F70181A1F04E7C500029158 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7018191F04E7C500029158 /* AboutUsViewController.swift */; };
 		1F70181C1F04EBF800029158 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70181B1F04EBF800029158 /* SearchViewModel.swift */; };
+		1F702D0C1F41A623004F0EAD /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F702D0B1F41A623004F0EAD /* DiscoverModel.swift */; };
 		1F78AA5E1F04FD1500F5F374 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78AA5D1F04FD1500F5F374 /* CategoryViewModel.swift */; };
 		1F78AA601F04FEDE00F5F374 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78AA5F1F04FEDE00F5F374 /* CategoryTableViewCell.swift */; };
 		1F78AA621F05F85100F5F374 /* TopBooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78AA611F05F85100F5F374 /* TopBooksViewModel.swift */; };
@@ -242,6 +244,7 @@
 		1F1C5BB21EFD632200DC8DC0 /* DynamicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicViewController.swift; sourceTree = "<group>"; };
 		1F3349E11F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookBaseInfoTableViewCell.swift; sourceTree = "<group>"; };
 		1F3349E31F0A17DC0046B519 /* BookAdvanceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookAdvanceTableViewCell.swift; sourceTree = "<group>"; };
+		1F44C14A1F42FE13008BCD80 /* SubscriberViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriberViewModel.swift; sourceTree = "<group>"; };
 		1F4A49581F29892700EF8719 /* BookDescModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDescModel.swift; sourceTree = "<group>"; };
 		1F4AA52B1EF7DAB10085BE3B /* MainTableBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableBarViewController.swift; sourceTree = "<group>"; };
 		1F4AA5311EF7DB9C0085BE3B /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -398,6 +401,7 @@
 		1F7018171F049C6900029158 /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		1F7018191F04E7C500029158 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		1F70181B1F04EBF800029158 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		1F702D0B1F41A623004F0EAD /* DiscoverModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverModel.swift; sourceTree = "<group>"; };
 		1F78AA5D1F04FD1500F5F374 /* CategoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		1F78AA5F1F04FEDE00F5F374 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		1F78AA611F05F85100F5F374 /* TopBooksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBooksViewModel.swift; sourceTree = "<group>"; };
@@ -917,6 +921,14 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		1F702D0A1F41A610004F0EAD /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				1F702D0B1F41A623004F0EAD /* DiscoverModel.swift */,
+			);
+			name = Discover;
+			sourceTree = "<group>";
+		};
 		1F8374CE1EFA593200ED97DE /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -969,6 +981,7 @@
 		1F8374D11EFA594800ED97DE /* Subscriber */ = {
 			isa = PBXGroup;
 			children = (
+				1F44C14A1F42FE13008BCD80 /* SubscriberViewModel.swift */,
 			);
 			name = Subscriber;
 			sourceTree = "<group>";
@@ -1235,6 +1248,7 @@
 		1FFF4E931EF1623A001E991F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1F702D0A1F41A610004F0EAD /* Discover */,
 				1FD76C031F21AC2300F334CF /* Form */,
 				1F7017FD1F023D5800029158 /* Home */,
 				1F8374E31EFBB45B00ED97DE /* Profile */,
@@ -1466,6 +1480,7 @@
 				1FB370C91F137736003DC654 /* DXSendButton.swift in Sources */,
 				1F78AA621F05F85100F5F374 /* TopBooksViewModel.swift in Sources */,
 				1F4AA5EF1EF7EF190085BE3B /* JKDBModel.m in Sources */,
+				1F44C14B1F42FE13008BCD80 /* SubscriberViewModel.swift in Sources */,
 				1F4AA6071EF7EF190085BE3B /* TYTabPagerController.m in Sources */,
 				1FDABFC51F1F466700C45E14 /* RecordTableViewCell.swift in Sources */,
 				1F4AA6061EF7EF190085BE3B /* TYTabButtonPagerController.m in Sources */,
@@ -1570,6 +1585,7 @@
 				1FFA27411F2757C80051E228 /* ImageViewManager.swift in Sources */,
 				1F63C48D1F2F20DA0058A997 /* UIWindow+Extentions.swift in Sources */,
 				1FD76C051F21AC3B00F334CF /* FormModel.swift in Sources */,
+				1F702D0C1F41A623004F0EAD /* DiscoverModel.swift in Sources */,
 				1FB003CF1F09F92400A4EF13 /* SBNBookModel.swift in Sources */,
 				1F4AA60C1EF7EF190085BE3B /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				1FED8C0B1F39BCB00028200E /* BookListDescViewController.swift in Sources */,

@@ -55,14 +55,19 @@ class BooksViewController: BaseViewController {
     func setNavigaitonItem(){
         if self.otherBooks && otherUserModel != nil {
             self.navigationItem.title = "\((otherUserModel.username)!)的书库"
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "关注", style: .plain, target: self, action: #selector(BooksViewController.rightBarItemPress))
         }else{
             self.navigationItem.title = "我的书库"
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "筛选", style: .plain, target: self, action: #selector(BooksViewController.rightBarItemFilter))
         }
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "筛选", style: .plain, target: self, action: #selector(BooksViewController.rightBarItemPress))
+    }
+    
+    func rightBarItemFilter(){
+         (self.viewModle as! BooksViewModel).rightBarItemFilter()
     }
     
     func rightBarItemPress(){
-//        print(bcg84599348)
+        (self.viewModle as! BooksViewModel).rightBarItemPress()
     }
     
     override func didReceiveMemoryWarning() {

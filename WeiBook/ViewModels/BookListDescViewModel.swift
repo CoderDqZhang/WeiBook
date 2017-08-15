@@ -17,6 +17,10 @@ class BookListDescViewModel: BaseViewModel {
         super.init()
     }
     
+    func rightBarItemPress(){
+        self.collectBookList()
+    }
+    
     func tableViewBookInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BookInfoTableViewCell){
         cell.cellSetData(model: self.model.bookListDesctails.books.item(at: indexPath.row - 1)!)
     }
@@ -34,6 +38,19 @@ class BookListDescViewModel: BaseViewModel {
             if (!resultDic.isCompleted){
                 self.model = BookListDescModel.init(fromDictionary: resultDic.value as! NSDictionary)
                 self.controller?.tableView.reloadData()
+            }
+        }
+    }
+    
+    func collectBookList(){
+        let url = "\(BaseUrl)\(CollectBookOrList)"
+        let parameters = ["objectId":self.model.id,
+                          "userId":UserInfoModel.shareInstance().tails.userInfo.userId,
+                          "type":"1",
+                          "subscribeAction":"subscribe"]
+        BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+            if !resultDic.isCompleted {
+                
             }
         }
     }

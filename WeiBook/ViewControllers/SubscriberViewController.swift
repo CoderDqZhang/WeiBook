@@ -10,9 +10,11 @@ import UIKit
 
 class SubscriberViewController: BaseViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.bindViewModel(viewModel: SubscriberViewModel(), controller: self)
+        self.setUpTableView(style: .plain, cells: [BookInfoTableViewCell.self], controller: self)
         // Do any additional setup after loading the view.
     }
 

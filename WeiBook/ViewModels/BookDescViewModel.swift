@@ -20,6 +20,10 @@ class BookDescViewModel: BaseViewModel {
         super.init()
     }
     
+    func collectRightBarItemPress(){
+        self.collectBookOrBookList()
+    }
+    
     func tableViewHeight(_ indexPath:IndexPath) ->CGFloat {
         if self.commentsModel.count > 0 {
             let model = CommentModel.init(fromDictionary: self.commentsModel[indexPath.section - 1] as! NSDictionary)
@@ -36,12 +40,16 @@ class BookDescViewModel: BaseViewModel {
     func tableViewBookBaseInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BookBaseInfoTableViewCell) {
         if self.myBookModel != nil {
             cell.cellSetDataSnbModel(model: self.myBookModel.tails.bookInfo)
+        }else if self.model != nil {
+            cell.cellSetDataSnbModel(model: self.model)
         }
     }
     
     func tableViewBookAdvanceTableViewCellSetData(_ indexPath:IndexPath, cell:BookAdvanceTableViewCell) {
         if self.myBookModel != nil {
             cell.cellSetSeverData(model: self.myBookModel.tails.bookInfo)
+        }else if self.model != nil {
+            cell.cellSetSeverData(model: self.model)
         }
     }
     
@@ -115,6 +123,19 @@ class BookDescViewModel: BaseViewModel {
             if (!resultDic.isCompleted){
                 self.commentsModel = NSMutableArray.mj_objectArray(withKeyValuesArray: resultDic.value)
                 self.controller?.tableView.reloadData()
+            }
+        }
+    }
+    
+    func collectBookOrBookList(){
+        let url = "\(BaseUrl)\(CollectBookOrList)"
+        let parameters = ["objectId":self.model.id,
+                          "userId":UserInfoModel.shareInstance().tails.userInfo.userId,
+                          "type":"2",
+                          "subscribeAction":"subscribe"]
+        BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+            if !resultDic.isCompleted {
+                
             }
         }
     }

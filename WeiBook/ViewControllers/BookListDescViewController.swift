@@ -11,6 +11,7 @@ import UIKit
 class BookListDescViewController: BaseViewController {
 
     var collectionModel:CollectionModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bindViewModel(viewModel: BookListDescViewModel(), controller: self)
@@ -20,8 +21,20 @@ class BookListDescViewController: BaseViewController {
     }
     
     func bindLogicViewModel(){
+        
         (self.viewModel as! BookListDescViewModel).collectionModel = self.collectionModel
+        if self.collectionModel.tails.user.tails.userInfo.userId != UserInfoModel.shareInstance().tails.userInfo.userId {
+            self.setUpNavigationItem()
+        }
         (self.viewModel as! BookListDescViewModel).requestBookListDesc()
+    }
+    
+    func setUpNavigationItem(){
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "收藏", style: .plain, target: self, action: #selector(BookListDescViewController.rightBarItemPress))
+    }
+    
+    func rightBarItemPress(){
+        (self.viewModel as! BookListDescViewModel).rightBarItemPress()
     }
 
     override func didReceiveMemoryWarning() {

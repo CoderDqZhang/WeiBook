@@ -30,7 +30,11 @@ class BookDescViewController: BaseViewController {
         if !otherBookDesc {
             if self.myBookModel != nil {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "生成二维码", style: .plain, target: self, action: #selector(BookDescViewController.rightBarItemPress))
+            } else {
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "收藏", style: .plain, target: self, action: #selector(BookDescViewController.collectRightBarItemPress))
             }
+        }else{
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "收藏", style: .plain, target: self, action: #selector(BookDescViewController.collectRightBarItemPress))
         }
     }
 
@@ -84,6 +88,10 @@ class BookDescViewController: BaseViewController {
         }
         
         enTimePickerView.show()
+    }
+    
+    func collectRightBarItemPress(){
+        (self.viewModel as! BookDescViewModel).collectRightBarItemPress()
     }
     
     override func didReceiveMemoryWarning() {

@@ -39,8 +39,11 @@ class BookInfo: UIView {
 
     }
     
-    func setBookInfoData(){
-        
+    func setBookInfoData(model:ServerBookModel){
+        bookTitle.text = model.title
+        ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.bookImg, imageView: bookPost) { (image, error, url) in
+            
+        }
     }
     
     override func updateConstraints() {
@@ -73,17 +76,18 @@ typealias BooksInfoTableViewCellClouse = (_ tag:Int) ->Void
 class BooksInfoTableViewCell: UITableViewCell {
 
     var booksInfoTableViewCellClouse:BooksInfoTableViewCellClouse!
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.setUpView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpView(){
-        for i in 0...5 {
+    
+    func cellSetData(model:NSMutableArray){
+        for i in 0...model.count - 1 {
             let frame = CGRect.init(x: CGFloat((CGFloat(i%3) * SwifterSwift.screenWidth / 3)), y: CGFloat(((i/3) * 145)), width: SwifterSwift.screenWidth / 3, height: 145)
             let book = BookInfo.init(frame: frame)
             book.tag = i
@@ -92,6 +96,9 @@ class BooksInfoTableViewCell: UITableViewCell {
             sigleTap.numberOfTouchesRequired = 1
             book.isUserInteractionEnabled = true
             book.addGestureRecognizer(sigleTap)
+            
+            let model = HomeRecommentModel.init(fromDictionary: model[i] as! NSDictionary)
+            book.setBookInfoData(model: model.tails.bookInfo)
             self.contentView.addSubview(book)
         }
     }
