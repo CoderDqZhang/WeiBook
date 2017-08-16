@@ -10,12 +10,27 @@ import UIKit
 
 class FanceViewModel: BaseViewModel {
 
+    var models = NSMutableArray.init()
     override init() {
-        
+        super.init()
+        self.requestAttention()
     }
     
     func tableViewFollowFanceTableViewCellSetData(_ indexPath:IndexPath, cell:FollowFanceTableViewCell) {
-        
+        cell.cellSetData(model: AttentionAndFollowModel.init(fromDictionary: models[indexPath.row] as! NSDictionary))
+    }
+    
+    //MARK: RequestNetWork
+    func requestAttention() {
+        let url = "\(BaseUrl)\(GetMyFans)"
+        let parameters = ["attentionType":"2",
+                          "userId":UserInfoModel.shareInstance().tails.userInfo.userId]
+        BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+            if !resultDic.isCompleted {
+                self.models = NSMutableArray.mj_objectArray(withKeyValuesArray: resultDic.value)
+                self.controller?.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -31,7 +46,7 @@ extension FanceViewModel : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0.000001
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -45,7 +60,7 @@ extension FanceViewModel : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return self.models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

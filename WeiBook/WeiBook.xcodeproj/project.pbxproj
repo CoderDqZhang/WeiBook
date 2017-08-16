@@ -15,6 +15,7 @@
 		1F3349E21F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3349E11F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift */; };
 		1F3349E41F0A17DC0046B519 /* BookAdvanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3349E31F0A17DC0046B519 /* BookAdvanceTableViewCell.swift */; };
 		1F44C14B1F42FE13008BCD80 /* SubscriberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C14A1F42FE13008BCD80 /* SubscriberViewModel.swift */; };
+		1F44C14D1F4423E6008BCD80 /* AttentionAndFollowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C14C1F4423E6008BCD80 /* AttentionAndFollowModel.swift */; };
 		1F4A49591F29892700EF8719 /* BookDescModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4A49581F29892700EF8719 /* BookDescModel.swift */; };
 		1F4AA52C1EF7DAB10085BE3B /* MainTableBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA52B1EF7DAB10085BE3B /* MainTableBarViewController.swift */; };
 		1F4AA5321EF7DB9C0085BE3B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AA5311EF7DB9C0085BE3B /* BaseViewController.swift */; };
@@ -245,6 +246,7 @@
 		1F3349E11F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookBaseInfoTableViewCell.swift; sourceTree = "<group>"; };
 		1F3349E31F0A17DC0046B519 /* BookAdvanceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookAdvanceTableViewCell.swift; sourceTree = "<group>"; };
 		1F44C14A1F42FE13008BCD80 /* SubscriberViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriberViewModel.swift; sourceTree = "<group>"; };
+		1F44C14C1F4423E6008BCD80 /* AttentionAndFollowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttentionAndFollowModel.swift; sourceTree = "<group>"; };
 		1F4A49581F29892700EF8719 /* BookDescModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDescModel.swift; sourceTree = "<group>"; };
 		1F4AA52B1EF7DAB10085BE3B /* MainTableBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableBarViewController.swift; sourceTree = "<group>"; };
 		1F4AA5311EF7DB9C0085BE3B /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -1050,6 +1052,7 @@
 				1F63C45F1F2A495A0058A997 /* BorrowModel.swift */,
 				1FE36B341F30914600E895C7 /* GiveBookModel.swift */,
 				1FED8C041F399B550028200E /* BookListModel.swift */,
+				1F44C14C1F4423E6008BCD80 /* AttentionAndFollowModel.swift */,
 				1FED8C081F39BAC60028200E /* BookListDescModel.swift */,
 				1F8374E41EFBB48600ED97DE /* UserInfoModel.h */,
 				1F8374E51EFBB48600ED97DE /* UserInfoModel.m */,
@@ -1555,6 +1558,7 @@
 				1F8374ED1EFD240000ED97DE /* ProfileInfoViewController.swift in Sources */,
 				1F7018071F025ADB00029158 /* CatergoryViewController.swift in Sources */,
 				1F4AA5F51EF7EF190085BE3B /* SDCycleScrollView.m in Sources */,
+				1F44C14D1F4423E6008BCD80 /* AttentionAndFollowModel.swift in Sources */,
 				1F6680CA1F147F4D00B4A4E8 /* AddBookTagsViewModel.swift in Sources */,
 				1F4AA6081EF7EF190085BE3B /* TYTabTitleViewCell.m in Sources */,
 				1FED8C071F39A2410028200E /* MyBookListViewModel.swift in Sources */,

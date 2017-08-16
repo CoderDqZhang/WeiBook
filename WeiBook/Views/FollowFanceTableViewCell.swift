@@ -48,7 +48,7 @@ class FollowFanceTableViewCell: UITableViewCell {
         self.contentView.addSubview(userBooksNumber)
         
         userConmmentNumber = UILabel.init()
-        userConmmentNumber.text = "评论数 130 "
+        userConmmentNumber.text = ""
         userConmmentNumber.font = App_Theme_PinFan_L_12_Font
         userConmmentNumber.textColor = UIColor.init(hexString: App_Theme_8A96A2_Color)
         self.contentView.addSubview(userConmmentNumber)
@@ -68,6 +68,13 @@ class FollowFanceTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func cellSetData(model:AttentionAndFollowModel){
+        ImageViewManager.shareInstance.sd_imageView(url: model.tails.userInfo.photo, imageView: userPhoto)
+        userName.text = model.username
+        userBooksNumber.text = "粉丝个数 \((model.tails.userInfo.fansNum)!)"
+        userConmmentNumber.text = "关注个数 \((model.tails.userInfo.attentionNum)!)"
     }
     
     func updataStatusButton(status:FollowAndFancsType){

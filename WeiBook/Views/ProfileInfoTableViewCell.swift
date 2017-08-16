@@ -71,7 +71,7 @@ class ProfileInfoTableViewCell: UITableViewCell {
         for index in 0...2{
             let frame = CGRect.init(x: CGFloat((SwifterSwift.screenWidth / 3) * CGFloat(index)), y: 0, width: SwifterSwift.screenWidth / 3, height: cellContentViewHeight)
             let customInfoView = CustomInfoView.init(title: titles[index], subTitle: subTitles[index], frame: frame)
-            customInfoView.tag = index
+            customInfoView.tag = index + 1
             
             let sigleTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(ProfileInfoTableViewCell.singleTap(tap:)))
             sigleTapGesture.numberOfTapsRequired = 1
@@ -88,12 +88,12 @@ class ProfileInfoTableViewCell: UITableViewCell {
     }
     
     func cellSetData(flowers:String, fans:String, dynamic:String){
-        for index in 0...2 {
-            let customView = self.viewWithTag(index) as! CustomInfoView
+        for index in 1...3 {
+            let customView = self.contentView.viewWithTag(index) as! CustomInfoView
             switch index {
-            case 0:
-                customView.titleLabel.text = flowers
             case 1:
+                customView.titleLabel.text = flowers
+            case 2:
                 customView.titleLabel.text = fans
             default:
                 customView.titleLabel.text = dynamic

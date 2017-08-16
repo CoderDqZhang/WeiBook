@@ -40,8 +40,10 @@ class SubscriberViewModel: BaseViewModel {
                           "userId":UserInfoModel.shareInstance().tails.userInfo.userId]
         BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
             if !resultDic.isCompleted {
-                self.model = NSMutableArray.mj_keyValuesArray(withObjectArray: (resultDic.value as! NSDictionary).object(forKey: "books") as! [Any])
-                self.controller?.tableView.reloadData()
+                if (resultDic.value as! NSDictionary).object(forKey: "books") != nil {
+                    self.model = NSMutableArray.mj_keyValuesArray(withObjectArray: (resultDic.value as! NSDictionary).object(forKey: "books") as! [Any])
+                    self.controller?.tableView.reloadData()
+                }
             }
         }
         

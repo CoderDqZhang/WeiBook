@@ -45,6 +45,7 @@ class BooksViewController: BaseViewController {
         self.viewModle.createComment = self.createComment
         self.viewModle.createBookList = self.createBookList
         self.viewModle.controller = self
+        self.viewModle.bookController = self
         if self.otherBooks && otherUserModel != nil {
             self.viewModle.requestMyBooks(uid: otherUserModel.tails.userInfo.userId)
         }else{
@@ -63,11 +64,11 @@ class BooksViewController: BaseViewController {
     }
     
     func rightBarItemFilter(){
-         (self.viewModle as! BooksViewModel).rightBarItemFilter()
+         (self.viewModle ).rightBarItemFilter()
     }
     
     func rightBarItemPress(){
-        (self.viewModle as! BooksViewModel).rightBarItemPress()
+        (self.viewModle ).rightBarItemPress()
     }
     
     override func didReceiveMemoryWarning() {

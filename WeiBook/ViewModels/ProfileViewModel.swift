@@ -68,12 +68,16 @@ class ProfileViewModel: BaseViewModel {
     
     //MARK: - TableViewCellSetData
     func tableViewProfileInfoTableViewCellCellData(_ indexPath:IndexPath, cell:ProfileInfoTableViewCell){
+        if UserInfoModel.isLoggedIn() {
+            cell.cellSetData(flowers:"\(UserInfoModel.shareInstance().tails.userInfo.fansNum)", fans: "\((UserInfoModel.shareInstance().tails.userInfo.attentionNum)!)", dynamic: "0")
+        }
         cell.profileInfoTableViewCellClouse = { tag in
             switch tag {
-            case 0:
-                NavigationPushView(self.controller!, toConroller: FansViewController())
             case 1:
                 NavigationPushView(self.controller!, toConroller: FlowersViewController())
+            case 2:
+                NavigationPushView(self.controller!, toConroller: FansViewController())
+
             default:
                 break;
             }
@@ -89,6 +93,7 @@ class ProfileViewModel: BaseViewModel {
     func tableViewProfileHeaderTableViewCellSetData(_ indexPath:IndexPath, cell:ProfileHeaderTableViewCell) {
         cell.cellSetData(model: UserInfoModel.shareInstance(), isLogin: UserInfoModel.isLoggedIn())
     }
+    
 }
 
 extension ProfileViewModel : UITableViewDelegate {

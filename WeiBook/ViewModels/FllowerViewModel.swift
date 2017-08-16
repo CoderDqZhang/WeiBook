@@ -10,12 +10,36 @@ import UIKit
 
 class FllowerViewModel: BaseViewModel {
 
+    var models = NSMutableArray.init()
     override init() {
-        
+        super.init()
+        self.requestAttention()
     }
     
     func tableViewFollowFanceTableViewCellSetData(_ indexPath:IndexPath, cell:FollowFanceTableViewCell) {
-        
+        if self.models.count > 0 {
+            cell.cellSetData(model: AttentionAndFollowModel.init(fromDictionary: models[indexPath.row] as! NSDictionary))
+        }
+    }
+    
+    func tableViewDidSelect(_ indexPath:IndexPath){
+        let booksVC = BooksViewController()
+        booksVC.otherUserModel = model.tails.user
+        booksVC.otherBooks = true
+        NavigationPushView(self.controller!, toConroller: booksVC)
+    }
+    
+    //MARK: RequestNetWork
+    func requestAttention() {
+        let url = "\(BaseUrl)\(GetMyAttention)"
+        let parameters = ["attentionType":"2",
+                          "userId":UserInfoModel.shareInstance().tails.userInfo.userId]
+        BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+            if !resultDic.isCompleted {
+                self.models = NSMutableArray.mj_objectArray(withKeyValuesArray: resultDic.value)
+                self.controller?.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -24,6 +48,7 @@ extension FllowerViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.tableViewDidSelect(indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -31,7 +56,7 @@ extension FllowerViewModel : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0.00001
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -46,7 +71,7 @@ extension FllowerViewModel : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return self.models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

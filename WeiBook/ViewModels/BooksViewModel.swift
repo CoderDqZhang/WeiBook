@@ -17,13 +17,14 @@ class BooksViewModel: BaseViewModel {
     var createComment:Bool!
     var bookSelectClouse:BookSelectClouse!
     var createBookList:Bool!
+    var bookController:BooksViewController!
     
     override init() {
         super.init()
     }
     
     func rightBarItemPress(){
-        
+        self.requestCollectUser()
     }
     
     func rightBarItemFilter(){
@@ -70,6 +71,19 @@ class BooksViewModel: BaseViewModel {
             if !resulDic.isCompleted {
                 self.myBooksModel = NSMutableArray.mj_keyValuesArray(withObjectArray: resulDic.value as! [Any])
                 (self.controller as! BooksViewController).collectView.reloadData()
+            }
+        }
+    }
+    
+    func requestCollectUser(){
+        let url = "\(BaseUrl)\(AttentionUpdate)"
+        let parameters = ["attentionType":"2",
+                          "objectId":self.bookController.otherUserModel.tails.userInfo.userId,
+                          "userId":UserInfoModel.shareInstance().tails.userInfo.userId,
+                          "attentionAtion":"attention"]
+        BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+            if !resultDic.isCompleted {
+                
             }
         }
     }
