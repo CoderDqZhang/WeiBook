@@ -32,7 +32,8 @@ class MyGivePresentViewController: BaseViewController {
         UIAlertController.shwoAlertControl(self, style: .actionSheet, title: nil, message: nil, titles: ["领受","赠送"], cancel: "取消", doneTitle: nil, cancelAction: {
             
         }) { str in
-            
+            let status = str == "领受" ? 4 : 3
+            (self.viewModel as! MyGivePresentViewModel).rigthBarItemPress(status:status)
         }
     }
     

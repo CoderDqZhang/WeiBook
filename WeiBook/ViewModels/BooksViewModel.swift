@@ -14,6 +14,7 @@ typealias BookSelectClouse = (_ model:Book) ->Void
 class BooksViewModel: BaseViewModel {
 
     var myBooksModel:MyBooksModel!
+    var tempBooksModel:MyBooksModel!
     var createComment:Bool!
     var bookSelectClouse:BookSelectClouse!
     var createBookList:Bool!
@@ -27,8 +28,16 @@ class BooksViewModel: BaseViewModel {
         self.requestCollectUser()
     }
     
-    func rightBarItemFilter(){
-        
+    func rightBarItemFilter(status:Int){
+        if status == 0 {
+            self.myBooksModel.books = self.tempBooksModel.books
+        }else{
+            let array = self.tempBooksModel.books.filter { (book) -> Bool in
+                return book.borrowState == status
+            }
+            self.myBooksModel.books = array
+        }
+        self.bookController.collectView.reloadData()
     }
     
     //MARK: CollectViewDidSelect
@@ -71,7 +80,10 @@ class BooksViewModel: BaseViewModel {
         BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resulDic) in
             if !resulDic.isCompleted {
                 self.myBooksModel = MyBooksModel.init(fromDictionary: resulDic.value as! NSDictionary)
-                (self.controller as! BooksViewController).setNavigationItemCollect(collect: self.myBooksModel.isExitWishBook == 1 ? true : false)
+                self.tempBooksModel = MyBooksModel.init(fromDictionary: resulDic.value as! NSDictionary)
+                if uid != UserInfoModel.shareInstance().tails.userInfo.userId{
+                    (self.controller as! BooksViewController).setNavigationItemCollect(collect: self.myBooksModel.isExitWishBook == 1 ? true : false)
+                }
                 (self.controller as! BooksViewController).collectView.reloadData()
             }
         }

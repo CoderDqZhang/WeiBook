@@ -12,10 +12,33 @@ class MyGivePresentViewModel: BaseViewModel {
 
     let bookStatus:[GiveBookStatus] = [GiveBookStatus.GiveIn,GiveBookStatus.GiveOut,GiveBookStatus.GiveOut,GiveBookStatus.GiveOut,GiveBookStatus.GiveIn]
     var giveList = NSMutableArray.init()
-    
+    var tempGiveList = NSMutableArray.init()
     override init() {
         super.init()
         self.requestGiveBook()
+    }
+    
+    func rigthBarItemPress(status:Int){
+        if status == 0 {
+            self.giveList = self.tempGiveList
+        }else{
+            let array = self.tempGiveList.filter({ (str) -> Bool in
+                let dic = str as! NSDictionary
+                if status == 3 {
+                    return dic["useUserId"] as? String != UserInfoModel.shareInstance().tails.userInfo.userId
+                }else {
+                    return dic["useUserId"] as! String == UserInfoModel.shareInstance().tails.userInfo.userId
+                }
+//                if  {
+//                    return Int(dic["isAccept"] as! Int) == status
+//                }else{
+//                    return Int(dic["isAccept"] as! Int) == status
+//                }
+            })
+            
+            self.giveList = NSMutableArray.init(array: array)
+        }
+        self.controller?.tableView.reloadData()
     }
     
     //MARK: - TableViewCellSetData
@@ -36,6 +59,7 @@ class MyGivePresentViewModel: BaseViewModel {
             BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
                 if !resultDic.isCompleted {
                     self.giveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                    self.tempGiveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
                     self.controller?.tableView.reloadData()
                 }
             }
@@ -45,6 +69,8 @@ class MyGivePresentViewModel: BaseViewModel {
             BaseNetWorke.sharedInstance.getUrlWithString(urlList, parameters: parametersList as AnyObject).observe { (resultDic) in
                 if !resultDic.isCompleted {
                     self.giveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                    self.tempGiveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+
                     self.controller?.tableView.reloadData()
                 }
             }

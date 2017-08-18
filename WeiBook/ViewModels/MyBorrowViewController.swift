@@ -29,16 +29,17 @@ class MyBorrowViewController: BaseViewController {
     }
     
     func rigthBarItemPress(){
-        UIAlertController.shwoAlertControl(self, style: .actionSheet, title: nil, message: nil, titles: ["借入","借出","已完成","提醒还书"], cancel: "取消", doneTitle: nil, cancelAction: {
+        UIAlertController.shwoAlertControl(self, style: .actionSheet, title: nil, message: nil, titles: ["借出","待还","已还"], cancel: "取消", doneTitle: nil, cancelAction: {
             
         }) { str in
-            
+            let status = str == "借出" ? 2 : str == "待还" ? 3 : 4
+            (self.viewModel as! BorrowViewModel).rigthBarItemPress(status:status)
         }
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        (self.viewModel as! BorrowViewModel).borrowList.removeAllObjects()
     }
 
     override func didReceiveMemoryWarning() {

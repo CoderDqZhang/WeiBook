@@ -56,7 +56,6 @@ class BooksViewController: BaseViewController {
     func setNavigaitonItem(){
         if self.otherBooks && otherUserModel != nil {
             self.navigationItem.title = "\((otherUserModel.username)!)的书库"
-            
         }else{
             self.navigationItem.title = "我的书库"
             self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "筛选", style: .plain, target: self, action: #selector(BooksViewController.rightBarItemFilter))
@@ -68,10 +67,15 @@ class BooksViewController: BaseViewController {
     }
     
     func rightBarItemFilter(){
-         (self.viewModle ).rightBarItemFilter()
+        UIAlertController.shwoAlertControl(self, style: .actionSheet, title: nil, message: nil, titles: ["拥有","借出","待还","已还","全部"], cancel: "取消", doneTitle: nil, cancelAction: {
+            
+        }) { str in
+            let status = str == "拥有" ? 1 : str == "借出" ? 2 : str == "待还" ? 3 : str == "已还" ? 4 : 0
+            (self.viewModle ).rightBarItemFilter(status:status)
+        }
     }
     
-    func rightBarItemPress(){
+    func collectRightBarItemPress(){
         (self.viewModle ).rightBarItemPress()
     }
     

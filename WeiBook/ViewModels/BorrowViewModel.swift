@@ -13,9 +13,28 @@ class BorrowViewModel: BaseViewModel {
     
     let bookStatus:[BorrowStatus] = [BorrowStatus.BorrowIn,BorrowStatus.BorrowOut,BorrowStatus.BorrowOut,BorrowStatus.BorrowDone,BorrowStatus.BorrowTimeEnd]
     var borrowList = NSMutableArray.init()
+    var tempBorrowList = NSMutableArray.init()
     override init() {
         super.init()
         self.requestBorrow()
+    }
+    
+    func rigthBarItemPress(status:Int){
+        if status == 0 {
+            self.borrowList = self.tempBorrowList
+        }else{
+            let array = self.tempBorrowList.filter({ (str) -> Bool in
+                let dic = str as! NSDictionary
+                if dic["useUserId"] as! String == UserInfoModel.shareInstance().tails.userInfo.userId {
+                    return Int(dic["isReturn"] as! Int) == status
+                }else{
+                    return Int(dic["state"] as! Int) == status
+                }
+            })
+            
+            self.borrowList = array as! NSMutableArray
+        }
+        self.controller?.tableView.reloadData()
     }
     
     //MARK: - TableViewCellSetData
@@ -36,6 +55,7 @@ class BorrowViewModel: BaseViewModel {
             BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
                 if !resultDic.isCompleted {
                     self.borrowList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                    self.tempBorrowList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
                     self.controller?.tableView.reloadData()
                 }
             }
@@ -45,6 +65,7 @@ class BorrowViewModel: BaseViewModel {
             BaseNetWorke.sharedInstance.getUrlWithString(urlList, parameters: parametersList as AnyObject).observe { (resultDic) in
                 if !resultDic.isCompleted {
                     self.borrowList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                    self.tempBorrowList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
                     self.controller?.tableView.reloadData()
                 }
             }
