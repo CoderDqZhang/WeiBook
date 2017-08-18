@@ -8,7 +8,7 @@
 
 import UIKit
 
-let BaseUrl = "http://tp.tunnel.zhaopeng.me:8081/"
+let BaseUrl = "https://api.topveda.cn/"
 
 let LoginUrl = "/user/loginApp"
 //登录mima

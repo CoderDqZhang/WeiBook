@@ -11,7 +11,7 @@ import UIKit
 class BookDescViewModel: BaseViewModel {
     
     var model:ServerBookModel!
-    var myBookModel:MyBooksModel!
+    var myBookModel:Book!
     var bookDescModel:BookDescModel!
     var commentsModel = NSMutableArray.init()
     
@@ -110,6 +110,7 @@ class BookDescViewModel: BaseViewModel {
         BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
             if (!resultDic.isCompleted){
                 self.bookDescModel = BookDescModel.init(fromDictionary: resultDic.value as! NSDictionary)
+                (self.controller as! BookDescViewController).setNavigationItemCollect(collect: self.bookDescModel.isFavorite == 1 ? true : false)
                 self.controller?.tableView.reloadData()
             }
         }
@@ -128,11 +129,14 @@ class BookDescViewModel: BaseViewModel {
     }
     
     func collectBookOrBookList(){
+        //这里后期需要坐个改动
         let url = "\(BaseUrl)\(CollectBookOrList)"
         let parameters = ["objectId":self.model.id,
                           "userId":UserInfoModel.shareInstance().tails.userInfo.userId,
                           "type":"2",
-                          "subscribeAction":"subscribe"]
+                          "subscribeAction": self.bookDescModel.isFavorite == 2 ? "subscribe" : "cancel"]
+        self.bookDescModel.isFavorite = self.bookDescModel.isFavorite == 1 ? 2 : 1
+        (self.controller as! BookDescViewController).setNavigationItemCollect(collect: self.bookDescModel.isFavorite == 1 ? true : false)
         BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
             if !resultDic.isCompleted {
                 

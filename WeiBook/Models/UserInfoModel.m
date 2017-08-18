@@ -111,6 +111,7 @@ NSString *const kRootClassProfessionTag = @"professionTag";
 NSString *const kRootClassQq = @"qq";
 NSString *const kRootClassQrCode = @"qrCode";
 NSString *const kRootClassSex = @"sex";
+NSString *const kUserInfoTrendsNum = @"trendsNum";
 NSString *const kRootClassSocialUtility = @"socialUtility";
 NSString *const kRootClassStar = @"star";
 NSString *const kRootClassTitle = @"title";
@@ -146,7 +147,9 @@ NSString *const kRootClassWeixin = @"weixin";
     if(![dictionary[kRootClassFansNum] isKindOfClass:[NSNull class]]){
         self.fansNum = [dictionary[kRootClassFansNum] integerValue];
     }
-    
+    if(![dictionary[kUserInfoTrendsNum] isKindOfClass:[NSNull class]]){
+        self.trendsNum = [dictionary[kUserInfoTrendsNum] integerValue];
+    }
     if(![dictionary[kRootClassHobbyTag] isKindOfClass:[NSNull class]]){
         self.hobbyTag = dictionary[kRootClassHobbyTag];
     }
@@ -227,6 +230,7 @@ NSString *const kRootClassWeixin = @"weixin";
     if(self.idField != nil){
         dictionary[kRootClassIdField] = self.idField;
     }
+    dictionary[kUserInfoTrendsNum] = @(self.trendsNum);
     if(self.identify != nil){
         dictionary[kRootClassIdentify] = self.identify;
     }
@@ -308,6 +312,7 @@ NSString *const kRootClassWeixin = @"weixin";
     if(self.introduction != nil){
         [aCoder encodeObject:self.introduction forKey:kRootClassIntroduction];
     }
+    [aCoder encodeObject:@(self.trendsNum) forKey:kUserInfoTrendsNum];
     if(self.invitationCode != nil){
         [aCoder encodeObject:self.invitationCode forKey:kRootClassInvitationCode];
     }
@@ -371,6 +376,7 @@ NSString *const kRootClassWeixin = @"weixin";
     self.qrCode = [aDecoder decodeObjectForKey:kRootClassQrCode];
     self.sex = [aDecoder decodeObjectForKey:kRootClassSex];
     self.socialUtility = [aDecoder decodeObjectForKey:kRootClassSocialUtility];
+    self.trendsNum = [[aDecoder decodeObjectForKey:kUserInfoTrendsNum] integerValue];
     self.star = [aDecoder decodeObjectForKey:kRootClassStar];
     self.title = [aDecoder decodeObjectForKey:kRootClassTitle];
     self.userId = [aDecoder decodeObjectForKey:kRootClassUserId];
@@ -403,6 +409,7 @@ NSString *const kRootClassWeixin = @"weixin";
     copy.qq = [self.qq copy];
     copy.qrCode = [self.qrCode copy];
     copy.sex = [self.sex copy];
+    copy.trendsNum = self.trendsNum;
     copy.socialUtility = [self.socialUtility copy];
     copy.star = [self.star copy];
     copy.title = [self.title copy];

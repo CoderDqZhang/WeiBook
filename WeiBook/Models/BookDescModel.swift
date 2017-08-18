@@ -13,7 +13,7 @@ class BookDescModel: NSObject, NSCoding {
     var collectionList : [CollectionList]!
     var isExitCollection : Int!
     var isExitWishBook : Int!
-    
+    var isFavorite : Int!
     
     /**
      * Instantiate the instance using the passed dictionary values to set the properties values
@@ -31,6 +31,7 @@ class BookDescModel: NSObject, NSCoding {
         }
         isExitCollection = dictionary["isExitCollection"] as? Int
         isExitWishBook = dictionary["isExitWishBook"] as? Int
+        isFavorite = dictionary["isFavorite"] as? Int
     }
     
     /**
@@ -55,6 +56,9 @@ class BookDescModel: NSObject, NSCoding {
         if isExitWishBook != nil{
             dictionary["isExitWishBook"] = isExitWishBook
         }
+        if isFavorite != nil{
+            dictionary["isFavorite"] = isFavorite
+        }
         return dictionary
     }
     
@@ -68,7 +72,7 @@ class BookDescModel: NSObject, NSCoding {
         collectionList = aDecoder.decodeObject(forKey: "collectionList") as? [CollectionList]
         isExitCollection = aDecoder.decodeObject(forKey: "isExitCollection") as? Int
         isExitWishBook = aDecoder.decodeObject(forKey: "isExitWishBook") as? Int
-        
+        isFavorite = aDecoder.decodeObject(forKey: "isFavorite") as? Int
     }
     
     /**
@@ -89,7 +93,9 @@ class BookDescModel: NSObject, NSCoding {
         if isExitWishBook != nil{
             aCoder.encode(isExitWishBook, forKey: "isExitWishBook")
         }
-        
+        if isFavorite != nil{
+            aCoder.encode(isFavorite, forKey: "isFavorite")
+        }
     }
 }
 

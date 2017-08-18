@@ -8,7 +8,75 @@
 
 import UIKit
 
-class MyBooksModel: NSObject, NSCoding{
+class MyBooksModel : NSObject, NSCoding{
+    
+    var books : [Book]!
+    var isExitWishBook : Int!
+    
+    
+    /**
+     * Instantiate the instance using the passed dictionary values to set the properties values
+     */
+    init(fromDictionary dictionary: NSDictionary){
+        books = [Book]()
+        if let booksArray = dictionary["books"] as? [NSDictionary]{
+            for dic in booksArray{
+                let value = Book(fromDictionary: dic)
+                books.append(value)
+            }
+        }
+        isExitWishBook = dictionary["isExitWishBook"] as? Int
+    }
+    
+    /**
+     * Returns all the available property values in the form of NSDictionary object where the key is the approperiate json key and the value is the value of the corresponding property
+     */
+    func toDictionary() -> NSDictionary
+    {
+        let dictionary = NSMutableDictionary()
+        if books != nil{
+            var dictionaryElements = [NSDictionary]()
+            for booksElement in books {
+                dictionaryElements.append(booksElement.toDictionary())
+            }
+            dictionary["books"] = dictionaryElements
+        }
+        if isExitWishBook != nil{
+            dictionary["isExitWishBook"] = isExitWishBook
+        }
+        return dictionary
+    }
+    
+    /**
+     * NSCoding required initializer.
+     * Fills the data from the passed decoder
+     */
+    @objc required init(coder aDecoder: NSCoder)
+    {
+        books = aDecoder.decodeObject(forKey: "books") as? [Book]
+        isExitWishBook = aDecoder.decodeObject(forKey: "isExitWishBook") as? Int
+        
+    }
+    
+    /**
+     * NSCoding required method.
+     * Encodes mode properties into the decoder
+     */
+    @objc func encode(with aCoder: NSCoder)
+    {
+        if books != nil{
+            aCoder.encode(books, forKey: "books")
+        }
+        if isExitWishBook != nil{
+            aCoder.encode(isExitWishBook, forKey: "isExitWishBook")
+        }
+        
+    }
+    
+}
+
+
+class Book: NSObject, NSCoding{
     
     var bookId : String!
     var createdAt : Int!

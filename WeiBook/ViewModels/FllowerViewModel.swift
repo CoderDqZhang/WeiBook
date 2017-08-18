@@ -24,7 +24,7 @@ class FllowerViewModel: BaseViewModel {
     
     func tableViewDidSelect(_ indexPath:IndexPath){
         let booksVC = BooksViewController()
-        booksVC.otherUserModel = model.tails.user
+//        booksVC.otherUserModel = models.tails.user
         booksVC.otherBooks = true
         NavigationPushView(self.controller!, toConroller: booksVC)
     }

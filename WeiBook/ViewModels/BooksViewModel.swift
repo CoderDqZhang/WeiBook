@@ -9,11 +9,11 @@
 import UIKit
 import SwifterSwift
 
-typealias BookSelectClouse = (_ model:MyBooksModel) ->Void
+typealias BookSelectClouse = (_ model:Book) ->Void
 
 class BooksViewModel: BaseViewModel {
 
-    var myBooksModel = NSMutableArray()
+    var myBooksModel:MyBooksModel!
     var createComment:Bool!
     var bookSelectClouse:BookSelectClouse!
     var createBookList:Bool!
@@ -36,7 +36,7 @@ class BooksViewModel: BaseViewModel {
         
         if self.createBookList{
             if self.bookSelectClouse != nil {
-                self.bookSelectClouse(MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary))
+                self.bookSelectClouse(self.myBooksModel.books[indexPath.row])
                 self.controller?.pop(animated: true)
                 
             }
@@ -44,14 +44,14 @@ class BooksViewModel: BaseViewModel {
         
         if self.createComment {
             if self.bookSelectClouse != nil {
-                self.bookSelectClouse(MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary))
+                self.bookSelectClouse(self.myBooksModel.books[indexPath.row])
                 self.controller?.pop(animated: true)
                 return
             }
         }
         if !self.createComment && !self.createBookList {
             let bookDesc = BookDescViewController()
-            bookDesc.myBookModel = MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row]  as! NSDictionary)
+            bookDesc.myBookModel = self.myBooksModel.books[indexPath.row]
             bookDesc.otherBookDesc = (self.controller as! BooksViewController).otherBooks
             NavigationPushView(self.controller!, toConroller: bookDesc)
             return
@@ -60,16 +60,18 @@ class BooksViewModel: BaseViewModel {
     
     //MARK: CollectViewCell
     func collectViewMyBooksCollectionViewCellSetData(_ indexPath:IndexPath, cell:MyBooksCollectionViewCell) {
-        cell.cellSetData(model:MyBooksModel.init(fromDictionary: myBooksModel[indexPath.row] as! NSDictionary))
+        cell.cellSetData(model:self.myBooksModel.books[indexPath.row])
     }
     
     //MARK: -RequestNetWorking
     func requestMyBooks(uid:String){
         let url = "\(BaseUrl)\(MyBookList)"
-        let parameters = ["userId":uid]
+        let parameters = ["useUserId":uid,
+                          "userId":UserInfoModel.shareInstance().tails.userInfo.userId]
         BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resulDic) in
             if !resulDic.isCompleted {
-                self.myBooksModel = NSMutableArray.mj_keyValuesArray(withObjectArray: resulDic.value as! [Any])
+                self.myBooksModel = MyBooksModel.init(fromDictionary: resulDic.value as! NSDictionary)
+                (self.controller as! BooksViewController).setNavigationItemCollect(collect: self.myBooksModel.isExitWishBook == 1 ? true : false)
                 (self.controller as! BooksViewController).collectView.reloadData()
             }
         }
@@ -80,7 +82,9 @@ class BooksViewModel: BaseViewModel {
         let parameters = ["attentionType":"2",
                           "objectId":self.bookController.otherUserModel.tails.userInfo.userId,
                           "userId":UserInfoModel.shareInstance().tails.userInfo.userId,
-                          "attentionAtion":"attention"]
+                          "attentionAtion":self.myBooksModel.isExitWishBook == 1 ? "cancel" : "attention" ]
+        self.myBooksModel.isExitWishBook = self.myBooksModel.isExitWishBook == 1 ? 2 : 1
+        (self.controller as! BooksViewController).setNavigationItemCollect(collect: self.myBooksModel.isExitWishBook == 1 ? true : false)
         BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
             if !resultDic.isCompleted {
                 
@@ -99,7 +103,7 @@ extension BooksViewModel : UICollectionViewDelegate {
 
 extension BooksViewModel : UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.myBooksModel.count
+        return self.myBooksModel != nil ? self.myBooksModel.books.count : 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int

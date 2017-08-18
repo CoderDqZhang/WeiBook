@@ -56,11 +56,15 @@ class BooksViewController: BaseViewController {
     func setNavigaitonItem(){
         if self.otherBooks && otherUserModel != nil {
             self.navigationItem.title = "\((otherUserModel.username)!)的书库"
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "关注", style: .plain, target: self, action: #selector(BooksViewController.rightBarItemPress))
+            
         }else{
             self.navigationItem.title = "我的书库"
             self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "筛选", style: .plain, target: self, action: #selector(BooksViewController.rightBarItemFilter))
         }
+    }
+    
+    func setNavigationItemCollect(collect:Bool){
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: collect ? UIImage.init(named: "collection_select") : UIImage.init(named: "collection_normal"), style: .plain, target: self, action: #selector(BookDescViewController.collectRightBarItemPress))
     }
     
     func rightBarItemFilter(){

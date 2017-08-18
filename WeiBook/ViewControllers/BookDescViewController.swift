@@ -12,7 +12,7 @@ class BookDescViewController: BaseViewController {
 
     var enTimePickerView:ZHPickView!
     var model:ServerBookModel!
-    var myBookModel:MyBooksModel!
+    var myBookModel:Book!
     var otherBookDesc:Bool = false
     
     override func viewDidLoad() {
@@ -33,9 +33,11 @@ class BookDescViewController: BaseViewController {
             } else {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "收藏", style: .plain, target: self, action: #selector(BookDescViewController.collectRightBarItemPress))
             }
-        }else{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "收藏", style: .plain, target: self, action: #selector(BookDescViewController.collectRightBarItemPress))
         }
+    }
+    
+    func setNavigationItemCollect(collect:Bool){
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: collect ? UIImage.init(named: "collection_select") : UIImage.init(named: "collection_normal"), style: .plain, target: self, action: #selector(BookDescViewController.collectRightBarItemPress))
     }
 
     func rightBarItemPress() {

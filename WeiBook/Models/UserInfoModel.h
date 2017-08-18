@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSString * qrCode;
 @property (nonatomic, strong) NSString * sex;
 @property (nonatomic, strong) NSObject * socialUtility;
+@property (nonatomic, assign) NSInteger trendsNum;
 @property (nonatomic, strong) NSString * star;
 @property (nonatomic, strong) NSString * title;
 @property (nonatomic, strong) NSString * userId;

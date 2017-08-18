@@ -69,7 +69,7 @@ class ProfileViewModel: BaseViewModel {
     //MARK: - TableViewCellSetData
     func tableViewProfileInfoTableViewCellCellData(_ indexPath:IndexPath, cell:ProfileInfoTableViewCell){
         if UserInfoModel.isLoggedIn() {
-            cell.cellSetData(flowers:"\(UserInfoModel.shareInstance().tails.userInfo.fansNum)", fans: "\((UserInfoModel.shareInstance().tails.userInfo.attentionNum)!)", dynamic: "0")
+            cell.cellSetData(flowers:"\(UserInfoModel.shareInstance().tails.userInfo.fansNum)", fans: "\((UserInfoModel.shareInstance().tails.userInfo.attentionNum)!)", dynamic: "\(UserInfoModel.shareInstance().tails.userInfo.trendsNum)")
         }
         cell.profileInfoTableViewCellClouse = { tag in
             switch tag {

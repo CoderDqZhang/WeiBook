@@ -60,7 +60,7 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
         self.updateConstraints()
     }
     
-    func cellSetData(model:MyBooksModel){
+    func cellSetData(model:Book){
         self.changeBookStatus(status: model.borrowState)
         ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.tails.bookInfo.bookImg, imageView: bookPost) { (image, error,url) in
             self.bookPost.image = image
