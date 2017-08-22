@@ -104,8 +104,13 @@ class DiscoverCreateViewModel: BaseViewModel {
     
     func tableViewBookInfoTableViewCellSetData(_ indexPath:IndexPath, cell:BookInfoTableViewCell) {
         if self.model != nil {
+            self.commentForm.objectId = self.model.id
             cell.cellSetData(model: self.model)
         }
+    }
+    
+    func tableViewGloableLableDetailLabelImageCellSetData(_ indexPaht:IndexPath, cell:GloableLableDetailLabelImageCell) {
+        cell.setCellData(text: "点击添加图书", detailText: nil)
     }
     
     //MARK: RequestComment
@@ -176,7 +181,10 @@ extension DiscoverCreateViewModel : UITableViewDelegate {
                 return self.tableViewHeight()
 
             default:
-                return 92
+                if self.model != nil {
+                    return 92
+                }
+                return 44
             }
         default:
             return 44
@@ -194,7 +202,7 @@ extension DiscoverCreateViewModel : UITableViewDataSource {
         case 0:
             return 2
         default:
-            return 2
+            return 1
         }
     }
     
@@ -210,9 +218,17 @@ extension DiscoverCreateViewModel : UITableViewDataSource {
                 self.tableViewCreateDataTableViewCellSetData(indexPath,cell: cell as! CreateDataTableViewCell)
                 return cell
             default:
-                let cell = tableView.dequeueReusableCell(withIdentifier: BookInfoTableViewCell.description() , for: indexPath)
-                self.tableViewBookInfoTableViewCellSetData(indexPath,cell: cell as! BookInfoTableViewCell)
-                return cell
+                if self.model != nil {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: BookInfoTableViewCell.description() , for: indexPath)
+                    self.tableViewBookInfoTableViewCellSetData(indexPath,cell: cell as! BookInfoTableViewCell)
+                    return cell
+                }else{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: GloableLableDetailLabelImageCell .description() , for: indexPath)
+                    cell.accessoryType = .disclosureIndicator
+                    self.tableViewGloableLableDetailLabelImageCellSetData(indexPath, cell: cell as! GloableLableDetailLabelImageCell)
+                    return cell
+                }
+                
             }
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: AddBookTableViewCell.description() , for: indexPath)

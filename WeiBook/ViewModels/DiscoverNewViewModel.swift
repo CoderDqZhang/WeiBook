@@ -49,6 +49,11 @@ class DiscoverNewViewModel: BaseViewModel {
                 booksVC.otherUserModel = model.tails.userInfo
                 booksVC.otherBooks = true
                 NavigationPushView(self.controller!, toConroller: booksVC)
+            }else if indexPath.row == 1 {
+                let createComment = DiscoverCreateViewController()
+                let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
+                createComment.model = model.tails.bookInfo
+                NavigaiontPresentView(self.controller!, toController: UINavigationController.init(rootViewController: createComment))
             }else if indexPath.row == 2 {
                 let bookDesc = BookDescViewController()
                 let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)

@@ -11,17 +11,26 @@ import Photos
 
 class DiscoverCreateViewController: BaseViewController {
     
+    var model:ServerBookModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bindViewModel(viewModel: DiscoverCreateViewModel(), controller: self)
-        self.setUpTableView(style: .grouped, cells: [CreateDataTableViewCell.self,AddBookTableViewCell.self,BookInfoTableViewCell.self], controller: self)
+        self.setUpTableView(style: .grouped, cells: [CreateDataTableViewCell.self,AddBookTableViewCell.self,BookInfoTableViewCell.self,GloableLableDetailLabelImageCell.self], controller: self)
         self.setUpView()
         self.setUpNavigationItem()
+        self.bindLogic()
         // Do any additional setup after loading the view.
     }
     
     func setUpView(){
         
+    }
+    
+    func bindLogic(){
+        if self.model != nil {
+            (self.viewModel as! DiscoverCreateViewModel).model = self.model
+        }
     }
     
     func setUpNavigationItem(){

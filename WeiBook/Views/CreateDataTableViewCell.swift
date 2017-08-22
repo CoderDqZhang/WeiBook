@@ -38,6 +38,7 @@ class CreateDataTableViewCell: UITableViewCell {
     }
     
     func cellSetData(images:[PHAsset]){
+        
         for i in 0...images.count {
             let imageView = UIImageView.init()
             let frame = CGRect.init(x: CGFloat(i % 4 * 85) + 15, y: CGFloat(i / 4 * 85) + 100, width: ImageSize.width, height: ImageSize.height)
