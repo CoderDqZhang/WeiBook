@@ -1,16 +1,15 @@
 //
-//  DiscoverNewViewModel.swift
+//  MyCommonViewModel.swift
 //  WeiBook
 //
-//  Created by Zhang on 2017/7/4.
-//  Copyright © 2017年 Zhang. All rights reserved.
+//  Created by Zhang on 22/08/2017.
+//  Copyright © 2017 Zhang. All rights reserved.
 //
 
 import UIKit
 import SKPhotoBrowser
 
-class DiscoverNewViewModel: BaseViewModel {
-
+class MyCommonViewModel: BaseViewModel {
     var browser:SKPhotoBrowser!
     var curPage:String!
     var models = NSMutableArray.init()
@@ -36,29 +35,25 @@ class DiscoverNewViewModel: BaseViewModel {
     }
     
     //MARK: TableViewCellSetData
-    func tableViewUserInfoTableViewCellSetData(_ indexPath:IndexPath, cell:UserInfoTableViewCell) {
-        let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
-        cell.cellSetData(model: model.tails.userInfo)
-    }
     
-    func tableViewDidSelect(_ indexPath:IndexPath) {
-        if UserInfoModel.isLoggedIn() {
-            if indexPath.row == 0 {
-                let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
-                let booksVC = BooksViewController()
-                booksVC.otherUserModel = model.tails.userInfo
-                booksVC.otherBooks = true
-                NavigationPushView(self.controller!, toConroller: booksVC)
-            }else if indexPath.row == 2 {
-                let bookDesc = BookDescViewController()
-                let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
-                bookDesc.model = model.tails.bookInfo
-                NavigationPushView(self.controller!, toConroller: bookDesc)
-            }
-        }else{
-            NavigationPushView(self.controller!, toConroller: LoginViewController())
-        }
-    }
+//    func tableViewDidSelect(_ indexPath:IndexPath) {
+//        if UserInfoModel.isLoggedIn() {
+//            if indexPath.row == 0 {
+//                let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
+//                let booksVC = BooksViewController()
+//                booksVC.otherUserModel = model.tails.userInfo
+//                booksVC.otherBooks = true
+//                NavigationPushView(self.controller!, toConroller: booksVC)
+//            }else if indexPath.row == 2 {
+//                let bookDesc = BookDescViewController()
+//                let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
+//                bookDesc.model = model.tails.bookInfo
+//                NavigationPushView(self.controller!, toConroller: bookDesc)
+//            }
+//        }else{
+//            NavigationPushView(self.controller!, toConroller: LoginViewController())
+//        }
+//    }
     
     func tableViewCommentInfoTableViewCellSetData(_ indexPath:IndexPath, cell:CommentInfoTableViewCell) {
         let model = DiscoverModel.init(fromDictionary: self.models[indexPath.section] as! NSDictionary)
@@ -73,7 +68,7 @@ class DiscoverNewViewModel: BaseViewModel {
         cell.cellSetData(title: model.commContent, imgs: images)
         cell.photoBrowserClouse = { tag, view in
             self.browser.initializePageIndex(tag)
-            SKPhotoBrowserOptions.displayDeleteButton = false 
+            SKPhotoBrowserOptions.displayDeleteButton = false
             self.controller?.present(self.browser, animated: true, completion: {
                 
             })
@@ -87,9 +82,10 @@ class DiscoverNewViewModel: BaseViewModel {
     
     //MARK: NetWorkRequest
     func requestNewComment(curPage:String, limit:String){
-        let url = "\(BaseUrl)\(DisCoverNew)"
+        let url = "\(BaseUrl)\(MyCommentList)"
         let parameters = ["curPage":curPage,
-                          "limit":limit]
+                          "limit":limit,
+                          "userId":UserInfoModel.shareInstance().tails.userInfo.userId]
         self.curPage = curPage
         BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
             if !resultDic.isCompleted {
@@ -108,11 +104,11 @@ class DiscoverNewViewModel: BaseViewModel {
 }
 
 //MARK: UITableViewDelegate&DataSource
-extension DiscoverNewViewModel : UITableViewDelegate {
+extension MyCommonViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.tableViewDidSelect(indexPath)
+//        self.tableViewDidSelect(indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -126,31 +122,25 @@ extension DiscoverNewViewModel : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 60
-        case 1:
             return self.tableViewHeight(indexPath)
         default:
             return 92
         }
     }
 }
-extension DiscoverNewViewModel : UITableViewDataSource {
+extension MyCommonViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.models.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: UserInfoTableViewCell.description() , for: indexPath)
-            self.tableViewUserInfoTableViewCellSetData(indexPath,cell: cell as! UserInfoTableViewCell)
-            return cell
-        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: CommentInfoTableViewCell.description() , for: indexPath)
             self.tableViewCommentInfoTableViewCellSetData(indexPath,cell: cell as! CommentInfoTableViewCell)
             return cell
@@ -161,5 +151,3 @@ extension DiscoverNewViewModel : UITableViewDataSource {
         }
     }
 }
-
-//MARK - SDPhotoBrowser

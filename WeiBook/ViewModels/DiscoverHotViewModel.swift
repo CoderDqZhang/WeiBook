@@ -32,6 +32,7 @@ class DiscoverHotViewModel: BaseViewModel {
             if (!resultDic.isCompleted){
                 self.bookList = NSMutableArray.mj_objectArray(withKeyValuesArray: resultDic.value)
                 self.controller?.tableView.reloadData()
+                self.controller?.stopRefresh()
             }
         }
     }
@@ -42,7 +43,11 @@ extension DiscoverHotViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        NavigationPushView(self.controller!, toConroller: BookDescViewController())
+        if UserInfoModel.isLoggedIn() {
+            NavigationPushView(self.controller!, toConroller: BookDescViewController())
+        }else{
+            NavigationPushView(self.controller!, toConroller: LoginViewController())
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

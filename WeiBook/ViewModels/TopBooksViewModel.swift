@@ -36,10 +36,16 @@ extension TopBooksViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let bookDescViewController = BookDescViewController()
-        bookDescViewController.model = ServerBookModel.init(fromDictionary: self.models[indexPath.row] as! NSDictionary)
-        let controller = self.controller?.parent as! HomePageViewController
-        controller.viewModel.pushViewController(bookDescViewController)
+        if UserInfoModel.isLoggedIn() {
+            let bookDescViewController = BookDescViewController()
+            bookDescViewController.model = ServerBookModel.init(fromDictionary: self.models[indexPath.row] as! NSDictionary)
+            let controller = self.controller?.parent as! HomePageViewController
+            controller.viewModel.pushViewController(bookDescViewController)
+        }else{
+            let loginViewController = LoginViewController()
+            let controller = self.controller?.parent as! HomePageViewController
+            controller.viewModel.pushViewController(loginViewController)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

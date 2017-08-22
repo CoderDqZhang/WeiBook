@@ -194,6 +194,7 @@
 		1FB370D21F137736003DC654 /* UIView+DXFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370BC1F137736003DC654 /* UIView+DXFrame.swift */; };
 		1FB370D31F137736003DC654 /* UIViewController+DXPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370BD1F137736003DC654 /* UIViewController+DXPhotoPicker.swift */; };
 		1FB370D61F1390ED003DC654 /* UITextViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB370D51F1390ED003DC654 /* UITextViewExtensions.swift */; };
+		1FB8316A1F4C071100096D3A /* MyCommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB831691F4C071100096D3A /* MyCommonViewModel.swift */; };
 		1FCCD5EA1F3B08440073ED58 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCD5E91F3B08430073ED58 /* CategoryModel.swift */; };
 		1FCCD5EC1F3B10A70073ED58 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCD5EB1F3B10A70073ED58 /* CategoryListViewController.swift */; };
 		1FCCD5EE1F3B11410073ED58 /* CategoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCD5ED1F3B11410073ED58 /* CategoryListViewModel.swift */; };
@@ -473,6 +474,7 @@
 		1FB370BC1F137736003DC654 /* UIView+DXFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DXFrame.swift"; sourceTree = "<group>"; };
 		1FB370BD1F137736003DC654 /* UIViewController+DXPhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DXPhotoPicker.swift"; sourceTree = "<group>"; };
 		1FB370D51F1390ED003DC654 /* UITextViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewExtensions.swift; sourceTree = "<group>"; };
+		1FB831691F4C071100096D3A /* MyCommonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCommonViewModel.swift; sourceTree = "<group>"; };
 		1FCCD5E91F3B08430073ED58 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		1FCCD5EB1F3B10A70073ED58 /* CategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
 		1FCCD5ED1F3B11410073ED58 /* CategoryListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListViewModel.swift; sourceTree = "<group>"; };
@@ -971,6 +973,7 @@
 				1F7018171F049C6900029158 /* SettingViewModel.swift */,
 				1F8804BE1F0E2A6900F15AF3 /* BorrowViewModel.swift */,
 				1FED8C0C1F39BCC90028200E /* BookListDescViewModel.swift */,
+				1FB831691F4C071100096D3A /* MyCommonViewModel.swift */,
 				1F8804C01F0E356500F15AF3 /* MyGivePresentViewModel.swift */,
 				1FED8C121F39C64C0028200E /* CreateBookListViewModel.swift */,
 				1FCCD5ED1F3B11410073ED58 /* CategoryListViewModel.swift */,
@@ -1501,6 +1504,7 @@
 				1FED8C011F384CC90028200E /* CommentModel.swift in Sources */,
 				1F7017F21F00E63B00029158 /* GloableNavigationBarView.swift in Sources */,
 				1F8374D61EFA599C00ED97DE /* BaseViewModel.swift in Sources */,
+				1FB8316A1F4C071100096D3A /* MyCommonViewModel.swift in Sources */,
 				1F4AA56B1EF7E02B0085BE3B /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */,
 				1F8374F31EFD473D00ED97DE /* MyBorrowViewController.swift in Sources */,
 				1FB370C71F137736003DC654 /* DXFullImageButton.swift in Sources */,

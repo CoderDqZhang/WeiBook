@@ -20,6 +20,16 @@ class DiscoverNewViewController: BaseViewController {
     
     func setUpView(){
         self.tableView.separatorStyle = .none
+        
+        self.setUpRefreshData {
+            (self.viewModel as! DiscoverNewViewModel).requestNewComment(curPage: "1", limit: "10")
+        }
+        
+        self.setUpLoadMoreData {
+            let curPage = Int((self.viewModel as! DiscoverNewViewModel).curPage)! + 1
+            (self.viewModel as! DiscoverNewViewModel).requestNewComment(curPage: "\(curPage)", limit: "10")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

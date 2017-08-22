@@ -8,7 +8,7 @@
 
 import UIKit
 
-let BaseUrl = "https://api.topveda.cn/"
+let BaseUrl = "https://api.topveda.cn"
 
 let LoginUrl = "/user/loginApp"
 //登录mima
@@ -30,6 +30,7 @@ let MyBookGetList = "/giveBook/giveList"
 let MyBookGiveList = "/giveBook/acceptlist"
 let MyBookCommentList = "/comment/list"
 let CreateBookComment = "/comment/save"
+let MyCommentList = "/comment/myComment"
 
 let GetMyAttention = "/attention/getMyAttention"
 let GetMyFans = "/attention/getAttentionMyInfo"
@@ -46,6 +47,7 @@ let BookListCategory = "/collection/dictionaryList"
 
 let BookCommentList = "/book/list"
 let BookNormal = "/tabMain/index"
+
 
 
 let BookListCreate = "/collection/myCreatelist"

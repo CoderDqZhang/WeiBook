@@ -12,7 +12,7 @@ class HomeViewModel: BaseViewModel {
 
     override init() {
         super.init()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewModel.notificationPush(notification:)), name: NSNotification.Name(rawValue: HomeViewPushViewController), object: nil)
     }
     
     func pushQRCodeView(){
@@ -26,9 +26,18 @@ class HomeViewModel: BaseViewModel {
         }
     }
     
+    func notificationPush(notification:Notification){
+        if UserInfoModel.isLoggedIn() {
+            let bookDesc = BookDescViewController()
+            bookDesc.model = notification.object as! ServerBookModel
+            self.pushViewController(controller: bookDesc)
+        }else{
+            self.pushViewController(controller: LoginViewController())
+        }
+    }
+    
     func pushSearchView(){
         let toController = SearchViewController()
-        toController.toController = self.controller as! HomeViewController
         NavigaiontPresentView(self.controller!, toController: toController)
     }
     

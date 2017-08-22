@@ -47,7 +47,7 @@ class DiscoverModel : NSObject, NSCoding{
      */
     func toDictionary() -> NSDictionary
     {
-        var dictionary = NSMutableDictionary()
+        let dictionary = NSMutableDictionary()
         if commContent != nil{
             dictionary["commContent"] = commContent
         }
@@ -162,6 +162,9 @@ class DiscoverTail : NSObject, NSCoding{
         if let bookInfoData = dictionary["bookInfo"] as? NSDictionary{
             bookInfo = ServerBookModel(fromDictionary: bookInfoData)
         }
+        if let bookInfoData = dictionary["book"] as? NSDictionary{
+            bookInfo = ServerBookModel(fromDictionary: bookInfoData)
+        }
         commentImages = [CommentImage]()
         if let commentImagesArray = dictionary["commentImages"] as? [NSDictionary]{
             for dic in commentImagesArray{
@@ -182,6 +185,9 @@ class DiscoverTail : NSObject, NSCoding{
         let dictionary = NSMutableDictionary()
         if bookInfo != nil{
             dictionary["bookInfo"] = bookInfo.toDictionary()
+        }
+        if bookInfo != nil{
+            dictionary["book"] = bookInfo.toDictionary()
         }
         if commentImages != nil{
             var dictionaryElements = [NSDictionary]()

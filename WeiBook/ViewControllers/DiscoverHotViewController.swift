@@ -19,7 +19,9 @@ class DiscoverHotViewController: BaseViewController {
     }
     
     func setUpView(){
-        
+        self.setUpRefreshData {
+            (self.viewModel as! DiscoverHotViewModel).requestGetBook()
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -79,7 +79,7 @@ class BannerModel : NSObject, NSCoding{
         sort = dictionary["sort"] as? Int
         state = dictionary["state"] as? String
         type = dictionary["type"] as? String
-        updatedAt = dictionary["updatedAt"] as? AnyObject
+        updatedAt = dictionary["updatedAt"] as AnyObject
     }
     
     /**

@@ -11,9 +11,9 @@ import UIKit
 
 class ProfileViewModel: BaseViewModel {
 
-    var sectionsNumber = [2,3,2,1,1]
-    var cellImageDatas = [[UIImage.init(named: "Borrow"),UIImage.init(named: "ic_fun_appraise"),UIImage.init(named: "give")],[UIImage.init(named: "books"),UIImage.init(named: "book_list")],[UIImage.init(named: "achievement")],[UIImage.init(named: "seting")]]
-    var cellStrDatas = [["我的借阅","我的评价","我的赠送"],["我的书库","我的书单"],["我的成就"],["系统设置"]]
+    var sectionsNumber = [2,2,2,1,1]
+    var cellImageDatas = [[UIImage.init(named: "Borrow"),UIImage.init(named: "give")],[UIImage.init(named: "books"),UIImage.init(named: "book_list")],[UIImage.init(named: "achievement")],[UIImage.init(named: "seting")]]
+    var cellStrDatas = [["我的借阅","我的赠送"],["我的书库","我的书单"],["我的成就"],["系统设置"]]
     override init() {
         super.init()
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewModel.reloadTaleView), name: NSNotification.Name(rawValue: LoginStatuesChange), object: nil)
@@ -43,22 +43,29 @@ class ProfileViewModel: BaseViewModel {
                 }
             }
         case 1:
-            switch indexPath.row {
-            case 0:
-                NavigationPushView(self.controller!, toConroller: MyBorrowViewController())
-            case 1:
-                NavigationPushView(self.controller!, toConroller: MyCommonViewController())
-            default:
-                NavigationPushView(self.controller!, toConroller: MyGivePresentViewController())
-                
+            if UserInfoModel.isLoggedIn() {
+                switch indexPath.row {
+                case 0:
+                    NavigationPushView(self.controller!, toConroller: MyBorrowViewController())
+                default:
+                    NavigationPushView(self.controller!, toConroller: MyGivePresentViewController())
+                    
+                }
+            }else{
+                 NavigationPushView(self.controller!, toConroller: LoginViewController())
             }
         case 2:
-            switch indexPath.row {
-            case 0:
-                NavigationPushView(self.controller!, toConroller: BooksViewController())
-            default:
-                NavigationPushView(self.controller!, toConroller: MyBookListViewController())
+            if UserInfoModel.isLoggedIn() {
+                switch indexPath.row {
+                case 0:
+                    NavigationPushView(self.controller!, toConroller: BooksViewController())
+                default:
+                    NavigationPushView(self.controller!, toConroller: MyBookListViewController())
+                }
+            }else{
+                NavigationPushView(self.controller!, toConroller: LoginViewController())
             }
+            
         case 3:
             NavigationPushView(self.controller!, toConroller: AchievementViewController())
         default:
@@ -72,18 +79,21 @@ class ProfileViewModel: BaseViewModel {
             cell.cellSetData(flowers:"\(UserInfoModel.shareInstance().tails.userInfo.fansNum)", fans: "\((UserInfoModel.shareInstance().tails.userInfo.attentionNum)!)", dynamic: "\(UserInfoModel.shareInstance().tails.userInfo.trendsNum)")
         }
         cell.profileInfoTableViewCellClouse = { tag in
-            switch tag {
-            case 1:
-                NavigationPushView(self.controller!, toConroller: FlowersViewController())
-            case 2:
-                NavigationPushView(self.controller!, toConroller: FansViewController())
-
-            default:
-                break;
+            if UserInfoModel.isLoggedIn() {
+                switch tag {
+                case 1:
+                    NavigationPushView(self.controller!, toConroller: FlowersViewController())
+                case 2:
+                    NavigationPushView(self.controller!, toConroller: FansViewController())
+                default:
+                    NavigationPushView(self.controller!, toConroller: MyCommonViewController())
+                    break;
+                }
+            }else{
+                NavigationPushView(self.controller!, toConroller: LoginViewController())
             }
         }
     }
-    
     
     func tableViewGloableImageLableDetailImageCellSetData(_ indexPath:IndexPath, cell:GloableImageLableDetailImageCell){
         let image = cellImageDatas[indexPath.section - 1][indexPath.row]!

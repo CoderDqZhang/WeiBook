@@ -8,7 +8,9 @@
 
 import UIKit
 import SnapKit
+import MJRefresh
 
+typealias NormalHeaderClouse = () -> Void
 
 class BaseViewController: UIViewController{
 
@@ -52,10 +54,31 @@ class BaseViewController: UIViewController{
         }
     }
     
+    func setUpRefreshData(refresh:@escaping NormalHeaderClouse){
+        self.tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: { 
+            refresh()
+        })
+    }
+    
+    func stopRefresh(){
+        self.tableView.mj_header.endRefreshing()
+    }
+    
+    func setUpLoadMoreData(refresh:@escaping NormalHeaderClouse){
+        self.tableView.mj_footer = MJRefreshAutoNormalFooter.init(refreshingBlock: {
+            refresh()
+        })
+    }
+    
+    func stopLoadMoreData(){
+        self.tableView.mj_footer.endRefreshing()
+    }
+    
     func getViewModel(){
         
     }
 
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,6 +97,8 @@ class BaseViewController: UIViewController{
     */
 
 }
+
+
 
 //extension BaseViewController : UITableViewDelegate {
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

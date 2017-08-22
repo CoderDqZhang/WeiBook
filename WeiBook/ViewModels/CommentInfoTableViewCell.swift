@@ -45,6 +45,7 @@ class CommentInfoTableViewCell: UITableViewCell {
     
     func cellSetData(title:String, imgs:[String]){
         titleLable.text = title
+        self.photosImageView.removeSubviews()
         if imgs.count > 0 {
             for i in 0...imgs.count - 1{
                 let image = UIImageView.init()

@@ -97,6 +97,7 @@ let DidRegisterRemoteNotification = "DidRegisterRemoteNotification"
 let DidRegisterRemoteURLNotification = "DidRegisterRemoteURLNotification"
 let DidRegisterRemoteDiviceToken = "DidRegisterRemoteDiviceToken"
 
+let HomeViewPushViewController = "PushHomeViewControllerNotification"
 
 let QiniuAccessKey = "xX-kcCyk_b1TmufkALFCKVXP53cPMVrF_TgErxx7"
 let QiniuSecretKey = "7xMrZ-kt2D-BJOmoPGulHF47I4yQyjBgAm2myFIw"

@@ -31,14 +31,11 @@ class RecommendViewModel: BaseViewModel {
         }
         cell.setcycleScrollerViewData(imageUrls.mutableCopy() as! NSArray)
         cell.cyCleScrollerViewClouse = { index in
-            let banner = self.bannerModel[index]
-//            if banner.bannerType == 2 {
-//                let controllerVC = NotificationViewController()
-//                controllerVC.url = banner.url
-//                NavigationPushView(self.controller, toConroller: controllerVC)
-//            }else{
-//                self.pushTicketDetail(banner.show)
-//            }
+//            let banner = self.bannerModel[index]
+//            let bookDesc = BookDescViewController()
+//            bookDesc.model = (banner as! BannerModel).
+//            let pageController = self.controller?.parent
+//            (pageController as! HomePageViewController).viewModel.pushViewController(bookDesc)
         }
     }
     
@@ -55,10 +52,16 @@ class RecommendViewModel: BaseViewModel {
             }else{
                 model = HomeRecommentModel.init(fromDictionary: self.hotBook[tag] as! NSDictionary).tails.bookInfo
             }
-            let bookDesc = BookDescViewController()
-            bookDesc.model = model
-            let pageController = self.controller?.parent
-            (pageController as! HomePageViewController).viewModel.pushViewController(bookDesc)
+            if UserInfoModel.isLoggedIn() {
+                let bookDesc = BookDescViewController()
+                bookDesc.model = model
+                let pageController = self.controller?.parent
+                (pageController as! HomePageViewController).viewModel.pushViewController(bookDesc)
+            }else{
+                let loginView = LoginViewController()
+                let pageController = self.controller?.parent
+                (pageController as! HomePageViewController).viewModel.pushViewController(loginView)
+            }
         }
     }
     

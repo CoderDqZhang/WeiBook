@@ -16,174 +16,46 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewModels/BookListViewModel.swift"
-            timestampString = "524483116.601364"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Views/ProfileInfoTableViewCell.swift"
-            timestampString = "524560550.450144"
+            filePath = "ViewModels/MyCommonViewModel.swift"
+            timestampString = "525076809.331717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "cellSetData(flowers:fans:dynamic:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewModels/FanceViewModel.swift"
-            timestampString = "524560602.832877"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "requestAttention()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewModels/FanceViewModel.swift"
-            timestampString = "524560609.498869"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "init()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewModels/FllowerViewModel.swift"
-            timestampString = "524561325.205789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "requestAttention()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewModels/FllowerViewModel.swift"
-            timestampString = "524561325.205789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "tableViewDidSelect(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewModels/ProfileViewModel.swift"
-            timestampString = "524561289.09967"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "tableViewProfileInfoTableViewCellCellData(_:cell:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewModels/ProfileViewModel.swift"
-            timestampString = "524561295.30919"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "tableViewProfileInfoTableViewCellCellData(_:cell:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewModels/BooksViewModel.swift"
-            timestampString = "524738307.91049"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "requestMyBooks(uid:)"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "requestNewComment(curPage:limit:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "WeiBook.BooksViewModel.requestMyBooks (uid : Swift.String) -&gt; ()"
+                  symbolName = "WeiBook.MyCommonViewModel.requestNewComment (curPage : Swift.String, limit : Swift.String) -&gt; ()"
                   moduleName = "WeiBook"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/ViewModels/BooksViewModel.swift"
-                  timestampString = "524738309.731291"
+                  urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/ViewModels/MyCommonViewModel.swift"
+                  timestampString = "525077002.077353"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
-                  offsetFromSymbolStart = "1397">
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "1679">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "WeiBook.BooksViewModel.(requestMyBooks (uid : Swift.String) -&gt; ()).(closure #1)"
+                  symbolName = "WeiBook.MyCommonViewModel.(requestNewComment (curPage : Swift.String, limit : Swift.String) -&gt; ()).(closure #1)"
                   moduleName = "WeiBook"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/ViewModels/BooksViewModel.swift"
-                  timestampString = "524738309.733421"
+                  urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/ViewModels/MyCommonViewModel.swift"
+                  timestampString = "525077002.080873"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
                   offsetFromSymbolStart = "31">
                </Location>
             </Locations>
@@ -195,13 +67,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ViewModels/BorrowViewModel.swift"
-            timestampString = "524739772.201611"
+            filePath = "ViewModels/MyCommonViewModel.swift"
+            timestampString = "525076836.360343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "rigthBarItemPress(status:)"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "requestNewComment(curPage:limit:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -211,45 +83,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ViewModels/BorrowViewModel.swift"
-            timestampString = "524739793.855779"
+            filePath = "ViewModels/MyCommonViewModel.swift"
+            timestampString = "525076838.536181"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "rigthBarItemPress(status:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewModels/BorrowViewModel.swift"
-            timestampString = "524739795.016908"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "rigthBarItemPress(status:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ViewModels/MyGivePresentViewModel.swift"
-            timestampString = "524740958.89308"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "rigthBarItemPress(status:)"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "tableViewBookInfoTableViewCellSetData(_:cell:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
