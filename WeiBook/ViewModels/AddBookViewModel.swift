@@ -93,9 +93,13 @@ class AddBookViewModel: BaseViewModel {
     
     func addBook(){
         if UserInfoModel.isLoggedIn() {
-            let controller = AddBookCommentViewController()
-            controller.bookModel = ServerBookModel.init(fromDictionary: (serverBookModel[0] as! NSDictionary))
-            NavigationPushView(self.controller!, toConroller: controller)
+            if serverBookModel.count > 0 {
+                let controller = AddBookCommentViewController()
+                controller.bookModel = ServerBookModel.init(fromDictionary: (serverBookModel[0] as! NSDictionary))
+                NavigationPushView(self.controller!, toConroller: controller)
+            }else{
+                _ = Tools.shareInstance.showMessage(KWINDOWDS(), msg: "当前图书不存在书库中", autoHidder: true)
+            }
         }else{
             NavigationPushView(self.controller!, toConroller: LoginViewController())
         }

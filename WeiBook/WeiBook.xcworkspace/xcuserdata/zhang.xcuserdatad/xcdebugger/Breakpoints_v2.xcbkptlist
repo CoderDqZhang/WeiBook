@@ -180,12 +180,12 @@
                   moduleName = "WeiBook"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/ViewModels/DiscoverCreateViewModel.swift"
-                  timestampString = "525079444.75571"
+                  timestampString = "525089331.515558"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "133"
                   endingLineNumber = "133"
-                  offsetFromSymbolStart = "3185">
+                  offsetFromSymbolStart = "2700">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -195,12 +195,12 @@
                   moduleName = "WeiBook"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/ViewModels/DiscoverCreateViewModel.swift"
-                  timestampString = "525079444.757954"
+                  timestampString = "525089331.517028"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "134"
                   endingLineNumber = "134"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -228,12 +228,12 @@
                   moduleName = "WeiBook"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/Global/NetWorking/BaseNetWorke.swift"
-                  timestampString = "525079444.762632"
+                  timestampString = "525089331.520323"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
                   endingLineNumber = "67"
-                  offsetFromSymbolStart = "35">
+                  offsetFromSymbolStart = "36">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -243,14 +243,94 @@
                   moduleName = "WeiBook"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/Global/NetWorking/BaseNetWorke.swift"
-                  timestampString = "525079444.764576"
+                  timestampString = "525089331.521742"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
                   endingLineNumber = "68"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewModels/AddBookViewModel.swift"
+            timestampString = "525087708.953972"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "requestGetBook(isbn:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewModels/AddBookViewModel.swift"
+            timestampString = "525087708.953972"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "requestGetBook(isbn:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeiBook.AddBookViewModel.requestGetBook (isbn : Swift.String) -&gt; ()"
+                  moduleName = "WeiBook"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/ViewModels/AddBookViewModel.swift"
+                  timestampString = "525089331.528139"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "1076">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeiBook.AddBookViewModel.(requestGetBook (isbn : Swift.String) -&gt; ()).(closure #2)"
+                  moduleName = "WeiBook"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhang/Documents/WeiBook/WeiBook/ViewModels/AddBookViewModel.swift"
+                  timestampString = "525089331.529578"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViewControllers/BaseWebViewController.swift"
+            timestampString = "525089074.467143"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "webViewProgress(_:updateProgress:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

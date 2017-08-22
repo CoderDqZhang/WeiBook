@@ -30,14 +30,14 @@ class BookDescViewController: BaseViewController {
         if !otherBookDesc {
             if self.myBookModel != nil {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "生成二维码", style: .plain, target: self, action: #selector(BookDescViewController.rightBarItemPress))
-            } else {
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "收藏", style: .plain, target: self, action: #selector(BookDescViewController.collectRightBarItemPress))
             }
         }
     }
     
     func setNavigationItemCollect(collect:Bool){
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: collect ? UIImage.init(named: "collection_select") : UIImage.init(named: "collection_normal"), style: .plain, target: self, action: #selector(BookDescViewController.collectRightBarItemPress))
+        if otherBookDesc {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: collect ? UIImage.init(named: "collection_select") : UIImage.init(named: "collection_normal"), style: .plain, target: self, action: #selector(BookDescViewController.collectRightBarItemPress))
+        }
     }
 
     func rightBarItemPress() {
@@ -62,6 +62,8 @@ class BookDescViewController: BaseViewController {
                 }) { (str) in
                     (self.viewModel as! BookDescViewModel).borrowedButtonPress()
                 }
+            }else{
+                _ = Tools.shareInstance.showMessage(KWINDOWDS(), msg: "该状态不可生成二维码", autoHidder: true)
             }
         }
     }

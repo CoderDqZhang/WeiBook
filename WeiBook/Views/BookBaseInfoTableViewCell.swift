@@ -119,7 +119,9 @@ class BookBaseInfoTableViewCell: UITableViewCell {
         for str in model.author {
             author = "\(author) \(str)"
         }
-        bookAutho.text = author.substring(from: author.index(author.startIndex, offsetBy: 1))
+        if author != "" {
+            bookAutho.text = author.substring(from: author.index(author.startIndex, offsetBy: 1))
+        }
         bookTitle.text = model.title
         if model.translator.count > 0 {
             var translator = ""

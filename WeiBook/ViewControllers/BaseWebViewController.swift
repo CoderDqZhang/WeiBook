@@ -7,19 +7,35 @@
 //
 
 import UIKit
+import NJKWebViewProgress
 
 class BaseWebViewController: BaseViewController {
 
     var webView:UIWebView! = nil
     var url:String! = ""
+    var progressProxy:NJKWebViewProgress!
+    var progressView:NJKWebViewProgressView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
+        self.setUpNavigationItem()
         // Do any additional setup after loading the view.
     }
     
     func setUpView(){
+        progressProxy = NJKWebViewProgress.init()
+        
+        progressProxy.webViewProxyDelegate = self
+        progressProxy.progressDelegate = self
+        let progressBarHeight:CGFloat = 2;
+        let frame = CGRect.init(x: 0, y: (navigationBar?.frame.size.height)! + 20, width: SCREENWIDTH, height: progressBarHeight)
+        progressView = NJKWebViewProgressView.init(frame: frame)
+        progressView.autoresizingMask = [UIViewAutoresizing.flexibleWidth,UIViewAutoresizing.flexibleTopMargin]
+        
+        
         webView = UIWebView.init()
+        webView.delegate = progressProxy
         webView.loadRequest(URLRequest.init(url: URL.init(string: self.url)!))
         self.view.addSubview(webView)
         webView.snp.makeConstraints { (make) in
@@ -28,6 +44,11 @@ class BaseWebViewController: BaseViewController {
             make.top.equalTo(self.view.snp.top).offset(0)
             make.bottom.equalTo(self.view.snp.bottom).offset(0)
         }
+        self.view.addSubview(progressView)
+    }
+    
+    func setUpNavigationItem(){
+        self.navigationItem.title = "二维码"
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,4 +67,14 @@ class BaseWebViewController: BaseViewController {
     }
     */
 
+}
+
+extension BaseWebViewController : NJKWebViewProgressDelegate {
+    func webViewProgress(_ webViewProgress: NJKWebViewProgress!, updateProgress progress: Float) {
+        progressView.setProgress(progress, animated: true)
+    }
+}
+
+extension BaseWebViewController: UIWebViewDelegate {
+    
 }
