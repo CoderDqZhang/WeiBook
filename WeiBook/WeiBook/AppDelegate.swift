@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyBeaver
+import MapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppleThemeTool.setUpSKPhotoBrowser()
         IFyunManager.shareInstance.setIFyunInstance()
         self.logSwiftBeaver()
+        
+        //高德地图APIKet
+        AMapServices.shared().apiKey = GaoDeApiKey
+        
         
         self.window?.rootViewController = mainTableBarController
         self.window?.makeKeyAndVisible()

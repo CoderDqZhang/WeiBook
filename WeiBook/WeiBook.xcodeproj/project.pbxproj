@@ -14,6 +14,8 @@
 		1F1C5BB31EFD632200DC8DC0 /* DynamicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C5BB21EFD632200DC8DC0 /* DynamicViewController.swift */; };
 		1F3349E21F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3349E11F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift */; };
 		1F3349E41F0A17DC0046B519 /* BookAdvanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3349E31F0A17DC0046B519 /* BookAdvanceTableViewCell.swift */; };
+		1F43A6D61F4EDD80004CF18F /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43A6D51F4EDD80004CF18F /* AddAddressViewController.swift */; };
+		1F43A6DA1F4EDE00004CF18F /* AddAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43A6D91F4EDE00004CF18F /* AddAddressViewModel.swift */; };
 		1F44C14B1F42FE13008BCD80 /* SubscriberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C14A1F42FE13008BCD80 /* SubscriberViewModel.swift */; };
 		1F44C14D1F4423E6008BCD80 /* AttentionAndFollowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C14C1F4423E6008BCD80 /* AttentionAndFollowModel.swift */; };
 		1F4A49591F29892700EF8719 /* BookDescModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4A49581F29892700EF8719 /* BookDescModel.swift */; };
@@ -203,6 +205,7 @@
 		1FDABFC31F1F455000C45E14 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDABFC21F1F455000C45E14 /* RecordManager.swift */; };
 		1FDABFC51F1F466700C45E14 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */; };
 		1FE36B351F30914600E895C7 /* GiveBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE36B341F30914600E895C7 /* GiveBookModel.swift */; };
+		1FEA03441F4EE15200D7340D /* DetailAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA03431F4EE15200D7340D /* DetailAddressTableViewCell.swift */; };
 		1FED8C011F384CC90028200E /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED8C001F384CC90028200E /* CommentModel.swift */; };
 		1FED8C031F38B8B40028200E /* Default-568.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FED8C021F38B8B40028200E /* Default-568.png */; };
 		1FED8C051F399B550028200E /* BookListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED8C041F399B550028200E /* BookListModel.swift */; };
@@ -246,6 +249,8 @@
 		1F1C5BB21EFD632200DC8DC0 /* DynamicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicViewController.swift; sourceTree = "<group>"; };
 		1F3349E11F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookBaseInfoTableViewCell.swift; sourceTree = "<group>"; };
 		1F3349E31F0A17DC0046B519 /* BookAdvanceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookAdvanceTableViewCell.swift; sourceTree = "<group>"; };
+		1F43A6D51F4EDD80004CF18F /* AddAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAddressViewController.swift; path = ../ViewModels/AddAddressViewController.swift; sourceTree = "<group>"; };
+		1F43A6D91F4EDE00004CF18F /* AddAddressViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressViewModel.swift; sourceTree = "<group>"; };
 		1F44C14A1F42FE13008BCD80 /* SubscriberViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriberViewModel.swift; sourceTree = "<group>"; };
 		1F44C14C1F4423E6008BCD80 /* AttentionAndFollowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttentionAndFollowModel.swift; sourceTree = "<group>"; };
 		1F4A49581F29892700EF8719 /* BookDescModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDescModel.swift; sourceTree = "<group>"; };
@@ -483,6 +488,7 @@
 		1FDABFC21F1F455000C45E14 /* RecordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		1FE36B341F30914600E895C7 /* GiveBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveBookModel.swift; sourceTree = "<group>"; };
+		1FEA03431F4EE15200D7340D /* DetailAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAddressTableViewCell.swift; sourceTree = "<group>"; };
 		1FED8C001F384CC90028200E /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		1FED8C021F38B8B40028200E /* Default-568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568.png"; sourceTree = "<group>"; };
 		1FED8C041F399B550028200E /* BookListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookListModel.swift; sourceTree = "<group>"; };
@@ -594,6 +600,7 @@
 		1F4AA52D1EF7DAD50085BE3B /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1F43A6D51F4EDD80004CF18F /* AddAddressViewController.swift */,
 				1F7018001F024B7800029158 /* HomePageViewController.swift */,
 				1F4AA5341EF7DBC60085BE3B /* HomeViewController.swift */,
 				1F7018041F025ACC00029158 /* RecommendViewController.swift */,
@@ -946,6 +953,7 @@
 				1FB003CC1F09F76C00A4EF13 /* AddBookViewModel.swift */,
 				1F6680C71F147F3C00B4A4E8 /* AddBookCommentViewModel.swift */,
 				1F6680C91F147F4D00B4A4E8 /* AddBookTagsViewModel.swift */,
+				1F43A6D91F4EDE00004CF18F /* AddAddressViewModel.swift */,
 				1F6A2EDF1F0CDAA200C3A574 /* BookListViewModel.swift */,
 				1F6A2EE31F0CE2E300C3A574 /* BookDescViewModel.swift */,
 			);
@@ -1015,6 +1023,7 @@
 				1FDABFC41F1F466700C45E14 /* RecordTableViewCell.swift */,
 				1F78AA5F1F04FEDE00F5F374 /* CategoryTableViewCell.swift */,
 				1F78AA631F05F99600F5F374 /* TopBooksTableViewCell.swift */,
+				1FEA03431F4EE15200D7340D /* DetailAddressTableViewCell.swift */,
 				1F3349E11F0A17CD0046B519 /* BookBaseInfoTableViewCell.swift */,
 				1F3349E31F0A17DC0046B519 /* BookAdvanceTableViewCell.swift */,
 				1F6A2E4E1F0A335300C3A574 /* BookTagTableViewCell.swift */,
@@ -1469,6 +1478,7 @@
 				1F8804C91F0F8CE200F15AF3 /* FllowerViewModel.swift in Sources */,
 				1F4AA57F1EF7E0310085BE3B /* UIViewController+TalkingData.swift in Sources */,
 				1FB094EC1F220657005F1033 /* MyBooksModel.swift in Sources */,
+				1F43A6DA1F4EDE00004CF18F /* AddAddressViewModel.swift in Sources */,
 				1F4AA60A1EF7EF190085BE3B /* UITableView+FDKeyedHeightCache.m in Sources */,
 				1FED8C051F399B550028200E /* BookListModel.swift in Sources */,
 				1F8375011EFD50D100ED97DE /* TextField+Extentions.swift in Sources */,
@@ -1491,6 +1501,7 @@
 				1FDABFC51F1F466700C45E14 /* RecordTableViewCell.swift in Sources */,
 				1F4AA6061EF7EF190085BE3B /* TYTabButtonPagerController.m in Sources */,
 				1F4AA60B1EF7EF190085BE3B /* UITableView+FDTemplateLayoutCell.m in Sources */,
+				1FEA03441F4EE15200D7340D /* DetailAddressTableViewCell.swift in Sources */,
 				1FB370C01F137736003DC654 /* DXPhotoBrowser.swift in Sources */,
 				1F4A49591F29892700EF8719 /* BookDescModel.swift in Sources */,
 				1F4AA56A1EF7E02B0085BE3B /* UIImage+QiNiuTools.m in Sources */,
@@ -1567,6 +1578,7 @@
 				1F4AA6081EF7EF190085BE3B /* TYTabTitleViewCell.m in Sources */,
 				1FED8C071F39A2410028200E /* MyBookListViewModel.swift in Sources */,
 				1F4AA53B1EF7DBED0085BE3B /* ProfileViewController.swift in Sources */,
+				1F43A6D61F4EDD80004CF18F /* AddAddressViewController.swift in Sources */,
 				1F6A2E6B1F0B7FCE00C3A574 /* DiscoverNewViewModel.swift in Sources */,
 				1F4AA5691EF7E02B0085BE3B /* UIImage+PureColor.m in Sources */,
 				1F8804C31F0E35A200F15AF3 /* GiveUserInfoTableViewCell.swift in Sources */,

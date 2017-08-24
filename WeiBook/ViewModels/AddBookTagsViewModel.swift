@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class AddBookTagsViewModel: BaseViewModel {
 
@@ -15,8 +16,37 @@ class AddBookTagsViewModel: BaseViewModel {
     
     var addBookForm:AddBookFormModel!
     
+    var locationManager:AMapLocationManager!
+    var locationStr = "正在获取"
+    var selectAddress = ""
+    var addressArray = NSMutableArray.init()
+    
     override init() {
         super.init()
+        if UserDefaultsGetSynchronize(NormalAddress) != nil {
+            self.addressArray.addObjects(from: UserDefaultsGetSynchronize(NormalAddress)as! [Any])
+        }
+    }
+    
+    func setUpLocationManager(){
+        locationManager = AMapLocationManager.init()
+        locationManager.locationTimeout = 2
+        locationManager.reGeocodeTimeout = 2
+        locationManager.delegate = self
+        locationManager.requestLocation(withReGeocode: true) { (location, regeo, error) in
+            if error != nil {
+                return;
+            }
+            if (regeo != nil) {
+                self.locationStr = (regeo?.formattedAddress)!
+                if self.addressArray.count == 0 {
+                    self.addressArray.add(self.locationStr)
+                }else{
+                    self.addressArray.insert(self.locationStr, at: 0)
+                }
+                self.controller?.tableView.reloadData()
+            }
+        }
     }
 //    {"state":"1",
 //    "userId":"4aeedfa860994ce9aee0febd89d5d005",
@@ -38,6 +68,7 @@ class AddBookTagsViewModel: BaseViewModel {
                           "comments":dics,
                           "state":"1"
                           ] as [String : Any]
+        UserDefaultsSetSynchronize(self.addressArray, key: NormalAddress)
         BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
             if !resultDic.isCompleted {
                 _ = Tools.shareInstance.showMessage((self.controller?.view)!, msg: "加入书库成功", autoHidder: true)
@@ -48,15 +79,37 @@ class AddBookTagsViewModel: BaseViewModel {
     
     //MARK: - SetCellData
     func tableViewGloableImageLableDetailImageCellSetData(_ indexPath:IndexPath, cell:GloableImageLableDetailImageCell) {
-        cell.cellSetData(image: nil, lableStr: commentTitls[indexPath.row], detailStr: nil)
+        switch indexPath.section {
+        case 0:
+            cell.cellSetData(image: nil, lableStr: commentTitls[indexPath.row], detailStr: nil)
+        default:
+            if indexPath.row == 0 {
+                cell.cellSetData(image: nil, lableStr: "手动添加", detailStr: nil)
+            }else{
+                cell.cellSetData(image: nil, lableStr: self.addressArray[indexPath.row - 1] as! String, detailStr: nil)
+            }
+        }
     }
     
     func tableViewGloableImageLableSwitchCellSetData(_ indexPath:IndexPath, cell:GloableImageLableSwitchCell){
         cell.cellSetData(image: nil, lableStr: "添加位置", switchStatus: self.customComment)
         cell.gloableImageLableSwitchClouse = { isTrue in
             self.customComment = isTrue
-//            self.controller?.tableView.reloadSections(IndexSet.init(integer: 1), with: .automatic)
+            self.controller?.tableView.reloadData()
+            self.setUpLocationManager()
         }
+    }
+    
+    
+    func showLoacationAlert(){
+        UIAlertController.shwoAlertControl(self.controller!, style: .alert, title: "定位服务未开启", message: "请在手机设置中开启定位服务以便更好为您服务", titles: nil, cancel: "知道了", doneTitle: "开启定位", cancelAction: {
+            
+        }, doneAction: {_ in 
+            let url = URL.init(string: "prefs:root=LOCATION_SERVICES")
+            if SHARE_APPLICATION.canOpenURL(url!) {
+                SHARE_APPLICATION.canOpenURL(url!)
+            }
+        })
     }
 }
 
@@ -73,11 +126,34 @@ extension AddBookTagsViewModel : UITableViewDelegate {
             }else{
                 cell?.accessoryType = .checkmark
             }
+        }else{
+            if indexPath.row == 0 {
+                let toController = AddAddressViewController()
+                toController.addAddressClouse = { str in
+                    if self.addressArray.count == 0 {
+                        self.addressArray.add(str)
+                    }else{
+                        self.addressArray.insert(str, at: 0)
+                    }
+                    self.controller?.tableView.reloadData()
+                }
+                NavigationPushView(self.controller!, toConroller: toController)
+            }else{
+                for i in 1...self.addressArray.count {
+                    let cell = tableView.cellForRow(at: IndexPath.init(row: i, section: 1)) as! GloableImageLableDetailImageCell
+                    if i == indexPath.row {
+                        self.selectAddress = (cell.textLabel?.text)!
+                        cell.accessoryType = .checkmark
+                    }else{
+                        cell.accessoryType = .none
+                    }
+                }
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
+        return section == 0 ? 10 : 0.000001
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -91,27 +167,86 @@ extension AddBookTagsViewModel : UITableViewDelegate {
 extension AddBookTagsViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.customComment ? 2 : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        switch section {
+        case 0:
+            return 4
+        default:
+            return self.addressArray.count + 1
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: GloableImageLableSwitchCell.description() , for: indexPath)
-            self.tableViewGloableImageLableSwitchCellSetData(indexPath,cell: cell as! GloableImageLableSwitchCell)
-            
-            return cell
+        
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: GloableImageLableSwitchCell.description() , for: indexPath)
+                self.tableViewGloableImageLableSwitchCellSetData(indexPath,cell: cell as! GloableImageLableSwitchCell)
+                
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: GloableImageLableDetailImageCell.description() , for: indexPath)
+                self.tableViewGloableImageLableDetailImageCellSetData(indexPath,cell: cell as! GloableImageLableDetailImageCell)
+                if indexPath.row == 0 {
+                    cell.accessoryType = .checkmark
+                }
+                return cell
+            }
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: GloableImageLableDetailImageCell.description() , for: indexPath)
             self.tableViewGloableImageLableDetailImageCellSetData(indexPath,cell: cell as! GloableImageLableDetailImageCell)
-            if indexPath.row == 0 {
-                cell.accessoryType = .checkmark
-            }
             return cell
         }
     }
 }
+
+extension AddBookTagsViewModel : AMapLocationManagerDelegate {
+    private  func amapLocationManager(_ manager: AMapLocationManager!, didFailWithError error: NSError!) {
+        print(error)
+    }
+    
+    func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!) {
+        print(location)
+        
+    }
+    
+    func amapLocationManager(_ manager: AMapLocationManager!, didExitRegion region: AMapLocationRegion!) {
+        print(region)
+    }
+    
+    func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!, reGeocode: AMapLocationReGeocode!) {
+        
+    }
+    
+    func amapLocationManager(_ manager: AMapLocationManager!, didStartMonitoringFor region: AMapLocationRegion!) {
+        
+    }
+    
+    func amapLocationManager(_ manager: AMapLocationManager!, didChange status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            if locationStr == "正在获取" {
+                manager.requestLocation(withReGeocode: true, completionBlock: { (lcation, regencode, error) in
+                    if error != nil {
+                        return
+                    }
+                    if regencode != nil {
+                        //                        self.locationStr = NSString(regencode?.city!).substring(to: 2)
+                        //                        UserDefaultsSetSynchronize(self.locationStr as AnyObject, key: "location")
+                        //                        self.controller.tableView.reloadSections(NSIndexSet.init(index: 0) as IndexSet, with: .automatic)
+                    }
+                })
+            }
+        }else if status == .notDetermined {
+            self.showLoacationAlert()
+        }else {
+            
+        }
+    }
+}
+

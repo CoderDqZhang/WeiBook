@@ -114,13 +114,15 @@ let WeiboRedirectUrl = "http://sns.whalecloud.com/sina2/callback"
 
 let JPushApiKey = "35d49a6e7dd7d1e678d1f7a6"
 
-let GaoDeApiKey = "36cf817a65c10eff954c24c3a9edcb3d"
+let GaoDeApiKey = "0db7747a32a1d774ad704ce4c550799f"
 
 
 let ToolViewNotifacationName = "ToolsViewNotification"
 let LoginStatuesChange = "LoginStatuesChange"
 
 let OrderStatuesChange = "OrderStatusChange"
+
+let NormalAddress = "NormalAddress"
 
 let UserTopUpWall = "UserTopUpWall"
 
