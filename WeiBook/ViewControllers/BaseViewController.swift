@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import MJRefresh
+import DZNEmptyDataSet
 
 typealias NormalHeaderClouse = () -> Void
 
@@ -34,6 +35,8 @@ class BaseViewController: UIViewController{
         controller?.view.addSubview(tableView)
         tableView.delegate = viewModel as? UITableViewDelegate
         tableView.dataSource = viewModel as? UITableViewDataSource
+        tableView.emptyDataSetDelegate = viewModel as! DZNEmptyDataSetDelegate
+        tableView.emptyDataSetSource = viewModel as! DZNEmptyDataSetSource
         tableView.keyboardDismissMode = .onDrag
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo((controller?.view.snp.top)!).offset(0)

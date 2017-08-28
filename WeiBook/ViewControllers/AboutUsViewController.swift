@@ -10,14 +10,15 @@ import UIKit
 
 class AboutUsViewController: UIViewController {
 
-    @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var versionLabel: UILabel!
-    @IBOutlet weak var deverloperLabel: UITextView!
-    @IBOutlet weak var protoclBtn: UIButton!
+    var logoImage: UIImageView!
+    var versionLabel: UILabel!
+    var deverloperLabel: UITextView!
+    var protoclBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
-        self.talKingDataPageName = "关于我们"
+        self.view.backgroundColor = UIColor.init(hexString: App_Theme_594CA8_Color)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -29,25 +30,45 @@ class AboutUsViewController: UIViewController {
         backButton.setImage(leftImage, for: UIControlState())
         self.view.addSubview(backButton)
         
+        logoImage = UIImageView.init()
+        logoImage.frame = CGRect.init(x: SCREENWIDTH / 2 - 50, y: SCREENHEIGHT / 2 - 150, width: 100, height: 100)
+        logoImage.image = UIImage.init(named: "about_logo.png")
+        self.view.addSubview(logoImage)
         
-        let str = "-\nfounder & director - rancan\ndeveloper - dequan & liuqiang\ndesign - yangtong\nmarketing - zhaoming"
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        versionLabel = UILabel.init()
+        versionLabel.frame = CGRect.init(x: 0, y: SCREENHEIGHT / 2 - 40, width: SCREENWIDTH, height: 20)
+        versionLabel.textAlignment = .center
+        versionLabel.text = "Version \(version)"
+        versionLabel.font = App_Theme_PinFan_R_14_Font
+        versionLabel.textColor = UIColor.white
+        self.view.addSubview(versionLabel)
+        
+        let str = "-\nfounder & director - weidong & xuhui\ndeveloper - dequan & dapeng\ndesign - dequan\nmarketing - yiping"
         let attribute = NSMutableAttributedString(string: str)
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineSpacing = 5
         attribute.addAttributes([NSParagraphStyleAttributeName:paragraph], range: NSRange.init(location: 0, length: str.length))
+        
+        deverloperLabel = UITextView.init()
+        deverloperLabel.backgroundColor = UIColor.clear
         deverloperLabel.attributedText = attribute
         deverloperLabel.textAlignment = .center
         deverloperLabel.textColor = UIColor.white
         deverloperLabel.isEditable = false
+        deverloperLabel.frame = CGRect.init(x: 15, y: SCREENHEIGHT / 2, width: SCREENWIDTH - 30, height: 140)
+        self.view.addSubview(deverloperLabel)
         
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-        versionLabel.text = "Version \(version)"
-        
+        protoclBtn = UIButton.init(type: .custom)
         protoclBtn.layer.cornerRadius = 2
+        protoclBtn.frame = CGRect.init(x: SCREENWIDTH / 2 - 40, y: SCREENHEIGHT - 60, width: 80, height: 20)
+        protoclBtn.titleLabel?.font = App_Theme_PinFan_R_14_Font
+        protoclBtn.setTitle("使用协议", for: .normal)
         protoclBtn.layer.masksToBounds = true
         protoclBtn.reactive.controlEvents(.touchUpInside).observe { (action) in
             NavigationPushView(self, toConroller: UserProtocolViewController())
         }
+        self.view.addSubview(protoclBtn)
         
         if IPHONE4 {
             logoImage.snp.updateConstraints({ (make) in
@@ -62,28 +83,9 @@ class AboutUsViewController: UIViewController {
             })
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

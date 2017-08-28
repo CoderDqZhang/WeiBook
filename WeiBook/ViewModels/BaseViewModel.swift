@@ -8,6 +8,7 @@
 
 import UIKit
 import SwifterSwift
+import DZNEmptyDataSet
 
 class BaseViewModel: NSObject {
 
@@ -16,6 +17,28 @@ class BaseViewModel: NSObject {
     override init() {
         super.init()
     }
+}
+
+extension BaseViewModel : DZNEmptyDataSetDelegate {
+    func emptyDataSetShouldFade(in scrollView: UIScrollView!) -> Bool {
+        return true
+    }
     
+    func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
     
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+}
+
+extension BaseViewModel : DZNEmptyDataSetSource {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage.init(named: "wait_develop")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString.init(string: "敬请期待")
+    }
 }

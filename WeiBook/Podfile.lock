@@ -15,7 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - Alamofire (4.5.0)
-  - AMapFoundation (1.4.1)
+  - AMapFoundation (1.4.2)
   - AMapLocation (2.4.0):
     - AMapFoundation (~> 1.4)
   - Cosmos (10.0.0)
@@ -53,14 +53,14 @@ PODS:
   - SDWebImage/Core (4.0.0)
   - SKPhotoBrowser (4.0.1)
   - SnapKit (3.2.0)
-  - SwifterSwift (3.1.0):
-    - SwifterSwift/Cocoa (= 3.1.0)
-    - SwifterSwift/Foundation (= 3.1.0)
-    - SwifterSwift/UIKit (= 3.1.0)
-  - SwifterSwift/Cocoa (3.1.0)
-  - SwifterSwift/Foundation (3.1.0)
-  - SwifterSwift/UIKit (3.1.0)
-  - SwiftyBeaver (1.3.0)
+  - SwifterSwift (3.1.1):
+    - SwifterSwift/Cocoa (= 3.1.1)
+    - SwifterSwift/Foundation (= 3.1.1)
+    - SwifterSwift/UIKit (= 3.1.1)
+  - SwifterSwift/Cocoa (3.1.1)
+  - SwifterSwift/Foundation (3.1.1)
+  - SwifterSwift/UIKit (3.1.1)
+  - SwiftyBeaver (1.4.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
@@ -89,7 +89,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  AMapFoundation: 9cc5198980873cca29bb70466a84b3bd922c0e65
+  AMapFoundation: 6c0471c9a6a0ad17dad46e3d800ad56ca170f82a
   AMapLocation: 47b62b5381a66e4d0c2931b70ffde72682427896
   Cosmos: bb9310e73ad1ad472b183b848b959302c569cf09
   Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
@@ -112,8 +112,8 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SKPhotoBrowser: 3a7c6fc02aa1620ab17253a47a49fafda46536e8
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  SwifterSwift: f84eb7308f7742724b3cbf84283ce00f7c06d7fc
-  SwiftyBeaver: d4b551ba34b4206c52cc4684ae90444b8aaa5afd
+  SwifterSwift: 8a93e265c97f552ff03a0da2369c74a3c030d482
+  SwiftyBeaver: 78d9186ce7595b4400ce01e5fd750d263e72dd7b
 
 PODFILE CHECKSUM: c0011bd606950df4cf95f921bcc5201bab36937d
 

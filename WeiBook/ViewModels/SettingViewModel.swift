@@ -11,8 +11,8 @@ import MessageUI
 
 class SettingViewModel: BaseViewModel {
 
-    var sectionsNumber = [3,1]
-    var titleLabelTexts = ["关于我们","意见反馈","赏个好评"]
+    var sectionsNumber = [2,1]
+    var titleLabelTexts = ["关于我们","赏个好评"]
     override init() {
         
     }
@@ -46,7 +46,14 @@ extension SettingViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0:
+                NavigationPushView(self.controller!, toConroller: AboutUsViewController())
+            default:
+                UIApplication.shared.openURL(URL.init(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1182825391")!)
+            }
+        }else if indexPath.section == 1 {
             if UserInfoModel.shareInstance().deleteObject() {
                 Notification(LoginStatuesChange, value: nil)
                 self.controller?.navigationController?.popViewController(animated: true)

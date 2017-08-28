@@ -185,5 +185,19 @@ class PlayVoiceView: UIView {
 }
 
 
+class WaitDevelop : UIView {
+    var imageView:UIImageView!
+    var titleLabel:UILabel!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
 
 

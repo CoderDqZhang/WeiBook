@@ -66,7 +66,8 @@ class AddBookTagsViewModel: BaseViewModel {
                           "userId":addBookForm.userId,
                           "commentContent":addBookForm.commentContent,
                           "comments":dics,
-                          "state":"1"
+                          "state":"1",
+                          "address": self.selectAddress
                           ] as [String : Any]
         UserDefaultsSetSynchronize(self.addressArray, key: NormalAddress)
         BaseNetWorke.sharedInstance.postUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
