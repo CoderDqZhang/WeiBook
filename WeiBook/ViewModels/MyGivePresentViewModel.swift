@@ -53,27 +53,38 @@ class MyGivePresentViewModel: BaseViewModel {
     //MARK: -RequestNet
     func requestGiveBook(){
         self.giveList.removeAllObjects()
-        let url = "\(BaseUrl)\(MyBookGetList)"
         if UserInfoModel.isLoggedIn() {
-            let parameters = ["userId":UserInfoModel.shareInstance().tails.userInfo.userId]
-            BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
-                if !resultDic.isCompleted {
-                    self.giveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
-                    self.tempGiveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
-                    self.controller?.tableView.reloadData()
+            let group = DispatchGroup.init()
+            let queue = DispatchQueue.init(label: "Give")
+            queue.async(group: group, execute: DispatchWorkItem.init(block: {
+                group.enter()
+                let url = "\(BaseUrl)\(MyBookGetList)"
+                let parameters = ["userId":UserInfoModel.shareInstance().tails.userInfo.userId]
+                BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resultDic) in
+                    if !resultDic.isCompleted {
+                        self.giveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                        self.tempGiveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                        group.leave()
+                    }
                 }
-            }
+            }))
             
-            let urlList = "\(BaseUrl)\(MyBookGiveList)"
-            let parametersList = ["useUserId":UserInfoModel.shareInstance().tails.userInfo.userId]
-            BaseNetWorke.sharedInstance.getUrlWithString(urlList, parameters: parametersList as AnyObject).observe { (resultDic) in
-                if !resultDic.isCompleted {
-                    self.giveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
-                    self.tempGiveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
-
-                    self.controller?.tableView.reloadData()
+            queue.async(group: group, execute: DispatchWorkItem.init(block: {
+                group.enter()
+                let urlList = "\(BaseUrl)\(MyBookGiveList)"
+                let parametersList = ["useUserId":UserInfoModel.shareInstance().tails.userInfo.userId]
+                BaseNetWorke.sharedInstance.getUrlWithString(urlList, parameters: parametersList as AnyObject).observe { (resultDic) in
+                    if !resultDic.isCompleted {
+                        self.giveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                        self.tempGiveList.addObjects(from:NSMutableArray.mj_keyValuesArray(withObjectArray: resultDic.value as! [Any]) as! [Any])
+                        group.leave()
+                    }
                 }
-            }
+            }))
+            group.notify(queue: DispatchQueue.main, execute: { 
+                self.controller?.tableView.reloadData()
+            })
+            
         }else{
             NavigationPushView(self.controller!, toConroller: LoginViewController())
         }

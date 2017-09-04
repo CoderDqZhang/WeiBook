@@ -74,7 +74,7 @@ class FollowFanceTableViewCell: UITableViewCell {
         ImageViewManager.shareInstance.sd_imageView(url: model.tails.userInfo.photo, imageView: userPhoto)
         userName.text = model.username
         userBooksNumber.text = "粉丝个数 \((model.tails.userInfo.fansNum)!)"
-        userConmmentNumber.text = "关注个数 \((model.tails.userInfo.attentionNum)!)"
+//        userConmmentNumber.text = "关注个数 \((model.tails.userInfo.attentionNum)!)"
     }
     
     func updataStatusButton(status:FollowAndFancsType){
