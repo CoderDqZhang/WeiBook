@@ -19,7 +19,7 @@ class BookDescViewController: BaseViewController {
         super.viewDidLoad()
         self.bindViewModel(viewModel: BookDescViewModel.init(), controller: self)
         self.view.backgroundColor = UIColor.init(hexString: App_Theme_F8F9F9_Color)
-        self.setUpTableView(style: .plain, cells: [BookBaseInfoTableViewCell.self,BookAdvanceTableViewCell.self, UserInfoTableViewCell.self, CommentInfoTableViewCell.self], controller: self)
+        self.setUpTableView(style: .plain, cells: [BookBaseInfoTableViewCell.self,BookAdvanceTableViewCell.self, UserInfoTableViewCell.self, CommentInfoTableViewCell.self,CollectBookUserTableViewCell.self], controller: self)
         self.setUpNavigaiotionItem()
         self.bindBookDescLogic()
         // Do any additional setup after loading the view.

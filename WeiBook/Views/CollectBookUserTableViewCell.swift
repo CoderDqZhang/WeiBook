@@ -1,34 +1,30 @@
 //
-//  BookAdvanceTableViewCell.swift
+//  CollectBookUserTableViewCell.swift
 //  WeiBook
 //
-//  Created by Zhang on 2017/7/3.
-//  Copyright © 2017年 Zhang. All rights reserved.
+//  Created by Zhang on 05/09/2017.
+//  Copyright © 2017 Zhang. All rights reserved.
 //
 
 import UIKit
 import SwifterSwift
 
-class BookAdvanceTableViewCell: UITableViewCell {
+class CollectBookUserTableViewCell: UITableViewCell {
 
     var titleLable:UILabel!
     var descLabel:UILabel!
     
     var linLabel:GloabLineView!
-    var didMakeConstraints = false
     
+    var didMakeConstraints = false
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setUpView()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func setUpView(){
         titleLable = UILabel.init()
-        titleLable.text = "简介"
+        titleLable.text = "藏书用户"
         titleLable.font = App_Theme_PinFan_M_18_Font
         titleLable.textColor = UIColor.init(hexString: App_Theme_384249_Color)
         self.contentView.addSubview(titleLable)
@@ -47,36 +43,35 @@ class BookAdvanceTableViewCell: UITableViewCell {
         self.updateConstraints()
     }
     
-    func cellSetData(model:SBNBookModel){
-        descLabel.text = model.summary
+    
+    func cellSetData(users:[UserInfoSwiftModel]){
+        if users.count > 0 {
+            for i in 0...users.count - 1 {
+                let frame = CGRect.init(x: i * 35 + 15, y: 60, width: 30, height: 30)
+                let imageView = UIImageView.init()
+                imageView.layer.masksToBounds = true
+                imageView.layer.cornerRadius = 15
+                imageView.frame = frame
+                ImageViewManager.shareInstance.sd_imageView(url: users[i].tails.userInfo.photo, imageView: imageView, completedBlock: { (image, error, cacheType, url) in
+                    
+                })
+                self.contentView.addSubview(imageView)
+            }
+        }
         self.updateConstraintsIfNeeded()
     }
     
-    func cellSetSeverData(model:ServerBookModel){
-        descLabel.text = model.contentDesc
-        self.updateConstraintsIfNeeded()
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func updateConstraints() {
-        if !didMakeConstraints{
+        if !didMakeConstraints {
             titleLable.snp.makeConstraints({ (make) in
                 make.top.equalTo(self.contentView.snp.top).offset(20)
                 make.left.equalTo(self.contentView.snp.left).offset(15)
                 make.right.equalTo(self.contentView.snp.right).offset(-20)
             })
-            descLabel.snp.makeConstraints({ (make) in
-                make.top.equalTo(self.titleLable.snp.bottom).offset(10)
-                make.left.equalTo(self.contentView.snp.left).offset(15)
-                make.right.equalTo(self.contentView.snp.right).offset(-20)
-                make.bottom.equalTo(self.contentView.snp.bottom).offset(-20)
-            })
-            
-            linLabel.snp.makeConstraints({ (make) in
-                make.bottom.equalTo(self.contentView.snp.bottom).offset(-0.5)
-                make.left.equalTo(self.contentView.snp.left).offset(0)
-                make.right.equalTo(self.contentView.snp.right).offset(0)
-            })
-            
             didMakeConstraints = true
         }
         super.updateConstraints()
@@ -86,10 +81,10 @@ class BookAdvanceTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
 

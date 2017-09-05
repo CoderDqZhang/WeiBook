@@ -14,6 +14,7 @@ class BookDescModel: NSObject, NSCoding {
     var isExitCollection : Int!
     var isExitWishBook : Int!
     var isFavorite : Int!
+    var users : [UserInfoSwiftModel]!
     
     /**
      * Instantiate the instance using the passed dictionary values to set the properties values
@@ -32,6 +33,13 @@ class BookDescModel: NSObject, NSCoding {
         isExitCollection = dictionary["isExitCollection"] as? Int
         isExitWishBook = dictionary["isExitWishBook"] as? Int
         isFavorite = dictionary["isFavorite"] as? Int
+        users = [UserInfoSwiftModel]()
+        if let usersArray = dictionary["users"] as? [NSDictionary]{
+            for dic in usersArray{
+                let value = UserInfoSwiftModel(fromDictionary: dic)
+                users.append(value)
+            }
+        }
     }
     
     /**
@@ -56,6 +64,13 @@ class BookDescModel: NSObject, NSCoding {
         if isExitWishBook != nil{
             dictionary["isExitWishBook"] = isExitWishBook
         }
+        if users != nil{
+            var dictionaryElements = [NSDictionary]()
+            for usersElement in users {
+                dictionaryElements.append(usersElement.toDictionary())
+            }
+            dictionary["users"] = dictionaryElements
+        }
         if isFavorite != nil{
             dictionary["isFavorite"] = isFavorite
         }
@@ -73,6 +88,7 @@ class BookDescModel: NSObject, NSCoding {
         isExitCollection = aDecoder.decodeObject(forKey: "isExitCollection") as? Int
         isExitWishBook = aDecoder.decodeObject(forKey: "isExitWishBook") as? Int
         isFavorite = aDecoder.decodeObject(forKey: "isFavorite") as? Int
+        users = aDecoder.decodeObject(forKey: "users") as? [UserInfoSwiftModel]
     }
     
     /**
@@ -95,6 +111,9 @@ class BookDescModel: NSObject, NSCoding {
         }
         if isFavorite != nil{
             aCoder.encode(isFavorite, forKey: "isFavorite")
+        }
+        if users != nil{
+            aCoder.encode(users, forKey: "users")
         }
     }
 }

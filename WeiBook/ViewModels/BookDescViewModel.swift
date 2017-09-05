@@ -71,7 +71,13 @@ class BookDescViewModel: BaseViewModel {
         }
     }
     
-    func tableViewDidSelect(_ indexPath:IndexPath) {
+    func tableViewCollectBookUserTableViewCellSetData(_ indexPath:IndexPath, cell:CollectBookUserTableViewCell) {
+        if self.bookDescModel != nil {
+            cell.cellSetData(users: self.bookDescModel.users)
+        }
+    }
+    
+    func tableViewDidSelect(_ indexPath:IndexPath, tableView:UITableView) {
         if indexPath.section != 0 {
             if indexPath.row == 0 && !(self.controller as! BookDescViewController).otherBookDesc {
                 let model = CommentModel.init(fromDictionary: self.commentsModel[indexPath.section - 1] as! NSDictionary)
@@ -79,6 +85,12 @@ class BookDescViewModel: BaseViewModel {
                 booksVC.otherUserModel = model.tails.user
                 booksVC.otherBooks = true
                 NavigationPushView(self.controller!, toConroller: booksVC)
+            }
+        }else{
+            if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+                let toController = BookUserListViewController()
+                toController.users = self.bookDescModel.users
+                NavigationPushView(self.controller!, toConroller: toController)
             }
         }
     }
@@ -150,7 +162,7 @@ extension BookDescViewModel : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.tableViewDidSelect(indexPath)
+        self.tableViewDidSelect(indexPath, tableView: tableView)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -172,12 +184,17 @@ extension BookDescViewModel : UITableViewDelegate {
             switch indexPath.row {
             case 0:
                 return 164
+            case 1:
+                if self.model.contentDesc != nil {
+                    return (self.controller?.tableView.fd_heightForCell(withIdentifier: BookAdvanceTableViewCell.description(), configuration: { (cell) in
+                        self.tableViewBookAdvanceTableViewCellSetData(indexPath, cell: cell as! BookAdvanceTableViewCell)
+                    }))!  > 300 ? 300 : (self.controller?.tableView.fd_heightForCell(withIdentifier: BookAdvanceTableViewCell.description(), configuration: { (cell) in
+                        self.tableViewBookAdvanceTableViewCellSetData(indexPath, cell: cell as! BookAdvanceTableViewCell)
+                    }))!
+                }
+                return 100
             default:
-                return (self.controller?.tableView.fd_heightForCell(withIdentifier: BookAdvanceTableViewCell.description(), configuration: { (cell) in
-                    if self.myBookModel != nil {
-                        (cell as! BookAdvanceTableViewCell).cellSetSeverData(model: self.myBookModel.tails.bookInfo)
-                    }
-                }))!
+                return 100
             }
         default:
             switch indexPath.row {
@@ -189,6 +206,7 @@ extension BookDescViewModel : UITableViewDelegate {
         }
     }
 }
+
 extension BookDescViewModel : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -198,7 +216,9 @@ extension BookDescViewModel : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 1
+            let numberOfSection = self.model.contentDesc != nil && self.model.contentDesc != "" ? 1 : 0
+            let number = self.bookDescModel != nil && self.bookDescModel.users.count > 0 ? numberOfSection + 1 : numberOfSection + 0
+            return  number + 1
         default:
             return 2
         }
@@ -212,9 +232,22 @@ extension BookDescViewModel : UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: BookBaseInfoTableViewCell.description() , for: indexPath)
                 self.tableViewBookBaseInfoTableViewCellSetData(indexPath,cell: cell as! BookBaseInfoTableViewCell)
                 return cell
+            case 1:
+                if self.model.contentDesc != nil {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: BookAdvanceTableViewCell.description() , for: indexPath)
+                    cell.backgroundColor = UIColor.init(hexString: App_Theme_FFFFFF_Color)
+                    self.tableViewBookAdvanceTableViewCellSetData(indexPath,cell: cell as! BookAdvanceTableViewCell)
+                    return cell
+                }else{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: CollectBookUserTableViewCell.description() , for: indexPath)
+                    cell.backgroundColor = UIColor.init(hexString: App_Theme_FFFFFF_Color)
+                    self.tableViewCollectBookUserTableViewCellSetData(indexPath,cell: cell as! CollectBookUserTableViewCell)
+                    return cell
+                }
             default:
-                let cell = tableView.dequeueReusableCell(withIdentifier: BookAdvanceTableViewCell.description() , for: indexPath)
-                cell.backgroundColor = UIColor.init(hexString: App_Theme_F8F9F9_Color)
+                let cell = tableView.dequeueReusableCell(withIdentifier: CollectBookUserTableViewCell.description() , for: indexPath)
+                cell.backgroundColor = UIColor.init(hexString: App_Theme_FFFFFF_Color)
+                self.tableViewCollectBookUserTableViewCellSetData(indexPath,cell: cell as! CollectBookUserTableViewCell)
                 return cell
             }
         default:

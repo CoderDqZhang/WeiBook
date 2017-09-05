@@ -49,19 +49,28 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(booksTitle)
         
         
-        booksStatus = UILabel.init()
-        booksStatus.layer.cornerRadius = 5.0
-        booksStatus.layer.masksToBounds = true
-        booksStatus.textAlignment = .center
-        booksStatus.font = App_Theme_PinFan_L_11_Font
-        booksStatus.textColor = UIColor.init(hexString: App_Theme_FFFFFF_Color)
+        booksStatus = self.setUpLabel()
         self.contentView.addSubview(booksStatus)
         
         self.updateConstraints()
     }
     
-    func cellSetData(model:Book){
-        self.changeBookStatus(status: model.borrowState)
+    func cellSetData(model:Book, isOwnBook:Bool){
+        if isOwnBook {
+            self.changeBookStatus(status: model.borrowState)
+        }else{
+            if model.state != nil {
+                let strs = "\((model.state)!)".splitted(by: ",")
+                for i in 0...strs.count - 1 {
+                    let label = setUpLabel()
+                    label.frame = CGRect.init(x: SCREENWIDTH / 3 - 30, y: 5, width: 30, height: 15)
+                    label.backgroundColor = UIColor.init(hexString: App_Theme_594CA8_Color)
+                    label.text = strs[i] == "1" ? "想读" : strs[i] == "2" ? "可借" : "可赠"
+                    self.contentView.addSubview(label)
+                }
+            }
+            
+        }
         ImageViewManager.shareInstance.doubanDanDanImageViewTools(url: model.tails.bookInfo.bookImg, imageView: bookPost) { (image, error,url) in
             self.bookPost.image = image
         }
@@ -69,6 +78,18 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
         booksTitle.text = model.tails.bookInfo.title
         self.updateConstraintsIfNeeded()
     }
+    
+    
+    func setUpLabel()-> UILabel{
+        let label = UILabel.init()
+        label.layer.cornerRadius = 5.0
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        label.font = App_Theme_PinFan_L_11_Font
+        label.textColor = UIColor.init(hexString: App_Theme_FFFFFF_Color)
+        return label
+    }
+    
     
     func changeBookStatus(status:Int) {
         switch status {
@@ -94,12 +115,15 @@ class MyBooksCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
+    
     override func updateConstraints() {
         if !didMakeConstraints {
             bookPost.snp.makeConstraints({ (make) in
                 make.centerX.equalTo(self.contentView.snp.centerX).offset(0)
                 make.top.equalTo(self.contentView.snp.top).offset(10)
                 make.size.equalTo(imageSize(type: .CollectView))
+                
             })
             
             booksTitle.snp.makeConstraints({ (make) in

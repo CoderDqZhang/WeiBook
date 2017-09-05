@@ -81,7 +81,7 @@ class Book: NSObject, NSCoding{
     var bookId : String!
     var createdAt : Int!
     var id : String!
-    var state : Int!
+    var state : String!
     var tails : MyBookListTail!
     var userId : String!
     var borrowState : Int!
@@ -96,7 +96,7 @@ class Book: NSObject, NSCoding{
         createdAt = dictionary["createdAt"] as? Int
         borrowState = dictionary["borrowState"] as? Int
         id = dictionary["id"] as? String
-        state = dictionary["state"] as? Int
+        state = dictionary["state"] as? String
         if let tailsData = dictionary["tails"] as? NSDictionary{
             tails = MyBookListTail(fromDictionary: tailsData)
         }
@@ -143,7 +143,7 @@ class Book: NSObject, NSCoding{
         createdAt = aDecoder.decodeObject(forKey: "createdAt") as? Int
         id = aDecoder.decodeObject(forKey: "id") as? String
         borrowState = aDecoder.decodeObject(forKey: "borrowState") as? Int
-        state = aDecoder.decodeObject(forKey: "state") as? Int
+        state = aDecoder.decodeObject(forKey: "state") as? String
         tails = aDecoder.decodeObject(forKey: "tails") as? MyBookListTail
         userId = aDecoder.decodeObject(forKey: "userId") as? String
         

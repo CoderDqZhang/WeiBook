@@ -100,6 +100,7 @@ class BookBaseInfoTableViewCell: UITableViewCell {
     
     func setRatingView(){
         ratingView = CosmosView.init()
+        ratingView.isUserInteractionEnabled = false
         ratingView.settings.starSize = 14
         ratingView.settings.starMargin = 3
         ratingView.settings.filledColor = UIColor.init(hexString: App_Theme_594CA8_Color)

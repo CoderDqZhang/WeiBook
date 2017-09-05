@@ -19,6 +19,7 @@ class BooksViewModel: BaseViewModel {
     var bookSelectClouse:BookSelectClouse!
     var createBookList:Bool!
     var bookController:BooksViewController!
+    var isOwnBook:Bool = false
     
     override init() {
         super.init()
@@ -69,7 +70,7 @@ class BooksViewModel: BaseViewModel {
     
     //MARK: CollectViewCell
     func collectViewMyBooksCollectionViewCellSetData(_ indexPath:IndexPath, cell:MyBooksCollectionViewCell) {
-        cell.cellSetData(model:self.myBooksModel.books[indexPath.row])
+        cell.cellSetData(model:self.myBooksModel.books[indexPath.row], isOwnBook: self.isOwnBook)
     }
     
     //MARK: -RequestNetWorking
@@ -77,6 +78,7 @@ class BooksViewModel: BaseViewModel {
         let url = "\(BaseUrl)\(MyBookList)"
         let parameters = ["useUserId":uid,
                           "userId":UserInfoModel.shareInstance().tails.userInfo.userId]
+        isOwnBook = uid == UserInfoModel.shareInstance().tails.userInfo.userId ? true : false
         BaseNetWorke.sharedInstance.getUrlWithString(url, parameters: parameters as AnyObject).observe { (resulDic) in
             if !resulDic.isCompleted {
                 self.myBooksModel = MyBooksModel.init(fromDictionary: resulDic.value as! NSDictionary)

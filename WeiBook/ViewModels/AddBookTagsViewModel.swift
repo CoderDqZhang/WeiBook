@@ -127,6 +127,16 @@ extension AddBookTagsViewModel : UITableViewDelegate {
             }else{
                 cell?.accessoryType = .checkmark
             }
+            
+            for i in 0...self.commentTitls.count - 1 {
+                let cell = tableView.cellForRow(at: IndexPath.init(row: i, section: 0)) as! GloableImageLableDetailImageCell
+                if cell.accessoryType == .checkmark {
+                    
+                }else{
+                    
+                }
+            }
+
         }else{
             if indexPath.row == 0 {
                 let toController = AddAddressViewController()
